@@ -42,19 +42,19 @@
             android:text="MAY "
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/maincolor"
+            android:textColor="@color/purple1"
             android:textSize="20sp"/>
         <TextView
             android:text="/"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/maincolor"
+            android:textColor="@color/purple1"
             android:textSize="20sp"/>
         <TextView
             android:text=" 2022"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/maincolor"
+            android:textColor="@color/purple1"
             android:textSize="20sp"/>
         <ImageView
             android:src="@drawable/diaryarrow"
