@@ -14,7 +14,11 @@
         android:theme="@style/Theme.DearA"
         tools:targetApi="31">
         <activity
+<<<<<<< HEAD
             android:name=".DatePickerActivity"
+=======
+            android:name=".SplashActivity"
+>>>>>>> 1055744cc71bec5061334d5b04dd05b83a6ef62e
             android:exported="false" />
         <activity
             android:name=".MainActivity"
