@@ -6,6 +6,7 @@
         <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/drawable-v24/background_radius_diary.xml" value="0.25" />
         <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/drawable-v24/background_radius_list.xml" value="0.2645" />
         <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/drawable-v24/background_radius_white.xml" value="0.146" />
+        <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/drawable/diary_popup_1.xml" value="0.2695" />
         <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/drawable/toggle_selector.xml" value="0.2205" />
         <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/layout/activity_date_picker.xml" value="0.22" />
         <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/layout/activity_main.xml" value="0.13385416666666666" />
@@ -16,6 +17,7 @@
         <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/layout/diary_edit_ver2.xml" value="0.28430953398888414" />
         <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/layout/diary_list_item.xml" value="0.25" />
         <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/layout/fragment_diary.xml" value="0.33" />
+        <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/layout/pop_up.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
       </map>
     </option>
