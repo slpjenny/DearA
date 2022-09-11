@@ -2,8 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#EFF1FF">
+    android:layout_height="match_parent">
 
     <!--상단바-->
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,32 +13,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="일기"
-            android:textColor="#000000"
-            android:textSize="24sp"
-            android:textStyle="bold"
+
+        <ImageView
+            android:id="@+id/closeBtn"
+            android:layout_width="17dp"
+            android:layout_height="17dp"
+            android:src="@drawable/x"
+            android:layout_marginLeft="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-        <ImageView
-            android:layout_width="32dp"
-            android:layout_height="26dp"
-            android:src="@drawable/modify"
-            android:layout_marginRight="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/trashBtn"
-            app:layout_constraintTop_toTopOf="parent" />
-        <ImageView
-            android:id="@+id/trashBtn"
-            android:layout_width="22dp"
-            android:layout_height="25dp"
-            android:src="@drawable/trash"
-            android:layout_marginRight="15dp"
+
+        <TextView
+            android:id="@+id/saveBtn"
+            android:text="저장"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:layout_marginRight="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -105,7 +97,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/background_radius_diary"
+            android:background="@drawable/background_radius_white"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:layout_marginBottom="10dp">
@@ -133,12 +125,14 @@
                             android:textStyle="bold"
                             android:textColor="@color/black"
                             android:layout_marginBottom="5dp"/>
-                        <TextView
-                            android:text=""
-                            android:layout_width="wrap_content"
+                        <EditText
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:hint="내용을 입력해주세요."
                             android:textSize="19sp"
-                            android:textColor="#505050"/>
+                            android:textColor="#505050"
+                            android:background="@null"
+                            android:inputType="textMultiLine|textNoSuggestions"/>
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -153,12 +147,14 @@
                             android:textStyle="bold"
                             android:textColor="@color/black"
                             android:layout_marginBottom="5dp"/>
-                        <TextView
-                            android:text=""
-                            android:layout_width="wrap_content"
+                        <EditText
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:hint="내용을 입력해주세요."
                             android:textSize="19sp"
-                            android:textColor="#505050"/>
+                            android:textColor="#505050"
+                            android:background="@null"
+                            android:inputType="textMultiLine|textNoSuggestions"/>
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -173,12 +169,14 @@
                             android:textStyle="bold"
                             android:textColor="@color/black"
                             android:layout_marginBottom="5dp"/>
-                        <TextView
-                            android:text=""
-                            android:layout_width="wrap_content"
+                        <EditText
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:hint="내용을 입력해주세요."
                             android:textSize="19sp"
-                            android:textColor="#505050"/>
+                            android:textColor="#505050"
+                            android:background="@null"
+                            android:inputType="textMultiLine|textNoSuggestions"/>
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -193,25 +191,19 @@
                             android:textStyle="bold"
                             android:textColor="@color/black"
                             android:layout_marginBottom="5dp"/>
-                        <TextView
-                            android:text=""
-                            android:layout_width="wrap_content"
+                        <EditText
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:hint="내용을 입력해주세요."
                             android:textSize="19sp"
-                            android:textColor="#505050"/>
+                            android:textColor="#505050"
+                            android:background="@null"
+                            android:inputType="textMultiLine|textNoSuggestions"/>
                     </LinearLayout>
-
 
                 </LinearLayout>
             </ScrollView>
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
