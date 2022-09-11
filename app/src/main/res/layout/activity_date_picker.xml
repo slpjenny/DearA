@@ -68,33 +68,37 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginBottom="5dp">
-                <TextView
+                <Button
                     android:text="1월"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="#6A6A6A"
-                    android:textSize="17sp"
-                    android:layout_marginRight="40dp"/>
-                <TextView
+                    android:layout_width="45dp"
+                    android:layout_height="23dp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/diary_button"
+                    android:textSize="15sp"
+                    android:layout_marginRight="20dp"/>
+                <Button
                     android:text="2월"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:background="#00ff0000"
+                    android:layout_width="45dp"
+                    android:layout_height="23dp"
                     android:textColor="#6A6A6A"
-                    android:textSize="17sp"
-                    android:layout_marginRight="40dp"/>
-                <TextView
+                    android:textSize="15sp"
+                    android:layout_marginRight="20dp"/>
+                <Button
                     android:text="3월"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:background="#00ff0000"
+                    android:layout_width="45dp"
+                    android:layout_height="23dp"
                     android:textColor="#6A6A6A"
-                    android:textSize="17sp"
-                    android:layout_marginRight="40dp"/>
-                <TextView
+                    android:textSize="15sp"
+                    android:layout_marginRight="20dp"/>
+                <Button
                     android:text="4월"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:background="#00ff0000"
+                    android:layout_width="45dp"
+                    android:layout_height="23dp"
                     android:textColor="#6A6A6A"
-                    android:textSize="17sp" />
+                    android:textSize="15sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -102,66 +106,74 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginBottom="5dp">
-                <TextView
+                <Button
                     android:text="5월"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:background="#00ff0000"
+                    android:layout_width="45dp"
+                    android:layout_height="23dp"
                     android:textColor="#6A6A6A"
-                    android:textSize="17sp"
-                    android:layout_marginRight="40dp"/>
-                <TextView
+                    android:textSize="15sp"
+                    android:layout_marginRight="20dp"/>
+                <Button
                     android:text="6월"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:background="#00ff0000"
+                    android:layout_width="45dp"
+                    android:layout_height="23dp"
                     android:textColor="#6A6A6A"
-                    android:textSize="17sp"
-                    android:layout_marginRight="40dp"/>
-                <TextView
+                    android:textSize="15sp"
+                    android:layout_marginRight="20dp"/>
+                <Button
                     android:text="7월"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:background="#00ff0000"
+                    android:layout_width="45dp"
+                    android:layout_height="23dp"
                     android:textColor="#6A6A6A"
-                    android:textSize="17sp"
-                    android:layout_marginRight="40dp"/>
-                <TextView
+                    android:textSize="15sp"
+                    android:layout_marginRight="20dp"/>
+                <Button
                     android:text="8월"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:background="#00ff0000"
+                    android:layout_width="45dp"
+                    android:layout_height="23dp"
                     android:textColor="#6A6A6A"
-                    android:textSize="17sp" />
+                    android:textSize="15sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-                <TextView
+                <Button
                     android:text="9월"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:background="#00ff0000"
+                    android:layout_width="45dp"
+                    android:layout_height="23dp"
                     android:textColor="#6A6A6A"
-                    android:textSize="17sp"
-                    android:layout_marginRight="30dp"/>
-                <TextView
+                    android:textSize="15sp"
+                    android:layout_marginRight="20dp"/>
+                <Button
                     android:text="10월"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:background="#00ff0000"
+                    android:layout_width="45dp"
+                    android:layout_height="23dp"
                     android:textColor="#6A6A6A"
-                    android:textSize="17sp"
-                    android:layout_marginRight="30dp"/>
-                <TextView
+                    android:textSize="15sp"
+                    android:layout_marginRight="20dp"/>
+                <Button
+                    android:background="#00ff0000"
                     android:text="11월"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="45dp"
+                    android:layout_height="23dp"
                     android:textColor="#6A6A6A"
-                    android:textSize="17sp"
-                    android:layout_marginRight="30dp"/>
-                <TextView
+                    android:textSize="15sp"
+                    android:layout_marginRight="20dp"/>
+                <Button
                     android:text="12월"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:background="#00ff0000"
+                    android:layout_width="45dp"
+                    android:layout_height="23dp"
                     android:textColor="#6A6A6A"
-                    android:textSize="17sp" />
+                    android:textSize="15sp" />
             </LinearLayout>
 
 
