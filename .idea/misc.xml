@@ -3,11 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1265" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1265" />
         <entry key="app/src/main/res/drawable/login_layout_background.xml" value="0.164" />
+        <entry key="app/src/main/res/drawable/login_layout_bg.xml" value="0.1265" />
         <entry key="app/src/main/res/drawable/login_signin_bg.xml" value="0.144" />
         <entry key="app/src/main/res/drawable/login_write_background_gray.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/login_write_bg_gray.xml" value="0.144" />
+        <entry key="app/src/main/res/drawable/one_line_gray.xml" value="0.1265" />
+        <entry key="app/src/main/res/drawable/selfdiagnosis_btn_bg.xml" value="0.1265" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.22864583333333333" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_self_diagnosis.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.165" />
         <entry key="app/src/main/res/layout/fragment_diary.xml" value="0.22864583333333333" />
         <entry key="app/src/main/res/layout/splash.xml" value="0.22615966796875" />

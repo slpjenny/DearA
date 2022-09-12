@@ -12,4 +12,9 @@
     <color name="purple1">#B8B8F0</color>
     <color name="purple2">#8C95DC</color>   <!-- 더 진한 보라색 -->
     <color name="main_gray">#F4F4F4</color>
+    <color name="point_gray">#D9D9D9</color>
+
+    <!-- 글자 색상 -->
+    <color name="dark_purple">#414E7D</color>
+
 </resources>
