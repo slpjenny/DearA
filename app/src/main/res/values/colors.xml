@@ -8,6 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <!-- 다른데에서 또 쓰이면 이름 바꾸셔도 됩니다~ -->
     <!-- 앱 주요 색상 -->
     <color name="purple1">#B8B8F0</color>
     <color name="purple2">#8C95DC</color>   <!-- 더 진한 보라색 -->
@@ -16,5 +17,8 @@
 
     <!-- 글자 색상 -->
     <color name="dark_purple">#414E7D</color>
+
+    <!-- 추가 색상 -->
+    <color name="contactus_gray">#F9F9F9</color>
 
 </resources>
