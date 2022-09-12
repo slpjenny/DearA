@@ -13,6 +13,23 @@
         <entry key="app/src/main/res/drawable/one_line_gray.xml" value="0.1265" />
         <entry key="app/src/main/res/drawable/selfdiagnosis_btn_bg.xml" value="0.1265" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.22864583333333333" />
+        <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/drawable-v24/background_radius_diary.xml" value="0.25" />
+        <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/drawable-v24/background_radius_list.xml" value="0.2645" />
+        <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/drawable-v24/background_radius_white.xml" value="0.146" />
+        <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/drawable/diary_button.xml" value="0.1" />
+        <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/drawable/diary_popup_1.xml" value="0.2695" />
+        <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/drawable/toggle_selector.xml" value="0.2205" />
+        <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/layout/activity_date_picker.xml" value="0.33" />
+        <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/layout/activity_main.xml" value="0.13385416666666666" />
+        <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/layout/activity_splash.xml" value="0.13385416666666666" />
+        <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/layout/diary_detail.xml" value="0.22" />
+        <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/layout/diary_detail_ver1.xml" value="0.22" />
+        <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/layout/diary_detail_ver2.xml" value="0.25" />
+        <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/layout/diary_edit_ver1.xml" value="0.22" />
+        <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/layout/diary_edit_ver2.xml" value="0.22" />
+        <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/layout/diary_list_item.xml" value="0.25" />
+        <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/layout/fragment_diary.xml" value="0.33" />
+        <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/layout/pop_up.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_self_diagnosis.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.165" />

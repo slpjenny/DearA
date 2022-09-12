@@ -17,10 +17,10 @@
             android:name=".SelfDiagnosisActivity"
             android:exported="false" />
         <activity
-            android:name=".SelfDiagnosis"
+            android:name=".LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".DatePickerActivity"
             android:exported="false" />
         <activity
             android:name=".SplashActivity"
