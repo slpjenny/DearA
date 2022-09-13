@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#DBDFFF"
+    android:id="@+id/nav_menu">
+
+    <item
+        android:id="@+id/first"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/img"
+        android:title="약"
+        android:enabled="true"/>
+
+    <item
+        android:id="@+id/second"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/img_1"
+        android:title="진료기록"
+        android:enabled="true"/>
+
+    <item
+        android:id="@+id/third"
+        app:showAsAction="ifRoom"
+        android:enabled="true"
+        android:icon="@drawable/img_2"
+        android:title="홈"/>
+    <item
+        android:id="@+id/fourth"
+        app:showAsAction="ifRoom"
+        android:enabled="true"
+        android:icon="@drawable/img_3"
+        android:title="일기"/>
+    <item
+        android:id="@+id/fifth"
+        app:showAsAction="ifRoom"
+        android:enabled="true"
+        android:icon="@drawable/img_4"
+        android:title="커뮤니티"/>
+
+</menu>

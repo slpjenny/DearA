@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="3dp"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageButton
+                    android:id="@+id/purple_box"
+                    android:layout_width="420dp"
+                    android:layout_height="160dp"
+                    android:background="@drawable/purple_box" />
+
+                <TextView
+                    android:layout_width="340dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@null"
+                    android:text="세브란스 병원"
+                    android:textColor="#727272"
+                    android:textSize="28dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="90dp"
+                    android:background="@null"
+                    android:text="5"
+                    android:textColor="#727272"
+                    android:textSize="28dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="115dp"
+                    android:layout_marginTop="90dp"
+                    android:background="@null"
+                    android:text="26"
+                    android:textColor="#727272"
+                    android:textSize="28dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="205dp"
+                    android:layout_marginTop="90dp"
+                    android:background="@null"
+                    android:text="13"
+                    android:textColor="#727272"
+                    android:textSize="28dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="300dp"
+                    android:layout_marginTop="90dp"
+                    android:background="@null"
+                    android:text="00"
+                    android:textColor="#727272"
+                    android:textSize="28dp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="처방받은 약"
+                    android:textColor="#808080"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/plus_button"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="150dp"
+                    android:layout_marginTop="2dp"
+                    android:background="@drawable/plus_button" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="90dp">
+
+                <ImageButton
+                    android:layout_width="420dp"
+                    android:layout_height="100dp"
+                    android:background="@drawable/write_box1" />
+
+                <TextView
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="25dp"
+                    android:background="@null"
+                    android:text="도모틴캡슐"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="240dp"
+                    android:layout_marginTop="33dp"
+                    android:text="1일 2회"
+                    android:textSize="17dp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="90dp">
+
+                <ImageButton
+                    android:layout_width="420dp"
+                    android:layout_height="100dp"
+                    android:background="@drawable/write_box1" />
+
+                <EditText
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="25dp"
+                    android:background="@null"
+                    android:hint="약 이름"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="200dp"
+                    android:layout_marginTop="18dp"
+                    android:hint="  ex. 1일 3회"
+                    android:textSize="17dp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="진료"
+                    android:textColor="#808080"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/record_start"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="70dp"
+                    android:layout_marginTop="2dp"
+                    android:background="@drawable/record_stop" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageButton
+                    android:layout_width="420dp"
+                    android:layout_height="150dp"
+                    android:background="@drawable/write_box2" />
+
+                <TextView
+                    android:layout_width="340dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="30dp"
+                    android:textColor="#727272"
+                    android:background="@null"
+                    android:hint="물 많이 마시기\n스트레스 해소 방법 찾기\n독서하기"
+                    android:textSize="23dp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:layout_width="420dp"
+                    android:layout_height="150dp"
+                    android:layout_marginTop="120dp"
+                    android:background="@drawable/write_box3" />
+
+                <ImageView
+                    android:layout_width="300dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="80dp"
+                    android:layout_marginTop="150dp"
+                    android:src="@drawable/record_bar" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="최근 증상"
+                android:textColor="#808080"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageButton
+                    android:layout_width="420dp"
+                    android:layout_height="150dp"
+                    android:background="@drawable/write_box4" />
+
+                <TextView
+                    android:layout_width="340dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@null"
+                    android:text="-집중이 더 어려워졌다\n-정리정돈이 어렵다"
+                    android:textSize="20dp"
+                    android:textColor="#808080"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+</LinearLayout>
