@@ -101,7 +101,7 @@
         <ImageView
             android:id="@+id/imageView6"
             android:layout_width="330dp"
-            android:layout_height="4dp"
+            android:layout_height="2dp"
             android:background="@drawable/one_line_maingray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -126,6 +126,7 @@
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
                 android:textSize="13sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -135,7 +136,7 @@
         <ImageView
             android:id="@+id/imageView7"
             android:layout_width="330dp"
-            android:layout_height="4dp"
+            android:layout_height="2dp"
             android:background="@drawable/one_line_maingray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -169,7 +170,7 @@
         <ImageView
             android:id="@+id/imageView8"
             android:layout_width="330dp"
-            android:layout_height="4dp"
+            android:layout_height="2dp"
             android:background="@drawable/one_line_maingray"
             app:layout_constraintBottom_toBottomOf="@+id/constraintLayout5"
             app:layout_constraintEnd_toEndOf="parent"
@@ -215,7 +216,7 @@
         <ImageView
             android:id="@+id/imageView9"
             android:layout_width="330dp"
-            android:layout_height="4dp"
+            android:layout_height="2dp"
             android:background="@drawable/one_line_maingray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -228,8 +229,8 @@
     <android.widget.Button
         android:id="@+id/button"
         android:layout_width="300dp"
-        android:layout_height="60dp"
-        android:background="@drawable/login_signin_bg"
+        android:layout_height="70dp"
+        android:background="@drawable/purple_btn_bg"
         android:backgroundTint="@color/purple2"
         android:text="완료"
         android:textSize="20sp"

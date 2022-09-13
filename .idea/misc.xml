@@ -14,7 +14,9 @@
         <entry key="app/src/main/res/drawable/one_line_gray.xml" value="0.1265" />
         <entry key="app/src/main/res/drawable/one_line_maingray.xml" value="0.13" />
         <entry key="app/src/main/res/drawable/one_line_pointgray.xml" value="0.152" />
+        <entry key="app/src/main/res/drawable/purple_btn_bg.xml" value="0.122" />
         <entry key="app/src/main/res/drawable/selfdiagnosis_btn_bg.xml" value="0.1265" />
+        <entry key="app/src/main/res/layout/activity_change_nick_name.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.22864583333333333" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_my_page.xml" value="0.25196850393700787" />
