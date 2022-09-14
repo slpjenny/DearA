@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
             changeFragment(
                 when (item.itemId) {
                     R.id.first -> {
-                        DiaryFragment()
+                        HomeFragment()
                     }
                     R.id.second -> {
                         RecordFragment()
@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
                         HomeFragment()
                     }
                     R.id.fourth -> {
-                        RecordFragment()
+                        DiaryFragment()
                     }
 
                     else -> {
