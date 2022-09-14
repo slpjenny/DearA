@@ -20,7 +20,7 @@
             android:layout_height="33dp"
             android:layout_marginLeft="7dp"
             android:background="#f9f9f9"
-            android:src="@drawable/back"
+            android:src="@drawable/back_btn"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

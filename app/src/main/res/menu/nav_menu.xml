@@ -9,14 +9,14 @@
     <item
         android:id="@+id/first"
         app:showAsAction="ifRoom"
-        android:icon="@drawable/img"
+        android:icon="@drawable/img_pill"
         android:title="약"
         android:enabled="true"/>
 
     <item
         android:id="@+id/second"
         app:showAsAction="ifRoom"
-        android:icon="@drawable/img_1"
+        android:icon="@drawable/img_record"
         android:title="진료기록"
         android:enabled="true"/>
 
