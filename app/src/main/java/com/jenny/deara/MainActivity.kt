@@ -35,9 +35,8 @@ class MainActivity : AppCompatActivity() {
                     R.id.fourth -> {
                         DiaryFragment()
                     }
-
                     else -> {
-                        RecordFragment()
+                        BoardMainFragment()
                     }
                 }
             )
