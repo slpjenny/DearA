@@ -23,6 +23,9 @@ class MainActivity : AppCompatActivity() {
         bnv_main.setOnItemSelectedListener { item ->
             changeFragment(
                 when (item.itemId) {
+                    R.id.first -> {
+                        DiaryFragment()
+                    }
                     R.id.second -> {
                         RecordFragment()
                     }
