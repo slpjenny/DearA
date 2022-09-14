@@ -3,8 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/DearA/app/src/main/res/drawable/add_button.xml" value="0.255" />
+        <entry key="..\:/DearA/app/src/main/res/drawable/schedule_radius.xml" value="0.255" />
+        <entry key="..\:/DearA/app/src/main/res/drawable/todolist_item.xml" value="0.255" />
         <entry key="..\:/DearA/app/src/main/res/layout/activity_main.xml" value="0.15896739130434784" />
         <entry key="..\:/DearA/app/src/main/res/layout/fragment_home.xml" value="0.24947916666666667" />
+        <entry key="..\:/DearA/app/src/main/res/layout/todolistview_item.xml" value="0.23777173913043478" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
       </map>
     </option>
