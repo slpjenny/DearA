@@ -24,7 +24,7 @@
         android:id="@+id/third"
         app:showAsAction="ifRoom"
         android:enabled="true"
-        android:icon="@drawable/img_2"
+        android:icon="@drawable/img_home"
         android:title="홈"/>
     <item
         android:id="@+id/fourth"
