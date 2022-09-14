@@ -14,6 +14,12 @@
         android:theme="@style/Theme.DearA"
         tools:targetApi="31">
         <activity
+            android:name=".alarm.TimePickerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".alarm.AlarmMainActivity"
+            android:exported="false" />
+        <activity
             android:name=".mypages.ChangePwdActivity"
             android:exported="false" />
         <activity
