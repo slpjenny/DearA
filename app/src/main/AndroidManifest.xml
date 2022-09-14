@@ -14,6 +14,39 @@
         android:theme="@style/Theme.DearA"
         tools:targetApi="31">
         <activity
+            android:name=".alarm.TimePickerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".alarm.AlarmMainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".mypages.ChangePwdActivity"
+            android:exported="false" />
+        <activity
+            android:name=".mypages.FindPwdActivity"
+            android:exported="false" />
+        <activity
+            android:name=".mypages.ChangeNickNameActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MyPageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SiginInActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SelfDiagnosisActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DatePickerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SplashActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

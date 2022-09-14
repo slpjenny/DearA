@@ -1,7 +1,9 @@
 package com.jenny.deara
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.FrameLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -24,6 +26,13 @@ class MainActivity : AppCompatActivity() {
                     R.id.second -> {
                         RecordFragment()
                     }
+                    R.id.third -> {
+                        HomeFragment()
+                    }
+                    R.id.fourth -> {
+                        RecordFragment()
+                    }
+
                     else -> {
                         RecordFragment()
                     }
