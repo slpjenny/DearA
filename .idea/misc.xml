@@ -5,10 +5,12 @@
       <map>
         <entry key="..\:/DearA/app/src/main/res/drawable/add_button.xml" value="0.255" />
         <entry key="..\:/DearA/app/src/main/res/drawable/diary_button.xml" value="0.177" />
+        <entry key="..\:/DearA/app/src/main/res/drawable/ic_launcher_background.xml" value="0.251" />
         <entry key="..\:/DearA/app/src/main/res/drawable/schedule_radius.xml" value="0.255" />
         <entry key="..\:/DearA/app/src/main/res/drawable/todolist_item.xml" value="0.255" />
-        <entry key="..\:/DearA/app/src/main/res/layout/activity_main.xml" value="0.15896739130434784" />
+        <entry key="..\:/DearA/app/src/main/res/layout/activity_main.xml" value="0.152" />
         <entry key="..\:/DearA/app/src/main/res/layout/diary_detail_ver1.xml" value="0.2453125" />
+        <entry key="..\:/DearA/app/src/main/res/layout/fragment_contact_us.xml" value="0.2453125" />
         <entry key="..\:/DearA/app/src/main/res/layout/fragment_diary.xml" value="0.2453125" />
         <entry key="..\:/DearA/app/src/main/res/layout/fragment_home.xml" value="0.24947916666666667" />
         <entry key="..\:/DearA/app/src/main/res/layout/todolistview_item.xml" value="0.23777173913043478" />
