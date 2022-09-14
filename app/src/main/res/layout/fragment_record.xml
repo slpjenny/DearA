@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.RecordFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/plus_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="330dp"
+            android:layout_marginTop="520dp"
+            android:background="@drawable/plus_button" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:text="오늘"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="130dp"
+                        android:background="@drawable/without_arrow" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="43dp"
+
+                        android:layout_marginLeft="43dp"
+                        android:layout_marginTop="33dp"
+                        android:text=". . ."
+                        android:textColor="#8C95DC"
+                        android:textSize="30dp"
+                        android:textStyle="bold"
+                        android:typeface="sans" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_marginLeft="110dp"
+                        android:layout_marginTop="33dp"
+
+                        android:text="일정 없음"
+                        android:textColor="#000000"
+                        android:textSize="27dp"
+                        android:textStyle="bold"
+                        android:typeface="sans" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:text="일정 목록"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="130dp"
+                            android:background="@drawable/with_arrow" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginLeft="25.5dp"
+                            android:layout_marginTop="43dp"
+
+                            android:text="5/24"
+                            android:textColor="#8C95DC"
+                            android:textSize="30dp"
+                            android:textStyle="bold"
+                            android:typeface="sans" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginLeft="110dp"
+                            android:layout_marginTop="33dp"
+
+                            android:text="세브란스 병원"
+                            android:textColor="#000000"
+                            android:textSize="27dp"
+                            android:textStyle="bold"
+                            android:typeface="sans" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginLeft="110dp"
+                            android:layout_marginTop="68dp"
+
+                            android:text="13:00 PM"
+                            android:textColor="#C0C0C0"
+                            android:textSize="20dp"
+                            android:textStyle="bold"
+                            android:typeface="sans" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="130dp"
+                            android:background="@drawable/with_arrow" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginLeft="25.5dp"
+                            android:layout_marginTop="43dp"
+
+                            android:text="5/20"
+                            android:textColor="#8C95DC"
+                            android:textSize="30dp"
+                            android:textStyle="bold"
+                            android:typeface="sans" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginLeft="110dp"
+                            android:layout_marginTop="33dp"
+
+                            android:text="세브란스 병원"
+                            android:textColor="#000000"
+                            android:textSize="27dp"
+                            android:textStyle="bold"
+                            android:typeface="sans" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginLeft="110dp"
+                            android:layout_marginTop="68dp"
+
+                            android:text="17:00 PM"
+                            android:textColor="#C0C0C0"
+                            android:textSize="20dp"
+                            android:textStyle="bold"
+                            android:typeface="sans" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="130dp"
+                            android:background="@drawable/with_arrow" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginLeft="25.5dp"
+                            android:layout_marginTop="43dp"
+
+                            android:text="5/18"
+                            android:textColor="#8C95DC"
+                            android:textSize="30dp"
+                            android:textStyle="bold"
+                            android:typeface="sans" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginLeft="110dp"
+                            android:layout_marginTop="33dp"
+
+                            android:text="세브란스 병원"
+                            android:textColor="#000000"
+                            android:textSize="27dp"
+                            android:textStyle="bold"
+                            android:typeface="sans" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginLeft="110dp"
+                            android:layout_marginTop="68dp"
+
+                            android:text="12:00 PM"
+                            android:textColor="#C0C0C0"
+                            android:textSize="20dp"
+                            android:textStyle="bold"
+                            android:typeface="sans" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="130dp"
+                            android:background="@drawable/with_arrow" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginLeft="25.5dp"
+                            android:layout_marginTop="43dp"
+
+                            android:text="5/11"
+                            android:textColor="#8C95DC"
+                            android:textSize="30dp"
+                            android:textStyle="bold"
+                            android:typeface="sans" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginLeft="110dp"
+                            android:layout_marginTop="33dp"
+
+                            android:text="세브란스 병원"
+                            android:textColor="#000000"
+                            android:textSize="27dp"
+                            android:textStyle="bold"
+                            android:typeface="sans" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginLeft="110dp"
+                            android:layout_marginTop="68dp"
+
+                            android:text="11:00 AM"
+                            android:textColor="#C0C0C0"
+                            android:textSize="20dp"
+                            android:textStyle="bold"
+                            android:typeface="sans" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="130dp"
+                            android:background="@drawable/with_arrow" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginLeft="34dp"
+                            android:layout_marginTop="43dp"
+
+                            android:text="5/9"
+                            android:textColor="#8C95DC"
+                            android:textSize="30dp"
+                            android:textStyle="bold"
+                            android:typeface="sans" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginLeft="110dp"
+                            android:layout_marginTop="33dp"
+
+                            android:text="세브란스 병원"
+                            android:textColor="#000000"
+                            android:textSize="27dp"
+                            android:textStyle="bold"
+                            android:typeface="sans" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginLeft="110dp"
+                            android:layout_marginTop="68dp"
+
+                            android:text="13:00 PM"
+                            android:textColor="#C0C0C0"
+                            android:textSize="20dp"
+                            android:textStyle="bold"
+                            android:typeface="sans" />
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+
+                <!--            <androidx.recyclerview.widget.RecyclerView-->
+                <!--                android:id="@+id/mainRV"-->
+                <!--                android:layout_marginTop="160dp"-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:layout_height="234dp"/>-->
+
+            </ScrollView>
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+
+</FrameLayout>

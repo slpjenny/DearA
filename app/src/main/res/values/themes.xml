@@ -1,6 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.DearA" parent="Theme.AppCompat.Light">
+
+        <item name="windowNoTitle">true</item>
+
         <!-- Primary brand color. -->
         <item name="windowNoTitle">true</item>
         <item name="colorPrimary">@color/purple_500</item>
