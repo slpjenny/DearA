@@ -91,27 +91,27 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="xxxx.xx.xx"
-            android:textColor="#A0A0A0"
-            android:textSize="15sp"
-            android:layout_marginLeft="30dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/title" />
+<!--        <TextView-->
+<!--            android:id="@+id/date"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="xxxx.xx.xx"-->
+<!--            android:textColor="#A0A0A0"-->
+<!--            android:textSize="15sp"-->
+<!--            android:layout_marginLeft="30dp"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/title" />-->
 
-        <TextView
-            android:id="@+id/time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="오전 xx:xx"
-            android:textColor="#A0A0A0"
-            android:textSize="15sp"
-            android:layout_marginLeft="10dp"
-            app:layout_constraintStart_toEndOf="@+id/date"
-            app:layout_constraintTop_toBottomOf="@+id/title" />
+<!--        <TextView-->
+<!--            android:id="@+id/time"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="오전 xx:xx"-->
+<!--            android:textColor="#A0A0A0"-->
+<!--            android:textSize="15sp"-->
+<!--            android:layout_marginLeft="10dp"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/date"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/title" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -571,6 +571,7 @@
     </ScrollView>
 
     <ImageButton
+        android:id="@+id/plus_button"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:background="@drawable/plusbtn"
