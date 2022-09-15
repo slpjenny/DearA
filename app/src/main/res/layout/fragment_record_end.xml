@@ -192,6 +192,15 @@
                     app:layout_constraintStart_toStartOf="@+id/list2"
                     app:layout_constraintTop_toTopOf="@+id/list2" />
 
+                <ImageButton
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/record_delete"
+                    app:layout_constraintEnd_toEndOf="@+id/list2"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
                 <ImageView
                     android:id="@+id/list3"
                     android:layout_width="190dp"
@@ -216,6 +225,15 @@
                     app:layout_constraintEnd_toEndOf="@+id/list3"
                     app:layout_constraintStart_toStartOf="@+id/list3"
                     app:layout_constraintTop_toTopOf="@+id/list3" />
+
+                <ImageButton
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/record_delete"
+                    app:layout_constraintEnd_toEndOf="@+id/list3"
+                    app:layout_constraintTop_toTopOf="parent"/>
 
                 <ListView
                     android:id="@+id/record_list"
