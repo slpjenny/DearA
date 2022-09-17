@@ -32,7 +32,7 @@
             android:name=".MyPageActivity"
             android:exported="false" />
         <activity
-            android:name=".SiginInActivity"
+            android:name=".SignInActivity"
             android:exported="false" />
         <activity
             android:name=".SelfDiagnosisActivity"
