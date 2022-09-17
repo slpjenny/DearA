@@ -93,7 +93,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/findPwdTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="80dp"
@@ -103,11 +103,12 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
+                    android:id="@+id/signInTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="회원가입"
-
                     android:layout_marginRight="100dp"
+                    android:clickable="true"
+                    android:text="회원가입"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
