@@ -30,10 +30,10 @@ android {
         jvmTarget = '1.8'
     }
 
-    // data binding 사용하려면 작성
-//    buildFeatures {
-//        viewBinding true
-//    }
+//     data binding 사용하려면 작성
+    buildFeatures {
+        viewBinding true
+    }
 
 }
 

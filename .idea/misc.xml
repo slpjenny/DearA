@@ -46,6 +46,7 @@
         <entry key="app/src/main/res/layout/activity_record_start.xml" value="0.125" />
         <entry key="app/src/main/res/layout/activity_self_diagnosis.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_sigin_in.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.26614583333333336" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_time_picker.xml" value="0.2713541666666667" />
         <entry key="app/src/main/res/layout/box.xml" value="0.24682971014492755" />
@@ -58,6 +59,7 @@
         <entry key="app/src/main/res/layout/fragment_board_main.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_contact_us.xml" value="0.2833333333333333" />
         <entry key="app/src/main/res/layout/fragment_diary.xml" value="0.22864583333333333" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.25885416666666666" />
         <entry key="app/src/main/res/layout/fragment_name_date.xml" value="0.2171875" />
         <entry key="app/src/main/res/layout/fragment_new_record.xml" value="0.2713541666666667" />
         <entry key="app/src/main/res/layout/fragment_pill_plus.xml" value="0.2713541666666667" />

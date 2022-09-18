@@ -3,9 +3,9 @@ package com.jenny.deara
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-class SiginInActivity : AppCompatActivity() {
+class SignInActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sigin_in)
+        setContentView(R.layout.activity_sign_in)
     }
 }
