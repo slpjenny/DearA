@@ -16,27 +16,44 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <Button
+            android:id="@+id/button10"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="5dp"
+            android:background="@android:color/transparent"
             android:text="저장"
-            android:textColor="#000000"
+            android:textColor="#808080"
             android:textSize="24sp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/button9"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button9"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
             android:layout_marginRight="20dp"
+            android:background="@android:color/transparent"
+            android:text="삭제"
+            android:textColor="#808080"
+            android:textSize="24sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:src="@drawable/back_btn"
+            android:id="@+id/imageView13"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginLeft="10dp"
 
+            android:src="@drawable/back_btn"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -170,53 +187,43 @@
 
                 <ImageView
                     android:id="@+id/list2"
-                    android:layout_width="190dp"
-                    android:layout_height="100dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
                     android:background="@drawable/background_radius_record"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
                     android:id="@+id/title2"
-                    android:layout_width="160dp"
-                    android:layout_height="80dp"
+                    android:layout_width="170dp"
+                    android:layout_height="40dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginLeft="25dp"
-                    android:layout_marginTop="10dp"
-                    android:hint="약 이름\nex. 도모틴캡슐"
-                    android:ellipsize="none"
-                    android:maxLines="2"
-                    android:textColor="#000000"
-                    android:textSize="20sp"
+                    android:layout_marginTop="16dp"
                     android:background="@android:color/transparent"
-                    app:layout_constraintEnd_toEndOf="@+id/list2"
+                    android:ellipsize="none"
+                    android:hint="약 이름"
+                    android:maxLines="1"
+                    android:textColor="#000000"
+                    android:textSize="15sp"
                     app:layout_constraintStart_toStartOf="@+id/list2"
                     app:layout_constraintTop_toTopOf="@+id/list2" />
 
-                <ImageView
-                    android:id="@+id/list3"
-                    android:layout_width="190dp"
-                    android:layout_height="100dp"
-                    android:background="@drawable/background_radius_record"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
                 <EditText
                     android:id="@+id/title3"
-                    android:layout_width="160dp"
-                    android:layout_height="80dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginTop="10dp"
-                    android:hint="복용 권장량\nex. 식후 30분 3회"
-                    android:ellipsize="none"
-                    android:maxLines="2"
-                    android:textColor="#000000"
-                    android:textSize="20sp"
+                    android:layout_width="170dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="16dp"
                     android:background="@android:color/transparent"
-                    app:layout_constraintEnd_toEndOf="@+id/list3"
-                    app:layout_constraintStart_toStartOf="@+id/list3"
-                    app:layout_constraintTop_toTopOf="@+id/list3" />
+                    android:ellipsize="none"
+                    android:hint="권장 복용량"
+                    android:maxLines="1"
+                    android:textColor="#000000"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/title2"
+                    app:layout_constraintTop_toTopOf="@+id/list2" />
+
 
                 <ListView
                     android:id="@+id/record_list"
@@ -247,38 +254,46 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <Button
+                <ImageButton
                     android:id="@+id/record_start"
-                    android:layout_width="50dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="2dp"
-                    android:layout_marginLeft="7dp"
-                    android:backgroundTint="#DBDFFF"
-                    android:text="녹음"
+                    android:layout_width="25dp"
+                    android:layout_height="27dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginLeft="5dp"
+                    android:background="@drawable/microphone"
                     app:layout_constraintStart_toEndOf="@+id/textView24"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <Button
+                <ImageButton
                     android:id="@+id/record_stop"
-                    android:layout_width="50dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="2dp"
-                    android:backgroundTint="#DBDFFF"
-                    android:text="중지"
+                    android:layout_width="25dp"
+                    android:layout_height="32dp"
+                    android:layout_marginTop="3dp"
+                    android:background="@drawable/no_recording"
                     app:layout_constraintStart_toEndOf="@+id/record_start"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/record_play"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginLeft="2dp"
+                    android:background="@drawable/play_button"
+                    app:layout_constraintStart_toEndOf="@+id/record_stop"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/textView27"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="3dp"
-                    android:layout_marginBottom="8dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
                     android:text="녹음시에는 의사 선생님의\n동의를 잊지 마세요 !"
                     android:textColor="#FF0000"
                     android:textSize="9sp"
-                    app:layout_constraintStart_toEndOf="@+id/record_stop"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+                    app:layout_constraintStart_toEndOf="@+id/record_play"
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -303,12 +318,12 @@
                     android:layout_height="120dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginLeft="25dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="6dp"
                     android:hint="메모는 여기에 작성해주세요\n\n\n"
                     android:ellipsize="none"
                     android:maxLines="4"
                     android:textColor="#000000"
-                    android:textSize="20sp"
+                    android:textSize="16sp"
                     android:background="@android:color/transparent"
                     app:layout_constraintEnd_toEndOf="@+id/list4"
                     app:layout_constraintStart_toStartOf="@+id/list4"
@@ -367,7 +382,7 @@
                     android:ellipsize="none"
                     android:maxLines="4"
                     android:textColor="#000000"
-                    android:textSize="20sp"
+                    android:textSize="16sp"
                     android:background="@android:color/transparent"
                     app:layout_constraintEnd_toEndOf="@+id/list6"
                     app:layout_constraintStart_toStartOf="@+id/list6"
