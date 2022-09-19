@@ -140,7 +140,7 @@
         app:layout_constraintTop_toBottomOf="@id/boardSearch">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/boardListLineS1"
+            android:id="@+id/boardLineS1"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginBottom="16dp"
@@ -160,7 +160,7 @@
             android:textSize="18dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/boardListLineS1" />
+            app:layout_constraintTop_toBottomOf="@id/boardLineS1" />
 
         <Button
             android:layout_width="40dp"
@@ -170,7 +170,7 @@
             android:text="1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/boardListLineS1" />
+            app:layout_constraintTop_toBottomOf="@id/boardLineS1" />
 
 
         <TextView
@@ -186,7 +186,7 @@
             app:layout_constraintTop_toBottomOf="@id/boardTitle1" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/boardListLineE1"
+            android:id="@+id/boardLineE1"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
@@ -205,7 +205,7 @@
         app:layout_constraintTop_toBottomOf="@+id/boardList1">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/boardListLineS2"
+            android:id="@+id/boardLineS2"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/black"
@@ -225,7 +225,7 @@
             android:textSize="18dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/boardListLineS2" />
+            app:layout_constraintTop_toBottomOf="@id/boardLineS2" />
 
         <Button
             android:layout_width="40dp"
@@ -235,7 +235,7 @@
             android:text="1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/boardListLineS2" />
+            app:layout_constraintTop_toBottomOf="@id/boardLineS2" />
 
 
         <TextView
@@ -251,7 +251,7 @@
             app:layout_constraintTop_toBottomOf="@id/boardTitle2" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/boardListLineE2"
+            android:id="@+id/boardLineE2"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
@@ -270,7 +270,7 @@
         app:layout_constraintTop_toBottomOf="@+id/boardList2">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/boardListLineS3"
+            android:id="@+id/boardLineS3"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:visibility="gone"
@@ -290,7 +290,7 @@
             android:textSize="18dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/boardListLineS3" />
+            app:layout_constraintTop_toBottomOf="@id/boardLineS3" />
 
         <Button
             android:layout_width="40dp"
@@ -300,7 +300,7 @@
             android:text="1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/boardListLineS3" />
+            app:layout_constraintTop_toBottomOf="@id/boardLineS3" />
 
 
         <TextView
@@ -316,7 +316,7 @@
             app:layout_constraintTop_toBottomOf="@id/boardTitle3" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/boardListLineE3"
+            android:id="@+id/boardLineE3"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
@@ -335,7 +335,7 @@
         app:layout_constraintTop_toBottomOf="@+id/boardList3">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/boardListLineS4"
+            android:id="@+id/boardLineS4"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:visibility="gone"
@@ -355,7 +355,7 @@
             android:textSize="18dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/boardListLineS4" />
+            app:layout_constraintTop_toBottomOf="@id/boardLineS4" />
 
         <Button
             android:layout_width="40dp"
@@ -365,7 +365,7 @@
             android:text="1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/boardListLineS4" />
+            app:layout_constraintTop_toBottomOf="@id/boardLineS4" />
 
 
         <TextView
@@ -381,7 +381,7 @@
             app:layout_constraintTop_toBottomOf="@id/boardTitle4" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/boardListLineE4"
+            android:id="@+id/boardLineE4"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
@@ -400,7 +400,7 @@
         app:layout_constraintTop_toBottomOf="@+id/boardList4">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/boardListLineS5"
+            android:id="@+id/boardLineS5"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:visibility="gone"
@@ -420,7 +420,7 @@
             android:textSize="18dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/boardListLineS5" />
+            app:layout_constraintTop_toBottomOf="@id/boardLineS5" />
 
         <Button
             android:layout_width="40dp"
@@ -430,7 +430,7 @@
             android:text="1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/boardListLineS5" />
+            app:layout_constraintTop_toBottomOf="@id/boardLineS5" />
 
 
         <TextView
@@ -446,7 +446,7 @@
             app:layout_constraintTop_toBottomOf="@id/boardTitle5" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/boardListLineE5"
+            android:id="@+id/boardLineE5"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
@@ -553,6 +553,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
+        android:id="@+id/writeBtn"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_marginEnd="8dp"
