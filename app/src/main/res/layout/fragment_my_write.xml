@@ -134,12 +134,12 @@
 
 
         <TextView
-            android:id="@+id/myWriteTimeWriter1"
+            android:id="@+id/myWriteTime1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="2022-05-22 01:23 작성자 슈니즈"
+            android:text="2022-05-22 01:23"
             android:textColor="#747474"
             android:textSize="12dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -151,7 +151,7 @@
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
             android:background="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/myWriteTimeWriter1" />
+            app:layout_constraintTop_toBottomOf="@id/myWriteTime1" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -189,12 +189,12 @@
 
 
         <TextView
-            android:id="@+id/myWriteTimeWriter2"
+            android:id="@+id/myWriteTime2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="2022-05-22 01:23 작성자 슈니즈"
+            android:text="2022-05-22 01:23"
             android:textColor="#747474"
             android:textSize="12dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -206,7 +206,7 @@
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
             android:background="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/myWriteTimeWriter2" />
+            app:layout_constraintTop_toBottomOf="@id/myWriteTime2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -245,12 +245,12 @@
 
 
         <TextView
-            android:id="@+id/myWriteTimeWriter3"
+            android:id="@+id/myWriteTime3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="2022-05-22 01:23 작성자 슈니즈"
+            android:text="2022-05-22 01:23"
             android:textColor="#747474"
             android:textSize="12dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -262,7 +262,7 @@
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
             android:background="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/myWriteTimeWriter3" />
+            app:layout_constraintTop_toBottomOf="@id/myWriteTime3" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -300,12 +300,12 @@
 
 
         <TextView
-            android:id="@+id/myWriteTimeWriter4"
+            android:id="@+id/myWriteTime4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="2022-05-22 01:23 작성자 슈니즈"
+            android:text="2022-05-22 01:23"
             android:textColor="#747474"
             android:textSize="12dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -317,7 +317,7 @@
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
             android:background="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/myWriteTimeWriter4" />
+            app:layout_constraintTop_toBottomOf="@id/myWriteTime4" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -355,12 +355,12 @@
 
 
         <TextView
-            android:id="@+id/myWriteTimeWriter5"
+            android:id="@+id/myWriteTime5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="2022-05-22 01:23 작성자 슈니즈"
+            android:text="2022-05-22 01:23"
             android:textColor="#747474"
             android:textSize="12dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -372,7 +372,7 @@
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
             android:background="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/myWriteTimeWriter5" />
+            app:layout_constraintTop_toBottomOf="@id/myWriteTime5" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -410,12 +410,12 @@
 
 
         <TextView
-            android:id="@+id/myWriteTimeWriter6"
+            android:id="@+id/myWriteTime6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="2022-05-22 01:23 작성자 슈니즈"
+            android:text="2022-05-22 01:23"
             android:textColor="#747474"
             android:textSize="12dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -427,7 +427,7 @@
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
             android:background="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/myWriteTimeWriter6" />
+            app:layout_constraintTop_toBottomOf="@id/myWriteTime6" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -465,12 +465,12 @@
 
 
         <TextView
-            android:id="@+id/myWriteTimeWriter7"
+            android:id="@+id/myWriteTime7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="2022-05-22 01:23 작성자 슈니즈"
+            android:text="2022-05-22 01:23"
             android:textColor="#747474"
             android:textSize="12dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -483,7 +483,7 @@
             android:layout_marginTop="16dp"
             android:background="@color/black"
             android:visibility="invisible"
-            app:layout_constraintTop_toBottomOf="@id/myWriteTimeWriter7" />
+            app:layout_constraintTop_toBottomOf="@id/myWriteTime7" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
