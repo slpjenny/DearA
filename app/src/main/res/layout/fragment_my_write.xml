@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".board.MyCommentFragment"
-    android:orientation="vertical">
+    tools:context=".MyWirteFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -80,7 +79,7 @@
             android:layout_marginLeft="10dp"
             android:background="@drawable/bottom_edge"
             android:text="내가 쓴 글"
-            android:textColor="@color/board_menu_gray"
+            android:textColor="@color/black"
             android:textSize="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/boardAlarmText" />
@@ -91,7 +90,7 @@
             android:layout_marginLeft="10dp"
             android:background="@drawable/bottom_edge"
             android:text="내가 쓴 댓글"
-            android:textColor="@color/black"
+            android:textColor="@color/board_menu_gray"
             android:textSize="15dp"
             app:layout_constraintStart_toEndOf="@+id/MyWriteText"
             app:layout_constraintTop_toTopOf="parent" />
@@ -101,7 +100,7 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/commentList1"
+        android:id="@+id/myWriteList1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -111,16 +110,16 @@
         app:layout_constraintTop_toBottomOf="@+id/boardMenu">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/commentLineS1"
+            android:id="@+id/myWriteLineS1"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/black"
-            app:layout_constraintBottom_toTopOf="@+id/commentTitle1"
+            app:layout_constraintBottom_toTopOf="@+id/myWriteTitle1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/commentTitle1"
+            android:id="@+id/myWriteTitle1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -130,11 +129,11 @@
             android:textSize="18dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/commentLineS1" />
+            app:layout_constraintTop_toBottomOf="@id/myWriteLineS1" />
 
 
         <TextView
-            android:id="@+id/commentTimeWriter1"
+            android:id="@+id/myWriteTimeWriter1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -143,29 +142,29 @@
             android:textColor="#747474"
             android:textSize="12dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/commentTitle1" />
+            app:layout_constraintTop_toBottomOf="@id/myWriteTitle1" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/commentLineE1"
+            android:id="@+id/myWriteLineE1"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
             android:background="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/commentTimeWriter1" />
+            app:layout_constraintTop_toBottomOf="@id/myWriteTimeWriter1" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/commentList2"
+        android:id="@+id/myWriteList2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/commentList1">
+        app:layout_constraintTop_toBottomOf="@+id/myWriteList1">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/commentLineS2"
+            android:id="@+id/myWriteLineS2"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/black"
@@ -175,7 +174,7 @@
             app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
-            android:id="@+id/commentTitle2"
+            android:id="@+id/myWriteTitle2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -185,11 +184,11 @@
             android:textSize="18dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/commentLineS2" />
+            app:layout_constraintTop_toBottomOf="@id/myWriteLineS2" />
 
 
         <TextView
-            android:id="@+id/commentTimeWriter2"
+            android:id="@+id/myWriteTimeWriter2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -198,30 +197,30 @@
             android:textColor="#747474"
             android:textSize="12dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/commentTitle2" />
+            app:layout_constraintTop_toBottomOf="@id/myWriteTitle2" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/commentLineE2"
+            android:id="@+id/myWriteLineE2"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
             android:background="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/commentTimeWriter2" />
+            app:layout_constraintTop_toBottomOf="@id/myWriteTimeWriter2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/commentList3"
+        android:id="@+id/myWriteList3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/commentList2">
+        app:layout_constraintTop_toBottomOf="@+id/myWriteList2">
         // app:layout_constraintHorizontal_bias="0.0"
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/commentLineS3"
+            android:id="@+id/myWriteLineS3"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/black"
@@ -231,7 +230,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/commentTitle3"
+            android:id="@+id/myWriteTitle3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -241,11 +240,11 @@
             android:textSize="18dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/commentLineS3" />
+            app:layout_constraintTop_toBottomOf="@id/myWriteLineS3" />
 
 
         <TextView
-            android:id="@+id/commentTimeWriter3"
+            android:id="@+id/myWriteTimeWriter3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -254,29 +253,29 @@
             android:textColor="#747474"
             android:textSize="12dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/commentTitle3" />
+            app:layout_constraintTop_toBottomOf="@id/myWriteTitle3" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/commentLineE3"
+            android:id="@+id/myWriteLineE3"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
             android:background="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/commentTimeWriter3" />
+            app:layout_constraintTop_toBottomOf="@id/myWriteTimeWriter3" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/commentList4"
+        android:id="@+id/myWriteList4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/commentList3">
+        app:layout_constraintTop_toBottomOf="@+id/myWriteList3">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/commentLineS4"
+            android:id="@+id/myWriteLineS4"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:visibility="gone"
@@ -286,7 +285,7 @@
             app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
-            android:id="@+id/commentTitle4"
+            android:id="@+id/myWriteTitle4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -296,11 +295,11 @@
             android:textSize="18dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/commentLineS4" />
+            app:layout_constraintTop_toBottomOf="@id/myWriteLineS4" />
 
 
         <TextView
-            android:id="@+id/commentTimeWriter4"
+            android:id="@+id/myWriteTimeWriter4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -309,29 +308,29 @@
             android:textColor="#747474"
             android:textSize="12dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/commentTitle4" />
+            app:layout_constraintTop_toBottomOf="@id/myWriteTitle4" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/commentLineE4"
+            android:id="@+id/myWriteLineE4"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
             android:background="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/commentTimeWriter4" />
+            app:layout_constraintTop_toBottomOf="@id/myWriteTimeWriter4" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/commentList5"
+        android:id="@+id/myWriteList5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/commentList4">
+        app:layout_constraintTop_toBottomOf="@+id/myWriteList4">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/commentLineS5"
+            android:id="@+id/myWriteLineS5"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:visibility="gone"
@@ -341,7 +340,7 @@
             app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
-            android:id="@+id/commentTitle5"
+            android:id="@+id/myWriteTitle5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -351,11 +350,11 @@
             android:textSize="18dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/commentLineS5" />
+            app:layout_constraintTop_toBottomOf="@id/myWriteLineS5" />
 
 
         <TextView
-            android:id="@+id/commentTimeWriter5"
+            android:id="@+id/myWriteTimeWriter5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -364,29 +363,29 @@
             android:textColor="#747474"
             android:textSize="12dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/commentTitle5" />
+            app:layout_constraintTop_toBottomOf="@id/myWriteTitle5" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/commentLineE5"
+            android:id="@+id/myWriteLineE5"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
             android:background="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/commentTimeWriter5" />
+            app:layout_constraintTop_toBottomOf="@id/myWriteTimeWriter5" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/commentList6"
+        android:id="@+id/myWriteList6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/commentList5">
+        app:layout_constraintTop_toBottomOf="@+id/myWriteList5">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/commentLineS6"
+            android:id="@+id/myWriteLineS6"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:visibility="gone"
@@ -396,7 +395,7 @@
             app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
-            android:id="@+id/commentTitle6"
+            android:id="@+id/myWriteTitle6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -406,11 +405,11 @@
             android:textSize="18dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/commentLineS6" />
+            app:layout_constraintTop_toBottomOf="@id/myWriteLineS6" />
 
 
         <TextView
-            android:id="@+id/commentTimeWriter6"
+            android:id="@+id/myWriteTimeWriter6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -419,29 +418,29 @@
             android:textColor="#747474"
             android:textSize="12dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/commentTitle6" />
+            app:layout_constraintTop_toBottomOf="@id/myWriteTitle6" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/commentLineE6"
+            android:id="@+id/myWriteLineE6"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
             android:background="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/commentTimeWriter6" />
+            app:layout_constraintTop_toBottomOf="@id/myWriteTimeWriter6" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/commentList7"
+        android:id="@+id/myWriteList7"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/commentList6">
+        app:layout_constraintTop_toBottomOf="@+id/myWriteList6">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/commentListS7"
+            android:id="@+id/myWriteLineS7"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:visibility="gone"
@@ -451,7 +450,7 @@
             app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
-            android:id="@+id/commentTitle7"
+            android:id="@+id/myWriteTitle7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -461,11 +460,11 @@
             android:textSize="18dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/commentLineS7" />
+            app:layout_constraintTop_toBottomOf="@id/myWriteLineS7" />
 
 
         <TextView
-            android:id="@+id/commentTimeWriter7"
+            android:id="@+id/myWriteTimeWriter7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -474,16 +473,16 @@
             android:textColor="#747474"
             android:textSize="12dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/commentTitle7" />
+            app:layout_constraintTop_toBottomOf="@id/myWriteTitle7" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/commentLineE7"
+            android:id="@+id/myWriteLineE7"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
             android:background="@color/black"
             android:visibility="invisible"
-            app:layout_constraintTop_toBottomOf="@id/commentTimeWriter7" />
+            app:layout_constraintTop_toBottomOf="@id/myWriteTimeWriter7" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
