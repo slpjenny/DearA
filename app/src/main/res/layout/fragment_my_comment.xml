@@ -441,7 +441,7 @@
         app:layout_constraintTop_toBottomOf="@+id/commentList6">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/commentListS7"
+            android:id="@+id/commentLineS7"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:visibility="gone"
@@ -461,7 +461,7 @@
             android:textSize="18dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/commentLineS7" />
+            app:layout_constraintTop_toBottomOf="@+id/commentLineS7" />
 
 
         <TextView
