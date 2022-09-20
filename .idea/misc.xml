@@ -15,14 +15,17 @@
         <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/drawable/background_radius_set_alarm.xml" value="0.2795" />
         <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/drawable/radius_board_pink.xml" value="0.2795" />
         <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/drawable/radius_board_purple.xml" value="0.2795" />
+        <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/drawable/radius_board_purple1.xml" value="0.2795" />
         <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/layout/activity_alarm_main.xml" value="0.31666666666666665" />
         <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/layout/activity_board_inside.xml" value="0.264" />
+        <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/layout/activity_board_write.xml" value="0.31666666666666665" />
         <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/layout/activity_main.xml" value="0.4" />
         <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/layout/fragment_board_main.xml" value="0.264" />
         <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/layout/fragment_my_alarm.xml" value="0.31666666666666665" />
         <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/layout/fragment_my_comment.xml" value="0.264" />
         <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/layout/fragment_my_wirte.xml" value="0.274609375" />
         <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/layout/fragment_my_write.xml" value="0.30405405405405406" />
+        <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/layout/pop_up.xml" value="0.31666666666666665" />
         <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/menu/board_menu.xml" value="0.274609375" />
         <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/menu/nav_menu.xml" value="0.23703703703703705" />
         <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1" />

@@ -16,6 +16,9 @@
         android:theme="@style/Theme.DearA"
         tools:targetApi="31">
         <activity
+            android:name=".BoardWriteActivity"
+            android:exported="false" />
+        <activity
             android:name=".BoardInsideActivity"
             android:exported="false" />
         <activity
