@@ -3,9 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.jenny.deara">
 
-    // url 연결을 위한 인터넷 허용
     <uses-permission android:name="android.permission.INTERNET" />
-
 
     <application
         android:allowBackup="true"
@@ -17,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DearA"
         tools:targetApi="31">
+        <activity
+            android:name=".BoardInsideActivity"
+            android:exported="false" />
         <activity
             android:name=".alarm.TimePickerActivity"
             android:exported="false" />
@@ -43,7 +44,7 @@
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
