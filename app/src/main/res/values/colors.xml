@@ -17,9 +17,11 @@
 
     <!-- 글자 색상 -->
     <color name="dark_purple">#414E7D</color>
+    <color name="red">#FF0000</color>
 
     <!-- 추가 색상 -->
     <color name="contactus_gray">#F9F9F9</color>
     <color name="board_menu_gray">#CFCFCF</color>
+    <color name="pink">#F0B8B8</color>
 
 </resources>

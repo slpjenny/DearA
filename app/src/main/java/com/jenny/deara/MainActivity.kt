@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
+import com.jenny.deara.board.BoardMainFragment
 import com.jenny.deara.fragments.RecordFragment
 
 class MainActivity : AppCompatActivity() {
