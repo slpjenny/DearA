@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="320dp"
     android:layout_height="330dp"
-    tools:context=".DatePickerActivity"
+    tools:context=".diary.DatePickerActivity"
     android:background="@drawable/background_radius_white">
 
     <ImageView
