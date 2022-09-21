@@ -18,5 +18,13 @@ class SignInActivity : AppCompatActivity() {
             val intent = Intent(this,SelfDiagnosisActivity::class.java)
             startActivity(intent)
         }
+
+        binding.back1.setOnClickListener {
+            onBackPressed()
+        }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
     }
 }
