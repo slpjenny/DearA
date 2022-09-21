@@ -35,5 +35,14 @@ class MyPageActivity : AppCompatActivity() {
             startActivity(intent3)
         }
 
+        // 뒤로가기
+        binding.back6.setOnClickListener {
+            onBackPressed()
+        }
+
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
     }
 }
