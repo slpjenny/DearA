@@ -4,7 +4,6 @@
     <style name="Theme.DearA" parent="Theme.AppCompat.Light">
 
         <item name="windowNoTitle">true</item>
-
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/contactus_gray</item>

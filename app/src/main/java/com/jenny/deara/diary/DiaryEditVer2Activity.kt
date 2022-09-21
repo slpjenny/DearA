@@ -1,11 +1,12 @@
-package com.jenny.deara
+package com.jenny.deara.diary
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.jenny.deara.R
 
-class SiginInActivity : AppCompatActivity() {
+class DiaryEditVer2Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sigin_in)
+        setContentView(R.layout.activity_diary_edit_ver2)
     }
 }
