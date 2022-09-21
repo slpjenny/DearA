@@ -33,6 +33,11 @@ android {
     buildFeatures{
         dataBinding = true
     }
+//     data binding 사용하려면 작성
+    buildFeatures {
+        viewBinding true
+    }
+
 }
 
 dependencies {

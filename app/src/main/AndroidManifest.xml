@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.jenny.deara">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,6 +15,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DearA"
         tools:targetApi="31">
+        <activity
+            android:name=".board.BoardWriteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".board.BoardInsideActivity"
+            android:exported="false" />
         <activity
             android:name=".alarm.TimePickerActivity"
             android:exported="false" />
@@ -32,16 +40,22 @@
             android:name=".MyPageActivity"
             android:exported="false" />
         <activity
-            android:name=".SiginInActivity"
+            android:name=".SignInActivity"
             android:exported="false" />
         <activity
             android:name=".SelfDiagnosisActivity"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
-            android:exported="false" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
-            android:name=".DatePickerActivity"
+            android:name=".diary.DatePickerActivity"
             android:exported="false" />
         <activity
             android:name=".SplashActivity"

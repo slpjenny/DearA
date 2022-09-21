@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".board.BoardMainFragment"
+    tools:context=".board.MyWriteFragment"
     android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,26 +14,26 @@
         android:id="@+id/boardTopBar"
         tools:ignore="MissingConstraints">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="커뮤니티"
-                android:textColor="@color/black"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="커뮤니티"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:src="@drawable/mypage"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginRight="20dp"/>
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/mypage"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginRight="20dp"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -54,7 +54,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/bottom_edge"
             android:text="글 목록"
-            android:textColor="@color/black"
+            android:textColor="@color/board_menu_gray"
             android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -78,7 +78,7 @@
             android:layout_marginLeft="10dp"
             android:background="@drawable/bottom_edge"
             android:text="내가 쓴 글"
-            android:textColor="@color/board_menu_gray"
+            android:textColor="@color/black"
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/boardAlarmText" />
@@ -90,66 +90,35 @@
             android:background="@drawable/bottom_edge"
             android:text="내가 쓴 댓글"
             android:textColor="@color/board_menu_gray"
-            android:textSize="15sp"
+            android:textSize="1sp"
             app:layout_constraintStart_toEndOf="@+id/MyWriteText"
             app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/boardSearch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/boardMenu"
-        android:orientation="horizontal">
-
-        <EditText
-            android:id="@+id/SearchET"
-            android:layout_width="300dp"
-            android:layout_height="30dp"
-            android:background="@drawable/all_edge"
-            android:hint=" "
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="12dp"
-            android:src="@drawable/board_search"
-            app:layout_constraintStart_toEndOf="@+id/SearchET"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/boardList1"
+        android:id="@+id/myWriteList1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/boardSearch">
+        app:layout_constraintTop_toBottomOf="@+id/boardMenu">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/boardLineS1"
+            android:id="@+id/myWriteLineS1"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginBottom="16dp"
             android:background="@color/black"
-            app:layout_constraintBottom_toTopOf="@+id/boardTitle1"
+            app:layout_constraintBottom_toTopOf="@+id/myWriteTitle1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/boardTitle1"
+            android:id="@+id/myWriteTitle1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -159,52 +128,41 @@
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/boardLineS1" />
-
-        <Button
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/background_radius_board"
-            android:text="1"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/boardLineS1" />
-
+            app:layout_constraintTop_toBottomOf="@+id/myWriteLineS1" />
 
         <TextView
-            android:id="@+id/boardTimeWriter1"
+            android:id="@+id/myWriteTime1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="2022-05-22 01:23 작성자 슈니즈"
+            android:text="2022-05-22 01:23"
             android:textColor="#747474"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/boardTitle1" />
+            app:layout_constraintTop_toBottomOf="@+id/myWriteTitle1" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/boardLineE1"
+            android:id="@+id/myWriteLineE1"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
             android:background="@color/black"
-            app:layout_constraintTop_toBottomOf="@+id/boardTimeWriter1" />
+            app:layout_constraintTop_toBottomOf="@+id/myWriteTime1" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/boardList2"
+        android:id="@+id/myWriteList2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/boardList1">
+        app:layout_constraintTop_toBottomOf="@+id/myWriteList1">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/boardLineS2"
+            android:id="@+id/myWriteLineS2"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/black"
@@ -214,7 +172,7 @@
             app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
-            android:id="@+id/boardTitle2"
+            android:id="@+id/myWriteTitle2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -224,52 +182,97 @@
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/boardLineS2" />
-
-        <Button
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/background_radius_board"
-            android:text="1"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/boardLineS2" />
+            app:layout_constraintTop_toBottomOf="@+id/myWriteLineS2" />
 
 
         <TextView
-            android:id="@+id/boardTimeWriter2"
+            android:id="@+id/myWriteTime2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="2022-05-22 01:23 작성자 슈니즈"
+            android:text="2022-05-22 01:23"
             android:textColor="#747474"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/boardTitle2" />
+            app:layout_constraintTop_toBottomOf="@+id/myWriteTitle2" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/boardLineE2"
+            android:id="@+id/myWriteLineE2"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
             android:background="@color/black"
-            app:layout_constraintTop_toBottomOf="@+id/boardTimeWriter2" />
+            app:layout_constraintTop_toBottomOf="@+id/myWriteTime2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/boardList3"
+        android:id="@+id/myWriteList3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/boardList2">
+        app:layout_constraintTop_toBottomOf="@+id/myWriteList2">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/boardLineS3"
+            android:id="@+id/myWriteLineS3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/black"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/myWriteTitle3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="[질문] 서울슈니병원 진료 어떤가요?"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/myWriteLineS3" />
+
+
+        <TextView
+            android:id="@+id/myWriteTime3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="2022-05-22 01:23"
+            android:textColor="#747474"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/myWriteTitle3" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/myWriteLineE3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/black"
+            app:layout_constraintTop_toBottomOf="@+id/myWriteTime3" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/myWriteList4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/myWriteList3">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/myWriteLineS4"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:visibility="gone"
@@ -279,7 +282,7 @@
             app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
-            android:id="@+id/boardTitle3"
+            android:id="@+id/myWriteTitle4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -289,52 +292,42 @@
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/boardLineS3" />
-
-        <Button
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/background_radius_board"
-            android:text="1"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/boardLineS3" />
+            app:layout_constraintTop_toBottomOf="@id/myWriteLineS4" />
 
 
         <TextView
-            android:id="@+id/boardTimeWriter3"
+            android:id="@+id/myWriteTime4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="2022-05-22 01:23 작성자 슈니즈"
+            android:text="2022-05-22 01:23"
             android:textColor="#747474"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/boardTitle3" />
+            app:layout_constraintTop_toBottomOf="@+id/myWriteTitle4" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/boardLineE3"
+            android:id="@+id/myWriteLineE4"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
             android:background="@color/black"
-            app:layout_constraintTop_toBottomOf="@+id/boardTimeWriter3" />
+            app:layout_constraintTop_toBottomOf="@+id/myWriteTime4" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/boardList4"
+        android:id="@+id/myWriteList5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/boardList3">
+        app:layout_constraintTop_toBottomOf="@+id/myWriteList4">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/boardLineS4"
+            android:id="@+id/myWriteLineS5"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:visibility="gone"
@@ -344,7 +337,7 @@
             app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
-            android:id="@+id/boardTitle4"
+            android:id="@+id/myWriteTitle5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -354,52 +347,42 @@
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/boardLineS4" />
-
-        <Button
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/background_radius_board"
-            android:text="1"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/boardLineS4" />
+            app:layout_constraintTop_toBottomOf="@+id/myWriteLineS5" />
 
 
         <TextView
-            android:id="@+id/boardTimeWriter4"
+            android:id="@+id/myWriteTime5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="2022-05-22 01:23 작성자 슈니즈"
+            android:text="2022-05-22 01:23"
             android:textColor="#747474"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/boardTitle4" />
+            app:layout_constraintTop_toBottomOf="@+id/myWriteTitle5" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/boardLineE4"
+            android:id="@+id/myWriteLineE5"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
             android:background="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/boardTimeWriter4" />
+            app:layout_constraintTop_toBottomOf="@+id/myWriteTime5" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/boardList5"
+        android:id="@+id/myWriteList6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/boardList4">
+        app:layout_constraintTop_toBottomOf="@+id/myWriteList5">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/boardLineS5"
+            android:id="@+id/myWriteLineS6"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:visibility="gone"
@@ -409,7 +392,7 @@
             app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
-            android:id="@+id/boardTitle5"
+            android:id="@+id/myWriteTitle6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -419,145 +402,85 @@
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/boardLineS5" />
-
-        <Button
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/background_radius_board"
-            android:text="1"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/boardLineS5" />
+            app:layout_constraintTop_toBottomOf="@+id/myWriteLineS6" />
 
 
         <TextView
-            android:id="@+id/boardTimeWriter5"
+            android:id="@+id/myWriteTime6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="2022-05-22 01:23 작성자 슈니즈"
+            android:text="2022-05-22 01:23"
             android:textColor="#747474"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/boardTitle5" />
+            app:layout_constraintTop_toBottomOf="@+id/myWriteTitle6" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/boardLineE5"
+            android:id="@+id/myWriteLineE6"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
             android:background="@color/black"
-            app:layout_constraintTop_toBottomOf="@+id/boardTimeWriter5" />
+            app:layout_constraintTop_toBottomOf="@+id/myWriteTime6" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/pageBtn"
-        android:layout_width="wrap_content"
+        android:id="@+id/myWriteList7"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/boardList5">
+        app:layout_constraintTop_toBottomOf="@+id/myWriteList6">
 
-        <TextView
-            android:id="@+id/before"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:text="이전"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/page_1"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/page_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginEnd="10dp"
-            android:text="1"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/page_2"
-            app:layout_constraintStart_toEndOf="@+id/before" />
-
-        <TextView
-            android:id="@+id/page_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginEnd="10dp"
-            android:text="2"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/page_3"
-            app:layout_constraintStart_toEndOf="@+id/page_1" />
-
-        <TextView
-            android:id="@+id/page_3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginEnd="10dp"
-            android:text="3"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/page_4"
-            app:layout_constraintStart_toEndOf="@+id/page_2" />
-
-        <TextView
-            android:id="@+id/page_4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginEnd="10dp"
-            android:text="4"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/page_5"
-            app:layout_constraintStart_toEndOf="@+id/page_3" />
-
-        <TextView
-            android:id="@+id/page_5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginEnd="10dp"
-            android:text="5"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/after"
-            app:layout_constraintStart_toEndOf="@+id/page_4" />
-
-        <TextView
-            android:id="@+id/after"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="다음"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/myWriteLineS7"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:visibility="gone"
+            android:background="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/page_5" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/myWriteTitle7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="[질문] 서울슈니병원 진료 어떤가요?"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/myWriteLineS7" />
+
+
+        <TextView
+            android:id="@+id/myWriteTime7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="2022-05-22 01:23"
+            android:textColor="#747474"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/myWriteTitle7" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/myWriteLineE7"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/black"
+            android:visibility="invisible"
+            app:layout_constraintTop_toBottomOf="@+id/myWriteTime7" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <Button
-        android:id="@+id/writeBtn"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/plusbtn"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/boardList5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

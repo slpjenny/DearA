@@ -1,254 +1,403 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="3dp"
-    android:orientation="vertical">
+    tools:context=".fragments.NewRecordFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="#f9f9f9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="저장"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginRight="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:src="@drawable/back_btn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
+        android:layout_marginTop="64dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout1">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <RelativeLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageButton
-                    android:id="@+id/purple_box"
-                    android:layout_width="420dp"
-                    android:layout_height="160dp"
-                    android:background="@drawable/purple_box" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
 
                 <TextView
-                    android:layout_width="340dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="30dp"
-                    android:background="@null"
-                    android:text="세브란스 병원"
-                    android:textColor="#727272"
-                    android:textSize="28dp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="60dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginTop="90dp"
-                    android:background="@null"
-                    android:text="5"
-                    android:textColor="#727272"
-                    android:textSize="28dp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="60dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="115dp"
-                    android:layout_marginTop="90dp"
-                    android:background="@null"
-                    android:text="26"
-                    android:textColor="#727272"
-                    android:textSize="28dp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="60dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="205dp"
-                    android:layout_marginTop="90dp"
-                    android:background="@null"
-                    android:text="13"
-                    android:textColor="#727272"
-                    android:textSize="28dp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="60dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="300dp"
-                    android:layout_marginTop="90dp"
-                    android:background="@null"
-                    android:text="00"
-                    android:textColor="#727272"
-                    android:textSize="28dp"
-                    android:textStyle="bold" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
+                    android:id="@+id/textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="15dp"
+                    android:text="병원 일정"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+
+                <ImageView
+                    android:id="@+id/list"
+                    android:layout_width="match_parent"
+                    android:layout_height="110dp"
+                    android:background="@drawable/background_radius_record"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="340dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="20dp"
+                    android:text="세브란스 병원"
+                    android:maxLength="31"
+                    android:maxLines="1"
+                    android:ellipsize="none"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    android:background="@android:color/transparent"
+                    app:layout_constraintEnd_toEndOf="@+id/list"
+                    app:layout_constraintStart_toStartOf="@+id/list"
+                    app:layout_constraintTop_toTopOf="@+id/list" />
+
+                <Button
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="80dp"
+                    android:layout_marginTop="43dp"
+                    android:text="날짜"
+                    android:backgroundTint="#DBDFFF"
+                    app:layout_constraintBottom_toBottomOf="@+id/list"
+                    app:layout_constraintEnd_toEndOf="@+id/list"
+                    app:layout_constraintTop_toTopOf="@+id/list" />
+
+                <Button
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="43dp"
+                    android:text="시간"
+                    android:backgroundTint="#DBDFFF"
+                    app:layout_constraintBottom_toBottomOf="@+id/list"
+                    app:layout_constraintEnd_toEndOf="@+id/list"
+                    app:layout_constraintTop_toTopOf="@+id/list" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+
+                <TextView
+                    android:id="@+id/textView25"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
                     android:text="처방받은 약"
-                    android:textColor="#808080"
-                    android:textSize="25dp"
-                    android:textStyle="bold" />
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageButton
                     android:id="@+id/plus_button"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="150dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="7dp"
                     android:layout_marginTop="2dp"
-                    android:background="@drawable/plus_button" />
-            </RelativeLayout>
+                    android:background="@drawable/plus_button"
+                    app:layout_constraintStart_toEndOf="@+id/textView25"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <RelativeLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout4"
                 android:layout_width="match_parent"
-                android:layout_height="90dp">
-
-                <ImageButton
-                    android:layout_width="420dp"
-                    android:layout_height="100dp"
-                    android:background="@drawable/write_box1" />
-
-                <TextView
-                    android:layout_width="160dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginTop="25dp"
-                    android:background="@null"
-                    android:text="도모틴캡슐"
-                    android:textSize="25dp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="240dp"
-                    android:layout_marginTop="33dp"
-                    android:text="1일 2회"
-                    android:textSize="17dp"
-                    android:textStyle="bold" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="90dp">
-
-                <ImageButton
-                    android:layout_width="420dp"
-                    android:layout_height="100dp"
-                    android:background="@drawable/write_box1" />
-
-                <EditText
-                    android:layout_width="160dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginTop="25dp"
-                    android:background="@null"
-                    android:hint="약 이름"
-                    android:textSize="25dp"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:layout_width="100dp"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="200dp"
-                    android:layout_marginTop="18dp"
-                    android:hint="  ex. 1일 3회"
-                    android:textSize="17dp"
-                    android:textStyle="bold" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:text="진료"
-                    android:textColor="#808080"
-                    android:textSize="25dp"
-                    android:textStyle="bold" />
-
-                <ImageButton
-                    android:id="@+id/record_start"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="70dp"
-                    android:layout_marginTop="2dp"
-                    android:background="@drawable/record_stop" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageButton
-                    android:layout_width="420dp"
-                    android:layout_height="150dp"
-                    android:background="@drawable/write_box2" />
-
-                <TextView
-                    android:layout_width="340dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginTop="30dp"
-                    android:textColor="#727272"
-                    android:background="@null"
-                    android:hint="물 많이 마시기\n스트레스 해소 방법 찾기\n독서하기"
-                    android:textSize="23dp"
-                    android:textStyle="bold" />
-
-                <ImageButton
-                    android:layout_width="420dp"
-                    android:layout_height="150dp"
-                    android:layout_marginTop="120dp"
-                    android:background="@drawable/write_box3" />
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
 
                 <ImageView
-                    android:layout_width="300dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="80dp"
-                    android:layout_marginTop="150dp"
-                    android:src="@drawable/record_bar" />
-            </RelativeLayout>
+                    android:id="@+id/list2"
+                    android:layout_width="190dp"
+                    android:layout_height="100dp"
+                    android:background="@drawable/background_radius_record"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="최근 증상"
-                android:textColor="#808080"
-                android:textSize="25dp"
-                android:textStyle="bold" />
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                <EditText
+                    android:id="@+id/title2"
+                    android:layout_width="160dp"
+                    android:layout_height="80dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="30dp"
+                    android:text="도모틴캡슐"
+                    android:ellipsize="none"
+                    android:maxLines="2"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    android:background="@android:color/transparent"
+                    app:layout_constraintEnd_toEndOf="@+id/list2"
+                    app:layout_constraintStart_toStartOf="@+id/list2"
+                    app:layout_constraintTop_toTopOf="@+id/list2" />
 
                 <ImageButton
-                    android:layout_width="420dp"
-                    android:layout_height="150dp"
-                    android:background="@drawable/write_box4" />
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/record_delete"
+                    app:layout_constraintEnd_toEndOf="@+id/list2"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <ImageView
+                    android:id="@+id/list3"
+                    android:layout_width="190dp"
+                    android:layout_height="100dp"
+                    android:background="@drawable/background_radius_record"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/title3"
+                    android:layout_width="160dp"
+                    android:layout_height="80dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="10dp"
+                    android:text="식후 30분\n아침/점심/저녁"
+                    android:ellipsize="none"
+                    android:maxLines="2"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    android:background="@android:color/transparent"
+                    app:layout_constraintEnd_toEndOf="@+id/list3"
+                    app:layout_constraintStart_toStartOf="@+id/list3"
+                    app:layout_constraintTop_toTopOf="@+id/list3" />
+
+                <ImageButton
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/record_delete"
+                    app:layout_constraintEnd_toEndOf="@+id/list3"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <ListView
+                    android:id="@+id/record_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout4" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
 
                 <TextView
+                    android:id="@+id/textView24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="8dp"
+                    android:text="진료"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/record_start"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginLeft="7dp"
+                    android:backgroundTint="#DBDFFF"
+                    android:text="녹음"
+                    app:layout_constraintStart_toEndOf="@+id/textView24"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/record_stop"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="2dp"
+                    android:backgroundTint="#DBDFFF"
+                    android:text="중지"
+                    app:layout_constraintStart_toEndOf="@+id/record_start"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView27"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="녹음시에는 의사 선생님의\n동의를 잊지 마세요 !"
+                    android:textColor="#FF0000"
+                    android:textSize="9sp"
+                    app:layout_constraintStart_toEndOf="@+id/record_stop"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+
+                <ImageView
+                    android:id="@+id/list4"
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:background="@drawable/background_radius_record"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/title4"
                     android:layout_width="340dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="20dp"
-                    android:background="@null"
-                    android:text="-집중이 더 어려워졌다\n-정리정돈이 어렵다"
-                    android:textSize="20dp"
-                    android:textColor="#808080"
-                    android:textStyle="bold" />
-            </RelativeLayout>
+                    android:layout_height="100dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="물 많이 마시기\n스트레스 덜어낼 방법 찾기\n독서하기\n꾸준히 운동\n약 까먹지 않고 성실히 먹기"
+                    android:ellipsize="none"
+                    android:maxLines="4"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    android:background="@android:color/transparent"
+                    app:layout_constraintEnd_toEndOf="@+id/list4"
+                    app:layout_constraintStart_toStartOf="@+id/list4"
+                    app:layout_constraintTop_toTopOf="@+id/list4" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+
+                <TextView
+                    android:id="@+id/textView26"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="7dp"
+                    android:text="최근 증상"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+
+                <ImageView
+                    android:id="@+id/list6"
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:background="@drawable/background_radius_record"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/title6"
+                    android:layout_width="340dp"
+                    android:layout_height="100dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="집중이 더 어려워짐\n정리정돈이 어려움\n물건 잊어버리는 횟수 증가"
+                    android:ellipsize="none"
+                    android:maxLines="4"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    android:background="@android:color/transparent"
+                    app:layout_constraintEnd_toEndOf="@+id/list6"
+                    app:layout_constraintStart_toStartOf="@+id/list6"
+                    app:layout_constraintTop_toTopOf="@+id/list6" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
 
-
     </ScrollView>
-</LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

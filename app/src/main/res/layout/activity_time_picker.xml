@@ -4,154 +4,256 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_time_picker"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="340dp"
+    android:layout_height="637dp"
+    android:background="@drawable/background_radius_white"
     tools:context=".alarm.TimePickerActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="64dp"
-        android:background="@color/contactus_gray"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="-10dp"
-        tools:layout_editor_absoluteY="-4dp" />
+    <ImageButton
+        android:id="@+id/cancelBtn"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/transparent"
+        android:scaleType="centerInside"
+        android:src="@drawable/back"
+        app:layout_constraintEnd_toStartOf="@+id/saveBtn"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/saveBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+        android:background="#00ff0000"
+        android:text="저장"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TimePicker
         android:id="@+id/timePicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/button"
-        app:layout_constraintVertical_chainStyle="packed"
-        android:timePickerMode="spinner"/>
+        android:layout_marginTop="30dp"
+        android:background="@color/white"
+        android:timePickerMode="spinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/saveBtn"
+        app:layout_constraintVertical_chainStyle="packed" />
 
-    <Button
-        android:id="@+id/button"
+    <TextView
+        android:id="@+id/alarmName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:backgroundTint="@color/dark_purple"
-        android:text="저장"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/timePicker" />
+        android:text="제목"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.12"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timePicker" />
 
-    <ImageButton
-        android:id="@+id/mypageBtn"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginEnd="12dp"
-        android:background="@android:color/transparent"
-        android:scaleType="centerInside"
-        android:src="@drawable/img"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar"
-        app:layout_constraintEnd_toEndOf="@+id/toolbar"
-        app:layout_constraintTop_toTopOf="@+id/toolbar"
-        app:layout_constraintVertical_bias="0.608" />
+    <EditText
+        android:id="@+id/setAlarmName"
+        android:layout_width="290dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/background_radius_set_alarm"
+        android:hint="알람 제목을 입력해주세요."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.631"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/alarmName" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/alarmRepeat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:scaleType="fitCenter"
-        android:text="약 알림"
-        android:textColor="#000000"
-        android:layout_marginLeft="10dp"
-        android:textSize="24sp"
+        android:layout_marginTop="20dp"
+        android:text="반복"
+        android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar"
-        app:layout_constraintStart_toStartOf="@+id/toolbar"
-        app:layout_constraintTop_toTopOf="@+id/toolbar" />
-
-    <CheckBox
-        android:id="@+id/cb_sun"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="120dp"
-        android:text="일요일"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/cb_mon"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.12"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toBottomOf="@+id/setAlarmName" />
+
+
+    <EditText
+        android:id="@+id/backgroundSetAlarmName"
+        android:layout_width="326dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/background_radius_set_alarm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/alarmRepeat" />
 
     <CheckBox
-        android:id="@+id/cb_mon"
+        android:id="@+id/monCheck"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="120dp"
-        android:text="월요일"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/cb_tue"
+        android:layout_marginTop="8dp"
+        android:text="월"
+        app:layout_constraintEnd_toStartOf="@+id/tueCheck"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/alarmRepeat" />
+
+    <CheckBox
+        android:id="@+id/satCheck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="토"
+        app:layout_constraintEnd_toStartOf="@+id/sunCheck"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/friCheck"
+        app:layout_constraintTop_toBottomOf="@+id/alarmRepeat" />
+
+    <CheckBox
+        android:id="@+id/friCheck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="금"
+        app:layout_constraintEnd_toStartOf="@+id/satCheck"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/thuCheck"
+        app:layout_constraintTop_toBottomOf="@+id/alarmRepeat" />
+
+    <CheckBox
+        android:id="@+id/thuCheck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="목"
+        app:layout_constraintEnd_toStartOf="@+id/friCheck"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/wedCheck"
+        app:layout_constraintTop_toBottomOf="@+id/alarmRepeat" />
+
+    <CheckBox
+        android:id="@+id/wedCheck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="수"
+        app:layout_constraintEnd_toStartOf="@+id/thuCheck"
         app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintStart_toEndOf="@+id/cb_sun"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintStart_toEndOf="@+id/tueCheck"
+        app:layout_constraintTop_toBottomOf="@+id/alarmRepeat" />
 
     <CheckBox
-        android:id="@+id/cb_tue"
+        android:id="@+id/tueCheck"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="화요일"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/cb_wed"
-        app:layout_constraintHorizontal_bias="0.5"
-        android:layout_marginBottom="120dp"
-        app:layout_constraintStart_toEndOf="@+id/cb_mon"
-        tools:ignore="MissingConstraints" />
+        android:layout_marginTop="8dp"
+        android:text="화"
+        app:layout_constraintEnd_toStartOf="@+id/wedCheck"
+        app:layout_constraintStart_toEndOf="@+id/monCheck"
+        app:layout_constraintTop_toBottomOf="@+id/alarmRepeat" />
 
     <CheckBox
-        android:id="@+id/cb_wed"
+        android:id="@+id/sunCheck"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="수요일"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="120dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="2dp"
+        android:text="일"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/cb_tue"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintStart_toEndOf="@+id/satCheck"
+        app:layout_constraintTop_toBottomOf="@+id/alarmRepeat" />
 
-    <CheckBox
-        android:id="@+id/cb_thu"
+    <TextView
+        android:id="@+id/setSound"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="목요일"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/cb_fri"
-        app:layout_constraintHorizontal_bias="0.5"
-        android:layout_marginBottom="50dp"
+        android:layout_marginTop="20dp"
+        android:text="사운드"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.127"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toBottomOf="@+id/backgroundSetAlarmName" />
+
+    <EditText
+        android:id="@+id/backgroundSetSound"
+        android:layout_width="290dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/background_radius_set_alarm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/setSound" />
 
     <CheckBox
-        android:id="@+id/cb_fri"
+        android:id="@+id/soundCheck"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="금요일"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/cb_sat"
+        android:layout_marginTop="8dp"
+        android:text="소리"
+        app:layout_constraintEnd_toStartOf="@+id/vibeCheck"
         app:layout_constraintHorizontal_bias="0.5"
-        android:layout_marginBottom="50dp"
-        app:layout_constraintStart_toEndOf="@+id/cb_thu"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/setSound" />
 
     <CheckBox
-        android:id="@+id/cb_sat"
+        android:id="@+id/vibeCheck"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="토요일"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="8dp"
+        android:text="진동"
+        app:layout_constraintEnd_toStartOf="@+id/silenceCheck"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/soundCheck"
+        app:layout_constraintTop_toBottomOf="@+id/setSound" />
+
+    <CheckBox
+        android:id="@+id/silenceCheck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="8dp"
+        android:text="무음"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        android:layout_marginBottom="50dp"
-        app:layout_constraintStart_toEndOf="@+id/cb_fri"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintStart_toEndOf="@+id/vibeCheck"
+        app:layout_constraintTop_toBottomOf="@+id/setSound" />
+
+    <EditText
+        android:id="@+id/backgroundRmAlarm"
+        android:layout_width="290dp"
+        android:layout_height="32dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/background_radius_set_alarm"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <TextView
+        android:id="@+id/rmAlarm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="알림 삭제"
+        android:textColor="@color/red"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/backgroundRmAlarm"
+        app:layout_constraintEnd_toEndOf="@+id/backgroundRmAlarm"
+        app:layout_constraintStart_toStartOf="@+id/backgroundRmAlarm"
+        app:layout_constraintTop_toTopOf="@+id/backgroundRmAlarm" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
