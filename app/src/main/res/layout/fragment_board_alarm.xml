@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".board.MyAlarmFragment"
+    tools:context=".board.BoardAlarmFragment"
     android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,14 +19,12 @@
             android:layout_height="wrap_content"
             android:text="커뮤니티"
             android:textColor="@color/black"
-            android:textSize="24dp"
+            android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-        // app:layout_constraintLeft_toLeftOf="parent"
-        // android:layout_marginLeft="30dp"
 
         <ImageView
             android:layout_width="35dp"
@@ -57,7 +55,7 @@
             android:background="@drawable/bottom_edge"
             android:text="글 목록"
             android:textColor="@color/board_menu_gray"
-            android:textSize="15dp"
+            android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -69,7 +67,7 @@
             android:background="@drawable/bottom_edge"
             android:text="알림"
             android:textColor="@color/black"
-            android:textSize="15dp"
+            android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/boardListText" />
 
@@ -81,7 +79,7 @@
             android:background="@drawable/bottom_edge"
             android:text="내가 쓴 글"
             android:textColor="@color/board_menu_gray"
-            android:textSize="15dp"
+            android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/boardAlarmText" />
 
@@ -92,7 +90,7 @@
             android:background="@drawable/bottom_edge"
             android:text="내가 쓴 댓글"
             android:textColor="@color/board_menu_gray"
-            android:textSize="15dp"
+            android:textSize="15sp"
             app:layout_constraintStart_toEndOf="@+id/MyWriteText"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -127,10 +125,10 @@
             android:layout_marginTop="16dp"
             android:text="[질문] 서울슈니병원 진료 어떤가요?"
             android:textColor="@color/black"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/myAlarmLineS1" />
+            app:layout_constraintTop_toBottomOf="@+id/myAlarmLineS1" />
 
 
         <TextView
@@ -141,9 +139,9 @@
             android:layout_marginTop="16dp"
             android:text="내가 쓴 댓글에 답댓글이 달렸어요."
             android:textColor="#747474"
-            android:textSize="12dp"
+            android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/myAlarmTitle1" />
+            app:layout_constraintTop_toBottomOf="@+id/myAlarmTitle1" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/myAlarmLineE1"
@@ -151,7 +149,7 @@
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
             android:background="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/myAlarm1" />
+            app:layout_constraintTop_toBottomOf="@+id/myAlarm1" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -182,10 +180,10 @@
             android:layout_marginTop="16dp"
             android:text="[질문] 서울슈니병원 진료 어떤가요?"
             android:textColor="@color/black"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/myAlarmLineS2" />
+            app:layout_constraintTop_toBottomOf="@+id/myAlarmLineS2" />
 
 
         <TextView
@@ -196,9 +194,9 @@
             android:layout_marginTop="16dp"
             android:text="내가 쓴 댓글에 답댓글이 달렸어요."
             android:textColor="#747474"
-            android:textSize="12dp"
+            android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/myAlarmTitle2" />
+            app:layout_constraintTop_toBottomOf="@+id/myAlarmTitle2" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/myAlarmLineE2"
@@ -206,7 +204,7 @@
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
             android:background="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/myAlarm2" />
+            app:layout_constraintTop_toBottomOf="@+id/myAlarm2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -218,7 +216,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/myAlarmList2">
-        // app:layout_constraintHorizontal_bias="0.0"
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/myAlarmLineS3"
@@ -238,10 +235,10 @@
             android:layout_marginTop="16dp"
             android:text="[질문] 서울슈니병원 진료 어떤가요?"
             android:textColor="@color/black"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/myAlarmLineS3" />
+            app:layout_constraintTop_toBottomOf="@+id/myAlarmLineS3" />
 
 
         <TextView
@@ -252,9 +249,9 @@
             android:layout_marginTop="16dp"
             android:text="내가 쓴 글에 댓글이 달렸어요."
             android:textColor="#747474"
-            android:textSize="12dp"
+            android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/myAlarmTitle3" />
+            app:layout_constraintTop_toBottomOf="@+id/myAlarmTitle3" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/myAlarmLineE3"
@@ -262,7 +259,7 @@
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
             android:background="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/myAlarm3" />
+            app:layout_constraintTop_toBottomOf="@+id/myAlarm3" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -293,10 +290,10 @@
             android:layout_marginTop="16dp"
             android:text="[질문] 서울슈니병원 진료 어떤가요?"
             android:textColor="@color/black"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/myAlarmLineS4" />
+            app:layout_constraintTop_toBottomOf="@+id/myAlarmLineS4" />
 
 
         <TextView
@@ -307,9 +304,9 @@
             android:layout_marginTop="16dp"
             android:text="내가 쓴 글에 새로운 댓글이 달렸어요."
             android:textColor="#747474"
-            android:textSize="12dp"
+            android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/myAlarmTitle4" />
+            app:layout_constraintTop_toBottomOf="@+id/myAlarmTitle4" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/myAlarmLineE4"
@@ -317,7 +314,7 @@
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
             android:background="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/myAlarm4" />
+            app:layout_constraintTop_toBottomOf="@+id/myAlarm4" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -348,10 +345,10 @@
             android:layout_marginTop="16dp"
             android:text="[질문] 서울슈니병원 진료 어떤가요?"
             android:textColor="@color/black"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/myAlarmLineS5" />
+            app:layout_constraintTop_toBottomOf="@+id/myAlarmLineS5" />
 
 
         <TextView
@@ -362,9 +359,9 @@
             android:layout_marginTop="16dp"
             android:text="내가 쓴 댓글에 답댓글이 달렸어요."
             android:textColor="#747474"
-            android:textSize="12dp"
+            android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/myAlarmTitle5" />
+            app:layout_constraintTop_toBottomOf="@+id/myAlarmTitle5" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/myAlarmLineE5"
@@ -372,7 +369,7 @@
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
             android:background="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/myAlarm5" />
+            app:layout_constraintTop_toBottomOf="@+id/myAlarm5" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -403,10 +400,10 @@
             android:layout_marginTop="16dp"
             android:text="[질문] 서울슈니병원 진료 어떤가요?"
             android:textColor="@color/black"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/myAlarmLineS6" />
+            app:layout_constraintTop_toBottomOf="@+id/myAlarmLineS6" />
 
 
         <TextView
@@ -417,9 +414,9 @@
             android:layout_marginTop="16dp"
             android:text="내가 쓴 댓글에 답댓글이 달렸어요."
             android:textColor="#747474"
-            android:textSize="12dp"
+            android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/myAlarmTitle6" />
+            app:layout_constraintTop_toBottomOf="@+id/myAlarmTitle6" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/myAlarmLineE6"
@@ -427,7 +424,7 @@
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
             android:background="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/myAlarm6" />
+            app:layout_constraintTop_toBottomOf="@+id/myAlarm6" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -458,10 +455,10 @@
             android:layout_marginTop="16dp"
             android:text="[질문] 서울슈니병원 진료 어떤가요?"
             android:textColor="@color/black"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/myAlarmLineS7" />
+            app:layout_constraintTop_toBottomOf="@+id/myAlarmLineS7" />
 
 
         <TextView
@@ -472,9 +469,9 @@
             android:layout_marginTop="16dp"
             android:text="내가 쓴 글에 댓글이 달렸어요."
             android:textColor="#747474"
-            android:textSize="12dp"
+            android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/myAlarmTitle7" />
+            app:layout_constraintTop_toBottomOf="@+id/myAlarmTitle7" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/myWriteLineE7"
@@ -483,7 +480,7 @@
             android:layout_marginTop="16dp"
             android:background="@color/black"
             android:visibility="invisible"
-            app:layout_constraintTop_toBottomOf="@id/myAlarm7" />
+            app:layout_constraintTop_toBottomOf="@+id/myAlarm7" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

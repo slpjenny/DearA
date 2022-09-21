@@ -19,14 +19,12 @@
             android:layout_height="wrap_content"
             android:text="커뮤니티"
             android:textColor="@color/black"
-            android:textSize="24dp"
+            android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-        // app:layout_constraintLeft_toLeftOf="parent"
-        // android:layout_marginLeft="30dp"
 
         <ImageView
             android:layout_width="35dp"
@@ -57,7 +55,7 @@
             android:background="@drawable/bottom_edge"
             android:text="글 목록"
             android:textColor="@color/board_menu_gray"
-            android:textSize="15dp"
+            android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -69,7 +67,7 @@
             android:background="@drawable/bottom_edge"
             android:text="알림"
             android:textColor="@color/board_menu_gray"
-            android:textSize="15dp"
+            android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/boardListText" />
 
@@ -81,7 +79,7 @@
             android:background="@drawable/bottom_edge"
             android:text="내가 쓴 글"
             android:textColor="@color/black"
-            android:textSize="15dp"
+            android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/boardAlarmText" />
 
@@ -92,7 +90,7 @@
             android:background="@drawable/bottom_edge"
             android:text="내가 쓴 댓글"
             android:textColor="@color/board_menu_gray"
-            android:textSize="15dp"
+            android:textSize="1sp"
             app:layout_constraintStart_toEndOf="@+id/MyWriteText"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -127,11 +125,10 @@
             android:layout_marginTop="16dp"
             android:text="[질문] 서울슈니병원 진료 어떤가요?"
             android:textColor="@color/black"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/myWriteLineS1" />
-
+            app:layout_constraintTop_toBottomOf="@+id/myWriteLineS1" />
 
         <TextView
             android:id="@+id/myWriteTime1"
@@ -141,9 +138,9 @@
             android:layout_marginTop="16dp"
             android:text="2022-05-22 01:23"
             android:textColor="#747474"
-            android:textSize="12dp"
+            android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/myWriteTitle1" />
+            app:layout_constraintTop_toBottomOf="@+id/myWriteTitle1" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/myWriteLineE1"
@@ -151,7 +148,7 @@
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
             android:background="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/myWriteTime1" />
+            app:layout_constraintTop_toBottomOf="@+id/myWriteTime1" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -182,10 +179,10 @@
             android:layout_marginTop="16dp"
             android:text="[질문] 서울슈니병원 진료 어떤가요?"
             android:textColor="@color/black"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/myWriteLineS2" />
+            app:layout_constraintTop_toBottomOf="@+id/myWriteLineS2" />
 
 
         <TextView
@@ -196,9 +193,9 @@
             android:layout_marginTop="16dp"
             android:text="2022-05-22 01:23"
             android:textColor="#747474"
-            android:textSize="12dp"
+            android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/myWriteTitle2" />
+            app:layout_constraintTop_toBottomOf="@+id/myWriteTitle2" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/myWriteLineE2"
@@ -206,7 +203,7 @@
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
             android:background="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/myWriteTime2" />
+            app:layout_constraintTop_toBottomOf="@+id/myWriteTime2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -218,7 +215,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/myWriteList2">
-        // app:layout_constraintHorizontal_bias="0.0"
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/myWriteLineS3"
@@ -238,10 +234,10 @@
             android:layout_marginTop="16dp"
             android:text="[질문] 서울슈니병원 진료 어떤가요?"
             android:textColor="@color/black"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/myWriteLineS3" />
+            app:layout_constraintTop_toBottomOf="@+id/myWriteLineS3" />
 
 
         <TextView
@@ -252,9 +248,9 @@
             android:layout_marginTop="16dp"
             android:text="2022-05-22 01:23"
             android:textColor="#747474"
-            android:textSize="12dp"
+            android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/myWriteTitle3" />
+            app:layout_constraintTop_toBottomOf="@+id/myWriteTitle3" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/myWriteLineE3"
@@ -262,7 +258,7 @@
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
             android:background="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/myWriteTime3" />
+            app:layout_constraintTop_toBottomOf="@+id/myWriteTime3" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -293,7 +289,7 @@
             android:layout_marginTop="16dp"
             android:text="[질문] 서울슈니병원 진료 어떤가요?"
             android:textColor="@color/black"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/myWriteLineS4" />
@@ -307,9 +303,9 @@
             android:layout_marginTop="16dp"
             android:text="2022-05-22 01:23"
             android:textColor="#747474"
-            android:textSize="12dp"
+            android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/myWriteTitle4" />
+            app:layout_constraintTop_toBottomOf="@+id/myWriteTitle4" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/myWriteLineE4"
@@ -317,7 +313,7 @@
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
             android:background="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/myWriteTime4" />
+            app:layout_constraintTop_toBottomOf="@+id/myWriteTime4" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -348,10 +344,10 @@
             android:layout_marginTop="16dp"
             android:text="[질문] 서울슈니병원 진료 어떤가요?"
             android:textColor="@color/black"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/myWriteLineS5" />
+            app:layout_constraintTop_toBottomOf="@+id/myWriteLineS5" />
 
 
         <TextView
@@ -362,9 +358,9 @@
             android:layout_marginTop="16dp"
             android:text="2022-05-22 01:23"
             android:textColor="#747474"
-            android:textSize="12dp"
+            android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/myWriteTitle5" />
+            app:layout_constraintTop_toBottomOf="@+id/myWriteTitle5" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/myWriteLineE5"
@@ -372,7 +368,7 @@
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
             android:background="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/myWriteTime5" />
+            app:layout_constraintTop_toBottomOf="@+id/myWriteTime5" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -403,10 +399,10 @@
             android:layout_marginTop="16dp"
             android:text="[질문] 서울슈니병원 진료 어떤가요?"
             android:textColor="@color/black"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/myWriteLineS6" />
+            app:layout_constraintTop_toBottomOf="@+id/myWriteLineS6" />
 
 
         <TextView
@@ -417,9 +413,9 @@
             android:layout_marginTop="16dp"
             android:text="2022-05-22 01:23"
             android:textColor="#747474"
-            android:textSize="12dp"
+            android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/myWriteTitle6" />
+            app:layout_constraintTop_toBottomOf="@+id/myWriteTitle6" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/myWriteLineE6"
@@ -427,7 +423,7 @@
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
             android:background="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/myWriteTime6" />
+            app:layout_constraintTop_toBottomOf="@+id/myWriteTime6" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -458,10 +454,10 @@
             android:layout_marginTop="16dp"
             android:text="[질문] 서울슈니병원 진료 어떤가요?"
             android:textColor="@color/black"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/myWriteLineS7" />
+            app:layout_constraintTop_toBottomOf="@+id/myWriteLineS7" />
 
 
         <TextView
@@ -472,9 +468,9 @@
             android:layout_marginTop="16dp"
             android:text="2022-05-22 01:23"
             android:textColor="#747474"
-            android:textSize="12dp"
+            android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/myWriteTitle7" />
+            app:layout_constraintTop_toBottomOf="@+id/myWriteTitle7" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/myWriteLineE7"
@@ -483,7 +479,7 @@
             android:layout_marginTop="16dp"
             android:background="@color/black"
             android:visibility="invisible"
-            app:layout_constraintTop_toBottomOf="@id/myWriteTime7" />
+            app:layout_constraintTop_toBottomOf="@+id/myWriteTime7" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
