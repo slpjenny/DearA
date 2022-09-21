@@ -30,17 +30,16 @@ android {
         jvmTarget = '1.8'
     }
 
-<<<<<<<<< Temporary merge branch 1
-    buildFeatures{
-        dataBinding = true
-    }
-=========
+
+//    buildFeatures{
+//        dataBinding = true
+//    }
+
 //     data binding 사용하려면 작성
     buildFeatures {
         viewBinding true
     }
 
->>>>>>>>> Temporary merge branch 2
 }
 
 dependencies {
