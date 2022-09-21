@@ -8,7 +8,7 @@
     android:background="@color/purple1">
 
     <android.widget.Button
-        android:id="@+id/button6"
+        android:id="@+id/back6"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginLeft="17dp"
@@ -25,7 +25,7 @@
         android:src="@drawable/logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button6"></ImageView>
+        app:layout_constraintTop_toBottomOf="@+id/back6"></ImageView>
 
 
     <TextView
