@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/fragment_home.xml" value="0.25393883225208524" />
         <entry key="..\:/DearA/app/src/main/res/drawable/add_button.xml" value="0.255" />
         <entry key="..\:/DearA/app/src/main/res/drawable/diary_button.xml" value="0.177" />
         <entry key="..\:/DearA/app/src/main/res/drawable/ic_launcher_background.xml" value="0.251" />
@@ -74,10 +75,5 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
-    <output url="file://$PROJECT_DIR$/build/classes" />
-  </component>
-  <component name="ProjectType">
-    <option name="id" value="Android" />
-  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK" />
 </project>

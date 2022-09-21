@@ -6,7 +6,7 @@
         <type value="QUICK_BOOT_TARGET" />
         <deviceKey>
           <Key>
-            <type value="VIRTUAL_DEVICE_PATH" />
+            <type value="VIRTUAL_DEVICE_PATH" /
             
             <value value="C:\Users\wsa\.android\avd\Pixel_3a_API_30_2.avd" />
 
