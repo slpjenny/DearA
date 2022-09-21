@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:text="커뮤니티"
             android:textColor="@color/black"
-            android:textSize="24dp"
+            android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -55,7 +55,7 @@
             android:background="@drawable/bottom_edge"
             android:text="글 목록"
             android:textColor="@color/board_menu_gray"
-            android:textSize="15dp"
+            android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -67,7 +67,7 @@
             android:background="@drawable/bottom_edge"
             android:text="알림"
             android:textColor="@color/board_menu_gray"
-            android:textSize="15dp"
+            android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/boardListText" />
 
@@ -79,7 +79,7 @@
             android:background="@drawable/bottom_edge"
             android:text="내가 쓴 글"
             android:textColor="@color/board_menu_gray"
-            android:textSize="15dp"
+            android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/boardAlarmText" />
 
@@ -90,7 +90,7 @@
             android:background="@drawable/bottom_edge"
             android:text="내가 쓴 댓글"
             android:textColor="@color/black"
-            android:textSize="15dp"
+            android:textSize="15sp"
             app:layout_constraintStart_toEndOf="@+id/MyWriteText"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -125,7 +125,7 @@
             android:layout_marginTop="16dp"
             android:text="[질문] 서울슈니병원 진료 어떤가요?"
             android:textColor="@color/black"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/commentLineS1" />
@@ -139,7 +139,7 @@
             android:layout_marginTop="16dp"
             android:text="2022-05-22 01:23 작성자 슈니즈"
             android:textColor="#747474"
-            android:textSize="12dp"
+            android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/commentTitle1" />
 
@@ -180,7 +180,7 @@
             android:layout_marginTop="16dp"
             android:text="[질문] 서울슈니병원 진료 어떤가요?"
             android:textColor="@color/black"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/commentLineS2" />
@@ -194,7 +194,7 @@
             android:layout_marginTop="16dp"
             android:text="2022-05-22 01:23 작성자 슈니즈"
             android:textColor="#747474"
-            android:textSize="12dp"
+            android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/commentTitle2" />
 
@@ -235,7 +235,7 @@
             android:layout_marginTop="16dp"
             android:text="[질문] 서울슈니병원 진료 어떤가요?"
             android:textColor="@color/black"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/commentLineS3" />
@@ -249,7 +249,7 @@
             android:layout_marginTop="16dp"
             android:text="2022-05-22 01:23 작성자 슈니즈"
             android:textColor="#747474"
-            android:textSize="12dp"
+            android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/commentTitle3" />
 
@@ -293,7 +293,7 @@
             android:layout_marginTop="16dp"
             android:text="[질문] 서울슈니병원 진료 어떤가요?"
             android:textColor="@color/black"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/commentLineS4" />
@@ -307,7 +307,7 @@
             android:layout_marginTop="16dp"
             android:text="2022-05-22 01:23 작성자 슈니즈"
             android:textColor="#747474"
-            android:textSize="12dp"
+            android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/commentTitle4" />
 
@@ -348,7 +348,7 @@
             android:layout_marginTop="16dp"
             android:text="[질문] 서울슈니병원 진료 어떤가요?"
             android:textColor="@color/black"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/commentLineS5" />
@@ -362,7 +362,7 @@
             android:layout_marginTop="16dp"
             android:text="2022-05-22 01:23 작성자 슈니즈"
             android:textColor="#747474"
-            android:textSize="12dp"
+            android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/commentTitle5" />
 
@@ -403,7 +403,7 @@
             android:layout_marginTop="16dp"
             android:text="[질문] 서울슈니병원 진료 어떤가요?"
             android:textColor="@color/black"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/commentLineS6" />
@@ -417,7 +417,7 @@
             android:layout_marginTop="16dp"
             android:text="2022-05-22 01:23 작성자 슈니즈"
             android:textColor="#747474"
-            android:textSize="12dp"
+            android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/commentTitle6" />
 
@@ -458,7 +458,7 @@
             android:layout_marginTop="16dp"
             android:text="[질문] 서울슈니병원 진료 어떤가요?"
             android:textColor="@color/black"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/commentLineS7" />
@@ -472,7 +472,7 @@
             android:layout_marginTop="16dp"
             android:text="2022-05-22 01:23 작성자 슈니즈"
             android:textColor="#747474"
-            android:textSize="12dp"
+            android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/commentTitle7" />
 
