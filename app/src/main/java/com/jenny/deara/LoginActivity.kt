@@ -30,5 +30,12 @@ class LoginActivity : AppCompatActivity() {
 
         }
 
+        // ' 로그인' 버튼 누르면 메인으로 이동
+        binding.loginBtn.setOnClickListener {
+            val intentMain = Intent(this, MainActivity::class.java)
+            startActivity(intentMain)
+
+        }
+
     }
 }
