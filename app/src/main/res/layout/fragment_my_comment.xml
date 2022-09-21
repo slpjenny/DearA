@@ -25,8 +25,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-        // app:layout_constraintLeft_toLeftOf="parent"
-        // android:layout_marginLeft="30dp"
 
         <ImageView
             android:layout_width="35dp"
@@ -130,7 +128,7 @@
             android:textSize="18dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/commentLineS1" />
+            app:layout_constraintTop_toBottomOf="@+id/commentLineS1" />
 
 
         <TextView
@@ -143,7 +141,7 @@
             android:textColor="#747474"
             android:textSize="12dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/commentTitle1" />
+            app:layout_constraintTop_toBottomOf="@+id/commentTitle1" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/commentLineE1"
@@ -151,7 +149,7 @@
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
             android:background="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/commentTimeWriter1" />
+            app:layout_constraintTop_toBottomOf="@+id/commentTimeWriter1" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -185,7 +183,7 @@
             android:textSize="18dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/commentLineS2" />
+            app:layout_constraintTop_toBottomOf="@+id/commentLineS2" />
 
 
         <TextView
@@ -198,7 +196,7 @@
             android:textColor="#747474"
             android:textSize="12dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/commentTitle2" />
+            app:layout_constraintTop_toBottomOf="@+id/commentTitle2" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/commentLineE2"
@@ -206,7 +204,7 @@
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
             android:background="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/commentTimeWriter2" />
+            app:layout_constraintTop_toBottomOf="@+id/commentTimeWriter2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -218,7 +216,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/commentList2">
-        // app:layout_constraintHorizontal_bias="0.0"
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/commentLineS3"
@@ -241,7 +238,7 @@
             android:textSize="18dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/commentLineS3" />
+            app:layout_constraintTop_toBottomOf="@+id/commentLineS3" />
 
 
         <TextView
@@ -254,7 +251,7 @@
             android:textColor="#747474"
             android:textSize="12dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/commentTitle3" />
+            app:layout_constraintTop_toBottomOf="@+id/commentTitle3" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/commentLineE3"
@@ -262,7 +259,10 @@
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
             android:background="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/commentTimeWriter3" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/commentTimeWriter3" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -309,7 +309,7 @@
             android:textColor="#747474"
             android:textSize="12dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/commentTitle4" />
+            app:layout_constraintTop_toBottomOf="@+id/commentTitle4" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/commentLineE4"
@@ -317,7 +317,7 @@
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
             android:background="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/commentTimeWriter4" />
+            app:layout_constraintTop_toBottomOf="@+id/commentTimeWriter4" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -351,7 +351,7 @@
             android:textSize="18dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/commentLineS5" />
+            app:layout_constraintTop_toBottomOf="@+id/commentLineS5" />
 
 
         <TextView
@@ -364,7 +364,7 @@
             android:textColor="#747474"
             android:textSize="12dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/commentTitle5" />
+            app:layout_constraintTop_toBottomOf="@+id/commentTitle5" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/commentLineE5"
@@ -372,7 +372,7 @@
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
             android:background="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/commentTimeWriter5" />
+            app:layout_constraintTop_toBottomOf="@+id/commentTimeWriter5" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -406,7 +406,7 @@
             android:textSize="18dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/commentLineS6" />
+            app:layout_constraintTop_toBottomOf="@+id/commentLineS6" />
 
 
         <TextView
@@ -419,7 +419,7 @@
             android:textColor="#747474"
             android:textSize="12dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/commentTitle6" />
+            app:layout_constraintTop_toBottomOf="@+id/commentTitle6" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/commentLineE6"
@@ -427,7 +427,7 @@
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
             android:background="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/commentTimeWriter6" />
+            app:layout_constraintTop_toBottomOf="@+id/commentTimeWriter6" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -474,7 +474,7 @@
             android:textColor="#747474"
             android:textSize="12dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/commentTitle7" />
+            app:layout_constraintTop_toBottomOf="@+id/commentTitle7" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/commentLineE7"
@@ -483,7 +483,7 @@
             android:layout_marginTop="16dp"
             android:background="@color/black"
             android:visibility="invisible"
-            app:layout_constraintTop_toBottomOf="@id/commentTimeWriter7" />
+            app:layout_constraintTop_toBottomOf="@+id/commentTimeWriter7" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
