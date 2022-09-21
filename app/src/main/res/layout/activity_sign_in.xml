@@ -9,6 +9,7 @@
     android:orientation="vertical">
 
     <android.widget.Button
+        android:id="@+id/back1"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginLeft="17dp"

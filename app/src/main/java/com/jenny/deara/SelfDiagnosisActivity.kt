@@ -32,5 +32,14 @@ class SelfDiagnosisActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        // 뒤로가기
+        binding.back2.setOnClickListener {
+            onBackPressed()
+        }
+
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
     }
 }
