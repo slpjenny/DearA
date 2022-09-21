@@ -19,7 +19,7 @@
                 android:layout_height="wrap_content"
                 android:text="커뮤니티"
                 android:textColor="@color/black"
-                android:textSize="24dp"
+                android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -55,7 +55,7 @@
             android:background="@drawable/bottom_edge"
             android:text="글 목록"
             android:textColor="@color/black"
-            android:textSize="15dp"
+            android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -67,7 +67,7 @@
             android:background="@drawable/bottom_edge"
             android:text="알림"
             android:textColor="@color/board_menu_gray"
-            android:textSize="15dp"
+            android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/boardListText" />
 
@@ -79,7 +79,7 @@
             android:background="@drawable/bottom_edge"
             android:text="내가 쓴 글"
             android:textColor="@color/board_menu_gray"
-            android:textSize="15dp"
+            android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/boardAlarmText" />
 
@@ -90,7 +90,7 @@
             android:background="@drawable/bottom_edge"
             android:text="내가 쓴 댓글"
             android:textColor="@color/board_menu_gray"
-            android:textSize="15dp"
+            android:textSize="15sp"
             app:layout_constraintStart_toEndOf="@+id/MyWriteText"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -156,7 +156,7 @@
             android:layout_marginTop="16dp"
             android:text="[질문] 서울슈니병원 진료 어떤가요?"
             android:textColor="@color/black"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/boardLineS1" />
@@ -180,7 +180,7 @@
             android:layout_marginTop="16dp"
             android:text="2022-05-22 01:23 작성자 슈니즈"
             android:textColor="#747474"
-            android:textSize="12dp"
+            android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/boardTitle1" />
 
@@ -221,7 +221,7 @@
             android:layout_marginTop="16dp"
             android:text="[질문] 서울슈니병원 진료 어떤가요?"
             android:textColor="@color/black"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/boardLineS2" />
@@ -245,7 +245,7 @@
             android:layout_marginTop="16dp"
             android:text="2022-05-22 01:23 작성자 슈니즈"
             android:textColor="#747474"
-            android:textSize="12dp"
+            android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/boardTitle2" />
 
@@ -286,7 +286,7 @@
             android:layout_marginTop="16dp"
             android:text="[질문] 서울슈니병원 진료 어떤가요?"
             android:textColor="@color/black"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/boardLineS3" />
@@ -310,7 +310,7 @@
             android:layout_marginTop="16dp"
             android:text="2022-05-22 01:23 작성자 슈니즈"
             android:textColor="#747474"
-            android:textSize="12dp"
+            android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/boardTitle3" />
 
@@ -351,7 +351,7 @@
             android:layout_marginTop="16dp"
             android:text="[질문] 서울슈니병원 진료 어떤가요?"
             android:textColor="@color/black"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/boardLineS4" />
@@ -375,7 +375,7 @@
             android:layout_marginTop="16dp"
             android:text="2022-05-22 01:23 작성자 슈니즈"
             android:textColor="#747474"
-            android:textSize="12dp"
+            android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/boardTitle4" />
 
@@ -416,7 +416,7 @@
             android:layout_marginTop="16dp"
             android:text="[질문] 서울슈니병원 진료 어떤가요?"
             android:textColor="@color/black"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/boardLineS5" />
@@ -440,7 +440,7 @@
             android:layout_marginTop="16dp"
             android:text="2022-05-22 01:23 작성자 슈니즈"
             android:textColor="#747474"
-            android:textSize="12dp"
+            android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/boardTitle5" />
 
@@ -470,7 +470,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
             android:text="이전"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/page_1"
@@ -483,7 +483,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginEnd="10dp"
             android:text="1"
-            android:textSize="20dp"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/page_2"
             app:layout_constraintStart_toEndOf="@+id/before" />
@@ -495,7 +495,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginEnd="10dp"
             android:text="2"
-            android:textSize="20dp"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/page_3"
             app:layout_constraintStart_toEndOf="@+id/page_1" />
@@ -507,7 +507,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginEnd="10dp"
             android:text="3"
-            android:textSize="20dp"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/page_4"
             app:layout_constraintStart_toEndOf="@+id/page_2" />
@@ -519,7 +519,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginEnd="10dp"
             android:text="4"
-            android:textSize="20dp"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/page_5"
             app:layout_constraintStart_toEndOf="@+id/page_3" />
@@ -531,7 +531,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginEnd="10dp"
             android:text="5"
-            android:textSize="20dp"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/after"
             app:layout_constraintStart_toEndOf="@+id/page_4" />
@@ -542,7 +542,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:text="다음"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
