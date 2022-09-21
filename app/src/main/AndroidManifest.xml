@@ -16,10 +16,10 @@
         android:theme="@style/Theme.DearA"
         tools:targetApi="31">
         <activity
-            android:name=".BoardWriteActivity"
+            android:name=".board.BoardWriteActivity"
             android:exported="false" />
         <activity
-            android:name=".BoardInsideActivity"
+            android:name=".board.BoardInsideActivity"
             android:exported="false" />
         <activity
             android:name=".alarm.TimePickerActivity"
@@ -55,7 +55,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".DatePickerActivity"
+            android:name=".diary.DatePickerActivity"
             android:exported="false" />
         <activity
             android:name=".SplashActivity"
