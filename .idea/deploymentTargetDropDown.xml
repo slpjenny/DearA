@@ -6,16 +6,12 @@
         <type value="QUICK_BOOT_TARGET" />
         <deviceKey>
           <Key>
-            <type value="VIRTUAL_DEVICE_PATH" /
-            
-            <value value="C:\Users\wsa\.android\avd\Pixel_3a_API_30_2.avd" />
-
-            <value value="C:\Users\hyo24\.android\avd\Pixel_3a_API_30.avd" />
+            <type value="VIRTUAL_DEVICE_PATH" />
+            <value value="C:\Users\glgkw\.android\avd\Pixel_3a_API_30_2.avd" />
           </Key>
         </deviceKey>
       </Target>
     </targetSelectedWithDropDown>
-    <timeTargetWasSelectedWithDropDown value="2022-09-14T08:35:29.603938800Z" />
-    <timeTargetWasSelectedWithDropDown value="2022-09-15T09:30:17.803673500Z" />
+    <timeTargetWasSelectedWithDropDown value="2022-09-25T13:05:52.234424600Z" />
   </component>
 </project>
