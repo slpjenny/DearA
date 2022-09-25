@@ -14,6 +14,13 @@
         <entry key="..\:/DearA/app/src/main/res/layout/fragment_diary.xml" value="0.2453125" />
         <entry key="..\:/DearA/app/src/main/res/layout/fragment_home.xml" value="0.24947916666666667" />
         <entry key="..\:/DearA/app/src/main/res/layout/todolistview_item.xml" value="0.23777173913043478" />
+        <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/layout/activity_diary_edit_ver1.xml" value="0.22" />
+        <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/layout/activity_diary_edit_ver2.xml" value="0.18" />
+        <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/layout/fragment_contact_us.xml" value="0.24320652173913043" />
+        <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/layout/fragment_diary.xml" value="0.1" />
+        <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/layout/fragment_diary_edit_ver1.xml" value="0.22010869565217392" />
+        <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/layout/fragment_diary_edit_ver2.xml" value="0.22" />
+        <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/layout/fragment_home.xml" value="0.2223731884057971" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/drawable-v24/background_radius_diary.xml" value="0.237" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/drawable-v24/background_radius_white.xml" value="0.265" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/drawable/background_radius_set_alarm.xml" value="0.2045" />
@@ -76,7 +83,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
