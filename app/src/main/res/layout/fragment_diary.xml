@@ -68,6 +68,7 @@
             android:textColor="@color/purple1"
             android:textSize="20sp"/>
         <ImageView
+            android:id="@+id/datapicker"
             android:src="@drawable/diaryarrow"
             android:layout_marginLeft="7dp"
             android:layout_marginTop="7dp"
