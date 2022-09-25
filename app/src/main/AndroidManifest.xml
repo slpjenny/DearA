@@ -43,9 +43,6 @@
             android:name=".diary.DiaryDetailVer1Activity"
             android:exported="false" />
         <activity
-            android:name=".diary.DatePickerActivity"
-            android:exported="false" />
-        <activity
             android:name=".MyPageActivity"
             android:exported="false" />
         <activity

@@ -27,8 +27,16 @@ class DatePickerFragment : DialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-       binding = FragmentDatePickerBinding.inflate(inflater, container, false)
+        binding = FragmentDatePickerBinding.inflate(inflater, container, false)
+
+        // 배경 제거하기
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+        //엑스 버튼
+        binding.dateCloseBtn.setOnClickListener {
+            dismiss()
+        }
+
         return binding.root
     }
 

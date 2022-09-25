@@ -26,6 +26,12 @@ class DiaryFragment : Fragment() {
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_diary, container, false)
 
+        //마이페이지 버튼
+        binding.myPageBtn.setOnClickListener {
+            val intent = Intent(context, MyPageActivity::class.java)
+            startActivity(intent)
+        }
+
         //일기 작성하기
         binding.diaryplusBtn.setOnClickListener{
             val intent = Intent(context, DiaryEditActivity::class.java)
