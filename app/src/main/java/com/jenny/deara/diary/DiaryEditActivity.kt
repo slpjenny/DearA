@@ -8,12 +8,20 @@ import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import com.jenny.deara.R
+import com.jenny.deara.databinding.ActivityDiaryEditBinding
 
 class DiaryEditActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityDiaryEditBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_diary_edit)
+
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_diary_edit)
+
+        binding.closeBtn.setOnClickListener {
+            finish()
+        }
 
     }
 }
