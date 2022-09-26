@@ -1,10 +1,12 @@
 package com.jenny.deara.diary
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.jenny.deara.R
 
@@ -35,6 +37,12 @@ class DiaryListAdapter(val context: Context): RecyclerView.Adapter<DiaryListAdap
             contents1.text = item.contents1
             title2.text = item.title2
             contents2.text = item.contents2
+
+            // 내부페이지로 이동
+            itemView.setOnClickListener {
+                val intent = Intent(context, DiaryDetailVer1Activity::class.java)
+                itemView.context.startActivity(intent)
+            }
         }
     }
 }
