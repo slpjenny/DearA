@@ -19,9 +19,14 @@ class DiaryEditActivity : AppCompatActivity() {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_diary_edit)
 
+        // 엑스 버튼
         binding.closeBtn.setOnClickListener {
             finish()
         }
 
+        //저장 버튼
+        binding.saveBtn.setOnClickListener {
+            finish()
+        }
     }
 }

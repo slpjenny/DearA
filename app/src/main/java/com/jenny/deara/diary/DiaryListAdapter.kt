@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.jenny.deara.R
 
@@ -40,7 +39,7 @@ class DiaryListAdapter(val context: Context): RecyclerView.Adapter<DiaryListAdap
 
             // 내부페이지로 이동
             itemView.setOnClickListener {
-                val intent = Intent(context, DiaryDetailVer1Activity::class.java)
+                val intent = Intent(context, DiaryDetailActivity::class.java)
                 itemView.context.startActivity(intent)
             }
         }

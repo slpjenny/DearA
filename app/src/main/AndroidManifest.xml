@@ -40,7 +40,7 @@
             android:name=".diary.DiaryEditActivity"
             android:exported="false" />
         <activity
-            android:name=".diary.DiaryDetailVer1Activity"
+            android:name=".diary.DiaryDetailActivity"
             android:exported="false" />
         <activity
             android:name=".MyPageActivity"
