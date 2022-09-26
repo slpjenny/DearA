@@ -18,6 +18,7 @@ class DatePickerFragment : DialogFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         //false로 설정해 주면 화면밖 혹은 뒤로가기 버튼시 다이얼로그라 dismiss 되지 않는다.
         isCancelable = true
     }
@@ -27,8 +28,16 @@ class DatePickerFragment : DialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-       binding = FragmentDatePickerBinding.inflate(inflater, container, false)
+        binding = FragmentDatePickerBinding.inflate(inflater, container, false)
+
+        // 배경 제거하기
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+        //엑스 버튼
+        binding.dateCloseBtn.setOnClickListener {
+            dismiss()
+        }
+
         return binding.root
     }
 
