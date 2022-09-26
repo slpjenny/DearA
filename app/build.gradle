@@ -30,10 +30,12 @@ android {
         jvmTarget = '1.8'
     }
 
+
     buildFeatures{
-        dataBinding = true
+        dataBinding true
     }
-//     data binding 사용하려면 작성
+
+     //data binding 사용하려면 작성
     buildFeatures {
         viewBinding true
     }
@@ -47,6 +49,9 @@ dependencies {
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'androidx.databinding:databinding-runtime:4.2.2'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.2'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.5.2'
+    implementation 'androidx.navigation:navigation-runtime-ktx:2.5.2'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'

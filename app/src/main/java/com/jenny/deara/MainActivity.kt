@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
             changeFragment(
                 when (item.itemId) {
                     R.id.first -> {
-                        HomeFragment()
+                        AlarmFragment()
                     }
                     R.id.second -> {
                         RecordFragment()

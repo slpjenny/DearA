@@ -24,9 +24,9 @@
         <activity
             android:name=".alarm.TimePickerActivity"
             android:exported="false" />
-        <activity
-            android:name=".alarm.AlarmMainActivity"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".alarm.AlarmMainActivity"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".mypages.ChangePwdActivity"
             android:exported="false" />
@@ -35,6 +35,12 @@
             android:exported="false" />
         <activity
             android:name=".mypages.ChangeNickNameActivity"
+            android:exported="false" />
+        <activity
+            android:name=".diary.DiaryEditActivity"
+            android:exported="false" />
+        <activity
+            android:name=".diary.DiaryDetailActivity"
             android:exported="false" />
         <activity
             android:name=".MyPageActivity"
@@ -54,9 +60,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".diary.DatePickerActivity"
-            android:exported="false" />
         <activity
             android:name=".SplashActivity"
             android:exported="false" />
