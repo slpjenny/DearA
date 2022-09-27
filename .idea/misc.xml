@@ -3,6 +3,25 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+
+        <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/drawable/background_radius_board.xml" value="0.259" />
+        <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/layout/activity_board_inside.xml" value="0.1945945945945946" />
+        <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/layout/activity_board_write.xml" value="0.21936936936936938" />
+        <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/layout/fragment_board_alarm.xml" value="0.21936936936936938" />
+        <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/layout/fragment_board_alarm2.xml" value="0.21936936936936938" />
+        <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/layout/fragment_board_main.xml" value="0.21936936936936938" />
+        <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/layout/fragment_contact_us.xml" value="0.21936936936936938" />
+        <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/layout/fragment_home.xml" value="0.264" />
+        <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/layout/fragment_my_alarm.xml" value="0.21936936936936938" />
+        <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/layout/fragment_my_comment.xml" value="0.21936936936936938" />
+        <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/layout/fragment_my_write.xml" value="0.21936936936936938" />
+        <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/menu/board_menu.xml" value="0.21936936936936938" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK" />
+
         <entry key="..\:/DearA/app/src/main/res/drawable/add_button.xml" value="0.255" />
         <entry key="..\:/DearA/app/src/main/res/drawable/diary_button.xml" value="0.177" />
         <entry key="..\:/DearA/app/src/main/res/drawable/ic_launcher_background.xml" value="0.251" />
@@ -98,4 +117,5 @@
   <component name="ProjectType">
     <option name="id" value="Android" />
   </component>
+
 </project>
