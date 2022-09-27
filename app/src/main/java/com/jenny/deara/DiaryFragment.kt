@@ -1,59 +1,87 @@
 package com.jenny.deara
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentManager
+import androidx.recyclerview.widget.RecyclerView
+import com.jenny.deara.databinding.FragmentDiaryBinding
+import com.jenny.deara.diary.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [DiaryFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class DiaryFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    private lateinit var binding: FragmentDiaryBinding
+
+    lateinit var DiaryListAdapter: DiaryListAdapter
+    val datas = mutableListOf<DiaryData>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_diary, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_diary, container, false)
+
+        initRecycler()
+
+        //마이페이지 버튼
+        binding.myPageBtn.setOnClickListener {
+            val intent = Intent(context, MyPageActivity::class.java)
+            startActivity(intent)
+        }
+
+        //일기 작성하기
+        binding.diaryplusBtn.setOnClickListener{
+            val intent = Intent(context, DiaryEditActivity::class.java)
+            startActivity(intent)
+        }
+
+        //날짜 선택하기
+        binding.datapicker.setOnClickListener {
+            DatePickerFragment().show(childFragmentManager, "SampleDialog")
+        }
+
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment DiaryFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            DiaryFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    private fun initRecycler() {
+        DiaryListAdapter = DiaryListAdapter(requireContext())
+
+        val rv : RecyclerView = binding.rvDiary
+        rv.adapter= DiaryListAdapter
+
+        //test 데이터
+        datas.apply {
+            add(DiaryData(
+                "좋았던일",
+                "오늘은 맛있는 음식을 많이 먹어서 좋았다.",
+                "안 좋았던 일",
+                "늦잠을 자서 지각할 뻔",
+                "나의 다짐",
+                "내일은 꼭 일찍 일어나기",
+                "[랜덤질문] 가장 좋았던 여행은 어떤 여행인가요?",
+                "작년 여름에 가족들과 갔던 부산여행")
+            )
+            add(DiaryData(
+                "좋았던일",
+                "일찍 일어났다",
+                "안 좋았던 일",
+                "늦게 자서 피곤해",
+                "나의 다짐",
+                "내일은 꼭 일찍 자기",
+                "[랜덤질문] 가장 좋았던 여행은 어떤 여행인가요?",
+                "작년 여름에 가족들과 갔던 부산여행")
+            )
+            DiaryListAdapter.datas = datas
+            DiaryListAdapter.notifyDataSetChanged()
+
+        }
     }
 }

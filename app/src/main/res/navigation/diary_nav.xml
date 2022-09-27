@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/diary_nav"
+    app:startDestination="@id/diaryEditVer1Fragment">
+
+    <fragment
+        android:id="@+id/diaryEditVer1Fragment"
+        android:name="com.jenny.deara.diary.DiaryEditVer1Fragment"
+        android:label="fragment_diary_edit_ver1"
+        tools:layout="@layout/fragment_diary_edit_ver1" >
+        <action
+            android:id="@+id/action_diaryEditVer1Fragment_to_diaryEditVer2Fragment"
+            app:destination="@id/diaryEditVer2Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/diaryEditVer2Fragment"
+        android:name="com.jenny.deara.diary.DiaryEditVer2Fragment"
+        android:label="fragment_diary_edit_ver2"
+        tools:layout="@layout/fragment_diary_edit_ver2" >
+        <action
+            android:id="@+id/action_diaryEditVer2Fragment_to_diaryEditVer1Fragment"
+            app:destination="@id/diaryEditVer1Fragment" />
+    </fragment>
+</navigation>

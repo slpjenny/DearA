@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#EFF1FF">
 
     <!--상단바-->
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -13,24 +16,42 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
         <ImageView
             android:id="@+id/closeBtn"
-            android:layout_width="17dp"
-            android:layout_height="17dp"
-            android:src="@drawable/x"
-            android:layout_marginLeft="20dp"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:src="@drawable/back"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginLeft="7dp"/>
 
         <TextView
-            android:id="@+id/saveBtn"
-            android:text="저장"
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:textColor="@color/black"
+            android:text="일기"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="7dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/closeBtn"
+            app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/modifyBtn"
+            android:layout_width="32dp"
+            android:layout_height="26dp"
+            android:src="@drawable/modify"
+            android:layout_marginRight="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/trashBtn"
+            app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/trashBtn"
+            android:layout_width="22dp"
+            android:layout_height="25dp"
+            android:src="@drawable/trash"
             android:layout_marginRight="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -63,7 +84,7 @@
             app:layout_constraintTop_toTopOf="@+id/csLyMid" />
 
 
-        <ToggleButton
+        <ImageView
             android:id="@+id/toggleBtn"
             android:layout_width="match_parent"
             android:layout_height="42dp"
@@ -72,11 +93,7 @@
             android:layout_marginRight="20dp"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:background="@drawable/toggle_selector"
-            android:checked="true"
-            android:text=""
-            android:textOff=""
-            android:textOn=""
+            android:background="@drawable/toggle_on"
             app:layout_constraintEnd_toEndOf="@+id/csLyMid"
             app:layout_constraintStart_toStartOf="@+id/csLyMid"
             app:layout_constraintTop_toBottomOf="@+id/date" />
@@ -97,7 +114,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/background_radius_white"
+            android:background="@drawable/background_radius_diary"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:layout_marginBottom="10dp">
@@ -125,14 +142,12 @@
                             android:textStyle="bold"
                             android:textColor="@color/black"
                             android:layout_marginBottom="5dp"/>
-                        <EditText
-                            android:layout_width="match_parent"
+                        <TextView
+                            android:text="우리의 이상 피고, 놀이 때문이다. 어디 간에 원질이 자신과 풀이 트고, 원대하고, 것이다. 구할 우리 속잎나고, 것이다. 끓는 것은 같으며, 싶이 위하여 보라."
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:hint="내용을 입력해주세요."
                             android:textSize="19sp"
-                            android:textColor="#505050"
-                            android:background="@null"
-                            android:inputType="textMultiLine|textNoSuggestions"/>
+                            android:textColor="#505050"/>
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -147,14 +162,12 @@
                             android:textStyle="bold"
                             android:textColor="@color/black"
                             android:layout_marginBottom="5dp"/>
-                        <EditText
-                            android:layout_width="match_parent"
+                        <TextView
+                            android:text="우리의 이상 피고, 놀이 때문이다. 어디 간에 원질이 자신과 풀이 트고, 원대하고, 것이다. 구할 우리 속잎나고, 것이다. 끓는 것은 같으며, 싶이 위하여 보라."
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:hint="내용을 입력해주세요."
                             android:textSize="19sp"
-                            android:textColor="#505050"
-                            android:background="@null"
-                            android:inputType="textMultiLine|textNoSuggestions"/>
+                            android:textColor="#505050"/>
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -169,14 +182,12 @@
                             android:textStyle="bold"
                             android:textColor="@color/black"
                             android:layout_marginBottom="5dp"/>
-                        <EditText
-                            android:layout_width="match_parent"
+                        <TextView
+                            android:text="내일은 더 알차게.."
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:hint="내용을 입력해주세요."
                             android:textSize="19sp"
-                            android:textColor="#505050"
-                            android:background="@null"
-                            android:inputType="textMultiLine|textNoSuggestions"/>
+                            android:textColor="#505050"/>
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -191,19 +202,18 @@
                             android:textStyle="bold"
                             android:textColor="@color/black"
                             android:layout_marginBottom="5dp"/>
-                        <EditText
-                            android:layout_width="match_parent"
+                        <TextView
+                            android:text="문이다. 어디 간에 원질이 자신과 풀이 트고, 원대하고, 것이다. 구할 우리 속잎나고, 것이"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:hint="내용을 입력해주세요."
                             android:textSize="19sp"
-                            android:textColor="#505050"
-                            android:background="@null"
-                            android:inputType="textMultiLine|textNoSuggestions"/>
+                            android:textColor="#505050"/>
                     </LinearLayout>
+
 
                 </LinearLayout>
             </ScrollView>
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
