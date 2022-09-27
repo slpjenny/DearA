@@ -30,7 +30,7 @@ class DiaryDetailActivity : AppCompatActivity() {
 
         //삭제
         binding.trashBtn.setOnClickListener {
-            finish()
+            PopupFragment().show(supportFragmentManager, "SampleDialog")
         }
     }
 }
