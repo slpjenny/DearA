@@ -38,7 +38,7 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <ScrollView
+            <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="64dp">
@@ -288,10 +288,15 @@
                                 <androidx.recyclerview.widget.RecyclerView
                                     android:id="@+id/calendarRv"
                                     android:layout_width="match_parent"
-                                    android:layout_height="240dp"
+                                    android:layout_height="285dp"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toTopOf="parent">
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="4dp"
+                                    android:layout_marginTop="8dp"
+                                    android:overScrollMode="never"
+                                    android:nestedScrollingEnabled="false">
 
                                 </androidx.recyclerview.widget.RecyclerView>
                             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -461,6 +466,7 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/todoplus"
                             android:layout_width="33dp"
                             android:layout_height="33dp"
                             android:text="+"
@@ -485,7 +491,7 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </ScrollView>
+            </androidx.core.widget.NestedScrollView>
 
     </FrameLayout>
 
