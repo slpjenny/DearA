@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.jenny.deara.databinding.FragmentHomeBinding
 import java.time.LocalDate
@@ -20,6 +21,8 @@ import kotlin.collections.ArrayList
 class HomeFragment : Fragment() {
 
     private lateinit var binding : FragmentHomeBinding
+
+//    private val todoData = arrayListOf<TodoMember>()
 
     private val TAG = HomeFragment::class.java.simpleName
 
@@ -35,8 +38,6 @@ class HomeFragment : Fragment() {
 
         // binding 초기화
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
-
-
 
         // 화면 설정
         setMonthView()
@@ -54,6 +55,12 @@ class HomeFragment : Fragment() {
             CalendarUtil.selectedDate.add(Calendar.MONTH , 1) // 현재 달 +1
             setMonthView()
         }
+
+
+//        // 캘린더 리사이클러뷰 바인딩
+//        binding.calendarRv.layoutManager = LinearLayoutManager(context)
+//        binding.calendarRv.adapter = TodoAdapter(todoData)
+
 
         return binding.root
     }
@@ -95,11 +102,16 @@ class HomeFragment : Fragment() {
 
         var monthCalendar = CalendarUtil.selectedDate.clone() as Calendar
 
+        Log.d(TAG, "monthCalendar : " + monthCalendar)
+
         // 1일로 세팅
         monthCalendar[Calendar.DAY_OF_MONTH] = 1
 
+        Log.d(TAG, "monthCalendar2 : " + monthCalendar)
+
         // 해당 달의 1일의 요일 [1:일요일, 2:월요일... 7일:토요일]
         val firstDayofMonth = monthCalendar[Calendar.DAY_OF_WEEK]-1
+        Log.d(TAG, "monthCalendar3 : " + (monthCalendar[Calendar.DAY_OF_WEEK]-1))
 
         // 요일 숫자만큼 이전 날짜로 변경
         // 예 : 6월 1일이 수요일이면 3만큼 이전날짜 셋팅
