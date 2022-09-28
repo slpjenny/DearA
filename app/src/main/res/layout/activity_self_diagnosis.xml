@@ -9,7 +9,7 @@
     android:orientation="vertical">
 
     <android.widget.Button
-        android:id="@+id/button2"
+        android:id="@+id/back2"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginLeft="17dp"
@@ -29,7 +29,7 @@
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2"></TextView>
+        app:layout_constraintTop_toBottomOf="@+id/back2"></TextView>
 
     <TextView
         android:id="@+id/textView4"
@@ -55,7 +55,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4"></ImageView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/button3"
+        android:id="@+id/diagnosisBtn1"
         android:layout_width="350dp"
         android:layout_height="120dp"
         android:layout_marginTop="40dp"
@@ -96,7 +96,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/button4"
+        android:id="@+id/diagnosisBtn2"
         android:layout_width="350dp"
         android:layout_height="120dp"
         android:layout_marginTop="20dp"
@@ -104,7 +104,7 @@
         android:background="@drawable/login_write_bg_gray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3">
+        app:layout_constraintTop_toBottomOf="@+id/diagnosisBtn1">
 
 
         <TextView
@@ -138,6 +138,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/diagnosisBtn3"
         android:layout_width="350dp"
         android:layout_height="120dp"
         android:background="@drawable/login_write_bg_gray"
@@ -145,7 +146,7 @@
         android:elevation="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button4">
+        app:layout_constraintTop_toBottomOf="@+id/diagnosisBtn2">
 
         <TextView
             android:id="@+id/textView8"

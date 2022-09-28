@@ -18,14 +18,16 @@
         app:layout_constraintRight_toRightOf="parent"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bnv_main"
         android:layout_width="match_parent"
         android:layout_height="64dp"
-        android:id="@+id/bnv_main"
         android:background="#f9f9f9"
-        app:menu="@menu/nav_menu"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/nav_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

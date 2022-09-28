@@ -4,9 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_time_picker"
-    android:layout_width="328dp"
+    android:layout_width="340dp"
     android:layout_height="637dp"
-    android:background="@color/contactus_gray"
+    android:background="@drawable/background_radius_white"
     tools:context=".alarm.TimePickerActivity">
 
     <ImageButton
@@ -16,7 +16,6 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="20dp"
         android:background="@android:color/transparent"
-        android:backgroundTint="@color/dark_purple"
         android:scaleType="centerInside"
         android:src="@drawable/back"
         app:layout_constraintEnd_toStartOf="@+id/saveBtn"
@@ -41,7 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:background="@color/contactus_gray"
+        android:background="@color/white"
         android:timePickerMode="spinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -255,7 +254,6 @@
         app:layout_constraintEnd_toEndOf="@+id/backgroundRmAlarm"
         app:layout_constraintStart_toStartOf="@+id/backgroundRmAlarm"
         app:layout_constraintTop_toTopOf="@+id/backgroundRmAlarm" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
