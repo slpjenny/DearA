@@ -53,6 +53,7 @@ class CalendarAdapter(private val dayList: ArrayList<Date>) :
 
         // 날짜 캘린더에 담기
         dateCalendar.time = monthDate
+        Log.d(TAG, "dataCalendar.time : " + dateCalendar.time)
 
         // 캘린더값 날짜 변수에 담기
         var dayNo = dateCalendar.get(Calendar.DAY_OF_MONTH)
@@ -126,4 +127,5 @@ class CalendarAdapter(private val dayList: ArrayList<Date>) :
     override fun getItemCount(): Int {
         return dayList.size
     }
+
 }
