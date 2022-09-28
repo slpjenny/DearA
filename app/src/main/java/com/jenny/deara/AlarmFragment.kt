@@ -33,7 +33,12 @@ class AlarmFragment : Fragment() {
         // binding 초기화
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_alarm, container, false)
 
-        initRecycler()
+        // initRecycler()
+
+        AlarmListAdapter = AlarmListAdapter(requireContext())
+
+        val rv : RecyclerView = binding.rvAlarm
+        rv.adapter = AlarmListAdapter
 
         // 마이페이지 버튼
         binding.myPageBtn.setOnClickListener {
@@ -45,12 +50,29 @@ class AlarmFragment : Fragment() {
         binding.addAlarmBtn.setOnClickListener {
             val dialog = AlarmDialog()
             dialog.show(parentFragmentManager, "CustomDialog")
+
+            dialog.setOnClickedListener(object: AlarmDialog.ButtonClickListener {
+                override fun onClicked(time: String, title: String) {
+                    val time: String = time
+                    val title: String = title
+
+                    datas.apply{
+                        add(AlarmData(time, title, "매일"))
+
+                        AlarmListAdapter.datas = datas
+                        AlarmListAdapter.notifyDataSetChanged()
+                    }
+
+
+                }
+
+            })
         }
 
         return binding.root
     }
 
-    private fun initRecycler() {
+/*    private fun initRecycler() {
         AlarmListAdapter = AlarmListAdapter(requireContext())
 
         val rv : RecyclerView = binding.rvAlarm
@@ -58,13 +80,11 @@ class AlarmFragment : Fragment() {
 
         // test 데이터
         datas.apply{
-            add(AlarmData("13:45", "점심 약", "매일"))
+            add(AlarmData("13:00", "점심 약", "매일"))
             add(AlarmData("19:30", "저녁 약", "주말"))
 
             AlarmListAdapter.datas = datas
             AlarmListAdapter.notifyDataSetChanged()
         }
-    }
-
-
+    }*/
 }
