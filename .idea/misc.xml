@@ -65,6 +65,7 @@
         <entry key="app/src/main/res/layout/fragment_record_delete.xml" value="0.2713541666666667" />
         <entry key="app/src/main/res/layout/fragment_record_end.xml" value="0.25729166666666664" />
         <entry key="app/src/main/res/layout/fragment_record_start.xml" value="0.2713541666666667" />
+        <entry key="app/src/main/res/layout/fregment_swipe_delete.xml" value="0.1" />
         <entry key="app/src/main/res/layout/memo.xml" value="0.2703125" />
         <entry key="app/src/main/res/layout/name_date.xml" value="0.2703125" />
         <entry key="app/src/main/res/layout/pill_plus.xml" value="0.2745352156510155" />
