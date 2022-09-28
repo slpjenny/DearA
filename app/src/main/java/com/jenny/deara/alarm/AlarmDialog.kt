@@ -18,6 +18,9 @@ class AlarmDialog(): DialogFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = AlarmDialogBinding.inflate(inflater, container, false)
         val view = binding.root
+
+        // binding.timePicker.setOnTimeChangedListener { timePicker, hour, minute -> }
+
         // 레이아웃 배경을 투명하게
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
