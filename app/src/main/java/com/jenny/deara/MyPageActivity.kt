@@ -3,11 +3,14 @@ package com.jenny.deara
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.jenny.deara.databinding.ActivityLoginBinding
+import com.jenny.deara.PatternLock.PatternActivity
 import com.jenny.deara.databinding.ActivityMyPageBinding
 import com.jenny.deara.mypages.ChangeNickNameActivity
 import com.jenny.deara.mypages.ChangePwdActivity
 import com.jenny.deara.mypages.ContactUsFragment
+import com.jenny.deara.mypages.SelectLockActivity
+import kotlinx.android.synthetic.main.activity_my_page.*
+import java.util.regex.Pattern
 
 class MyPageActivity : AppCompatActivity() {
 
@@ -38,6 +41,12 @@ class MyPageActivity : AppCompatActivity() {
         // 뒤로가기
         binding.back6.setOnClickListener {
             onBackPressed()
+        }
+
+        //잠금 설정
+        binding.textView16.setOnClickListener {
+            val intent4  = Intent(this, SelectLockActivity::class.java)
+            startActivity(intent4)
         }
 
     }

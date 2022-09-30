@@ -16,13 +16,13 @@
         android:theme="@style/Theme.DearA"
         tools:targetApi="31">
         <activity
-            android:name=".SettingLockActivity"
+            android:name=".PatternLock.PatternSecureModeActivity"
             android:exported="false" />
         <activity
-            android:name=".SelectLockActivity"
+            android:name=".PatternLock.SettingPatternActivity"
             android:exported="false" />
         <activity
-            android:name=".PatternLock.PatternLockActivity"
+            android:name=".mypages.SelectLockActivity"
             android:exported="false" />
         <activity
             android:name=".PatternLock.PatternActivity"
