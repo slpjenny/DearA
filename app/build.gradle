@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-android-extensions'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -58,5 +59,17 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     implementation 'com.google.android.material:material:1.2.0'
-    implementation 'io.github.itsxtt:pattern-lock:0.2.0'
+
+    //life-cycle
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.0-alpha01"
+
+    //fragment
+    implementation "androidx.fragment:fragment-ktx:1.5.2"
+
+    //coroutine
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
+
+    //dagger-hilt
+    implementation "com.google.dagger:hilt-android:2.37"
+    androidTestImplementation "com.google.dagger:hilt-compiler:2.37"
 }

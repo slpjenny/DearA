@@ -1,26 +1,56 @@
 package com.jenny.deara.PatternLock
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
-import android.text.TextUtils
-import kotlinx.android.synthetic.main.activity_pattern_9x9.*
-import kotlinx.android.synthetic.main.activity_pattern_default.*
-import kotlinx.android.synthetic.main.activity_pattern_jd.*
-import kotlinx.android.synthetic.main.activity_pattern_with_indicator.*
+import android.widget.CompoundButton
+import android.widget.Switch
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.jenny.deara.R
-import com.itsxtt.patternlock.PatternLockView
-import java.util.ArrayList
+import com.jenny.deara.mypages.SelectLockActivity
+import kotlinx.android.synthetic.main.activity_setting_pattern.*
 
-class PatternLockActivity : AppCompatActivity() {
+
+class SettingPatternActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        var type = intent.getIntExtra(PatternActivity.KEY_PATTERN_TYPE, PatternActivity.TYPE_DEFAULT)
+        setContentView(R.layout.activity_setting_pattern)
+
+        pattern_setting.setOnClickListener {
+            val intent  = Intent(this, PatternActivity::class.java)
+            startActivity(intent)
+        }
+
+        imageView5.setOnClickListener {
+            val intent2 = Intent(this, SelectLockActivity::class.java)
+            startActivity(intent2)
+        }
+
+        pattern_setting_switch.setOnClickListener {
+            if (pattern_setting_switch.isChecked) {
+                //체크된 상태로 만들 시 코드
+                val intent3 = Intent(this, PatternSecureModeActivity::class.java)
+                startActivity(intent3)
+            } else {
+                //체크된 상태 취소 시 코드
+                Toast.makeText(
+                    this@SettingPatternActivity,
+                    "선 숨기기 기능이 해제되었습니다.",
+                    Toast.LENGTH_LONG
+                ).show()
+
+            }
+        }
+    }
+}
+                    /*var type = intent.getIntExtra(PatternActivity.KEY_PATTERN_TYPE, PatternActivity.TYPE_DEFAULT)
         when(type) {
             PatternActivity.TYPE_DEFAULT -> {
                 setContentView(R.layout.activity_pattern_default)
                 defaultPatternLockView.setOnPatternListener(listener)
             }
-            PatternActivity.TYPE_JD_STYLE -> {
+            *//*PatternActivity.TYPE_JD_STYLE -> {
                 setContentView(R.layout.activity_pattern_jd)
                 jdPatternLockView.setOnPatternListener(listener)
             }
@@ -36,7 +66,7 @@ class PatternLockActivity : AppCompatActivity() {
                 setContentView(R.layout.activity_pattern_default)
                 defaultPatternLockView.enableSecureMode()
                 defaultPatternLockView.setOnPatternListener(listener)
-            }
+            }*//*
         }
 
     }
@@ -59,7 +89,7 @@ class PatternLockActivity : AppCompatActivity() {
             } else {
                 tip = "error:" + getPatternString(ids)
             }
-            //Toast.makeText(this@PatternLockActivity, tip, Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@SettingPatternActivity, tip, Toast.LENGTH_SHORT).show()
             return isCorrect
         }
     }
@@ -70,5 +100,4 @@ class PatternLockActivity : AppCompatActivity() {
             result += id.toString()
         }
         return result
-    }
-}
+    }*/
