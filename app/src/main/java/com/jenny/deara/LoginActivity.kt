@@ -4,6 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.jenny.deara.databinding.ActivityLoginBinding
 import com.jenny.deara.mypages.FindPwdActivity
 
@@ -11,6 +14,7 @@ class LoginActivity : AppCompatActivity() {
 
     val binding by lazy { ActivityLoginBinding.inflate(layoutInflater) }
 
+//    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +40,10 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intentMain)
 
         }
+
+//        auth = Firebase.auth
+
+
 
     }
 }
