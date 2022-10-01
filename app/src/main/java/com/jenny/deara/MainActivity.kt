@@ -14,12 +14,12 @@ import com.jenny.deara.fragments.RecordFragment
 
 class MainActivity : AppCompatActivity() {
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         val bnv_main = findViewById<BottomNavigationView>(R.id.bnv_main)
+        var nav_diary = intent.getStringExtra("nav_diary")
 
         bnv_main.setOnItemSelectedListener { item ->
             changeFragment(
@@ -45,14 +45,13 @@ class MainActivity : AppCompatActivity() {
         }
         bnv_main.selectedItemId = R.id.third
 
-
-
-
+        if (nav_diary == "fourth"){
+            changeFragment(DiaryFragment())
+            bnv_main.selectedItemId = R.id.fourth
+        }
     }
 
-
-
-private fun changeFragment(fragment: Fragment) {
+    private fun changeFragment(fragment: Fragment) {
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.fl_container, fragment)

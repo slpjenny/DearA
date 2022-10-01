@@ -97,7 +97,7 @@
             app:layout_constraintHeight_percent="1"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintWidth_percent="0.5"
-            android:gravity="center">>
+            android:gravity="center">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -107,7 +107,5 @@
                 android:textColor="#FF3D3D"/>
 
         </LinearLayout>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

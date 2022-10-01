@@ -20,17 +20,31 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <EditText
+        android:id="@+id/todowrite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="해야할 일"
+        android:layout_marginLeft="10dp"
+        android:hint="해야할 일을 입력해주세요."
         android:textColor="@color/black"
         android:textSize="15sp"
         android:textStyle="bold"
+        android:background="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/clearBtn"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/tododel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_delete"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="10dp"/>
+        android:layout_marginRight="15dp"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
