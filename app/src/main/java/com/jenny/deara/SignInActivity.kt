@@ -10,13 +10,19 @@ import android.widget.Toast
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.jenny.deara.databinding.ActivitySignInBinding
+import kotlinx.android.synthetic.main.diary_list_item.*
 
 class SignInActivity : AppCompatActivity() {
 
     val binding by lazy { ActivitySignInBinding.inflate(layoutInflater) }
     private lateinit var auth: FirebaseAuth
+    private lateinit var database: DatabaseReference
+
+    //    val myRef = database.getReference("users")
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -47,6 +53,8 @@ class SignInActivity : AppCompatActivity() {
             var repwd = binding.rewritePwdEtxt.text.toString()
             var nick = binding.writeNickEtxt.text.toString()
 
+            database = Firebase.database.reference
+
             auth.createUserWithEmailAndPassword(email, pwd)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
@@ -54,6 +62,17 @@ class SignInActivity : AppCompatActivity() {
                         Log.d(TAG, "createUserWithEmail:success")
                         val user = auth.currentUser
                         Log.d(TAG, "info :" + user.toString())
+
+                        // 회원가입하고 있는 사용자의 UID 값을 먼저 users 그룹 안에 저장
+                        if (user != null) {
+                            database.child("users").setValue(user.uid)
+                        }
+
+                        // 사용자의 uid 에 따라 닉네임을 저장
+                        if (user != null) {
+                            database.child("users").child(user.uid).setValue(nick)
+                        }
+
 
 //                    updateUI(user)
                     } else {
