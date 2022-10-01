@@ -73,13 +73,12 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <EditText
-                android:id="@+id/editText"
+                android:id="@+id/write_email_etxt"
                 android:layout_width="210dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="40dp"
                 android:background="@null"
                 android:hint="이메일"
-                android:inputType="textNoSuggestions|textVisiblePassword"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
                 android:textSize="13sp"
@@ -94,7 +93,7 @@
                 android:text="중복 확인"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/editText"
+                app:layout_constraintStart_toEndOf="@+id/write_email_etxt"
                 app:layout_constraintTop_toTopOf="parent"></android.widget.Button>
 
 
@@ -119,12 +118,13 @@
             app:layout_constraintTop_toBottomOf="@+id/imageView6">
 
             <EditText
+                android:id="@+id/write_pwd_etxt"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginLeft="40dp"
                 android:background="@null"
                 android:hint="비밀번호"
-                android:inputType="textNoSuggestions|textVisiblePassword"
+                android:inputType="textPassword"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
                 android:textSize="13sp"
@@ -154,12 +154,13 @@
             app:layout_constraintTop_toBottomOf="@+id/imageView7">
 
             <EditText
+                android:id="@+id/rewrite_pwd_etxt"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginLeft="40dp"
                 android:background="@null"
                 android:hint="비밀번호 재입력"
-                android:inputType="textNoSuggestions|textVisiblePassword"
+                android:inputType="textPassword"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
                 android:textSize="13sp"
@@ -189,13 +190,12 @@
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout5">
 
             <EditText
-                android:id="@+id/editText2"
+                android:id="@+id/write_nick_etxt"
                 android:layout_width="210dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="40dp"
                 android:background="@null"
                 android:hint="닉네임"
-                android:inputType="textNoSuggestions|textVisiblePassword"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
                 android:textSize="13sp"
@@ -210,7 +210,7 @@
                 android:text="중복 확인"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/editText2"
+                app:layout_constraintStart_toEndOf="@+id/write_nick_etxt"
                 app:layout_constraintTop_toTopOf="parent"></android.widget.Button>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -229,7 +229,7 @@
 
 
     <android.widget.Button
-        android:id="@+id/button"
+        android:id="@+id/saveBtn"
         android:layout_width="300dp"
         android:layout_height="70dp"
         android:background="@drawable/purple_btn_bg"

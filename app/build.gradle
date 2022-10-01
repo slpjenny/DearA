@@ -1,6 +1,10 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+
+    // com.android.application 이 구글 서비스를 포함하고 있어서 해당 코드 주석 처리
+    id 'com.google.gms.google-services'
+
 }
 
 android {
@@ -40,6 +44,8 @@ android {
         viewBinding true
     }
 
+
+
 }
 
 dependencies {
@@ -57,4 +63,13 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     implementation 'com.google.android.material:material:1.2.0'
+
+    //firebase 사용 (코드 성공)
+    implementation platform('com.google.firebase:firebase-bom:30.4.1')
+
+    //firebase Authentication
+    implementation platform('com.google.firebase:firebase-bom:30.4.1')
+    implementation 'com.google.firebase:firebase-auth-ktx'
+
 }
+
