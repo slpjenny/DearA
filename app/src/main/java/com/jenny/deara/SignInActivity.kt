@@ -66,8 +66,6 @@ class SignInActivity : AppCompatActivity() {
                 }
         }
 
-
-
     }
 
 
