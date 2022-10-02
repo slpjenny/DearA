@@ -23,6 +23,11 @@ class AlarmListAdapter(val context: Context): RecyclerView.Adapter<AlarmListAdap
         holder.bind(datas[position])
     }
 
+ /*   fun removeItem(position: Int) {
+            datas.removeAt(position)
+            notifyDataSetChanged()
+    }*/
+
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val time: TextView = itemView.findViewById(R.id.tv_time)
         private val title: TextView = itemView.findViewById(R.id.tv_title)
