@@ -2,6 +2,7 @@ package com.jenny.deara
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -52,12 +53,32 @@ class AlarmFragment : Fragment() {
             dialog.show(parentFragmentManager, "CustomDialog")
 
             dialog.setOnClickedListener(object: AlarmDialog.ButtonClickListener {
-                override fun onClicked(time: String, title: String) {
-                    val time: String = time
-                    val title: String = title
+                override fun onClicked(hour: String, minute: String,  title: String, day: String) {
+                    var hour: String = hour
+                    var minute: String = minute
+                    var time: String
+                    var title: String = title
+                    var day: String = day
+
+                    if(minute.toInt() < 10) {
+                        time= hour.toString() +":0"+ minute.toString()
+                    } else {
+                        time= hour.toString() +":"+ minute.toString()
+                    }
+
+                    if (day.replace(" ", "") == "월화수목금토일") {
+                        day = "매일"
+                    } else if (day.replace(" ", "") == "토일") {
+                        day = "주말"
+                   } else if (day.replace(" ", "") == "월화수목금") {
+                       day = "주중"
+                    } else {
+                        day = day
+                    }
+
 
                     datas.apply{
-                        add(AlarmData(time, title, "매일"))
+                        add(AlarmData(time, title, day))
 
                         AlarmListAdapter.datas = datas
                         AlarmListAdapter.notifyDataSetChanged()
