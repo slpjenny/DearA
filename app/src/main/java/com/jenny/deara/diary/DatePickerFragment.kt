@@ -1,9 +1,11 @@
 package com.jenny.deara.diary
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.text.method.TextKeyListener.clear
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -75,24 +77,73 @@ class DatePickerFragment : DialogFragment() {
             binding.year.setText(iYear.toString())
         }
 
-//        binding.month1.setOnClickListener {
-//            iMonth = 1
-//            setBackgrounDefault(iMonth)
-//            monthPicker(iMonth)
-//        }
-//        binding.month2.setOnClickListener {
-//            iMonth = 2
-//            monthPicker(iMonth)
-//            setBackgrounDefault(iMonth)
-//        }
-//        binding.month3.setOnClickListener {
-//            iMonth = 3
-//            monthPicker(iMonth)
-//        }
+        // 달 버튼 클릭 이벤트
+        binding.month1.setOnClickListener {
+            iMonth = 1
+            setBackgrounDefault()
+            monthPicker(iMonth)
+        }
+        binding.month2.setOnClickListener {
+            iMonth = 2
+            setBackgrounDefault()
+            monthPicker(iMonth)
+        }
+        binding.month3.setOnClickListener {
+            iMonth = 3
+            setBackgrounDefault()
+            monthPicker(iMonth)
+        }
+        binding.month4.setOnClickListener {
+            iMonth = 4
+            setBackgrounDefault()
+            monthPicker(iMonth)
+        }
+        binding.month5.setOnClickListener {
+            iMonth = 5
+            setBackgrounDefault()
+            monthPicker(iMonth)
+        }
+        binding.month6.setOnClickListener {
+            iMonth = 6
+            setBackgrounDefault()
+            monthPicker(iMonth)
+        }
+        binding.month7.setOnClickListener {
+            iMonth = 7
+            setBackgrounDefault()
+            monthPicker(iMonth)
+        }
+        binding.month8.setOnClickListener {
+            iMonth = 8
+            setBackgrounDefault()
+            monthPicker(iMonth)
+        }
+        binding.month9.setOnClickListener {
+            iMonth = 9
+            setBackgrounDefault()
+            monthPicker(iMonth)
+        }
+        binding.month10.setOnClickListener {
+            iMonth = 10
+            setBackgrounDefault()
+            monthPicker(iMonth)
+        }
+        binding.month11.setOnClickListener {
+            iMonth = 11
+            setBackgrounDefault()
+            monthPicker(iMonth)
+        }
+        binding.month12.setOnClickListener {
+            iMonth = 12
+            setBackgrounDefault()
+            monthPicker(iMonth)
+        }
 
         return binding.root
     }
 
+
+    // 달 누르면 색 바꿔주는 함수
     private fun monthPicker( iMonth : Int){
         if (iMonth == 1){
             binding.month1.background = getContext()?.let { getDrawable(it, R.drawable.diary_button) }
@@ -133,7 +184,33 @@ class DatePickerFragment : DialogFragment() {
         }
     }
 
+    //기본값으로 변경해주는 함수
+    @SuppressLint("ResourceType")
     private fun setBackgrounDefault(){
-        binding.month1.setBackgroundResource(Color.)
+        binding.month1.setBackgroundColor(Color.parseColor("#00ff0000"))
+        binding.month2.setBackgroundColor(Color.parseColor("#00ff0000"))
+        binding.month3.setBackgroundColor(Color.parseColor("#00ff0000"))
+        binding.month4.setBackgroundColor(Color.parseColor("#00ff0000"))
+        binding.month5.setBackgroundColor(Color.parseColor("#00ff0000"))
+        binding.month6.setBackgroundColor(Color.parseColor("#00ff0000"))
+        binding.month7.setBackgroundColor(Color.parseColor("#00ff0000"))
+        binding.month8.setBackgroundColor(Color.parseColor("#00ff0000"))
+        binding.month9.setBackgroundColor(Color.parseColor("#00ff0000"))
+        binding.month10.setBackgroundColor(Color.parseColor("#00ff0000"))
+        binding.month11.setBackgroundColor(Color.parseColor("#00ff0000"))
+        binding.month12.setBackgroundColor(Color.parseColor("#00ff0000"))
+
+        binding.month1.setTextColor(Color.parseColor("#6A6A6A"))
+        binding.month2.setTextColor(Color.parseColor("#6A6A6A"))
+        binding.month3.setTextColor(Color.parseColor("#6A6A6A"))
+        binding.month4.setTextColor(Color.parseColor("#6A6A6A"))
+        binding.month5.setTextColor(Color.parseColor("#6A6A6A"))
+        binding.month6.setTextColor(Color.parseColor("#6A6A6A"))
+        binding.month7.setTextColor(Color.parseColor("#6A6A6A"))
+        binding.month8.setTextColor(Color.parseColor("#6A6A6A"))
+        binding.month9.setTextColor(Color.parseColor("#6A6A6A"))
+        binding.month10.setTextColor(Color.parseColor("#6A6A6A"))
+        binding.month11.setTextColor(Color.parseColor("#6A6A6A"))
+        binding.month12.setTextColor(Color.parseColor("#6A6A6A"))
     }
 }
