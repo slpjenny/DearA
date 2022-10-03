@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.getColor
@@ -28,6 +29,7 @@ class DatePickerFragment : DialogFragment() {
     private lateinit var binding: FragmentDatePickerBinding
     private var getID2 : Int = 0
     private lateinit var getID : R.id
+//    private lateinit var btn : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -131,17 +133,7 @@ class DatePickerFragment : DialogFragment() {
         }
     }
 
-//    private fun setBackgrounDefault(iMonth : Int){
-//        if (iMonth == 1){
-//            var test = (Button)findViewById<Button>(R.id.month1)
-//            test.setTextColor(getColor(requireContext(), R.color.text_gray))
-//            for (i in 2 .. 12){
-//                val ID = resources.getIdentifier("month$i","id","com.jenny.deara")
-//                getID = getID2.to
-//                ID.setTextColor(getColor(requireContext(), R.color.text_gray))
-//            }
-//        }
-//    }
-
-
+    private fun setBackgrounDefault(){
+        binding.month1.setBackgroundResource(Color.)
+    }
 }
