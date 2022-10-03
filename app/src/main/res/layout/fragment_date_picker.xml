@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/yearChange1"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginTop="10dp"
@@ -33,7 +33,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/yearChange2"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginBottom="10dp"
@@ -58,12 +58,12 @@
         android:gravity="center">
 
         <TextView
+            android:id="@+id/year"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="2022"
+            android:text="year"
             android:textStyle="bold"
-            android:textSize="22sp"
-            android:textColor="@color/black"/>
+            android:textSize="22sp"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -78,14 +78,16 @@
                 android:orientation="horizontal"
                 android:layout_marginBottom="5dp">
                 <Button
+                    android:id="@+id/month1"
                     android:text="1월"
+                    android:background="#00ff0000"
                     android:layout_width="45dp"
-                    android:layout_height="23dp"
-                    android:textColor="@color/white"
-                    android:background="@drawable/diary_button"
+                    android:layout_height="25dp"
+                    android:textColor="#6A6A6A"
                     android:textSize="15sp"
                     android:layout_marginRight="20dp"/>
                 <Button
+                    android:id="@+id/month2"
                     android:text="2월"
                     android:background="#00ff0000"
                     android:layout_width="45dp"
@@ -94,6 +96,7 @@
                     android:textSize="15sp"
                     android:layout_marginRight="20dp"/>
                 <Button
+                    android:id="@+id/month3"
                     android:text="3월"
                     android:background="#00ff0000"
                     android:layout_width="45dp"
@@ -102,6 +105,7 @@
                     android:textSize="15sp"
                     android:layout_marginRight="20dp"/>
                 <Button
+                    android:id="@+id/month4"
                     android:text="4월"
                     android:background="#00ff0000"
                     android:layout_width="45dp"
@@ -111,11 +115,13 @@
             </LinearLayout>
 
             <LinearLayout
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginBottom="5dp">
                 <Button
+                    android:id="@+id/month5"
                     android:text="5월"
                     android:background="#00ff0000"
                     android:layout_width="45dp"
@@ -124,6 +130,7 @@
                     android:textSize="15sp"
                     android:layout_marginRight="20dp"/>
                 <Button
+                    android:id="@+id/month6"
                     android:text="6월"
                     android:background="#00ff0000"
                     android:layout_width="45dp"
@@ -132,6 +139,7 @@
                     android:textSize="15sp"
                     android:layout_marginRight="20dp"/>
                 <Button
+                    android:id="@+id/month7"
                     android:text="7월"
                     android:background="#00ff0000"
                     android:layout_width="45dp"
@@ -140,6 +148,7 @@
                     android:textSize="15sp"
                     android:layout_marginRight="20dp"/>
                 <Button
+                    android:id="@+id/month8"
                     android:text="8월"
                     android:background="#00ff0000"
                     android:layout_width="45dp"
@@ -153,6 +162,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <Button
+                    android:id="@+id/month9"
                     android:text="9월"
                     android:background="#00ff0000"
                     android:layout_width="45dp"
@@ -161,6 +171,7 @@
                     android:textSize="15sp"
                     android:layout_marginRight="20dp"/>
                 <Button
+                    android:id="@+id/month10"
                     android:text="10월"
                     android:background="#00ff0000"
                     android:layout_width="45dp"
@@ -169,6 +180,7 @@
                     android:textSize="15sp"
                     android:layout_marginRight="20dp"/>
                 <Button
+                    android:id="@+id/month11"
                     android:background="#00ff0000"
                     android:text="11월"
                     android:layout_width="45dp"
@@ -177,6 +189,7 @@
                     android:textSize="15sp"
                     android:layout_marginRight="20dp"/>
                 <Button
+                    android:id="@+id/month12"
                     android:text="12월"
                     android:background="#00ff0000"
                     android:layout_width="45dp"

@@ -1,23 +1,28 @@
 package com.jenny.deara
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.jenny.deara.databinding.FragmentDiaryBinding
 import com.jenny.deara.diary.*
 
-class DiaryFragment : Fragment() {
+class DiaryFragment(override var iMonth: Int) : Fragment(),  DatePickerFragment.DatePickerListener {
 
     private lateinit var binding: FragmentDiaryBinding
 
     lateinit var DiaryListAdapter: DiaryListAdapter
     val datas = mutableListOf<DiaryData>()
+    val stringMonth : List<String> = listOf("JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +35,7 @@ class DiaryFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_diary, container, false)
 
         initRecycler()
+        showMonth(iMonth)
 
         //마이페이지 버튼
         binding.myPageBtn.setOnClickListener {
@@ -45,12 +51,13 @@ class DiaryFragment : Fragment() {
 
         //날짜 선택하기
         binding.datapicker.setOnClickListener {
-            DatePickerFragment().show(childFragmentManager, "SampleDialog")
+            showDatePickerDialog(iMonth)
         }
 
         return binding.root
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun initRecycler() {
         DiaryListAdapter = DiaryListAdapter(requireContext())
 
@@ -82,6 +89,20 @@ class DiaryFragment : Fragment() {
             DiaryListAdapter.datas = datas
             DiaryListAdapter.notifyDataSetChanged()
 
+        }
+    }
+
+    private fun showDatePickerDialog(iMonth: Int){
+        val dialog = DatePickerFragment(iMonth)
+        dialog.show(childFragmentManager, "DatePickerDialog")
+    }
+
+    //달 띄우기
+    private fun showMonth(iMonth: Int){
+        for (i in 1 .. 12){
+            if (iMonth == i){
+                binding.month.text = stringMonth[i-1]
+            }
         }
     }
 }

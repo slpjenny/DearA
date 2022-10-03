@@ -1,20 +1,45 @@
 package com.jenny.deara.diary
 
+import android.annotation.SuppressLint
+import android.app.Dialog
+import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.adapters.DatePickerBindingAdapter
+import androidx.core.content.ContextCompat.getDrawable
 import androidx.fragment.app.DialogFragment
+import com.jenny.deara.MainActivity
 import com.jenny.deara.R
 import com.jenny.deara.databinding.FragmentDatePickerBinding
+import java.lang.ClassCastException
+import java.util.*
+import kotlin.properties.Delegates
 
-class DatePickerFragment : DialogFragment() {
+class DatePickerFragment(var iMonth: Int) : DialogFragment() {
 
     private lateinit var binding: FragmentDatePickerBinding
+    private lateinit var listener: DatePickerListener
+
+    interface DatePickerListener{
+        var iMonth: Int
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        try {
+            //리스너를 인스턴스화함으로서 host에 event 보냄
+            listener = parentFragment as DatePickerListener
+        } catch (e: ClassCastException){
+            // host에 interface가 구현되어 있지 않으면 exception throw
+            throw ClassCastException(
+                context.toString()+"must implement NoticeDialogListner"
+            )
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,7 +63,183 @@ class DatePickerFragment : DialogFragment() {
             dismiss()
         }
 
+
+        // 현재 년도, 달 띄우기
+        var dateCalendar = Calendar.getInstance()
+        var iYear = dateCalendar.get(Calendar.YEAR)
+        //iMonth = dateCalendar.get(Calendar.MONTH) + 1
+
+        //날짜 기본값
+        binding.year.text = iYear.toString()
+        monthPicker(iMonth)
+
+        //년도 -1 버튼
+        binding.yearChange1.setOnClickListener {
+            iYear -= 1
+            binding.year.text = iYear.toString()
+        }
+
+        //년도 +1 버튼
+        binding.yearChange2.setOnClickListener {
+            iYear += 1
+            binding.year.text = iYear.toString()
+        }
+
+        // 달 버튼 클릭 이벤트
+        binding.month1.setOnClickListener {
+            iMonth = 1
+            setBackgrounDefault()
+            monthPicker(iMonth)
+            goDiaryFragment(iMonth)
+
+        }
+        binding.month2.setOnClickListener {
+            iMonth = 2
+            setBackgrounDefault()
+            monthPicker(iMonth)
+            goDiaryFragment(iMonth)
+        }
+        binding.month3.setOnClickListener {
+            iMonth = 3
+            setBackgrounDefault()
+            monthPicker(iMonth)
+            goDiaryFragment(iMonth)
+        }
+        binding.month4.setOnClickListener {
+            iMonth = 4
+            setBackgrounDefault()
+            monthPicker(iMonth)
+            goDiaryFragment(iMonth)
+        }
+        binding.month5.setOnClickListener {
+            iMonth = 5
+            setBackgrounDefault()
+            monthPicker(iMonth)
+            goDiaryFragment(iMonth)
+        }
+        binding.month6.setOnClickListener {
+            iMonth = 6
+            setBackgrounDefault()
+            monthPicker(iMonth)
+            goDiaryFragment(iMonth)
+        }
+        binding.month7.setOnClickListener {
+            iMonth = 7
+            setBackgrounDefault()
+            monthPicker(iMonth)
+            goDiaryFragment(iMonth)
+        }
+        binding.month8.setOnClickListener {
+            iMonth = 8
+            setBackgrounDefault()
+            monthPicker(iMonth)
+            goDiaryFragment(iMonth)
+        }
+        binding.month9.setOnClickListener {
+            iMonth = 9
+            setBackgrounDefault()
+            monthPicker(iMonth)
+            goDiaryFragment(iMonth)
+        }
+        binding.month10.setOnClickListener {
+            iMonth = 10
+            setBackgrounDefault()
+            monthPicker(iMonth)
+            goDiaryFragment(iMonth)
+        }
+        binding.month11.setOnClickListener {
+            iMonth = 11
+            setBackgrounDefault()
+            monthPicker(iMonth)
+            goDiaryFragment(iMonth)
+        }
+        binding.month12.setOnClickListener {
+            iMonth = 12
+            setBackgrounDefault()
+            monthPicker(iMonth)
+            goDiaryFragment(iMonth)
+        }
+
         return binding.root
     }
 
+
+    // 달 누르면 색 바꿔주는 함수
+    private fun monthPicker( iMonth : Int){
+        if (iMonth == 1){
+            binding.month1.background = context?.let { getDrawable(it, R.drawable.diary_button) }
+            binding.month1.setTextColor(Color.WHITE)
+        }else if(iMonth == 2){
+            binding.month2.background = context?.let { getDrawable(it, R.drawable.diary_button) }
+            binding.month2.setTextColor(Color.WHITE)
+        }else if(iMonth == 3) {
+            binding.month3.background = context?.let { getDrawable(it, R.drawable.diary_button) }
+            binding.month3.setTextColor(Color.WHITE)
+        }else if(iMonth == 4){
+            binding.month4.background = context?.let { getDrawable(it, R.drawable.diary_button) }
+            binding.month4.setTextColor(Color.WHITE)
+        }else if(iMonth == 5){
+            binding.month5.background = context?.let { getDrawable(it, R.drawable.diary_button) }
+            binding.month5.setTextColor(Color.WHITE)
+        }else if(iMonth == 6){
+            binding.month6.background = context?.let { getDrawable(it, R.drawable.diary_button) }
+            binding.month6.setTextColor(Color.WHITE)
+        }else if(iMonth == 7){
+            binding.month7.background = context?.let { getDrawable(it, R.drawable.diary_button) }
+            binding.month7.setTextColor(Color.WHITE)
+        }else if(iMonth == 8){
+            binding.month8.background = context?.let { getDrawable(it, R.drawable.diary_button) }
+            binding.month8.setTextColor(Color.WHITE)
+        }else if(iMonth == 9){
+            binding.month9.background = context?.let { getDrawable(it, R.drawable.diary_button) }
+            binding.month9.setTextColor(Color.WHITE)
+        }else if(iMonth == 10){
+            binding.month10.background = context?.let { getDrawable(it, R.drawable.diary_button) }
+            binding.month10.setTextColor(Color.WHITE)
+        }else if(iMonth == 11){
+            binding.month11.background = context?.let { getDrawable(it, R.drawable.diary_button) }
+            binding.month11.setTextColor(Color.WHITE)
+        }else {
+            binding.month12.background = context?.let { getDrawable(it, R.drawable.diary_button) }
+            binding.month12.setTextColor(Color.WHITE)
+        }
+    }
+
+    //기본값으로 변경해주는 함수
+    @SuppressLint("ResourceType")
+    private fun setBackgrounDefault(){
+        binding.month1.setBackgroundColor(Color.parseColor("#00ff0000"))
+        binding.month2.setBackgroundColor(Color.parseColor("#00ff0000"))
+        binding.month3.setBackgroundColor(Color.parseColor("#00ff0000"))
+        binding.month4.setBackgroundColor(Color.parseColor("#00ff0000"))
+        binding.month5.setBackgroundColor(Color.parseColor("#00ff0000"))
+        binding.month6.setBackgroundColor(Color.parseColor("#00ff0000"))
+        binding.month7.setBackgroundColor(Color.parseColor("#00ff0000"))
+        binding.month8.setBackgroundColor(Color.parseColor("#00ff0000"))
+        binding.month9.setBackgroundColor(Color.parseColor("#00ff0000"))
+        binding.month10.setBackgroundColor(Color.parseColor("#00ff0000"))
+        binding.month11.setBackgroundColor(Color.parseColor("#00ff0000"))
+        binding.month12.setBackgroundColor(Color.parseColor("#00ff0000"))
+
+        binding.month1.setTextColor(Color.parseColor("#6A6A6A"))
+        binding.month2.setTextColor(Color.parseColor("#6A6A6A"))
+        binding.month3.setTextColor(Color.parseColor("#6A6A6A"))
+        binding.month4.setTextColor(Color.parseColor("#6A6A6A"))
+        binding.month5.setTextColor(Color.parseColor("#6A6A6A"))
+        binding.month6.setTextColor(Color.parseColor("#6A6A6A"))
+        binding.month7.setTextColor(Color.parseColor("#6A6A6A"))
+        binding.month8.setTextColor(Color.parseColor("#6A6A6A"))
+        binding.month9.setTextColor(Color.parseColor("#6A6A6A"))
+        binding.month10.setTextColor(Color.parseColor("#6A6A6A"))
+        binding.month11.setTextColor(Color.parseColor("#6A6A6A"))
+        binding.month12.setTextColor(Color.parseColor("#6A6A6A"))
+    }
+
+    private fun goDiaryFragment(iMonth: Int){
+        // 다이어리 리스트로 이동
+        val intent = Intent(context, MainActivity::class.java)
+        intent.putExtra("iMonth", iMonth)
+        intent.putExtra("nav_diary","fourth")
+        startActivity(intent)
+    }
 }
