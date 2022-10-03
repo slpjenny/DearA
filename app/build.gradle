@@ -1,6 +1,12 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+
+    // com.android.application 이 구글 서비스를 포함하고 있어서 해당 코드 주석 처리
+    id 'com.google.gms.google-services'
+
+    id 'kotlin-android-extensions'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -40,6 +46,8 @@ android {
         viewBinding true
     }
 
+
+
 }
 
 dependencies {
@@ -57,4 +65,30 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     implementation 'com.google.android.material:material:1.2.0'
+
+    //life-cycle
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.0-alpha01"
+
+    //fragment
+    implementation "androidx.fragment:fragment-ktx:1.5.2"
+
+    //coroutine
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
+
+    //dagger-hilt
+    implementation "com.google.dagger:hilt-android:2.37"
+    androidTestImplementation "com.google.dagger:hilt-compiler:2.37"
+
+    //firebase 사용 (코드 성공)
+    implementation platform('com.google.firebase:firebase-bom:30.4.1')
+
+    //firebase Authentication
+    implementation platform('com.google.firebase:firebase-bom:30.4.1')
+    implementation 'com.google.firebase:firebase-auth-ktx'
+
+    //firebase realtime database
+    implementation 'com.google.firebase:firebase-database-ktx'
+
+
+
 }

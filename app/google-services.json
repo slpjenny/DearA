@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "854589540313",
+    "project_id": "deara-25f85",
+    "storage_bucket": "deara-25f85.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:854589540313:android:e1ce0306de4015d3673bc8",
+        "android_client_info": {
+          "package_name": "com.jenny.deara"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "854589540313-a4j7f114ougdgnm5mfmbogatld15b6ps.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgXvWbVEj-h2we0bSoW57xAyu697da7yo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "854589540313-a4j7f114ougdgnm5mfmbogatld15b6ps.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

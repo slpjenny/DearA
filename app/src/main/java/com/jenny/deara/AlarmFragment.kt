@@ -2,6 +2,7 @@ package com.jenny.deara
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -33,7 +34,12 @@ class AlarmFragment : Fragment() {
         // binding 초기화
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_alarm, container, false)
 
-        initRecycler()
+        // initRecycler()
+
+        AlarmListAdapter = AlarmListAdapter(requireContext())
+
+        val rv : RecyclerView = binding.rvAlarm
+        rv.adapter = AlarmListAdapter
 
         // 마이페이지 버튼
         binding.myPageBtn.setOnClickListener {
@@ -45,12 +51,49 @@ class AlarmFragment : Fragment() {
         binding.addAlarmBtn.setOnClickListener {
             val dialog = AlarmDialog()
             dialog.show(parentFragmentManager, "CustomDialog")
+
+            dialog.setOnClickedListener(object: AlarmDialog.ButtonClickListener {
+                override fun onClicked(hour: String, minute: String,  title: String, day: String) {
+                    var hour: String = hour
+                    var minute: String = minute
+                    var time: String
+                    var title: String = title
+                    var day: String = day
+
+                    if(minute.toInt() < 10) {
+                        time= hour.toString() +":0"+ minute.toString()
+                    } else {
+                        time= hour.toString() +":"+ minute.toString()
+                    }
+
+                    if (day.replace(" ", "") == "월화수목금토일") {
+                        day = "매일"
+                    } else if (day.replace(" ", "") == "토일") {
+                        day = "주말"
+                   } else if (day.replace(" ", "") == "월화수목금") {
+                       day = "주중"
+                    } else {
+                        day = day
+                    }
+
+
+                    datas.apply{
+                        add(AlarmData(time, title, day))
+
+                        AlarmListAdapter.datas = datas
+                        AlarmListAdapter.notifyDataSetChanged()
+                    }
+
+
+                }
+
+            })
         }
 
         return binding.root
     }
 
-    private fun initRecycler() {
+/*    private fun initRecycler() {
         AlarmListAdapter = AlarmListAdapter(requireContext())
 
         val rv : RecyclerView = binding.rvAlarm
@@ -58,13 +101,11 @@ class AlarmFragment : Fragment() {
 
         // test 데이터
         datas.apply{
-            add(AlarmData("13:45", "점심 약", "매일"))
+            add(AlarmData("13:00", "점심 약", "매일"))
             add(AlarmData("19:30", "저녁 약", "주말"))
 
             AlarmListAdapter.datas = datas
             AlarmListAdapter.notifyDataSetChanged()
         }
-    }
-
-
+    }*/
 }
