@@ -65,16 +65,17 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
+                android:id="@+id/month"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="MAY "
+                android:text="month"
                 android:textColor="@color/purple1"
                 android:textSize="20sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="/"
+                android:text=" /"
                 android:textColor="@color/purple1"
                 android:textSize="20sp" />
 

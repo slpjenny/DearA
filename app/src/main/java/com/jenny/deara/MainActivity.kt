@@ -1,16 +1,12 @@
 package com.jenny.deara
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.FrameLayout
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.navigation.NavigationBarView
 import com.jenny.deara.board.BoardMainFragment
 import com.jenny.deara.fragments.RecordFragment
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,6 +16,9 @@ class MainActivity : AppCompatActivity() {
 
         val bnv_main = findViewById<BottomNavigationView>(R.id.bnv_main)
         var nav_diary = intent.getStringExtra("nav_diary")
+        var dateCalendar = Calendar.getInstance()
+        var defaultMonth = dateCalendar.get(Calendar.MONTH) + 1
+        var getMonth = intent.getIntExtra("iMonth", defaultMonth)
 
         bnv_main.setOnItemSelectedListener { item ->
             changeFragment(
@@ -34,7 +33,7 @@ class MainActivity : AppCompatActivity() {
                         HomeFragment()
                     }
                     R.id.fourth -> {
-                        DiaryFragment()
+                        DiaryFragment(iMonth = getMonth)
                     }
                     else -> {
                         BoardMainFragment()
@@ -46,9 +45,10 @@ class MainActivity : AppCompatActivity() {
         bnv_main.selectedItemId = R.id.third
 
         if (nav_diary == "fourth"){
-            changeFragment(DiaryFragment())
+            changeFragment(DiaryFragment(iMonth = getMonth))
             bnv_main.selectedItemId = R.id.fourth
         }
+
     }
 
     private fun changeFragment(fragment: Fragment) {
@@ -58,3 +58,4 @@ class MainActivity : AppCompatActivity() {
             .commit()
     }
 }
+

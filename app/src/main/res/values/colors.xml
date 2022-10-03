@@ -18,13 +18,11 @@
     <!-- 글자 색상 -->
     <color name="dark_purple">#414E7D</color>
     <color name="red">#FF0000</color>
-    <color name="text_gray">#6A6A6A</color>
 
     <!-- 추가 색상 -->
     <color name="contactus_gray">#F9F9F9</color>
     <color name="board_menu_gray">#CFCFCF</color>
     <color name="pink">#F0B8B8</color>
-    <color name="clear">#00ff0000</color>
 
     <!-- button -->
     <color name="clear_button_text_color">@color/white</color>
