@@ -19,6 +19,8 @@ class MainActivity : AppCompatActivity() {
         var dateCalendar = Calendar.getInstance()
         var defaultMonth = dateCalendar.get(Calendar.MONTH) + 1
         var getMonth = intent.getIntExtra("iMonth", defaultMonth)
+        var defaultYear = dateCalendar.get(Calendar.YEAR)
+        var getYear = intent.getIntExtra("iYear", defaultYear)
 
         bnv_main.setOnItemSelectedListener { item ->
             changeFragment(
@@ -33,7 +35,7 @@ class MainActivity : AppCompatActivity() {
                         HomeFragment()
                     }
                     R.id.fourth -> {
-                        DiaryFragment(iMonth = getMonth)
+                        DiaryFragment(iMonth = getMonth, iYear = getYear)
                     }
                     else -> {
                         BoardMainFragment()
@@ -45,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         bnv_main.selectedItemId = R.id.third
 
         if (nav_diary == "fourth"){
-            changeFragment(DiaryFragment(iMonth = getMonth))
+            changeFragment(DiaryFragment(iMonth = getMonth, iYear = getYear))
             bnv_main.selectedItemId = R.id.fourth
         }
 
