@@ -20,6 +20,7 @@ class FindPwdActivity : AppCompatActivity() {
     }
 
     // Activity 뒤로 가기 기능
+    // 이거 활성화가 왜 안되냐?
     override fun onBackPressed() {
         super.onBackPressed()
     }
