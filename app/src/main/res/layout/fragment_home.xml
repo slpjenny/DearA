@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <FrameLayout
+        android:id="@+id/framelayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".HomeFragment">
@@ -448,9 +449,12 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="500dp"
-                        app:layout_constraintTop_toBottomOf="@+id/constraintLayout4"
-                        android:elevation="30dp">
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginBottom="15dp"
+                        app:layout_constraintTop_toBottomOf="@+id/constraintLayout4">
 
                         <TextView
                             android:id="@+id/toDoText"
@@ -469,21 +473,28 @@
                             android:id="@+id/todoplus"
                             android:layout_width="33dp"
                             android:layout_height="33dp"
-                            android:text="+"
-                            android:textSize="25sp"
-                            android:textColor="@color/black"
-                            android:background="@drawable/add_button"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
                             android:layout_marginTop="25dp"
                             android:layout_marginRight="30dp"
-                            android:elevation="50dp"/>
+                            android:background="@drawable/add_button"
+                            android:elevation="50dp"
+                            android:text="+"
+                            android:textColor="@color/black"
+                            android:textSize="25sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                        <ListView
-                            android:id="@+id/toDoList"
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/toDoListRV"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            app:layout_constraintTop_toBottomOf="@+id/toDoText" />
+                            android:layout_marginLeft="18dp"
+                            android:layout_marginTop="10dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/toDoText"
+                            tools:itemCount="5"
+                            tools:listitem="@layout/todolistview_item" />
 
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
