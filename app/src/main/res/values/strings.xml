@@ -20,6 +20,7 @@
     <string name="success_message_second_stage">새로운 패턴을 그리세요.</string>
     <string name="error_message_first_stage">4개 이상의 점을 연결해주세요.</string>
     <string name="error_message_second_stage">패턴을 잘못 입력했습니다.</string>
+    <string name="nothing"> </string>
 
     <!--dialog-->
     <string name="alert_dialog_confirm_message">새로운 패턴으로\n변경되었습니다.</string>
