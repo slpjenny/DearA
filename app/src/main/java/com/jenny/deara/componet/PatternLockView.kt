@@ -2,24 +2,28 @@ package com.jenny.deara.componet
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
-import android.graphics.Rect
+import android.graphics.*
+import android.graphics.drawable.Drawable
 import android.os.CountDownTimer
 import android.util.AttributeSet
+import android.util.TypedValue
 import android.view.Gravity
 import android.view.MotionEvent
+import android.view.View
 import android.view.ViewGroup
+import android.widget.GridLayout
 import android.widget.LinearLayout
 import androidx.annotation.ColorInt
 import androidx.annotation.Size
+import androidx.core.content.ContextCompat
 import androidx.core.view.forEach
 import androidx.core.view.forEachIndexed
 import androidx.core.view.setMargins
 import com.jenny.deara.R
 import com.jenny.deara.patternmodel.Dot
 import com.jenny.deara.patternmodel.DotView
+import java.util.ArrayList
+import java.util.regex.Pattern
 
 class PatternLockView @JvmOverloads constructor(
     context: Context,
@@ -40,6 +44,8 @@ class PatternLockView @JvmOverloads constructor(
     private var onChangeStateListener: ((state: PatternViewState) -> Unit)? = null
     private var countDownTimer: CountDownTimer? = null
     private var stagePasswords = linkedMapOf<PatternViewStageState, String>()
+    private var isSecureMode = false
+    private var onPatternListener: OnPatternListener? = null
 
     @ColorInt
     private var attrDotColor = Color.BLACK
@@ -67,7 +73,7 @@ class PatternLockView @JvmOverloads constructor(
     )
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         style = Paint.Style.FILL
-        strokeWidth = 30f
+        strokeWidth = 40f
         color = Color.WHITE
     }
 
@@ -368,6 +374,10 @@ class PatternLockView @JvmOverloads constructor(
                 dotColor = state.dotColor
                 lineColor = state.lineColor
             }
+            is PatternViewState.Secure -> {
+                dotColor = state.dotColor
+                lineColor = Color.TRANSPARENT
+            }
             else -> {
                 dotColor = attrDotColor
                 lineColor = attrLineColor
@@ -397,9 +407,27 @@ class PatternLockView @JvmOverloads constructor(
         invalidate()
     }
 
+    fun enableSecureMode() {
+        isSecureMode = true
+    }
+
+    fun disableSecureMode() {
+        isSecureMode = false
+    }
+
     fun getPassword(stageState: PatternViewStageState) = stagePasswords[stageState]
 
     fun setOnChangeStateListener(listener: (state: PatternViewState) -> Unit) {
         onChangeStateListener = listener
+    }
+
+    fun setOnPatternListener(listener: OnPatternListener) {
+        onPatternListener = listener
+    }
+
+    interface OnPatternListener {
+        fun onStarted(){}
+        fun onProgress(ids: ArrayList<Int>){}
+        fun onComplete(ids: ArrayList<Int>) : Boolean
     }
 }

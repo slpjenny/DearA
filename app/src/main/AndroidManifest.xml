@@ -16,6 +16,9 @@
         android:theme="@style/Theme.DearA"
         tools:targetApi="31">
         <activity
+            android:name=".PatternLockActivity"
+            android:exported="false" />
+        <activity
             android:name=".PatternLock.PatternSecureModeActivity"
             android:exported="false" />
         <activity

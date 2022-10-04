@@ -13,6 +13,11 @@ sealed class PatternViewState {
         @ColorInt val lineColor: Int
     ) : PatternViewState()
 
+    data class Secure(
+        @ColorInt val dotColor: Int,
+        @ColorInt val lineColor: Int
+    ) : PatternViewState()
+
     object Initial : PatternViewState()
     object Started : PatternViewState()
 }
