@@ -38,8 +38,7 @@ class LoginActivity : AppCompatActivity() {
         binding.findPwdTxt.setOnClickListener {
             val intentFindPwd = Intent(this, FindPwdActivity::class.java)
             startActivity(intentFindPwd)
-
-        }
+                }
 
         // ' 로그인' 버튼 누르면 메인으로 이동
         binding.loginBtn.setOnClickListener {
