@@ -28,7 +28,7 @@ class SignInActivity : AppCompatActivity() {
 
 //        FirebaseApp.initializeApp(baseContext)
 
-        // Initialize Firebase Auth
+        // Auth 초기화
         auth = Firebase.auth
 
         super.onCreate(savedInstanceState)
