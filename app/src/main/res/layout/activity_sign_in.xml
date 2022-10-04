@@ -87,7 +87,7 @@
 
 
             <android.widget.Button
-                android:id="@+id/button5"
+                android:id="@+id/checkEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="중복 확인"
@@ -204,7 +204,7 @@
 
 
             <android.widget.Button
-                android:id="@+id/button7"
+                android:id="@+id/checkNick"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="중복 확인"

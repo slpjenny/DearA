@@ -44,6 +44,16 @@ class SignInActivity : AppCompatActivity() {
             onBackPressed()
         }
 
+
+        // 이메일 중복 확인
+        binding.checkEmail.setOnClickListener {
+            var email = binding.writeEmailEtxt.text.toString()
+
+
+        }
+
+
+
         // '완료' 버튼 누르면 신규 사용자 이메일,비밀번호로 가입
         binding.saveBtn.setOnClickListener {
 
@@ -55,40 +65,62 @@ class SignInActivity : AppCompatActivity() {
 
             database = Firebase.database.reference
 
-            auth.createUserWithEmailAndPassword(email, pwd)
-                .addOnCompleteListener(this) { task ->
-                    if (task.isSuccessful) {
-                        // Sign in success, update UI with the signed-in user's information
-                        Log.d(TAG, "createUserWithEmail:success")
-                        val user = auth.currentUser
-                        Log.d(TAG, "info :" + user.toString())
 
-                        // 회원가입하고 있는 사용자의 UID 값을 먼저 users 그룹 안에 저장
-                        if (user != null) {
-                            database.child("users").setValue(user.uid)
+            if (email.isNullOrEmpty()){
+                Toast.makeText(baseContext,"이메일을 입력해주세요",Toast.LENGTH_SHORT).show()
+            }else if(pwd.isNullOrEmpty()){
+                Toast.makeText(baseContext,"비밀번호를 입력해주세요",Toast.LENGTH_SHORT).show()
+            }else if(repwd.isNullOrEmpty()){
+                Toast.makeText(baseContext,"비밀번호 재입력 칸을 입력해주세요",Toast.LENGTH_SHORT).show()
+            }
+            else if(nick.isNullOrEmpty()){
+                Toast.makeText(baseContext,"사용하실 닉네임을 입력해주세요",Toast.LENGTH_SHORT).show()
+            }else{ // 모든 칸에 값이 제대로 입력되었다면,
+
+                // 비밀번호 재입력 확인
+                if (pwd == repwd){
+                    // 이상 없으면 회원가입
+                    auth.createUserWithEmailAndPassword(email, pwd)
+                        .addOnCompleteListener(this) { task ->
+                            if (task.isSuccessful) {
+                                Log.d(TAG, "createUserWithEmail:success")
+
+                                // user : 지금 가입한 회원
+                                val user = auth.currentUser
+
+                                // 회원가입하고 있는 사용자의 UID 값을 먼저 users 그룹 안에 저장
+                                if (user != null) {
+                                    database.child("users").setValue(user.uid)
+                                }
+
+                                // 사용자의 uid 에 따라 닉네임을 저장
+                                if (user != null) {
+                                    database.child("users").child(user.uid).setValue(nick)
+                                }
+
+                                // 회원가입 과정에서 오류나면 다음 메세지 생성
+                            } else  {
+                                // If sign in fails, display a message to the user.
+                                Log.w(TAG, "createUserWithEmail:failure", task.exception)
+                                Toast.makeText(baseContext, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show()
+                            }
+
                         }
 
-                        // 사용자의 uid 에 따라 닉네임을 저장
-                        if (user != null) {
-                            database.child("users").child(user.uid).setValue(nick)
-                        }
-
-
-//                    updateUI(user)
-                    } else {
-                        // If sign in fails, display a message to the user.
-                        Log.w(TAG, "createUserWithEmail:failure", task.exception)
-                        Toast.makeText(baseContext, "Authentication failed.",
-                            Toast.LENGTH_SHORT).show()
-//                    updateUI(null)
-                    }
+                }else {
+                    Toast.makeText(baseContext,"비밀번호가 일치하지 않습니다.", Toast.LENGTH_LONG).show()
                 }
+            }
+
         }
 
-    }
+        }
 
 
     override fun onBackPressed() {
         super.onBackPressed()
     }
+
 }
+
