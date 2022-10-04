@@ -68,6 +68,7 @@ class LoginActivity : AppCompatActivity() {
                         Log.w("로그인", "로그인 실패", task.exception)
                         Toast.makeText(baseContext, "로그인 인증 실패.",
                             Toast.LENGTH_SHORT).show()
+                        //
                     }
                 }
 
