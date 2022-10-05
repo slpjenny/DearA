@@ -3,19 +3,14 @@ package com.jenny.deara
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.jenny.deara.databinding.FragmentDiaryBinding
 import com.jenny.deara.diary.*
-import java.time.Year
 
 class DiaryFragment(var iMonth: Int, var iYear: Int) : Fragment() {
 
@@ -52,7 +47,7 @@ class DiaryFragment(var iMonth: Int, var iYear: Int) : Fragment() {
 
         //일기 작성하기
         binding.diaryplusBtn.setOnClickListener{
-            val intent = Intent(context, DiaryEditActivity::class.java)
+            val intent = Intent(context, DiaryWriteActivity::class.java)
             startActivity(intent)
         }
 
