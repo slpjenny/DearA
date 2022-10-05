@@ -1,5 +1,6 @@
 package com.jenny.deara.alarm
 
+import android.content.Context
 import androidx.fragment.app.DialogFragment
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -12,7 +13,7 @@ import android.widget.CompoundButton
 import com.jenny.deara.R
 import com.jenny.deara.databinding.AlarmDialogBinding
 
-class AlarmDialog(): DialogFragment() {
+class AlarmDialog() : DialogFragment() {
 
     private var _binding: AlarmDialogBinding? = null
     private val binding get() = _binding!!
@@ -37,32 +38,32 @@ class AlarmDialog(): DialogFragment() {
         week = Array(7) { item -> "" }
 
         binding.monCheck.setOnCheckedChangeListener { buttonView, isChecked ->
-            if (isChecked) week[0] = "월"
+            if (isChecked) week[0] = "월 "
             else week[0] = ""
         }
 
         binding.tueCheck.setOnCheckedChangeListener { buttonView, isChecked ->
-            if (isChecked) week[1] = "화"
+            if (isChecked) week[1] = "화 "
             else week[1] = ""
         }
 
         binding.wedCheck.setOnCheckedChangeListener { buttonView, isChecked ->
-            if (isChecked) week[2] = "수"
+            if (isChecked) week[2] = "수 "
             else week[2] = ""
         }
 
         binding.thuCheck.setOnCheckedChangeListener { buttonView, isChecked ->
-            if (isChecked) week[3] = "목"
+            if (isChecked) week[3] = "목 "
             else week[3] = ""
         }
 
         binding.friCheck.setOnCheckedChangeListener { buttonView, isChecked ->
-            if (isChecked) week[4] = "금"
+            if (isChecked) week[4] = "금 "
             else week[4] = ""
         }
 
         binding.satCheck.setOnCheckedChangeListener { buttonView, isChecked ->
-            if (isChecked) week[5] = "토"
+            if (isChecked) week[5] = "토 "
             else week[5] = ""
         }
 
@@ -86,7 +87,7 @@ class AlarmDialog(): DialogFragment() {
         }
         // 확인 버튼
         binding.saveBtn.setOnClickListener {
-            day = week.joinToString(" ")
+            day = week.joinToString("")
             title = binding.setAlarmName.text.toString()
             onClickedListener.onClicked(hour, minute, title, day)
             dismiss()
@@ -116,5 +117,9 @@ class AlarmDialog(): DialogFragment() {
         _binding = null
     }
 }
+
+
+
+
 
 
