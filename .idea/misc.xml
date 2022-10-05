@@ -38,7 +38,7 @@
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_my_page.xml" value="0.3359375" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_pin_lock.xml" value="0.25" />
-        <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_pin_lock_password.xml" value="0.33" />
+        <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_pin_lock_password.xml" value="0.2" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_pin_set.xml" value="0.19322916666666667" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_select_lock.xml" value="0.3359375" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_self_diagnosis.xml" value="0.15729166666666666" />
@@ -71,6 +71,9 @@
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/fregment_swipe_delete.xml" value="0.3359375" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/pin_set_activity.xml" value="0.19270833333333334" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/pop_up.xml" value="0.3359375" />
+        <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/layout/alarm_dialog.xml" value="0.31666666666666665" />
+        <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/layout/alarm_list_item.xml" value="0.21936936936936938" />
+        <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/layout/fragment_alarm.xml" value="0.21936936936936938" />
         <entry key="app/src/main/res/drawable-v24/background_radius_list.xml" value="0.1395" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1265" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1265" />
