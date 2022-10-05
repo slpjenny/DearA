@@ -65,7 +65,6 @@ class SignInActivity : AppCompatActivity() {
 
             database = Firebase.database.reference
 
-
             if (email.isNullOrEmpty()){
                 Toast.makeText(baseContext,"이메일을 입력해주세요",Toast.LENGTH_SHORT).show()
             }else if(pwd.isNullOrEmpty()){
@@ -86,17 +85,15 @@ class SignInActivity : AppCompatActivity() {
                                 Log.d(TAG, "createUserWithEmail:success")
 
                                 // user : 지금 가입한 회원
-                                val user = auth.currentUser
+                                var user = auth.currentUser
 
-                                // 회원가입하고 있는 사용자의 UID 값을 먼저 users 그룹 안에 저장
-                                if (user != null) {
-                                    database.child("users").setValue(user.uid)
-                                }
 
                                 // 사용자의 uid 에 따라 닉네임을 저장
                                 if (user != null) {
                                     database.child("users").child(user.uid).setValue(nick)
                                 }
+
+                                Toast.makeText(baseContext,"회원가입이 완료되었습니다.",Toast.LENGTH_SHORT).show()
 
                                 // 회원가입 과정에서 오류나면 다음 메세지 생성
                             } else  {

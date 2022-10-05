@@ -59,9 +59,6 @@
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/fragment_pill_plus.xml" value="0.3359375" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/fragment_record_end.xml" value="0.19270833333333334" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/pop_up.xml" value="0.3359375" />
-        <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/layout/alarm_dialog.xml" value="0.31666666666666665" />
-        <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/layout/alarm_list_item.xml" value="0.21936936936936938" />
-        <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/layout/fragment_alarm.xml" value="0.21936936936936938" />
         <entry key="app/src/main/res/drawable-v24/background_radius_list.xml" value="0.1395" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1265" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1265" />
@@ -81,8 +78,10 @@
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.22864583333333333" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_my_page.xml" value="0.25196850393700787" />
+        <entry key="app/src/main/res/layout/activity_select_lock.xml" value="0.14739583333333334" />
         <entry key="app/src/main/res/layout/activity_self_diagnosis.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_sigin_in.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.24010416666666667" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.165" />
         <entry key="app/src/main/res/layout/diary_detail_ver1.xml" value="0.29739583333333336" />
         <entry key="app/src/main/res/layout/diary_detail_ver2.xml" value="0.29739583333333336" />
