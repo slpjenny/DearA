@@ -1,12 +1,12 @@
 package com.jenny.deara.diary
 
 data class DiaryData (
-        val title1: String,
-        val contents1 : String,
-        val title2: String,
-        val contents2 : String,
-        val title3: String,
-        val contents3: String,
-        val r_question: String,
-        val r_contents : String,
-        )
+        var title1: String = "",
+        var contents1 : String = "",
+        var title2: String = "",
+        var contents2 : String = "",
+        var title3: String = "",
+        var contents3: String = "",
+        var r_question: String = "",
+        var r_contents : String = ""
+)
