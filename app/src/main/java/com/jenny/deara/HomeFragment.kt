@@ -68,16 +68,22 @@ class HomeFragment : Fragment() {
             dialog.showDia()
             dialog.setOnClickListener(object: TodoDialog.ButtonClickListener {
                 override fun onClicked(text: String) {
-                    items.add(ToDoModel(text,false))
-                    Log.d(TAG, "items " + items.size)
-                    Log.d(TAG, "text : " + text)
 
-                    val rv : RecyclerView = binding.toDoListRV
-                    val rvRvAdapter = TodoAdapter(items)
+                    if (text.length == 0){
+                        Toast.makeText(context, "해아할 일을 입력해주세요.", Toast.LENGTH_SHORT).show()
+                    }else{
+                        items.add(ToDoModel(text,false))
+                        Log.d(TAG, "items " + items.size)
+                        Log.d(TAG, "text : " + text)
 
-                    rv.adapter = rvRvAdapter
-                    rv.layoutManager = LinearLayoutManager(context)
-                    rvRvAdapter.notifyDataSetChanged()
+                        val rv : RecyclerView = binding.toDoListRV
+                        val rvRvAdapter = TodoAdapter(items)
+
+                        rv.adapter = rvRvAdapter
+                        rv.layoutManager = LinearLayoutManager(context)
+                        rvRvAdapter.notifyDataSetChanged()
+                    }
+
                 }
             })
 
