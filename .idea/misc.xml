@@ -86,14 +86,22 @@
         <entry key="app/src/main/res/drawable/one_line_maingray.xml" value="0.13" />
         <entry key="app/src/main/res/drawable/one_line_pointgray.xml" value="0.152" />
         <entry key="app/src/main/res/drawable/purple_btn_bg.xml" value="0.122" />
+        <entry key="app/src/main/res/drawable/selector_switch.xml" value="0.1565" />
         <entry key="app/src/main/res/drawable/selfdiagnosis_btn_bg.xml" value="0.1265" />
+        <entry key="app/src/main/res/drawable/switch_track_off.xml" value="0.1565" />
+        <entry key="app/src/main/res/drawable/switch_track_on.xml" value="0.1565" />
         <entry key="app/src/main/res/layout/activity_change_nick_name.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_change_pwd.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_find_pwd.xml" value="0.2138482666015625" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.22864583333333333" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_my_page.xml" value="0.25196850393700787" />
+        <entry key="app/src/main/res/layout/activity_pattern.xml" value="0.2490740740740741" />
+        <entry key="app/src/main/res/layout/activity_pattern_lock.xml" value="0.22777777777777777" />
+        <entry key="app/src/main/res/layout/activity_pattern_secure_mode.xml" value="0.22777777777777777" />
+        <entry key="app/src/main/res/layout/activity_select_lock.xml" value="0.2490740740740741" />
         <entry key="app/src/main/res/layout/activity_self_diagnosis.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_setting_pattern.xml" value="0.2490740740740741" />
         <entry key="app/src/main/res/layout/activity_sigin_in.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.165" />
         <entry key="app/src/main/res/layout/diary_detail_ver1.xml" value="0.29739583333333336" />
