@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".diary.DiaryWriteVer2Fragment">
+    tools:context=".diary.DiaryEditVer2Fragment">
 
     <!--clYyMid-->
     <androidx.constraintlayout.widget.ConstraintLayout

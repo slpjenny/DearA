@@ -1,6 +1,8 @@
 package com.jenny.deara.diary
 
 import android.annotation.SuppressLint
+import android.app.Dialog
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -13,10 +15,31 @@ import androidx.fragment.app.DialogFragment
 import com.jenny.deara.MainActivity
 import com.jenny.deara.R
 import com.jenny.deara.databinding.FragmentDatePickerBinding
+import java.lang.ClassCastException
+import java.util.*
+import kotlin.properties.Delegates
 
-class DatePickerFragment(var iMonth: Int, var iYear: Int) : DialogFragment() {
+class DatePickerFragment(var iMonth: Int) : DialogFragment() {
 
     private lateinit var binding: FragmentDatePickerBinding
+    private lateinit var listener: DatePickerListener
+
+    interface DatePickerListener{
+        var iMonth: Int
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        try {
+            //리스너를 인스턴스화함으로서 host에 event 보냄
+            listener = parentFragment as DatePickerListener
+        } catch (e: ClassCastException){
+            // host에 interface가 구현되어 있지 않으면 exception throw
+            throw ClassCastException(
+                context.toString()+"must implement NoticeDialogListner"
+            )
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,24 +63,26 @@ class DatePickerFragment(var iMonth: Int, var iYear: Int) : DialogFragment() {
             dismiss()
         }
 
+
+        // 현재 년도, 달 띄우기
+        var dateCalendar = Calendar.getInstance()
+        var iYear = dateCalendar.get(Calendar.YEAR)
+        //iMonth = dateCalendar.get(Calendar.MONTH) + 1
+
         //날짜 기본값
         binding.year.text = iYear.toString()
         monthPicker(iMonth)
 
         //년도 -1 버튼
         binding.yearChange1.setOnClickListener {
-            if (iYear > 2000) { // 최솟값 2000
-                iYear -= 1
-                binding.year.text = iYear.toString()
-            }
+            iYear -= 1
+            binding.year.text = iYear.toString()
         }
 
         //년도 +1 버튼
         binding.yearChange2.setOnClickListener {
-            if (iYear < 2030){ // 최댓값 2000
-                iYear += 1
-                binding.year.text = iYear.toString()
-            }
+            iYear += 1
+            binding.year.text = iYear.toString()
         }
 
         // 달 버튼 클릭 이벤트
@@ -65,74 +90,74 @@ class DatePickerFragment(var iMonth: Int, var iYear: Int) : DialogFragment() {
             iMonth = 1
             setBackgrounDefault()
             monthPicker(iMonth)
-            goDiaryFragment(iMonth, iYear)
+            goDiaryFragment(iMonth)
 
         }
         binding.month2.setOnClickListener {
             iMonth = 2
             setBackgrounDefault()
             monthPicker(iMonth)
-            goDiaryFragment(iMonth, iYear)
+            goDiaryFragment(iMonth)
         }
         binding.month3.setOnClickListener {
             iMonth = 3
             setBackgrounDefault()
             monthPicker(iMonth)
-            goDiaryFragment(iMonth, iYear)
+            goDiaryFragment(iMonth)
         }
         binding.month4.setOnClickListener {
             iMonth = 4
             setBackgrounDefault()
             monthPicker(iMonth)
-            goDiaryFragment(iMonth, iYear)
+            goDiaryFragment(iMonth)
         }
         binding.month5.setOnClickListener {
             iMonth = 5
             setBackgrounDefault()
             monthPicker(iMonth)
-            goDiaryFragment(iMonth, iYear)
+            goDiaryFragment(iMonth)
         }
         binding.month6.setOnClickListener {
             iMonth = 6
             setBackgrounDefault()
             monthPicker(iMonth)
-            goDiaryFragment(iMonth, iYear)
+            goDiaryFragment(iMonth)
         }
         binding.month7.setOnClickListener {
             iMonth = 7
             setBackgrounDefault()
             monthPicker(iMonth)
-            goDiaryFragment(iMonth, iYear)
+            goDiaryFragment(iMonth)
         }
         binding.month8.setOnClickListener {
             iMonth = 8
             setBackgrounDefault()
             monthPicker(iMonth)
-            goDiaryFragment(iMonth, iYear)
+            goDiaryFragment(iMonth)
         }
         binding.month9.setOnClickListener {
             iMonth = 9
             setBackgrounDefault()
             monthPicker(iMonth)
-            goDiaryFragment(iMonth, iYear)
+            goDiaryFragment(iMonth)
         }
         binding.month10.setOnClickListener {
             iMonth = 10
             setBackgrounDefault()
             monthPicker(iMonth)
-            goDiaryFragment(iMonth, iYear)
+            goDiaryFragment(iMonth)
         }
         binding.month11.setOnClickListener {
             iMonth = 11
             setBackgrounDefault()
             monthPicker(iMonth)
-            goDiaryFragment(iMonth, iYear)
+            goDiaryFragment(iMonth)
         }
         binding.month12.setOnClickListener {
             iMonth = 12
             setBackgrounDefault()
             monthPicker(iMonth)
-            goDiaryFragment(iMonth, iYear)
+            goDiaryFragment(iMonth)
         }
 
         return binding.root
@@ -210,13 +235,11 @@ class DatePickerFragment(var iMonth: Int, var iYear: Int) : DialogFragment() {
         binding.month12.setTextColor(Color.parseColor("#6A6A6A"))
     }
 
-    private fun goDiaryFragment(iMonth: Int, iYear: Int){
+    private fun goDiaryFragment(iMonth: Int){
         // 다이어리 리스트로 이동
         val intent = Intent(context, MainActivity::class.java)
         intent.putExtra("iMonth", iMonth)
-        intent.putExtra("iYear", iYear)
         intent.putExtra("nav_diary","fourth")
         startActivity(intent)
     }
 }
-

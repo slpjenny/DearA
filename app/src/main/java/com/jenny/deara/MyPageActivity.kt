@@ -3,7 +3,6 @@ package com.jenny.deara
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.jenny.deara.PatternLock.PatternActivity
 import com.jenny.deara.databinding.ActivityMyPageBinding
 import com.jenny.deara.mypages.ChangeNickNameActivity
 import com.jenny.deara.mypages.ChangePwdActivity
