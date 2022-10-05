@@ -9,20 +9,20 @@
     android:background="@color/white">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/topbar"
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="64dp"
-        android:background="@color/contactus_gray"
+        android:background="#EFEEEE"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imageView13"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="10dp"
-            android:src="@drawable/back_btn"
+            android:id="@+id/imageView5"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_marginLeft="7dp"
+            android:src="@drawable/back"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -36,22 +36,37 @@
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView13"
+            app:layout_constraintStart_toEndOf="@+id/imageView5"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
-
-        android:id="@+id/firstfloor"
+        android:id="@+id/constraintLayout2"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topbar">
+        android:layout_height="90dp"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+        <ImageView
+            android:id="@+id/imageView14"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/background_radius_lock" />
+
+        <TextView
+            android:id="@+id/title1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="30dp"
+            android:paddingTop="30dp"
+            android:paddingRight="300dp"
+            android:paddingBottom="30dp"
+            android:text="암호 설정"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
             android:id="@+id/pattern_setting"
@@ -64,69 +79,38 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/btnSetLock"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:paddingLeft="30dp"
-            android:paddingTop="20dp"
-            android:paddingRight="300dp"
-            android:paddingBottom="20dp"
-            android:text="잠금 설정"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.05"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/firstfloorLine"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/board_menu_gray"
-            app:layout_constraintTop_toBottomOf="@+id/btnSetLock" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-
-        android:id="@+id/secondfloor"
+        android:id="@+id/constraintLayout3"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/firstfloor">
+        android:layout_height="90dp"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
 
+        <ImageView
+            android:id="@+id/imageView15"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/background_radius_lock" />
 
-        <Button
-            android:id="@+id/btnChangePwd"
+        <TextView
+            android:id="@+id/title2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
             android:paddingLeft="30dp"
-            android:paddingTop="20dp"
+            android:paddingTop="30dp"
             android:paddingRight="300dp"
-            android:paddingBottom="20dp"
+            android:paddingBottom="30dp"
             android:text="암호 변경"
+            android:textColor="#000000"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.05"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView15"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/secondfloorLine"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/board_menu_gray"
-            app:layout_constraintTop_toBottomOf="@+id/btnChangePwd" />
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     // 없앨 예정
     <Button
