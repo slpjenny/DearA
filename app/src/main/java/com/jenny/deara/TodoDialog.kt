@@ -6,6 +6,8 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
+import kotlin.coroutines.coroutineContext
 
 class TodoDialog(context: Context) {
 
@@ -23,7 +25,14 @@ private val dialog = Dialog(context)
 
         okBtn.setOnClickListener {
             onClickListener.onClicked(editText.text.toString())
-            dialog.dismiss()
+
+
+            if(editText.length() == 0){
+                Toast.makeText(dialog.context, "해야할 일을 입력해주세요.", Toast.LENGTH_SHORT).show()
+            } else{
+                dialog.dismiss()
+            }
+
         }
 
         dialog.show()
