@@ -15,6 +15,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DearA"
         tools:targetApi="31">
+        service android:name="com.mbientlab.metawear.android.BtleService" />
+
+        <activity
+            android:name="mypages.SetPinActivity"
+            android:exported="false"
+            tools:ignore="MissingClass" />
+        <activity
+            android:name=".mypages.PinLockActivity"
+            android:exported="false" />
+        <activity
+            android:name=".mypages.PinLockPassWordActivity"
+            android:exported="false" />
         <activity
             android:name=".PatternLockActivity"
             android:exported="false" />
