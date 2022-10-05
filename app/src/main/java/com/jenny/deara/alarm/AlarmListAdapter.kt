@@ -1,18 +1,12 @@
 package com.jenny.deara.alarm
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.jenny.deara.R
-import com.jenny.deara.TodoDialog
-import com.jenny.deara.mypages.ToDoModel
-import com.jenny.deara.mypages.TodoAdapter
 
 class AlarmListAdapter(val context: Context): RecyclerView.Adapter<AlarmListAdapter.ViewHolder>() {
 
@@ -29,10 +23,10 @@ class AlarmListAdapter(val context: Context): RecyclerView.Adapter<AlarmListAdap
         holder.bind(datas[position])
     }
 
-    /*   fun removeItem(position: Int) {
-               datas.removeAt(position)
-               notifyDataSetChanged()
-       }*/
+ /*   fun removeItem(position: Int) {
+            datas.removeAt(position)
+            notifyDataSetChanged()
+    }*/
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val time: TextView = itemView.findViewById(R.id.tv_time)
@@ -43,7 +37,6 @@ class AlarmListAdapter(val context: Context): RecyclerView.Adapter<AlarmListAdap
             time.text = item.time
             title.text = item.title
             day.text = item.day
-
-            }
+        }
     }
 }

@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
+import com.jenny.deara.DiaryFragment
 import com.jenny.deara.R
 import com.jenny.deara.databinding.ActivityDiaryDetailBinding
 
@@ -23,7 +24,7 @@ class DiaryDetailActivity : AppCompatActivity() {
 
         //수정
         binding.modifyBtn.setOnClickListener {
-            val intent = Intent(this, DiaryWriteActivity::class.java)
+            val intent = Intent(this, DiaryEditActivity::class.java)
             startActivity(intent)
         }
 

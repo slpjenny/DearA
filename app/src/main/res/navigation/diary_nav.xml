@@ -7,18 +7,18 @@
 
     <fragment
         android:id="@+id/diaryEditVer1Fragment"
-        android:name="com.jenny.deara.diary.DiaryWriteVer1Fragment"
+        android:name="com.jenny.deara.diary.DiaryEditVer1Fragment"
         android:label="fragment_diary_edit_ver1"
-        tools:layout="@layout/fragment_diary_write_ver1" >
+        tools:layout="@layout/fragment_diary_edit_ver1" >
         <action
             android:id="@+id/action_diaryEditVer1Fragment_to_diaryEditVer2Fragment"
             app:destination="@id/diaryEditVer2Fragment" />
     </fragment>
     <fragment
         android:id="@+id/diaryEditVer2Fragment"
-        android:name="com.jenny.deara.diary.DiaryWriteVer2Fragment"
+        android:name="com.jenny.deara.diary.DiaryEditVer2Fragment"
         android:label="fragment_diary_edit_ver2"
-        tools:layout="@layout/fragment_diary_write_ver2" >
+        tools:layout="@layout/fragment_diary_edit_ver2" >
         <action
             android:id="@+id/action_diaryEditVer2Fragment_to_diaryEditVer1Fragment"
             app:destination="@id/diaryEditVer1Fragment" />

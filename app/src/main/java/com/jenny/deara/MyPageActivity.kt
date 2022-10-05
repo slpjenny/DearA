@@ -3,13 +3,6 @@ package com.jenny.deara
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
-import com.jenny.deara.PatternLock.PatternActivity
 import com.jenny.deara.databinding.ActivityMyPageBinding
 import com.jenny.deara.mypages.ChangeNickNameActivity
 import com.jenny.deara.mypages.ChangePwdActivity
@@ -22,39 +15,9 @@ class MyPageActivity : AppCompatActivity() {
 
     val binding by lazy { ActivityMyPageBinding.inflate(layoutInflater) }
 
-    private lateinit var auth: FirebaseAuth
-    private lateinit var database: DatabaseReference
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
-        // Auth 초기화
-        auth = Firebase.auth
-
-        // 실시간 database reference 불러오기
-        database = Firebase.database.reference
-
-        // firebase 에서 이메일 불러오기
-        val user = auth.currentUser
-
-        if(user != null)
-
-        binding.yourEmail.setText("Adfa")
-
-
-
-
-        // 회원가입하고 있는 사용자의 UID 값을 먼저 users 그룹 안에 저장
-        if (user != null) {
-            database.child("users").setValue(user.uid)
-        }
-
-
-
-        // firebase 에서 닉네임 불러오기
-
-
 
         // 비밀번호 변경 페이지로 이동
         binding.changePwdtxt.setOnClickListener {

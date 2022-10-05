@@ -29,7 +29,7 @@
 
 
     <TextView
-        android:id="@+id/yourEmail"
+        android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:text="sdsfia@swu.ac.kr"
@@ -41,7 +41,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView4"></TextView>
 
     <TextView
-        android:id="@+id/yourNick"
+        android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:text="PBL화이팅 님"
@@ -49,7 +49,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/yourEmail"></TextView>
+        app:layout_constraintTop_toBottomOf="@+id/textView9"></TextView>
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -57,7 +57,7 @@
         android:layout_height="425dp"
         android:layout_marginTop="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/yourNick"
+        app:layout_constraintTop_toBottomOf="@+id/textView10"
         tools:layout_editor_absoluteX="0dp"
         android:background="@color/white">
 
