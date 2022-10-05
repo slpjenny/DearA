@@ -72,26 +72,25 @@ class DiaryFragment(var iMonth: Int, var iYear: Int) : Fragment() {
 
     @SuppressLint("NotifyDataSetChanged")
     private fun initRecycler() {
-        DiaryListAdapter = DiaryListAdapter(requireContext())
+        DiaryListAdapter = DiaryListAdapter(requireContext(), diarykeyList)
 
         binding.rvDiary.adapter = DiaryListAdapter
 
         //test 데이터
-        FBRef.diaryRef
-            .push()
-            .setValue(DiaryData
-                ("좋았던일",
-                "오늘은 맛있는 음식을 많이 먹어서 좋았다.",
-                "안 좋았던 일",
-                "늦잠을 자서 지각할 뻔",
-                "나의 다짐",
-                "내일은 꼭 일찍 일어나기",
-                "[랜덤질문] 가장 좋았던 여행은 어떤 여행인가요?",
-                "작년 여름에 가족들과 갔던 부산여행"))
-            DiaryListAdapter.datas = diaryList
-            DiaryListAdapter.notifyDataSetChanged()
+//        FBRef.diaryRef
+//            .push()
+//            .setValue(DiaryData
+//                ("맛있는 음식을 먹어서 행복했다",
+//                "오늘도 늦잠을 자서 또 택시를 탔다.",
+//                "내일은 꼭 제시간에 일어나서 택시 타지 않기",
+//                "[랜덤질문] 가장 좋았던 여행은 어떤 여행인가요?",
+//                "작년에 친구들과 갔던 제주도 여행",
+//                "ver1",
+//                ))
 
-        }
+        DiaryListAdapter.datas = diaryList
+        DiaryListAdapter.notifyDataSetChanged()
+    }
 
     // 날짜 선택 다이얼로그 띄우기
     private fun showDatePickerDialog(iMonth: Int, iYear: Int){
