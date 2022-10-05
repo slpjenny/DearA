@@ -17,7 +17,11 @@ class DiaryFragment(var iMonth: Int, var iYear: Int) : Fragment() {
     private lateinit var binding: FragmentDiaryBinding
 
     lateinit var DiaryListAdapter: DiaryListAdapter
-    val datas = mutableListOf<DiaryData>()
+
+    val diaryList = mutableListOf<DiaryData>()
+    val diarykeyList = mutableListOf<String>()
+
+    // 날짜 변수
     val stringMonth : List<String> = listOf("JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC")
     val intYear = arrayListOf<Int>()
 
@@ -67,7 +71,7 @@ class DiaryFragment(var iMonth: Int, var iYear: Int) : Fragment() {
         rv.adapter= DiaryListAdapter
 
         //test 데이터
-        datas.apply {
+        diaryList.apply {
             add(DiaryData(
                 "좋았던일",
                 "오늘은 맛있는 음식을 많이 먹어서 좋았다.",
@@ -88,7 +92,7 @@ class DiaryFragment(var iMonth: Int, var iYear: Int) : Fragment() {
                 "[랜덤질문] 가장 좋았던 여행은 어떤 여행인가요?",
                 "작년 여름에 가족들과 갔던 부산여행")
             )
-            DiaryListAdapter.datas = datas
+            DiaryListAdapter.datas = diaryList
             DiaryListAdapter.notifyDataSetChanged()
 
         }
