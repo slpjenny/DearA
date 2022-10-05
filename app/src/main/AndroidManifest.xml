@@ -66,7 +66,7 @@
             android:name=".mypages.ChangeNickNameActivity"
             android:exported="false" />
         <activity
-            android:name=".diary.DiaryEditActivity"
+            android:name=".diary.DiaryWriteActivity"
             android:exported="false" />
         <activity
             android:name=".diary.DiaryDetailActivity"
@@ -83,11 +83,11 @@
         <activity
             android:name=".LoginActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
         <activity
             android:name=".SplashActivity"

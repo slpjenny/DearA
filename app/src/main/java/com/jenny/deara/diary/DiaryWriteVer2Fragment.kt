@@ -6,15 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.jenny.deara.R
-import com.jenny.deara.databinding.FragmentDiaryBinding
-import com.jenny.deara.databinding.FragmentDiaryEditVer1Binding
+import com.jenny.deara.databinding.FragmentDiaryWriteVer2Binding
 
-class DiaryEditVer1Fragment : Fragment() {
+class DiaryWriteVer2Fragment : Fragment() {
 
-    private lateinit var binding: FragmentDiaryEditVer1Binding
+    private lateinit var binding: FragmentDiaryWriteVer2Binding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,11 +22,12 @@ class DiaryEditVer1Fragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_diary_edit_ver1, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_diary_write_ver2, container, false)
 
-        binding.toggleBtn1.setOnClickListener {
-            it.findNavController().navigate(R.id.action_diaryEditVer1Fragment_to_diaryEditVer2Fragment)
+        binding.toggleBtn2.setOnClickListener {
+            it.findNavController().navigate(R.id.action_diaryEditVer2Fragment_to_diaryEditVer1Fragment)
         }
         return binding.root
     }
+
 }

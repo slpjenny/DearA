@@ -1,19 +1,24 @@
 package com.jenny.deara
 
-import android.nfc.Tag
+import android.app.AlertDialog
+import android.app.Dialog
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.jenny.deara.databinding.FragmentHomeBinding
-import java.time.LocalDate
-import java.time.YearMonth
+import com.jenny.deara.mypages.ToDoModel
+import com.jenny.deara.mypages.TodoAdapter
 import java.time.format.DateTimeFormatter
 import java.util.*
 import kotlin.collections.ArrayList
@@ -22,7 +27,7 @@ class HomeFragment : Fragment() {
 
     private lateinit var binding : FragmentHomeBinding
 
-//    private val todoData = arrayListOf<TodoMember>()
+    private val items = ArrayList<ToDoModel>()
 
     private val TAG = HomeFragment::class.java.simpleName
 
@@ -38,6 +43,7 @@ class HomeFragment : Fragment() {
 
         // binding 초기화
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
+
 
         // 화면 설정
         setMonthView()
@@ -56,13 +62,30 @@ class HomeFragment : Fragment() {
             setMonthView()
         }
 
+        // 투두리스트 추가
+        binding.todoplus.setOnClickListener {
+            val dialog = TodoDialog(requireContext())
+            dialog.showDia()
+            dialog.setOnClickListener(object: TodoDialog.ButtonClickListener {
+                override fun onClicked(text: String) {
+                    items.add(ToDoModel(text,false))
+                    Log.d(TAG, "items " + items.size)
+                    Log.d(TAG, "text : " + text)
 
-//        // 캘린더 리사이클러뷰 바인딩
-//        binding.calendarRv.layoutManager = LinearLayoutManager(context)
-//        binding.calendarRv.adapter = TodoAdapter(todoData)
+                    val rv : RecyclerView = binding.toDoListRV
+                    val rvRvAdapter = TodoAdapter(items)
+
+                    rv.adapter = rvRvAdapter
+                    rv.layoutManager = LinearLayoutManager(context)
+                    rvRvAdapter.notifyDataSetChanged()
+                }
+            })
 
 
-        return binding.root
+
+        }
+
+       return binding.root
     }
 
     // 날짜 화면에 보여주기
@@ -84,6 +107,14 @@ class HomeFragment : Fragment() {
 
         // 어댑터 적용
         binding.calendarRv.adapter = adapter
+
+        adapter.itemClick = object : CalendarAdapter.ItemClick {
+            override fun onClick(view: View, position: Int) {
+                Toast.makeText(context, dayList[position].toString(), Toast.LENGTH_LONG).show()
+            }
+        }
+
+
     }
 
     // 날짜 타입 설정
