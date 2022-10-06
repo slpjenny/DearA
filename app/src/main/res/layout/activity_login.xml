@@ -45,7 +45,7 @@
 
 
             <EditText
-                android:id="@+id/write_email"
+                android:id="@+id/writeEmail"
                 android:hint="E-mail"
                 android:textColorHint="@color/purple1"
                 android:layout_width="300dp"
@@ -58,7 +58,7 @@
 
 
             <EditText
-                android:id="@+id/write_pwd"
+                android:id="@+id/writePwd"
                 android:hint="Password"
                 android:textColorHint="@color/purple1"
                 android:layout_width="300dp"
@@ -67,7 +67,7 @@
                 android:background="@drawable/login_write_bg_gray"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/write_email"/>
+                app:layout_constraintTop_toBottomOf="@+id/writeEmail"/>
 
 
             <android.widget.Button
@@ -82,7 +82,7 @@
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/write_pwd" />
+                app:layout_constraintTop_toBottomOf="@+id/writePwd" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
 

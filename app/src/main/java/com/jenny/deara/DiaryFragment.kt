@@ -3,26 +3,27 @@ package com.jenny.deara
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.jenny.deara.databinding.FragmentDiaryBinding
 import com.jenny.deara.diary.*
 
-class DiaryFragment(override var iMonth: Int) : Fragment(),  DatePickerFragment.DatePickerListener {
+class DiaryFragment(var iMonth: Int, var iYear: Int) : Fragment() {
 
     private lateinit var binding: FragmentDiaryBinding
 
     lateinit var DiaryListAdapter: DiaryListAdapter
-    val datas = mutableListOf<DiaryData>()
+
+    val diaryList = mutableListOf<DiaryData>()
+    val diarykeyList = mutableListOf<String>()
+
+    // 날짜 변수
     val stringMonth : List<String> = listOf("JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC")
+    val intYear = arrayListOf<Int>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,8 +35,13 @@ class DiaryFragment(override var iMonth: Int) : Fragment(),  DatePickerFragment.
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_diary, container, false)
 
+        for (i in 2000 .. 2030){
+            intYear.add(i)
+        }
+
         initRecycler()
         showMonth(iMonth)
+        showYear(iYear)
 
         //마이페이지 버튼
         binding.myPageBtn.setOnClickListener {
@@ -45,13 +51,13 @@ class DiaryFragment(override var iMonth: Int) : Fragment(),  DatePickerFragment.
 
         //일기 작성하기
         binding.diaryplusBtn.setOnClickListener{
-            val intent = Intent(context, DiaryEditActivity::class.java)
+            val intent = Intent(context, DiaryWriteActivity::class.java)
             startActivity(intent)
         }
 
         //날짜 선택하기
         binding.datapicker.setOnClickListener {
-            showDatePickerDialog(iMonth)
+            showDatePickerDialog(iMonth, iYear)
         }
 
         return binding.root
@@ -65,7 +71,7 @@ class DiaryFragment(override var iMonth: Int) : Fragment(),  DatePickerFragment.
         rv.adapter= DiaryListAdapter
 
         //test 데이터
-        datas.apply {
+        diaryList.apply {
             add(DiaryData(
                 "좋았던일",
                 "오늘은 맛있는 음식을 많이 먹어서 좋았다.",
@@ -86,14 +92,14 @@ class DiaryFragment(override var iMonth: Int) : Fragment(),  DatePickerFragment.
                 "[랜덤질문] 가장 좋았던 여행은 어떤 여행인가요?",
                 "작년 여름에 가족들과 갔던 부산여행")
             )
-            DiaryListAdapter.datas = datas
+            DiaryListAdapter.datas = diaryList
             DiaryListAdapter.notifyDataSetChanged()
 
         }
     }
 
-    private fun showDatePickerDialog(iMonth: Int){
-        val dialog = DatePickerFragment(iMonth)
+    private fun showDatePickerDialog(iMonth: Int, iYear: Int){
+        val dialog = DatePickerFragment(iMonth, iYear)
         dialog.show(childFragmentManager, "DatePickerDialog")
     }
 
@@ -102,6 +108,14 @@ class DiaryFragment(override var iMonth: Int) : Fragment(),  DatePickerFragment.
         for (i in 1 .. 12){
             if (iMonth == i){
                 binding.month.text = stringMonth[i-1]
+            }
+        }
+    }
+
+    private fun showYear(iYear: Int){
+        for (i in 0 .. 30){
+            if (iYear == i+2000){
+                binding.year.text = intYear[i].toString()
             }
         }
     }

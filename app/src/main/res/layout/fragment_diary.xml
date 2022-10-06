@@ -75,14 +75,15 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=" /"
+                android:text=" / "
                 android:textColor="@color/purple1"
                 android:textSize="20sp" />
 
             <TextView
+                android:id="@+id/year"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=" 2022"
+                android:text="year"
                 android:textColor="@color/purple1"
                 android:textSize="20sp" />
 

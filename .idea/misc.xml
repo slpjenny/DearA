@@ -99,6 +99,7 @@
         <entry key="app/src/main/res/layout/activity_pattern.xml" value="0.2490740740740741" />
         <entry key="app/src/main/res/layout/activity_pattern_lock.xml" value="0.22777777777777777" />
         <entry key="app/src/main/res/layout/activity_pattern_secure_mode.xml" value="0.22777777777777777" />
+        <entry key="app/src/main/res/layout/activity_pin_lock.xml" value="0.125" />
         <entry key="app/src/main/res/layout/activity_select_lock.xml" value="0.2490740740740741" />
         <entry key="app/src/main/res/layout/activity_self_diagnosis.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_setting_pattern.xml" value="0.2490740740740741" />
