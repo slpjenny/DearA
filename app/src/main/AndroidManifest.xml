@@ -28,19 +28,7 @@
             android:name=".mypages.PinLockPassWordActivity"
             android:exported="false" />
         <activity
-            android:name=".PatternLockActivity"
-            android:exported="false" />
-        <activity
-            android:name=".PatternLock.PatternSecureModeActivity"
-            android:exported="false" />
-        <activity
-            android:name=".PatternLock.SettingPatternActivity"
-            android:exported="false" />
-        <activity
             android:name=".mypages.SelectLockActivity"
-            android:exported="false" />
-        <activity
-            android:name=".PatternLock.PatternActivity"
             android:exported="false" />
         <activity
             android:name=".board.BoardWriteActivity"

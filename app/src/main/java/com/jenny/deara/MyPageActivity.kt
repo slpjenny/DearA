@@ -3,6 +3,7 @@ package com.jenny.deara
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -12,6 +13,7 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.jenny.deara.PatternLock.PatternActivity
+
 import com.jenny.deara.databinding.ActivityMyPageBinding
 import com.jenny.deara.mypages.ChangeNickNameActivity
 import com.jenny.deara.mypages.ChangePwdActivity
@@ -23,9 +25,6 @@ import java.util.regex.Pattern
 class MyPageActivity : AppCompatActivity() {
 
     val binding by lazy { ActivityMyPageBinding.inflate(layoutInflater) }
-
-    private lateinit var auth: FirebaseAuth
-    private lateinit var database: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
