@@ -39,7 +39,7 @@ class DiaryFragment(var iMonth: Int, var iYear: Int) : Fragment() {
             intYear.add(i)
         }
 
-        initRecycler()
+        //initRecycler()
         showMonth(iMonth)
         showYear(iYear)
 
@@ -63,7 +63,7 @@ class DiaryFragment(var iMonth: Int, var iYear: Int) : Fragment() {
         return binding.root
     }
 
-    @SuppressLint("NotifyDataSetChanged")
+    /*@SuppressLint("NotifyDataSetChanged")
     private fun initRecycler() {
         DiaryListAdapter = DiaryListAdapter(requireContext())
 
@@ -96,7 +96,7 @@ class DiaryFragment(var iMonth: Int, var iYear: Int) : Fragment() {
             DiaryListAdapter.notifyDataSetChanged()
 
         }
-    }
+    }*/
 
     private fun showDatePickerDialog(iMonth: Int, iYear: Int){
         val dialog = DatePickerFragment(iMonth, iYear)
