@@ -53,7 +53,6 @@ class SignInActivity : AppCompatActivity() {
         }
 
 
-
         // '완료' 버튼 누르면 신규 사용자 이메일,비밀번호로 가입
         binding.saveBtn.setOnClickListener {
 

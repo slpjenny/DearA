@@ -6,7 +6,9 @@ import android.os.Bundle
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.jenny.deara.PatternLock.PatternActivity
@@ -29,6 +31,8 @@ class MyPageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        val email:String
+
         // Auth 초기화
         auth = Firebase.auth
 
@@ -38,23 +42,23 @@ class MyPageActivity : AppCompatActivity() {
         // firebase 에서 이메일 불러오기
         val user = auth.currentUser
 
-        if(user != null)
-
-        binding.yourEmail.setText("Adfa")
-
-
-
-
-        // 회원가입하고 있는 사용자의 UID 값을 먼저 users 그룹 안에 저장
-        if (user != null) {
-            database.child("users").setValue(user.uid)
-        }
-
+        email = auth.currentUser?.email.toString()
+        binding.yourEmail.setText(email)
 
 
         // firebase 에서 닉네임 불러오기
+        if(user!=null) {
+            database.child("users").child(user.uid).get().addOnSuccessListener {
+//                Log.i("firebase", "Got value ${it.value}")
+
+                binding.yourNick.setText(it.value.toString())
 
 
+            }.addOnFailureListener {
+//                Log.e("firebase", "Error getting data", it)
+            }
+
+        }
 
         // 비밀번호 변경 페이지로 이동
         binding.changePwdtxt.setOnClickListener {
