@@ -42,6 +42,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
 //        auth = Firebase.auth
+        // 코드가 없어졌어요.
 
 
 
