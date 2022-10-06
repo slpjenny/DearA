@@ -2,6 +2,7 @@ package com.jenny.deara
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.jenny.deara.board.BoardMainFragment
@@ -18,7 +19,9 @@ class MainActivity : AppCompatActivity() {
         var nav_diary = intent.getStringExtra("nav_diary")
         var dateCalendar = Calendar.getInstance()
         var defaultMonth = dateCalendar.get(Calendar.MONTH) + 1
+        var defaultYear = dateCalendar.get(Calendar.YEAR)
         var getMonth = intent.getIntExtra("iMonth", defaultMonth)
+        var getYear = intent.getIntExtra("iYear", defaultYear)
 
         bnv_main.setOnItemSelectedListener { item ->
             changeFragment(
@@ -33,7 +36,7 @@ class MainActivity : AppCompatActivity() {
                         HomeFragment()
                     }
                     R.id.fourth -> {
-                        DiaryFragment(iMonth = getMonth)
+                        DiaryFragment(defaultMonth, defaultYear)
                     }
                     else -> {
                         BoardMainFragment()
@@ -45,8 +48,8 @@ class MainActivity : AppCompatActivity() {
         bnv_main.selectedItemId = R.id.third
 
         if (nav_diary == "fourth"){
-            changeFragment(DiaryFragment(iMonth = getMonth))
             bnv_main.selectedItemId = R.id.fourth
+            changeFragment(DiaryFragment(getMonth, getYear))
         }
 
     }

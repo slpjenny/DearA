@@ -20,11 +20,17 @@ import kotlin.collections.ArrayList
 class CalendarAdapter(private val dayList: ArrayList<Date>) :
     RecyclerView.Adapter<CalendarAdapter.ItemViewHolder>() {
 
+    interface ItemClick {
+        fun onClick(view : View, position : Int)
+    }
+    var itemClick : ItemClick? = null
+
     private val TAG = CalendarAdapter::class.java.simpleName
 
     class ItemViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
 
-        val dayText : TextView = itemView.findViewById(R.id.dayText)
+            val dayText : TextView = itemView.findViewById(R.id.dayText)
+
     }
 
     // 화면 설정
@@ -41,9 +47,6 @@ class CalendarAdapter(private val dayList: ArrayList<Date>) :
 
         var monthDate = dayList[holder.adapterPosition]
         Log.d(TAG, "monthDate : " + monthDate)
-//        var month = CalendarUtil.selectedDate.month
-//        Log.d(TAG, "month : " + month)
-//        Log.d(TAG, "Calendar Util : " + CalendarUtil.selectedDate)
 
         // 초기화
         var dateCalendar = Calendar.getInstance()
@@ -116,10 +119,17 @@ class CalendarAdapter(private val dayList: ArrayList<Date>) :
 //        }
 
          //날짜 클릭 이벤트
-        holder.itemView.setOnClickListener{
-            holder.itemView.setBackgroundResource(R.drawable.today_background)
-            //notifyItemChanged(position)
+//        holder.itemView.setOnClickListener{
+//            holder.itemView.setBackgroundResource(R.drawable.today_background)
+//            //notifyItemChanged(position)
+//
+//        }
 
+        if (itemClick != null) {
+            holder.itemView.setOnClickListener{ view ->
+                itemClick?.onClick(view, position)
+                holder.itemView.setBackgroundResource(R.drawable.today_background)
+            }
         }
 
     }
@@ -128,4 +138,5 @@ class CalendarAdapter(private val dayList: ArrayList<Date>) :
         return dayList.size
     }
 
-}
+
+    }

@@ -5,13 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.databinding.DataBindingUtil
-<<<<<<< HEAD
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
-=======
 import com.jenny.deara.DiaryFragment
->>>>>>> 1bdcbd3b4cbde86ddcf170596b63b58565232df3
 import com.jenny.deara.R
 import com.jenny.deara.databinding.ActivityDiaryDetailBinding
 import com.jenny.deara.utils.FBRef
@@ -36,7 +33,7 @@ class DiaryDetailActivity : AppCompatActivity() {
 
         //수정
         binding.modifyBtn.setOnClickListener {
-            val intent = Intent(this, DiaryEditActivity::class.java)
+            val intent = Intent(this, DiaryWriteActivity::class.java)
             startActivity(intent)
         }
 
