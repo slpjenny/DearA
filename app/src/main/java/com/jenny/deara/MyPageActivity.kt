@@ -12,19 +12,24 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import com.jenny.deara.PatternLock.PatternActivity
+//import com.jenny.deara.PatternLock.PatternActivity
 
 import com.jenny.deara.databinding.ActivityMyPageBinding
 import com.jenny.deara.mypages.ChangeNickNameActivity
 import com.jenny.deara.mypages.ChangePwdActivity
 import com.jenny.deara.mypages.ContactUsFragment
 import com.jenny.deara.mypages.SelectLockActivity
+import com.jenny.deara.utils.FBAuth.Companion.auth
 import kotlinx.android.synthetic.main.activity_my_page.*
 import java.util.regex.Pattern
 
 class MyPageActivity : AppCompatActivity() {
 
     val binding by lazy { ActivityMyPageBinding.inflate(layoutInflater) }
+
+    private lateinit var auth: FirebaseAuth
+    private lateinit var database: DatabaseReference
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,13 +53,9 @@ class MyPageActivity : AppCompatActivity() {
         // firebase 에서 닉네임 불러오기
         if(user!=null) {
             database.child("users").child(user.uid).get().addOnSuccessListener {
-//                Log.i("firebase", "Got value ${it.value}")
-
                 binding.yourNick.setText(it.value.toString())
 
-
             }.addOnFailureListener {
-//                Log.e("firebase", "Error getting data", it)
             }
 
         }
