@@ -53,7 +53,6 @@ class SignInActivity : AppCompatActivity() {
         }
 
 
-
         // '완료' 버튼 누르면 신규 사용자 이메일,비밀번호로 가입
         binding.saveBtn.setOnClickListener {
 
@@ -87,6 +86,7 @@ class SignInActivity : AppCompatActivity() {
                                 // user : 지금 가입한 회원
                                 var user = auth.currentUser
 
+                                Toast.makeText(baseContext,"회원가입이 완료되었습니다.",Toast.LENGTH_SHORT).show()
 
                                 // 사용자의 uid 에 따라 닉네임을 저장
                                 if (user != null) {
