@@ -38,25 +38,217 @@
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <!--clYyMid-->
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/csLyMid"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:paddingTop="64dp"
-        app:layout_constraintEnd_toEndOf="@+id/constraintLayout"
-        app:layout_constraintHeight_percent="1.0"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/constraintLayout"
+        app:layout_constraintHeight_percent="0.15"
         app:layout_constraintWidth_percent="1.0">
 
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/fragmentContainerView"
-            android:name="androidx.navigation.fragment.NavHostFragment"
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@+id/csLyMid"
+            app:layout_constraintStart_toStartOf="@+id/csLyMid"
+            app:layout_constraintTop_toTopOf="parent" >
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="date"
+                android:textColor="@color/black"
+                android:textSize="19sp"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/cstLyBottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.07"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/csLyMid"
+        app:layout_constraintWidth_percent="1.0">
+
+        <ToggleButton
+            android:id="@+id/toggleBtn1"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/toggle_on"
+            android:checked="true"
+            android:text=""
+            android:textOff=""
+            android:textOn=""
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <!--        <ImageView-->
+<!--            android:id="@+id/toggleBtn1"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="42dp"-->
+<!--            android:layout_marginLeft="20dp"-->
+<!--            android:layout_marginRight="20dp"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:background="@drawable/toggle_on"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--clYyBottom-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cstLyBottom"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.77"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent="1.0">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:defaultNavHost="true"
-            app:navGraph="@navigation/diary_nav" />
+            android:background="@drawable/background_radius_white"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="10dp">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="23dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/title1"
+                            android:text="title1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="23sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:layout_marginBottom="5dp"/>
+                        <EditText
+                            android:id="@+id/content1Area"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="내용을 입력해주세요."
+                            android:textSize="19sp"
+                            android:textColor="#505050"
+                            android:background="@null"
+                            android:inputType="textMultiLine|textNoSuggestions"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_marginTop="20dp">
+                        <TextView
+                            android:id="@id/title2"
+                            android:text="title2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="23sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:layout_marginBottom="5dp"/>
+                        <EditText
+                            android:id="@+id/content2Area"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="내용을 입력해주세요."
+                            android:textSize="19sp"
+                            android:textColor="#505050"
+                            android:background="@null"
+                            android:inputType="textMultiLine|textNoSuggestions"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_marginTop="20dp">
+                        <TextView
+                            android:id="@id/title3"
+                            android:text="contents3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="23sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:layout_marginBottom="5dp"/>
+                        <EditText
+                            android:id="@+id/content3Area"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="내용을 입력해주세요."
+                            android:textSize="19sp"
+                            android:textColor="#505050"
+                            android:background="@null"
+                            android:inputType="textMultiLine|textNoSuggestions"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_marginTop="20dp">
+                        <TextView
+                            android:text="[랜덤질문]"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="15sp"
+                            android:textColor="@color/board_menu_gray"
+                            android:layout_marginBottom="5dp"/>
+                        <TextView
+                            android:id="@+id/randomQ"
+                            android:text="random question area"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="23sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:layout_marginBottom="5dp"/>
+                        <EditText
+                            android:id="@+id/randomA"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="내용을 입력해주세요."
+                            android:textSize="19sp"
+                            android:textColor="#505050"
+                            android:background="@null"
+                            android:inputType="textMultiLine|textNoSuggestions"/>
+                    </LinearLayout>
 
 
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

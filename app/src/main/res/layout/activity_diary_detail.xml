@@ -195,7 +195,7 @@
                             android:layout_marginBottom="5dp"/>
                         <TextView
                             android:id="@+id/randomQ"
-                            android:text="가장 좋았던 여행은?"
+                            android:text="Random Question Area"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="23sp"

@@ -8,5 +8,6 @@ class FBRef {
         private val database = Firebase.database
 
         val diaryRef = database.getReference("diary")
+        val randomQuestionRef = database.getReference("randomQuestion")
     }
 }
