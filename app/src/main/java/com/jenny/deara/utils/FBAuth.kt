@@ -23,7 +23,28 @@ class FBAuth {
             val dateFormat = SimpleDateFormat("yyyy.MM.dd HH:mm:ss", Locale.KOREA).format(currentDateTime)
 
             return dateFormat
+        }
 
+        //다이어리 날짜 저장 format
+        fun getTimeDiary() : String{
+            val currentDate = Calendar.getInstance()
+            val currentDateTime = currentDate.time
+            val dateFormat = SimpleDateFormat("yyyy년 MM월 dd일", Locale.KOREA).format(currentDateTime)
+            val dayOfWeek = currentDate.get(Calendar.DAY_OF_WEEK)
+
+            var weekString = ""
+
+            weekString = when (dayOfWeek) {
+                1 -> { "일요일" }
+                2 -> { "월요일" }
+                3 -> { "화요일" }
+                4 -> { "수요일" }
+                5 -> { "목요일" }
+                6 -> { "금요일" }
+                else -> { "토요일" }
+            }
+
+            return "$dateFormat $weekString"
         }
 
     }

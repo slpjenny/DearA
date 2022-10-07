@@ -6,5 +6,6 @@ data class DiaryData (
         var contents3: String = "",
         var r_question: String = "",
         var r_contents : String = "",
-        var sort: String = ""
+        var sort: String = "",
+        val time : String = ""
 )
