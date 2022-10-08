@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
 import android.util.Log
+import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
@@ -56,6 +57,7 @@ class MyPageActivity : AppCompatActivity() {
                 binding.yourNick.setText(it.value.toString())
 
             }.addOnFailureListener {
+                Toast.makeText(baseContext,"해당하는 닉네임이 없습니다",Toast.LENGTH_SHORT).show()
             }
 
         }
