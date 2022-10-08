@@ -51,41 +51,31 @@ class SignInActivity : AppCompatActivity() {
 
 
         // 이메일중복 확인
-        binding.checkEmail.setOnClickListener {
-            var email = binding.writeEmailEtxt.text.toString()
-
-
-        }
+        // firebase 내에서 자동 확인
+//        binding.checkEmail.setOnClickListener {
+//            var email = binding.writeEmailEtxt.text.toString()
+//
+//        }
 
         // 닉네임 중복 확인
         binding.checkNick.setOnClickListener {
             var nick = binding.writeNickEtxt.text.toString()
-            val nickList = ArrayList<String>()
+//            val nickList = ArrayList<String>()
 
             database.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     for (data in dataSnapshot.children) {
 
 //                        // child 내에 있는 데이터만큼 반복합니다.
-//                        nickList.add(data.value.toString())
-//
-//                        // 왜 여기선 들어가는데 이 밖에서는 안꺼내지지?
-//                        Log.d("nick", nickList.toString())
-
                         if (nick == data.value.toString()){
                             Toast.makeText(baseContext,"다른 닉네임을 사용해주세요",Toast.LENGTH_LONG).show()
                             break
                         }
-
                     }
                 }
 
                 override fun onCancelled(databaseError: DatabaseError) {}
             })
-
-            // for문 보다 이게 먼저 실행되네 ->  그래서 여기서만 Log를 찍으면 ArrayList가 비어있다고 뜬다.
-//            Log.d("nick", nickList.toString())
-
         }
 
 
@@ -116,8 +106,8 @@ class SignInActivity : AppCompatActivity() {
                     // 이상 없으면 회원가입
                     auth.createUserWithEmailAndPassword(email, pwd)
                         .addOnCompleteListener(this) { task ->
+
                             if (task.isSuccessful) {
-                                Log.d(TAG, "createUserWithEmail:success")
 
                                 // user : 지금 가입한 회원
                                 var user = auth.currentUser
@@ -134,8 +124,8 @@ class SignInActivity : AppCompatActivity() {
                                 // 회원가입 과정에서 오류나면 다음 메세지 생성
                             } else  {
                                 // If sign in fails, display a message to the user.
-                                Log.w(TAG, "createUserWithEmail:failure", task.exception)
-                                Toast.makeText(baseContext, "Authentication failed.",
+                                Log.w(TAG, "회원가입 오류", task.exception)
+                                Toast.makeText(baseContext, "회원가입 실패.(해당 이메일로 이미 가입하셨습니다)",
                                     Toast.LENGTH_SHORT).show()
                             }
 
@@ -155,12 +145,5 @@ class SignInActivity : AppCompatActivity() {
         super.onBackPressed()
     }
 
-
-
 }
 
-//
-//class Post {
-//    var keyy = Post()
-//    var valuee = Post()
-//}
