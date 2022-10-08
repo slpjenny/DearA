@@ -1,20 +1,23 @@
 package com.jenny.deara
 
 import android.content.ContentValues.TAG
-import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import com.google.firebase.FirebaseApp
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
+import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
 import com.jenny.deara.databinding.ActivitySignInBinding
 import kotlinx.android.synthetic.main.diary_list_item.*
+
 
 class SignInActivity : AppCompatActivity() {
 
@@ -31,7 +34,7 @@ class SignInActivity : AppCompatActivity() {
         auth = Firebase.auth
 
         // 실시간 database reference 불러오기
-        database = Firebase.database.reference
+        database = Firebase.database.reference.child("users")
 
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -57,27 +60,33 @@ class SignInActivity : AppCompatActivity() {
         // 닉네임 중복 확인
         binding.checkNick.setOnClickListener {
             var nick = binding.writeNickEtxt.text.toString()
+            val nickList = ArrayList<String>()
 
-            var hh = database.child("users").get()
+            database.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    for (data in dataSnapshot.children) {
 
+//                        // child 내에 있는 데이터만큼 반복합니다.
+//                        nickList.add(data.value.toString())
+//
+//                        // 왜 여기선 들어가는데 이 밖에서는 안꺼내지지?
+//                        Log.d("nick", nickList.toString())
 
-            Log.d("nick", hh.toString())
+                        if (nick == data.value.toString()){
+                            Toast.makeText(baseContext,"다른 닉네임을 사용해주세요",Toast.LENGTH_LONG).show()
+                            break
+                        }
+
+                    }
+                }
+
+                override fun onCancelled(databaseError: DatabaseError) {}
+            })
+
+            // for문 보다 이게 먼저 실행되네 ->  그래서 여기서만 Log를 찍으면 ArrayList가 비어있다고 뜬다.
+//            Log.d("nick", nickList.toString())
 
         }
-
-
-
-        // firebase 에서 닉네임 불러오기
-//        if(user!=null) {
-//            database.child("users").child(user.uid).get().addOnSuccessListener {
-//                binding.yourNick.setText(it.value.toString())
-//
-//            }.addOnFailureListener {
-//                Toast.makeText(baseContext,"해당하는 닉네임이 없습니다",Toast.LENGTH_SHORT).show()
-//            }
-//
-//        }
-
 
 
         // '완료' 버튼 누르면 신규 사용자 이메일,비밀번호로 가입
@@ -146,5 +155,12 @@ class SignInActivity : AppCompatActivity() {
         super.onBackPressed()
     }
 
+
+
 }
 
+//
+//class Post {
+//    var keyy = Post()
+//    var valuee = Post()
+//}
