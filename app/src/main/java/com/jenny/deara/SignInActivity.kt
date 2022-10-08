@@ -22,7 +22,6 @@ class SignInActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var database: DatabaseReference
 
-    //    val myRef = database.getReference("users")
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -30,6 +29,9 @@ class SignInActivity : AppCompatActivity() {
 
         // Auth 초기화
         auth = Firebase.auth
+
+        // 실시간 database reference 불러오기
+        database = Firebase.database.reference
 
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -45,12 +47,37 @@ class SignInActivity : AppCompatActivity() {
         }
 
 
-        // 이메일 중복 확인
+        // 이메일중복 확인
         binding.checkEmail.setOnClickListener {
             var email = binding.writeEmailEtxt.text.toString()
 
 
         }
+
+        // 닉네임 중복 확인
+        binding.checkNick.setOnClickListener {
+            var nick = binding.writeNickEtxt.text.toString()
+
+            var hh = database.child("users").get()
+
+
+            Log.d("nick", hh.toString())
+
+        }
+
+
+
+        // firebase 에서 닉네임 불러오기
+//        if(user!=null) {
+//            database.child("users").child(user.uid).get().addOnSuccessListener {
+//                binding.yourNick.setText(it.value.toString())
+//
+//            }.addOnFailureListener {
+//                Toast.makeText(baseContext,"해당하는 닉네임이 없습니다",Toast.LENGTH_SHORT).show()
+//            }
+//
+//        }
+
 
 
         // '완료' 버튼 누르면 신규 사용자 이메일,비밀번호로 가입
