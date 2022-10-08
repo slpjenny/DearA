@@ -28,7 +28,8 @@ class SignInActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
-//        FirebaseApp.initializeApp(baseContext)
+        // checkNickBtn : 닉네임 중복 확인 버튼 클릭 체크 여부
+        var checkNickBtn = 0
 
         // Auth 초기화
         auth = Firebase.auth
@@ -51,41 +52,31 @@ class SignInActivity : AppCompatActivity() {
 
 
         // 이메일중복 확인
-        binding.checkEmail.setOnClickListener {
-            var email = binding.writeEmailEtxt.text.toString()
-
-
-        }
+        // firebase 내에서 자동 확인
+//        binding.checkEmail.setOnClickListener {
+//            var email = binding.writeEmailEtxt.text.toString()
+//
+//        }
 
         // 닉네임 중복 확인
         binding.checkNick.setOnClickListener {
             var nick = binding.writeNickEtxt.text.toString()
-            val nickList = ArrayList<String>()
 
             database.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     for (data in dataSnapshot.children) {
 
 //                        // child 내에 있는 데이터만큼 반복합니다.
-//                        nickList.add(data.value.toString())
-//
-//                        // 왜 여기선 들어가는데 이 밖에서는 안꺼내지지?
-//                        Log.d("nick", nickList.toString())
-
                         if (nick == data.value.toString()){
-                            Toast.makeText(baseContext,"다른 닉네임을 사용해주세요",Toast.LENGTH_LONG).show()
+                            Toast.makeText(baseContext,"다른 닉네임을 사용해주세요",Toast.LENGTH_SHORT).show()
                             break
                         }
-
                     }
+                    Toast.makeText(baseContext,"사용하실 수 있는 닉네임입니다.",Toast.LENGTH_SHORT).show()
+                    checkNickBtn = 1
                 }
-
                 override fun onCancelled(databaseError: DatabaseError) {}
             })
-
-            // for문 보다 이게 먼저 실행되네 ->  그래서 여기서만 Log를 찍으면 ArrayList가 비어있다고 뜬다.
-//            Log.d("nick", nickList.toString())
-
         }
 
 
@@ -111,38 +102,44 @@ class SignInActivity : AppCompatActivity() {
                 Toast.makeText(baseContext,"사용하실 닉네임을 입력해주세요",Toast.LENGTH_SHORT).show()
             }else{ // 모든 칸에 값이 제대로 입력되었다면,
 
-                // 비밀번호 재입력 확인
-                if (pwd == repwd){
-                    // 이상 없으면 회원가입
-                    auth.createUserWithEmailAndPassword(email, pwd)
-                        .addOnCompleteListener(this) { task ->
-                            if (task.isSuccessful) {
-                                Log.d(TAG, "createUserWithEmail:success")
+                // 닉네임 중복 확인했는지 확인
+                if(checkNickBtn == 0){
+                    Toast.makeText(baseContext,"닉네임 중복 확인을 해주세요",Toast.LENGTH_SHORT).show()
+                }else{
 
-                                // user : 지금 가입한 회원
-                                var user = auth.currentUser
+                    // 비밀번호 재입력 확인
+                    if (pwd == repwd){
+                        // 이상 없으면 회원가입
+                        auth.createUserWithEmailAndPassword(email, pwd)
+                            .addOnCompleteListener(this) { task ->
 
-                                Toast.makeText(baseContext,"회원가입이 완료되었습니다.",Toast.LENGTH_SHORT).show()
+                                if (task.isSuccessful) {
 
-                                // 사용자의 uid 에 따라 닉네임을 저장
-                                if (user != null) {
-                                    database.child("users").child(user.uid).setValue(nick)
+                                    // user : 지금 가입한 회원
+                                    var user = auth.currentUser
+
+                                    Toast.makeText(baseContext,"회원가입이 완료되었습니다.",Toast.LENGTH_SHORT).show()
+
+                                    // 사용자의 uid 에 따라 닉네임을 저장
+                                    if (user != null) {
+                                        database.child("users").child(user.uid).setValue(nick)
+                                    }
+
+                                    Toast.makeText(baseContext,"회원가입이 완료되었습니다.",Toast.LENGTH_SHORT).show()
+
+                                    // 회원가입 과정에서 오류나면 다음 메세지 생성
+                                } else  {
+                                    // If sign in fails, display a message to the user.
+                                    Log.w(TAG, "회원가입 오류", task.exception)
+                                    Toast.makeText(baseContext, "회원가입 실패.(해당 이메일로 이미 가입하셨습니다)",
+                                        Toast.LENGTH_SHORT).show()
                                 }
 
-                                Toast.makeText(baseContext,"회원가입이 완료되었습니다.",Toast.LENGTH_SHORT).show()
-
-                                // 회원가입 과정에서 오류나면 다음 메세지 생성
-                            } else  {
-                                // If sign in fails, display a message to the user.
-                                Log.w(TAG, "createUserWithEmail:failure", task.exception)
-                                Toast.makeText(baseContext, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show()
                             }
 
-                        }
-
-                }else {
-                    Toast.makeText(baseContext,"비밀번호가 일치하지 않습니다.", Toast.LENGTH_LONG).show()
+                    }else {
+                        Toast.makeText(baseContext,"비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
 
@@ -155,12 +152,5 @@ class SignInActivity : AppCompatActivity() {
         super.onBackPressed()
     }
 
-
-
 }
 
-//
-//class Post {
-//    var keyy = Post()
-//    var valuee = Post()
-//}
