@@ -50,6 +50,7 @@ class DiaryFragment(var iMonth: Int, var iYear: Int) : Fragment() {
         getFBDiaryData()
 
 
+
         //마이페이지 버튼
         binding.myPageBtn.setOnClickListener {
             val intent = Intent(context, MyPageActivity::class.java)
@@ -77,19 +78,6 @@ class DiaryFragment(var iMonth: Int, var iYear: Int) : Fragment() {
         val rv : RecyclerView = binding.rvDiary
         rv.adapter= DiaryListAdapter
 
-        //test 데이터
-//        FBRef.diaryRef
-//            .push()
-//            .setValue(DiaryData
-//                ("맛있는 음식을 먹어서 행복했다",
-//                "오늘도 늦잠을 자서 또 택시를 탔다.",
-//                "내일은 꼭 제시간에 일어나서 택시 타지 않기",
-//                "[랜덤질문] 가장 좋았던 여행은 어떤 여행인가요?",
-//                "작년에 친구들과 갔던 제주도 여행",
-//                "ver1",
-//                "time test"
-//                ))
-//
 //        //random 질문 데이터 삽입 test
 //        FBRef.randomQuestionRef.push().setValue(RandomQuestionModel("최근 가장 몰입했던 일은 무엇인가요?"))
 //        FBRef.randomQuestionRef.push().setValue(RandomQuestionModel("지금 가장 보고 싶은 사람은 누구인가요?"))
