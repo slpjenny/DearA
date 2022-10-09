@@ -8,7 +8,6 @@ import androidx.databinding.DataBindingUtil
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
-import com.jenny.deara.DiaryFragment
 import com.jenny.deara.R
 import com.jenny.deara.databinding.ActivityDiaryDetailBinding
 import com.jenny.deara.utils.FBRef
@@ -33,13 +32,16 @@ class DiaryDetailActivity : AppCompatActivity() {
 
         //수정
         binding.modifyBtn.setOnClickListener {
-            val intent = Intent(this, DiaryWriteActivity::class.java)
+            val intent = Intent(this, DiaryEditActivity::class.java)
+            intent.putExtra("key", key)
             startActivity(intent)
         }
 
         //삭제
         binding.trashBtn.setOnClickListener {
-            PopupFragment().show(supportFragmentManager, "SampleDialog")
+            if (key != null) {
+                PopupFragment(key).show(supportFragmentManager, "SampleDialog")
+            }
         }
     }
 

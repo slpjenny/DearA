@@ -15,8 +15,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DearA"
         tools:targetApi="31">
-        service android:name="com.mbientlab.metawear.android.BtleService" />
-
         <activity
             android:name="mypages.SetPinActivity"
             android:exported="false"
@@ -60,6 +58,9 @@
             android:name=".diary.DiaryDetailActivity"
             android:exported="false" />
         <activity
+            android:name=".diary.DiaryEditActivity"
+            android:exported="false" />
+        <activity
             android:name=".MyPageActivity"
             android:exported="false" />
         <activity
@@ -71,11 +72,13 @@
         <activity
             android:name=".LoginActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+             <intent-filter>
+             <action android:name="android.intent.action.MAIN" />
+
+
+             <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>
         </activity>
         <activity
             android:name=".SplashActivity"
