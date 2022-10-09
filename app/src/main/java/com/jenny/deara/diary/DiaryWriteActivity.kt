@@ -21,7 +21,7 @@ import java.util.*
 class DiaryWriteActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDiaryWriteBinding
-    private lateinit var sort : String
+    private var sort : String = "ver1"
 
     val randomQList = mutableListOf<RandomQuestionModel>()
 
