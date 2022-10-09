@@ -13,11 +13,13 @@ import com.jenny.deara.databinding.ActivityDiaryEditBinding
 import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
 import kotlinx.android.synthetic.main.activity_diary_edit.*
+import kotlinx.android.synthetic.main.fragment_diary.*
 
 class DiaryEditActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDiaryEditBinding
     private lateinit var sort : String
+    private var month : Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +30,6 @@ class DiaryEditActivity : AppCompatActivity() {
         getDiaryData(key)
 
         binding.saveBtn.setOnClickListener {
-            Log.d("editTest", "테스트")
             editDiaryData(key)
         }
 
@@ -67,7 +68,8 @@ class DiaryEditActivity : AppCompatActivity() {
                     binding.randomQ.text.toString(),
                     binding.randomA.text.toString(),
                     sort,
-                    FBAuth.getTimeDiary()
+                    FBAuth.getTimeDiary(),
+                    month
                 )
             )
 
@@ -93,6 +95,7 @@ class DiaryEditActivity : AppCompatActivity() {
                 binding.randomA.setText(dataModel?.r_contents)
                 binding.date.text = dataModel?.time
                 sort = dataModel?.sort.toString()
+                month = dataModel?.month!!
                 if (sort == "ver1"){
                     binding.toggleBtn1.setBackgroundResource(R.drawable.toggle_on)
                     binding.title1.text = "좋았던 일"

@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
+import com.jenny.deara.MainActivity
 import com.jenny.deara.R
 import com.jenny.deara.databinding.ActivityDiaryDetailBinding
 import com.jenny.deara.utils.FBRef
@@ -19,6 +20,7 @@ class DiaryDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_diary_detail)
+
 
         val key = intent.getStringExtra("key")
         if (key != null) {
@@ -64,12 +66,17 @@ class DiaryDetailActivity : AppCompatActivity() {
                         binding.title3.text = "느낀점"
                     }
                 }
-
-                binding.contents1.text = dataModel!!.contents1
-                binding.contents2.text = dataModel.contents2
-                binding.contents3.text = dataModel.contents3
-                binding.randomQ.text = dataModel.r_question
-                binding.randomA.text = dataModel.r_contents
+                if (dataModel != null){
+                    binding.contents1.text = dataModel.contents1
+                    binding.contents2.text = dataModel.contents2
+                    binding.contents3.text = dataModel.contents3
+                    binding.randomQ.text = dataModel.r_question
+                    binding.randomA.text = dataModel.r_contents
+                } else{
+                    val intent = Intent(this@DiaryDetailActivity, MainActivity::class.java)
+                    intent.putExtra("nav_diary", "fourth")
+                    startActivity(intent)
+                }
             }
 
             override fun onCancelled(databaseError: DatabaseError) {

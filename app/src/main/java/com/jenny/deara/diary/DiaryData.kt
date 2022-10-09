@@ -7,5 +7,6 @@ data class DiaryData (
         var r_question: String = "",
         var r_contents : String = "",
         var sort: String = "",
-        val time : String = ""
+        val time : String = "",
+        val month: Int = 1
 )

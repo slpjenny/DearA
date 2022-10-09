@@ -67,7 +67,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/constraintLayout"
-        app:layout_constraintHeight_percent="0.15"
+        app:layout_constraintHeight_percent="0.17"
         app:layout_constraintWidth_percent="1.0">
 
         <TextView
@@ -92,7 +92,7 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.85"
+        app:layout_constraintHeight_percent="0.83"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/csLyMid"
         app:layout_constraintWidth_percent="1.0">

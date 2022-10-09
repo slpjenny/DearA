@@ -49,8 +49,10 @@ class PopupFragment(var key: String) : DialogFragment() {
         binding.delBtn.setOnClickListener{
             FBRef.diaryRef.child(key).removeValue()
             Toast.makeText(context, "삭제완료", Toast.LENGTH_LONG).show()
+
             // 다이어리 리스트로 이동
             val intent = Intent(context, MainActivity::class.java)
+            //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
             intent.putExtra("nav_diary", "fourth")
             startActivity(intent)
         }
