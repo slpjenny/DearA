@@ -78,19 +78,8 @@ class DiaryFragment(var iMonth: Int, var iYear: Int) : Fragment() {
         val rv : RecyclerView = binding.rvDiary
         rv.adapter= DiaryListAdapter
 
-//        //random 질문 데이터 삽입 test
+//        random 질문 데이터 삽입 test
 //        FBRef.randomQuestionRef.push().setValue(RandomQuestionModel("최근 가장 몰입했던 일은 무엇인가요?"))
-//        FBRef.randomQuestionRef.push().setValue(RandomQuestionModel("지금 가장 보고 싶은 사람은 누구인가요?"))
-//        FBRef.randomQuestionRef.push().setValue(RandomQuestionModel("10년 후의 나에게 해주고 싶은 말은 무엇인가요?"))
-//        FBRef.randomQuestionRef.push().setValue(RandomQuestionModel("가장 기억에 남는 여행은 어떤 여행인가요?"))
-//        FBRef.randomQuestionRef.push().setValue(RandomQuestionModel("가장 자신있는 요리는 무엇인가요?"))
-//        FBRef.randomQuestionRef.push().setValue(RandomQuestionModel("나에게 가족의 의미는 무엇인가요?"))
-//        FBRef.randomQuestionRef.push().setValue(RandomQuestionModel("가장 기억에 남는 어릴 적 추억은 무엇인가요?"))
-//        FBRef.randomQuestionRef.push().setValue(RandomQuestionModel("내일을 위한 다짐 하나"))
-//        FBRef.randomQuestionRef.push().setValue(RandomQuestionModel("지금 나에게 가장 소중한 것은 무엇인가요?"))
-//        FBRef.randomQuestionRef.push().setValue(RandomQuestionModel("무언가 잃었던 경험이 있나요?"))
-//        FBRef.randomQuestionRef.push().setValue(RandomQuestionModel("키우고 싶은 동물이 있나요?"))
-//        FBRef.randomQuestionRef.push().setValue(RandomQuestionModel("이번주에 가장 뿌듯했던 경험을 알려주세요."))
 
         DiaryListAdapter.datas = diaryList
         DiaryListAdapter.notifyDataSetChanged()
@@ -130,25 +119,28 @@ class DiaryFragment(var iMonth: Int, var iYear: Int) : Fragment() {
 
                 for (dataModel in dataSnapshot.children) {
 
-                    Log.d("diaryListtest", dataModel.toString())
+                    Log.d("diaryListTest", dataModel.toString())
 
                     val item = dataModel.getValue(DiaryData::class.java)
-                    diaryList.add(item!!)
-                    diarykeyList.add(dataModel.key.toString())
+                    // 달 별로 리스트 띄우기
+                    if(item!!.month == iMonth){
+                        diaryList.add(item)
+                        diarykeyList.add(dataModel.key.toString())
+                    }
 
                 }
                 diarykeyList.reverse()
                 diaryList.reverse()
                 DiaryListAdapter.notifyDataSetChanged()
 
-                Log.d("diaryListtest", diaryList.toString())
+                Log.d("diaryListTest", diaryList.toString())
 
 
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
                 // Getting Post failed, log a message
-                Log.w("diaryListtest", "loadPost:onCancelled", databaseError.toException())
+                Log.w("diaryListTest", "loadPost:onCancelled", databaseError.toException())
             }
         }
         FBRef.diaryRef.addValueEventListener(postListener)

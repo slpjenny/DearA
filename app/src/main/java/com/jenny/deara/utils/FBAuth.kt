@@ -47,5 +47,12 @@ class FBAuth {
             return "$dateFormat $weekString"
         }
 
+        fun getMonth() : Int{
+            var dateCalendar = Calendar.getInstance()
+            var month = dateCalendar.get(Calendar.MONTH) + 1
+
+            return month
+        }
+
     }
 }
