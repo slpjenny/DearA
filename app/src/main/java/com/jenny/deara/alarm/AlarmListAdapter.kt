@@ -18,6 +18,16 @@ class AlarmListAdapter(val context: Context): RecyclerView.Adapter<AlarmListAdap
 
     var datas = mutableListOf<AlarmData>()
 
+    interface DataClickListener {
+        fun onClick(view: View, position: Int)
+    }
+
+    private lateinit var dataClickListener: DataClickListener
+
+    fun setDataClickListener(dataClickListener: DataClickListener) {
+        this.dataClickListener = dataClickListener
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlarmListAdapter.ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.alarm_list_item, parent, false)
         return ViewHolder(view)
@@ -27,6 +37,10 @@ class AlarmListAdapter(val context: Context): RecyclerView.Adapter<AlarmListAdap
 
     override fun onBindViewHolder(holder: AlarmListAdapter.ViewHolder, position: Int) {
         holder.bind(datas[position])
+
+        holder.itemView.setOnClickListener {
+            dataClickListener.onClick(it, position)
+        }
     }
 
     /*   fun removeItem(position: Int) {
@@ -45,5 +59,6 @@ class AlarmListAdapter(val context: Context): RecyclerView.Adapter<AlarmListAdap
             day.text = item.day
 
             }
+
     }
 }
