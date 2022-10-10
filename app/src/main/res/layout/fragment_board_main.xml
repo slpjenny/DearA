@@ -99,7 +99,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/boardSearch"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.9"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -108,7 +109,9 @@
 
         <EditText
             android:id="@+id/SearchET"
-            android:layout_width="300dp"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.8"
+            android:layout_marginTop="5dp"
             android:layout_height="30dp"
             android:background="@drawable/all_edge"
             android:hint=" "
@@ -120,7 +123,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="5dp"
             android:src="@drawable/board_search"
             app:layout_constraintStart_toEndOf="@+id/SearchET"
             app:layout_constraintTop_toTopOf="parent" />
@@ -456,7 +459,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/pageBtn"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.5"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:orientation="horizontal"
@@ -554,10 +558,9 @@
         android:id="@+id/writeBtn"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_marginEnd="8dp"
+        android:layout_margin="20dp"
         android:background="@drawable/plusbtn"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/boardList5" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
