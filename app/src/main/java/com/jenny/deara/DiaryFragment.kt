@@ -113,6 +113,7 @@ class DiaryFragment(var iMonth: Int, var iYear: Int) : Fragment() {
     private fun getFBDiaryData(){
 
         val postListener = object : ValueEventListener {
+            @SuppressLint("NotifyDataSetChanged")
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
                 diaryList.clear()
@@ -122,8 +123,8 @@ class DiaryFragment(var iMonth: Int, var iYear: Int) : Fragment() {
                     Log.d("diaryListTest", dataModel.toString())
 
                     val item = dataModel.getValue(DiaryData::class.java)
-                    // 달 별로 리스트 띄우기
-                    if(item!!.month == iMonth){
+                    // 선택한 날짜 일기 리스트 띄우기
+                    if(item!!.month == iMonth && item.year == iYear){
                         diaryList.add(item)
                         diarykeyList.add(dataModel.key.toString())
                     }

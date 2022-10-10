@@ -54,5 +54,12 @@ class FBAuth {
             return month
         }
 
+        fun getYear() : Int{
+            var dateCalendar = Calendar.getInstance()
+            var year = dateCalendar.get(Calendar.YEAR)
+
+            return year
+        }
+
     }
 }
