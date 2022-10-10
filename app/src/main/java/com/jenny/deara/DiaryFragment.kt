@@ -15,6 +15,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.jenny.deara.databinding.FragmentDiaryBinding
 import com.jenny.deara.diary.*
+import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
 
 class DiaryFragment(var iMonth: Int, var iYear: Int) : Fragment() {
@@ -78,8 +79,8 @@ class DiaryFragment(var iMonth: Int, var iYear: Int) : Fragment() {
         val rv : RecyclerView = binding.rvDiary
         rv.adapter= DiaryListAdapter
 
-//        random 질문 데이터 삽입 test
-//        FBRef.randomQuestionRef.push().setValue(RandomQuestionModel("최근 가장 몰입했던 일은 무엇인가요?"))
+        //random 질문 데이터 삽입 test
+//        FBRef.randomQuestionRef.push().setValue("지금 가장 보고 싶은 사람은 누구인가요?")
 
         DiaryListAdapter.datas = diaryList
         DiaryListAdapter.notifyDataSetChanged()
@@ -113,6 +114,7 @@ class DiaryFragment(var iMonth: Int, var iYear: Int) : Fragment() {
     private fun getFBDiaryData(){
 
         val postListener = object : ValueEventListener {
+            @SuppressLint("NotifyDataSetChanged")
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
                 diaryList.clear()
@@ -122,12 +124,11 @@ class DiaryFragment(var iMonth: Int, var iYear: Int) : Fragment() {
                     Log.d("diaryListTest", dataModel.toString())
 
                     val item = dataModel.getValue(DiaryData::class.java)
-                    // 달 별로 리스트 띄우기
-                    if(item!!.month == iMonth){
+                    // 선택한 날짜 일기 리스트 띄우기
+                    if(item!!.month == iMonth && item.year == iYear && FBAuth.getUid() == item.uid){
                         diaryList.add(item)
                         diarykeyList.add(dataModel.key.toString())
                     }
-
                 }
                 diarykeyList.reverse()
                 diaryList.reverse()

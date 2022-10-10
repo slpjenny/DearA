@@ -23,7 +23,7 @@ class DiaryWriteActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDiaryWriteBinding
     private var sort : String = "ver1"
 
-    val randomQList = mutableListOf<RandomQuestionModel>()
+    val randomQList = mutableListOf<String>()
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -84,8 +84,8 @@ class DiaryWriteActivity : AppCompatActivity() {
 
                     Log.d("randomQList", dataModel.toString())
 
-                    val item = dataModel.getValue(RandomQuestionModel::class.java)
-                    randomQList.add(item!!)
+                    val item = dataModel.value
+                    randomQList.add(item!! as String)
 
                 }
                 Log.d("randomQListTest", randomQList.toString())
@@ -94,7 +94,7 @@ class DiaryWriteActivity : AppCompatActivity() {
                 if(randomQList.size > 0){
                     val randomNum = Random().nextInt(randomQList.size)
                     Log.d("randomTest", "$randomNum")
-                    binding.randomQ.text = randomQList[randomNum].r_question
+                    binding.randomQ.text = randomQList[randomNum]
                 }
             }
 
@@ -116,12 +116,14 @@ class DiaryWriteActivity : AppCompatActivity() {
         val r_contents = binding.randomA.text.toString()
         val time = FBAuth.getTimeDiary()
         val month = FBAuth.getMonth()
+        val year = FBAuth.getYear()
+        val uid = FBAuth.getUid()
 
         val key = FBRef.diaryRef.push().key.toString()
 
         FBRef.diaryRef
             .child(key)
-            .setValue(DiaryData(contents1, contents2, contents3, r_question, r_contents, sort, time, month))
+            .setValue(DiaryData(contents1, contents2, contents3, r_question, r_contents, sort, time, month, year, uid))
 
         Toast.makeText(this, "일기가 저장되었습니다.", Toast.LENGTH_LONG).show()
 
