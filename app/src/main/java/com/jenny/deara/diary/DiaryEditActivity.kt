@@ -21,6 +21,7 @@ class DiaryEditActivity : AppCompatActivity() {
     private lateinit var sort : String
     private var month : Int = 0
     private var year : Int = 2022
+    private lateinit var uid : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,7 +72,8 @@ class DiaryEditActivity : AppCompatActivity() {
                     sort,
                     FBAuth.getTimeDiary(),
                     month,
-                    year
+                    year,
+                    FBAuth.getUid()
                 )
             )
 

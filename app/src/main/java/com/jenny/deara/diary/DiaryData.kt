@@ -9,5 +9,6 @@ data class DiaryData (
         var sort: String = "",
         val time : String = "",
         val month: Int = 1,
-        val year: Int = 2022
+        val year: Int = 2022,
+        val uid : String = ""
 )

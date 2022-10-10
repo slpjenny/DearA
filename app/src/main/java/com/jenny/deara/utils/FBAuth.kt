@@ -47,12 +47,14 @@ class FBAuth {
             return "$dateFormat $weekString"
         }
 
+        // 월 가져오기
         fun getMonth() : Int{
             var month = CalendarUtil.selectedDate.get(Calendar.MONTH) + 1
 
             return month
         }
 
+        //년 가져오기
         fun getYear() : Int{
             var year = CalendarUtil.selectedDate.get(Calendar.YEAR)
 
