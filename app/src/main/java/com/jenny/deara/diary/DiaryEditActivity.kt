@@ -21,7 +21,6 @@ class DiaryEditActivity : AppCompatActivity() {
     private lateinit var sort : String
     private var month : Int = 0
     private var year : Int = 2022
-    private lateinit var uid : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +29,10 @@ class DiaryEditActivity : AppCompatActivity() {
 
         val key = intent.getStringExtra("key").toString()
         getDiaryData(key)
+
+        binding.closeBtn.setOnClickListener {
+            finish()
+        }
 
         binding.saveBtn.setOnClickListener {
             editDiaryData(key)
