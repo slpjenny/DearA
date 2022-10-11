@@ -3,6 +3,7 @@ package com.jenny.deara
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.graphics.Color.GRAY
+import android.graphics.Color.RED
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -25,6 +26,9 @@ class CalendarAdapter(private val dayList: ArrayList<Date>) :
     }
     var itemClick : ItemClick? = null
 
+    var selectedPosition = -1
+    var oldPosition = 0
+
     private val TAG = CalendarAdapter::class.java.simpleName
 
     class ItemViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
@@ -46,7 +50,7 @@ class CalendarAdapter(private val dayList: ArrayList<Date>) :
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
 
         var monthDate = dayList[holder.adapterPosition]
-        Log.d(TAG, "monthDate : " + monthDate)
+//        Log.d(TAG, "monthDate : " + monthDate)
 
         // 초기화
         var dateCalendar = Calendar.getInstance()
@@ -56,12 +60,12 @@ class CalendarAdapter(private val dayList: ArrayList<Date>) :
 
         // 날짜 캘린더에 담기
         dateCalendar.time = monthDate
-        Log.d(TAG, "dataCalendar.time : " + dateCalendar.time)
+//        Log.d(TAG, "dataCalendar.time : " + dateCalendar.time)
 
         // 캘린더값 날짜 변수에 담기
         var dayNo = dateCalendar.get(Calendar.DAY_OF_MONTH)
 
-        Log.d(TAG, "dayNo : " + dayNo)
+//        Log.d(TAG, "dayNo : " + dayNo)
 
         holder.dayText.text = dayNo.toString()
 
@@ -80,63 +84,65 @@ class CalendarAdapter(private val dayList: ArrayList<Date>) :
         // 넘어온 날짜와 현재 날짜 비교
         if (iYear == selectYear && iMonth == selectMonth){  // 같다면 진한 색상
             holder.dayText.setTextColor(Color.BLACK)
-            Log.d(TAG, "iYear : " + iYear)
-            Log.d(TAG, "iMonth : " + iMonth)
-            Log.d(TAG, "selectYear : " + selectYear)
-            Log.d(TAG, "selectMonth : " + selectMonth)
+//            Log.d(TAG, "iYear : " + iYear)
+//            Log.d(TAG, "iMonth : " + iMonth)
+//            Log.d(TAG, "selectYear : " + selectYear)
+//            Log.d(TAG, "selectMonth : " + selectMonth)
             // 현재 날짜 밑줄
             if(selectMonth == monthNo && selectDay == dayNo) {
-                holder.itemView.setBackgroundResource(R.drawable.today_background)
-                Log.d(TAG, "Calendar Month : " + dateCalendar.get(Calendar.MONTH) + 1)
-                Log.d(TAG, "selectMonth : " + selectMonth)
-                Log.d(TAG, "monthNo : " + monthNo)
-                Log.d(TAG, "selectDay : " + selectDay)
-                Log.d(TAG, "dayNo : " + dayNo)
+                //holder.itemView.setBackgroundResource(R.drawable.today_background)
+                holder.dayText.setTextColor(Color.parseColor("#ff0000"))
+//                Log.d(TAG, "Calendar Month : " + dateCalendar.get(Calendar.MONTH) + 1)
+//                Log.d(TAG, "selectMonth : " + selectMonth)
+//                Log.d(TAG, "monthNo : " + monthNo)
+//                Log.d(TAG, "selectDay : " + selectDay)
+//                Log.d(TAG, "dayNo : " + dayNo)
             }
 
         } else{ // 다르다면 하얀 색상
             holder.dayText.setTextColor(Color.parseColor("#ffffff"))
         }
 
-//        // 현재 날짜 밑줄로 표시하기
-//        if(CalendarUtil.selectedDate.dayOfMonth == dayNo){
-//                holder.itemView.setBackgroundResource(R.drawable.today_background)
-//            }
 
-
-
-//        if (day==null){
-//            holder.dayText.text = ""
-//        }else{
-//            // 해당 일자를 넣는다.
-//            holder.dayText.text = day.dayOfMonth.toString()
-//
-//            Log.d(TAG, "day?.month : " + day?.month)
-//            // 현재 날짜 밑줄로 표시하기
-//            if((day == CalendarUtil.selectedDate)){
-//                holder.itemView.setBackgroundResource(R.drawable.today_background)
-//            }
-//        }
-
-         //날짜 클릭 이벤트
-//        holder.itemView.setOnClickListener{
-//            holder.itemView.setBackgroundResource(R.drawable.today_background)
-//            //notifyItemChanged(position)
-//
-//        }
-
+        // 날짜 선택할 시 밑줄
         if (itemClick != null) {
             holder.itemView.setOnClickListener{ view ->
                 itemClick?.onClick(view, position)
-                holder.itemView.setBackgroundResource(R.drawable.today_background)
+
+                if(selectedPosition != position){
+                    holder.itemView.setBackgroundResource(R.drawable.today_background)
+                    Log.d(TAG, "selectedPosition1 : " + selectedPosition)
+                    Log.d(TAG, "position1 : " + position)
+                    Log.d(TAG, "oldposition1 : " + oldPosition)
+
+                }
+
+//                notifyItemChanged(oldPosition, null)
+//                notifyItemChanged(selectedPosition, null)
+                Log.d(TAG, "selectedPositon2 : " + selectedPosition)
+                Log.d(TAG, "oldposition2 : " + oldPosition +"\n")
+                Log.d(TAG, "notify old : " + notifyItemChanged(oldPosition).toString())
+                Log.d(TAG, "notify select : " + notifyItemChanged(selectedPosition).toString())
+
+
+                //oldPosition = selectedPosition
+                selectedPosition=position
+
+
             }
+
+            if(selectedPosition == selectedPosition){
+                holder.itemView.setBackgroundColor(Color.parseColor("#00ff0000"))
+
+            }
+
         }
+
 
     }
 
     override fun getItemCount(): Int {
         return dayList.size
     }
-
 
     }

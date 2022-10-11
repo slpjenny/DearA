@@ -161,22 +161,22 @@
                                     android:id="@+id/preBtn"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginLeft="170dp"
                                     android:layout_marginTop="7dp"
+                                    android:layout_marginEnd="8dp"
                                     android:background="@android:color/transparent"
                                     android:src="@drawable/ic_pre_button"
-                                    app:layout_constraintStart_toEndOf="@+id/dateText"
+                                    app:layout_constraintEnd_toStartOf="@+id/nextBtn"
                                     app:layout_constraintTop_toTopOf="parent" />
 
                                 <ImageButton
                                     android:id="@+id/nextBtn"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginLeft="10dp"
                                     android:layout_marginTop="7dp"
+                                    android:layout_marginEnd="24dp"
                                     android:background="@android:color/transparent"
                                     android:src="@drawable/ic_next_button"
-                                    app:layout_constraintStart_toEndOf="@+id/preBtn"
+                                    app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintTop_toTopOf="parent" />
 
                             </androidx.constraintlayout.widget.ConstraintLayout>
