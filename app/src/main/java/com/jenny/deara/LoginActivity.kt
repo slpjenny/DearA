@@ -46,34 +46,42 @@ class LoginActivity : AppCompatActivity() {
             var email = binding.writeEmail.text.toString()
             var password = binding.writePwd.text.toString()
 
-            // 회원 정보 확인 후 로그인 완료
-            auth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this) { task ->
-                    if (task.isSuccessful) {
-                        // Sign in success, update UI with the signed-in user's information
-                        Log.d("로그인", "로그인 성공")
-                        Toast.makeText(baseContext, "로그인 인증 성공.",Toast.LENGTH_SHORT).show()
 
-                        // user: 로그인 된 현재 사용자
-                        val user = auth.currentUser
+            // 로그인 정보 미입력시 예외처리
+            if (email.isNullOrEmpty()){
+                Toast.makeText(baseContext,"이메일을 입력해주세요",Toast.LENGTH_LONG).show()
+            } else if(password.isNullOrEmpty()){
+                Toast.makeText(baseContext,"비밀번호를 입력해주세요",Toast.LENGTH_LONG).show()
+            } else{
 
-                        // 로그인 성공 시 메인화면으로 이동
-                        val intentMain = Intent(this, MainActivity::class.java)
-                        startActivity(intentMain)
+                // 항목 모두 작성 시 로그인 진행
+
+                auth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this) { task ->
+                        if (task.isSuccessful) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d("로그인", "로그인 성공")
+                            Toast.makeText(baseContext, "로그인 인증 성공.",Toast.LENGTH_SHORT).show()
+
+                            // user: 로그인 된 현재 사용자
+                            val user = auth.currentUser
+
+                            // 로그인 성공 시 메인화면으로 이동
+                            val intentMain = Intent(this, MainActivity::class.java)
+                            startActivity(intentMain)
 
 
-                    } else {
-                        // If sign in fails, display a message to the user.
-                        Log.w("로그인", "로그인 실패", task.exception)
-                        Toast.makeText(baseContext, "로그인 인증 실패.",
-                            Toast.LENGTH_SHORT).show()
-                        //
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w("로그인", "로그인 실패", task.exception)
+                            Toast.makeText(baseContext, "로그인 인증 실패.",
+                                Toast.LENGTH_SHORT).show()
+                            //
+                        }
                     }
-                }
+
+            }
 
         }
-
-
-
     }
 }

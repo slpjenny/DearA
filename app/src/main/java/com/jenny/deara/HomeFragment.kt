@@ -91,7 +91,7 @@ class HomeFragment : Fragment() {
 
         }
 
-       return binding.root
+        return binding.root
     }
 
     // 날짜 화면에 보여주기

@@ -11,7 +11,7 @@ import kotlin.coroutines.coroutineContext
 
 class TodoDialog(context: Context) {
 
-private val dialog = Dialog(context)
+    private val dialog = Dialog(context)
 
     fun showDia(){
         dialog.setContentView(R.layout.tododialog_item)

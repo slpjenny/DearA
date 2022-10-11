@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PatternLock.SettingPatternActivity">
+    tools:context=".mypages.SelectLockActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="7dp"
-            android:text="패턴 관리"
+            android:text="잠금 설정"
             android:textColor="#000000"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -57,23 +57,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
-            android:text="패턴 변경 및 재설정"
+            android:text="암호 잠금"
             android:textColor="#000000"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageButton
-            android:id="@+id/pattern_setting"
-            android:layout_width="25dp"
-            android:layout_height="22dp"
-            android:layout_marginRight="23dp"
-            android:background="@android:color/transparent"
-            android:src="@drawable/click_arrow"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <Switch
+            android:id="@+id/lock_select_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView14"
+            app:layout_constraintEnd_toEndOf="@+id/imageView14"
+            app:layout_constraintTop_toTopOf="parent"
+            android:track="@drawable/switch_track_selector"
+            android:thumb="@drawable/switch_thumb"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -81,7 +81,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout3"
         android:layout_width="match_parent"
-        android:layout_height="110dp"
+        android:visibility="invisible"
+        android:layout_height="90dp"
+
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
 
         <ImageView
@@ -94,35 +96,66 @@
             android:id="@+id/title2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:layout_marginLeft="30dp"
-            android:text="입력한 패턴 선 숨기기"
+            android:text="암호 변경"
             android:textColor="#000000"
             android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            android:layout_marginLeft="30dp"
-            android:text="로그인 패턴을 그릴 때 선이 보이지 않도록\n설정할 수 있습니다."
-            android:textColor="#A0A0A0"
-            android:textSize="12sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/title2" />
+        <ImageButton
+            android:id="@+id/face_arrow"
+            android:layout_width="25dp"
+            android:layout_height="22dp"
+            android:layout_marginRight="23dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/click_arrow"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <Switch
-            android:id="@+id/pattern_setting_switch"
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout4"
+        android:layout_width="match_parent"
+        android:visibility="invisible"
+        android:layout_height="90dp"
+
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3">
+
+        <ImageView
+            android:id="@+id/imageView16"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/background_radius_lock"
+            tools:layout_editor_absoluteX="202dp"
+            tools:layout_editor_absoluteY="16dp" />
+
+
+        <TextView
+            android:id="@+id/title3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView15"
-            app:layout_constraintEnd_toEndOf="@+id/imageView15"
-            app:layout_constraintTop_toTopOf="parent"
-            android:track="@drawable/switch_track_selector"
-            android:thumb="@drawable/switch_thumb"/>
+            android:layout_marginLeft="30dp"
+            android:text="생체 인증"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/bio_auth"
+            android:layout_width="25dp"
+            android:layout_height="22dp"
+            android:layout_marginRight="23dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/click_arrow"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
