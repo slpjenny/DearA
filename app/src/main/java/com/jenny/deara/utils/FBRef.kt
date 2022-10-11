@@ -9,5 +9,6 @@ class FBRef {
 
         val diaryRef = database.getReference("diary")
         val randomQuestionRef = database.getReference("randomQuestion")
+        val alarmRef = database.getReference("alarm")
     }
 }
