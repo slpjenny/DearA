@@ -89,8 +89,11 @@
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/fragment_pill_plus.xml" value="0.3359375" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/fragment_record_end.xml" value="0.19270833333333334" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/pop_up.xml" value="0.3359375" />
+        <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/drawable/add_button.xml" value="0.1885" />
         <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/drawable/radius_tododialog.xml" value="0.255" />
-        <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/fragment_home.xml" value="0.24947916666666667" />
+        <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/calendar_item.xml" value="0.24947916666666667" />
+        <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/fragment_home.xml" value="0.4" />
+        <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/tododialog_item.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/todolistview_item.xml" value="0.12083333333333333" />
         <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/layout/alarm_dialog.xml" value="0.264" />
         <entry key="app/src/main/res/drawable-v24/background_radius_list.xml" value="0.1395" />

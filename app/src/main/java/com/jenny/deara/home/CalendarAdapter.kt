@@ -1,20 +1,14 @@
-package com.jenny.deara
+package com.jenny.deara.home
 
 import android.annotation.SuppressLint
 import android.graphics.Color
-import android.graphics.Color.GRAY
-import android.graphics.Color.RED
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
-import androidx.databinding.adapters.CalendarViewBindingAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.jenny.deara.databinding.FragmentHomeBinding
-import java.time.LocalDate
-import java.time.Month
+import com.jenny.deara.R
 import java.util.*
 import kotlin.collections.ArrayList
 

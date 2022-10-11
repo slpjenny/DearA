@@ -6,7 +6,7 @@
         android:id="@+id/framelayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".HomeFragment">
+        tools:context=".home.HomeFragment">
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -194,7 +194,7 @@
                                     android:id="@+id/sunday"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginStart="40dp"
+                                    android:layout_marginStart="50dp"
                                     android:text="일"
                                     android:textSize="15sp"
                                     app:layout_constraintBottom_toBottomOf="parent"
@@ -271,7 +271,7 @@
                                     android:id="@+id/saturday"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginEnd="40dp"
+                                    android:layout_marginEnd="50dp"
                                     android:text="토"
                                     android:textSize="15sp"
                                     app:layout_constraintBottom_toBottomOf="parent"
@@ -284,20 +284,19 @@
                             <androidx.constraintlayout.widget.ConstraintLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout10">
 
                                 <androidx.recyclerview.widget.RecyclerView
                                     android:id="@+id/calendarRv"
                                     android:layout_width="match_parent"
                                     android:layout_height="285dp"
+                                    android:nestedScrollingEnabled="false"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toTopOf="parent"
-                                    android:layout_marginLeft="10dp"
-                                    android:layout_marginRight="4dp"
-                                    android:layout_marginTop="8dp"
-                                    android:overScrollMode="never"
-                                    android:nestedScrollingEnabled="false">
+                                    app:layout_constraintTop_toTopOf="parent">
 
                                 </androidx.recyclerview.widget.RecyclerView>
                             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -309,7 +308,8 @@
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            app:layout_constraintBottom_toBottomOf="parent">
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/constraintLayout9">
 
                             <ImageView
                                 android:id="@+id/pinkRadius"
@@ -348,7 +348,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="3dp"
                                 android:text="50-75%"
-                                android:textSize="10sp"
+                                android:textSize="10dp"
                                 app:layout_constraintStart_toEndOf="@+id/yellowRadius"
                                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -367,7 +367,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="75-100%"
-                                android:textSize="10sp"
+                                android:textSize="10dp"
                                 app:layout_constraintStart_toEndOf="@+id/greenRadius"
                                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -417,7 +417,7 @@
                                 android:layout_marginTop="8dp"
                                 android:text="세브란스 병원"
                                 android:textColor="@color/black"
-                                android:textSize="20sp"
+                                android:textSize="20dp"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -425,15 +425,19 @@
                                 android:id="@+id/hospitalTime"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="30dp"
+                                android:layout_marginLeft="0dp"
+                                android:layout_marginRight="150dp"
                                 android:layout_marginTop="2dp"
                                 android:text="15:00"
                                 android:textColor="@color/black"
-                                android:textSize="20sp"
+                                android:textSize="20dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toStartOf="@+id/imageView3"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@+id/hospitalName" />
 
                             <ImageView
+                                android:id="@+id/imageView3"
                                 android:layout_width="45dp"
                                 android:layout_height="45dp"
                                 android:layout_marginRight="30dp"
@@ -471,16 +475,18 @@
 
                         <androidx.appcompat.widget.AppCompatButton
                             android:id="@+id/todoplus"
-                            android:layout_width="33dp"
-                            android:layout_height="33dp"
-                            android:layout_marginTop="25dp"
-                            android:layout_marginRight="30dp"
-                            android:background="@drawable/add_button"
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:layout_marginLeft="110dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginBottom="3dp"
+                            android:background="@drawable/img_1"
                             android:elevation="50dp"
-                            android:text="+"
                             android:textColor="@color/black"
                             android:textSize="25sp"
+                            app:layout_constraintBottom_toTopOf="@+id/toDoListRV"
                             app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/toDoText"
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <androidx.recyclerview.widget.RecyclerView

@@ -1,4 +1,4 @@
-package com.jenny.deara.mypages
+package com.jenny.deara.home
 
 import android.view.*
 import androidx.recyclerview.widget.RecyclerView
@@ -21,7 +21,7 @@ class TodoAdapter(val items: ArrayList<ToDoModel>) :
     }
 
 
-    override fun onBindViewHolder(holder:TodoViewholder, position: Int) {
+    override fun onBindViewHolder(holder: TodoViewholder, position: Int) {
 
         holder.bind(items[position])
 
