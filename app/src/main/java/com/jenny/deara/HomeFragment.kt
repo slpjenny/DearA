@@ -116,7 +116,7 @@ class HomeFragment : Fragment() {
 
         adapter.itemClick = object : CalendarAdapter.ItemClick {
             override fun onClick(view: View, position: Int) {
-                Toast.makeText(context, dayList[position].toString(), Toast.LENGTH_LONG).show()
+                //Toast.makeText(context, dayList[position].toString(), Toast.LENGTH_LONG).show()
             }
         }
 
