@@ -59,6 +59,9 @@ class DiaryWriteActivity : AppCompatActivity() {
                 binding.title1.text = "칭찬할 점"
                 binding.title2.text = "반성할 점"
                 binding.title3.text = "느낀점"
+                binding.content1Area.text = null
+                binding.content2Area.text = null
+                binding.content3Area.text = null
                 sort = "ver2"
 
             }else{
@@ -67,6 +70,9 @@ class DiaryWriteActivity : AppCompatActivity() {
                 binding.title1.text = "좋았던 일"
                 binding.title2.text = "안 좋았던 일"
                 binding.title3.text = "나의 다짐"
+                binding.content1Area.text = null
+                binding.content2Area.text = null
+                binding.content3Area.text = null
                 sort = "ver1"
             }
         }

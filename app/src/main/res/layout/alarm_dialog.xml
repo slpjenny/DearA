@@ -250,28 +250,18 @@
                 app:layout_constraintStart_toEndOf="@+id/vibeCheck"
                 app:layout_constraintTop_toBottomOf="@+id/setSound" />
 
-            <EditText
-                android:id="@+id/backgroundRmAlarm"
+            <Button
+                android:id="@+id/rmAlarm"
                 android:layout_width="340dp"
                 android:layout_height="32dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="24dp"
                 android:background="@drawable/background_radius_set_alarm"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-
-            <TextView
-                android:id="@+id/rmAlarm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:text="알림 삭제"
                 android:textColor="@color/red"
                 android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="@+id/backgroundRmAlarm"
-                app:layout_constraintEnd_toEndOf="@+id/backgroundRmAlarm"
-                app:layout_constraintStart_toStartOf="@+id/backgroundRmAlarm"
-                app:layout_constraintTop_toTopOf="@+id/backgroundRmAlarm" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
