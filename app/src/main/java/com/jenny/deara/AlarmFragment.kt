@@ -190,9 +190,9 @@ class AlarmFragment : Fragment() {
 
                 FBRef.alarmRef.child(key).addValueEventListener(postListener)
 
-                dialog.rmAlarm.setOnClickListener{
+                /*dialog.rmAlarm.setOnClickListener{
                     Log.d("alarm", key)
-                }
+                }*/
 
 
                 /*// 삭제 하기
