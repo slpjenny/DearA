@@ -76,6 +76,7 @@ dependencies {
     //firebase realtime database
     implementation 'com.google.firebase:firebase-database-ktx'
 
-
+    //지문 인식
+    implementation 'androidx.biometric:biometric:1.2.0-alpha04'
 
 }

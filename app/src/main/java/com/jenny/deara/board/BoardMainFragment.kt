@@ -1,33 +1,29 @@
 package com.jenny.deara.board
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.RecyclerView
 import com.jenny.deara.R
+import com.jenny.deara.databinding.FragmentBoardMainBinding
+import com.jenny.deara.diary.DiaryData
+import com.jenny.deara.diary.DiaryListAdapter
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [BoardMainFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class BoardMainFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    private lateinit var binding: FragmentBoardMainBinding
+
+    lateinit var BoardListAdapter: BoardListAdapter
+
+    val boardList = mutableListOf<BoardModel>()
+    val boardkeyList = mutableListOf<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
 
     override fun onCreateView(
@@ -35,26 +31,28 @@ class BoardMainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_board_main, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_board_main, container, false)
+
+
+        initRecycler()
+
+
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment BoardMainFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            BoardMainFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    @SuppressLint("NotifyDataSetChanged")
+    private fun initRecycler() {
+        BoardListAdapter = BoardListAdapter(requireContext())
+
+        val rv : RecyclerView = binding.rvBoard
+        rv.adapter= BoardListAdapter
+
+        boardList.add(BoardModel("sdf","sdf","sdf","sdf"))
+
+        //random 질문 데이터 삽입 test
+//        FBRef.randomQuestionRef.push().setValue("지금 가장 보고 싶은 사람은 누구인가요?")
+
+        BoardListAdapter.datas = boardList
+        BoardListAdapter.notifyDataSetChanged()
     }
 }

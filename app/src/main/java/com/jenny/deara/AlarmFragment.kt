@@ -57,9 +57,9 @@ class AlarmFragment : Fragment() {
         binding.addAlarmBtn.setOnClickListener {
             val dialog = AlarmDialog()
             dialog.show(parentFragmentManager, "CustomDialog")
-
             dialog.setOnClickedListener(object: AlarmDialog.ButtonClickListener {
                 override fun onClicked(hour: String, minute: String,  title: String, day: String) {
+
                     var hour: String = hour
                     var minute: String = minute
                     var time: String
@@ -116,6 +116,7 @@ class AlarmFragment : Fragment() {
                 val key = alarmkeyList[position]
                 dialog.show(parentFragmentManager, "CustomDialog")
 
+
                 // 이전 데이터 띄우기
                 val postListener = object : ValueEventListener {
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -126,6 +127,57 @@ class AlarmFragment : Fragment() {
                             dialog.setAlarmName.setText(dataModel.title)
                             dialog.timePicker.hour = dataModel.time.substring(0 until 2).toInt()
                             dialog.timePicker.minute = dataModel.time.substring(3 until 5).toInt()
+
+                            if(dataModel.day.contains("월")) {
+                                dialog.monCheck.isChecked = true
+                            }
+
+                            if(dataModel.day.contains("화")) {
+                                dialog.tueCheck.isChecked = true
+                            }
+
+                            if(dataModel.day.contains("수")) {
+                                dialog.wedCheck.isChecked = true
+                            }
+
+                            if(dataModel.day.contains("목")) {
+                                dialog.thuCheck.isChecked = true
+                            }
+
+                            if(dataModel.day.contains("금")) {
+                                dialog.friCheck.isChecked = true
+                            }
+
+                            if(dataModel.day.contains("토")) {
+                                dialog.satCheck.isChecked = true
+                            }
+
+                            if(dataModel.day.contains("일")) {
+                                dialog.sunCheck.isChecked = true
+                            }
+
+                            if(dataModel.day == "주말") {
+                                dialog.satCheck.isChecked = true
+                                dialog.sunCheck.isChecked = true
+                            }
+
+                            if(dataModel.day == "매일") {
+                                dialog.monCheck.isChecked = true
+                                dialog.tueCheck.isChecked = true
+                                dialog.wedCheck.isChecked = true
+                                dialog.thuCheck.isChecked = true
+                                dialog.friCheck.isChecked = true
+                                dialog.satCheck.isChecked = true
+                                dialog.sunCheck.isChecked = true
+                            }
+
+                            if(dataModel.day == "주중") {
+                                dialog.monCheck.isChecked = true
+                                dialog.tueCheck.isChecked = true
+                                dialog.wedCheck.isChecked = true
+                                dialog.thuCheck.isChecked = true
+                                dialog.friCheck.isChecked = true
+                            }
 
                         }
                     }
@@ -138,9 +190,24 @@ class AlarmFragment : Fragment() {
 
                 FBRef.alarmRef.child(key).addValueEventListener(postListener)
 
+                /*dialog.rmAlarm.setOnClickListener{
+                    Log.d("alarm", key)
+                }*/
 
+
+                /*// 삭제 하기
+                rmAlarm.setOnClickListener {
+                    FBRef.alarmRef.child(key).removeValue()
+                    AlarmListAdapter.notifyDataSetChanged()
+                    dialog.dismiss()
+                }*/
+
+
+                // 다시 수정하기
                 dialog.setOnClickedListener(object: AlarmDialog.ButtonClickListener {
+
                     override fun onClicked(hour: String, minute: String,  title: String, day: String) {
+
 
                         var hour: String = hour
                         var minute: String = minute
@@ -177,8 +244,6 @@ class AlarmFragment : Fragment() {
                         FBRef.alarmRef
                             .child(key)
                             .setValue(AlarmData(time, title, day, uid))
-
-
 
                     }
 

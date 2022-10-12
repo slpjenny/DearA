@@ -8,6 +8,7 @@
     android:background="@color/purple1"
     android:orientation="vertical">
 
+
     <android.widget.Button
         android:id="@+id/back1"
         android:layout_width="40dp"
