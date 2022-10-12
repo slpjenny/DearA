@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.CompoundButton
 import com.jenny.deara.R
 import com.jenny.deara.databinding.AlarmDialogBinding
+import com.jenny.deara.utils.FBRef
 
 class AlarmDialog() : DialogFragment() {
 
@@ -93,10 +94,11 @@ class AlarmDialog() : DialogFragment() {
             dismiss()
         }
 
-        // 삭제 버튼
+         /*// 삭제 버튼
         binding.rmAlarm.setOnClickListener {
+            FBRef.alarmRef.child(key).removeValue()
             dismiss()
-        }
+        }*/
 
         return view
     }
