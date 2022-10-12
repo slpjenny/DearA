@@ -76,11 +76,8 @@ class AlarmDialog() : DialogFragment() {
 
         // 타임피커 설정
         binding.timePicker.setIs24HourView(true)
-        binding.timePicker.setOnTimeChangedListener { timePicker, h, m ->
-            hour = h.toString()
-            minute = m.toString()
-            // time= hour.toString() +":"+ minute.toString()
-        }
+        hour = binding.timePicker.hour.toString()
+        minute = binding.timePicker.minute.toString()
 
         // 취소 버튼
         binding.cancelBtn.setOnClickListener {
@@ -94,7 +91,7 @@ class AlarmDialog() : DialogFragment() {
             dismiss()
         }
 
-         /*// 삭제 버튼
+         /* // 삭제 버튼
         binding.rmAlarm.setOnClickListener {
             FBRef.alarmRef.child(key).removeValue()
             dismiss()
@@ -106,7 +103,6 @@ class AlarmDialog() : DialogFragment() {
     interface ButtonClickListener{
         fun onClicked(hour: String, minute: String,  title: String, day: String)
     }
-
 
     private lateinit var onClickedListener: ButtonClickListener
 
