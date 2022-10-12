@@ -4,13 +4,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-import android.util.Log
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 //import com.jenny.deara.PatternLock.PatternActivity
@@ -18,11 +15,9 @@ import com.google.firebase.ktx.Firebase
 import com.jenny.deara.databinding.ActivityMyPageBinding
 import com.jenny.deara.mypages.ChangeNickNameActivity
 import com.jenny.deara.mypages.ChangePwdActivity
-import com.jenny.deara.mypages.ContactUsFragment
+import com.jenny.deara.mypages.ContactUsActivity
 import com.jenny.deara.mypages.SelectLockActivity
-import com.jenny.deara.utils.FBAuth.Companion.auth
 import kotlinx.android.synthetic.main.activity_my_page.*
-import java.util.regex.Pattern
 
 class MyPageActivity : AppCompatActivity() {
 
@@ -76,7 +71,7 @@ class MyPageActivity : AppCompatActivity() {
 
         // 문의하기 페이지로 이동 (fragment)
         binding.contactUsTxt.setOnClickListener {
-            val intent3  = Intent(this, ContactUsFragment::class.java)
+            val intent3  = Intent(this, ContactUsActivity::class.java)
             startActivity(intent3)
         }
 
