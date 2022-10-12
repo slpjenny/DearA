@@ -25,7 +25,6 @@ import com.jenny.deara.utils.FBRef
 class DiaryFragment(var iMonth: Int, var iYear: Int) : Fragment() {
 
     private lateinit var binding: FragmentDiaryBinding
-    private lateinit var database: DatabaseReference
 
     lateinit var DiaryListAdapter: DiaryListAdapter
 
@@ -127,6 +126,7 @@ class DiaryFragment(var iMonth: Int, var iYear: Int) : Fragment() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
                 diaryList.clear()
+                todayDiary = false
 
                 for (dataModel in dataSnapshot.children) {
 
@@ -138,7 +138,7 @@ class DiaryFragment(var iMonth: Int, var iYear: Int) : Fragment() {
                         todayDiary = true
                     }
                     // 선택한 날짜 일기 리스트 띄우기
-                    if(item!!.month == iMonth && item.year == iYear && FBAuth.getUid() == item.uid){
+                    if(item.month == iMonth && item.year == iYear && FBAuth.getUid() == item.uid){
                         diaryList.add(item)
                         diarykeyList.add(dataModel.key.toString())
                     }
