@@ -1,25 +1,19 @@
-package com.jenny.deara
+package com.jenny.deara.home
 
-import android.app.AlertDialog
-import android.app.Dialog
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.jenny.deara.R
 import com.jenny.deara.databinding.FragmentHomeBinding
-import com.jenny.deara.mypages.ToDoModel
-import com.jenny.deara.mypages.TodoAdapter
-import java.time.format.DateTimeFormatter
+import com.jenny.deara.utils.CalendarUtil
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -44,7 +38,6 @@ class HomeFragment : Fragment() {
         // binding 초기화
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
 
-
         // 화면 설정
         setMonthView()
 
@@ -64,34 +57,77 @@ class HomeFragment : Fragment() {
 
         // 투두리스트 추가
         binding.todoplus.setOnClickListener {
-            val dialog = TodoDialog(requireContext())
-            dialog.showDia()
-            dialog.setOnClickListener(object: TodoDialog.ButtonClickListener {
-                override fun onClicked(text: String) {
-
-                    if (text.length == 0){
-                        Toast.makeText(context, "해아할 일을 입력해주세요.", Toast.LENGTH_SHORT).show()
-                    }else{
-                        items.add(ToDoModel(text,false))
-                        Log.d(TAG, "items " + items.size)
-                        Log.d(TAG, "text : " + text)
-
-                        val rv : RecyclerView = binding.toDoListRV
-                        val rvRvAdapter = TodoAdapter(items)
-
-                        rv.adapter = rvRvAdapter
-                        rv.layoutManager = LinearLayoutManager(context)
-                        rvRvAdapter.notifyDataSetChanged()
-                    }
-
-                }
-            })
-
-
-
+            todoAdd()
         }
 
+//        getFBRandomQData()
+
         return binding.root
+    }
+
+    //파이어베이스 데이터 불러오기
+//    private fun getFBRandomQData(){
+//
+//        val postListener = object : ValueEventListener {
+//            override fun onDataChange(dataSnapshot: DataSnapshot) {
+//
+//                items.clear()
+//
+//                for (dataModel in dataSnapshot.children) {
+//
+//                    Log.d("todoList", dataModel.toString())
+//
+//                }
+//                Log.d("todoList", items.toString())
+//
+//            }
+//
+//            override fun onCancelled(databaseError: DatabaseError) {
+//
+//            }
+//
+//        }
+//        FBRef.todoRef.addValueEventListener(postListener)
+//    }
+    // 투두리스트 다이얼로그로 추가
+    private fun todoAdd(){
+
+        val dialog = TodoDialog(requireContext())
+
+        dialog.showDia()
+
+        dialog.setOnClickListener(object: TodoDialog.ButtonClickListener {
+            override fun onClicked(text: String) {
+
+                if (text.length == 0){
+                    Toast.makeText(context, "해아할 일을 입력해주세요.", Toast.LENGTH_SHORT).show()
+                }else{
+                    // 파이어베이스에 투두 항목 저장하기
+//                    var todo : String = text
+//                    var check : Boolean = false
+//                    val time = FBAuth.getTimeDiary()
+//                    val uid = FBAuth.getUid()
+//
+//                    FBRef.todoRef
+//                        .push()
+//                        .setValue(ToDoData(todo,check, time, uid))
+
+
+                    // items 리스트에 할 목록 추가
+                    items.add(ToDoModel(text,false))
+                    Log.d(TAG, "items " + items.size)
+                    Log.d(TAG, "text : " + text)
+
+                    val rv : RecyclerView = binding.toDoListRV
+                    val rvRvAdapter = TodoAdapter(items)
+
+                    rv.adapter = rvRvAdapter
+                    rv.layoutManager = LinearLayoutManager(context)
+                    rvRvAdapter.notifyDataSetChanged()
+                }
+
+            }
+        })
     }
 
     // 날짜 화면에 보여주기
@@ -103,7 +139,7 @@ class HomeFragment : Fragment() {
         val dayList = dayInMonthArray()
 
         // 어댑터 초기화
-        val adapter = CalendarAdapter(dayList)
+        val adapter = CalendarAdapter(dayList, items)
 
         // 레이아웃 설정 (열 7개)
         var manager : RecyclerView.LayoutManager = GridLayoutManager(context,7)
@@ -116,7 +152,7 @@ class HomeFragment : Fragment() {
 
         adapter.itemClick = object : CalendarAdapter.ItemClick {
             override fun onClick(view: View, position: Int) {
-                Toast.makeText(context, dayList[position].toString(), Toast.LENGTH_LONG).show()
+                //Toast.makeText(context, dayList[position].toString(), Toast.LENGTH_LONG).show()
             }
         }
 
@@ -163,39 +199,8 @@ class HomeFragment : Fragment() {
         }
 
 
-//        var yearMonth = YearMonth.from(date)
-//
-//        // 해당 월 마지막 날짜 가져오기 (예: 28, 30, 31)
-//        var lastDay = yearMonth.lengthOfMonth()
-//
-//        // 해당 월의 첫 번째 날 가져오기 (예: 4월 1일)
-//        var firstDay = CalendarUtil.selectedDate.withDayOfMonth(1)
-//
-//        // 첫 번째날 요일 가져오기 (월:1, 일:7)
-//        var dayOfWeek = firstDay.dayOfWeek.value
-//
-//        for(i in 1..41){
-//            if(i <= dayOfWeek || i>(lastDay + dayOfWeek)) {
-//                dayList.add(null)
-//            }
-//            else {
-//                dayList.add(LocalDate.of(CalendarUtil.selectedDate.year,
-//                    CalendarUtil.selectedDate.monthValue, i - dayOfWeek))
-//            }
-//
-//        }
-//
-//        if (dayList[6] == null){
-//            for(i in 1..7) {
-//                dayList.removeAt(0)
-//            }
-//        }
-
         Log.d(TAG, "데이리스트 : " + dayList.size.toString())
         Log.d(TAG, "데이리스트 : " + dayList)
-//        Log.d(TAG, "firstDay : " + firstDay.toString())
-//        Log.d(TAG, "lastDay : " + lastDay.toString())
-//        Log.d(TAG, "dayOfWeek : " + dayOfWeek.toString())
 
         return dayList
     }

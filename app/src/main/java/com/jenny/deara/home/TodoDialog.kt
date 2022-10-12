@@ -1,4 +1,4 @@
-package com.jenny.deara
+package com.jenny.deara.home
 
 import android.app.Dialog
 import android.content.Context
@@ -7,7 +7,7 @@ import android.graphics.drawable.ColorDrawable
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import kotlin.coroutines.coroutineContext
+import com.jenny.deara.R
 
 class TodoDialog(context: Context) {
 

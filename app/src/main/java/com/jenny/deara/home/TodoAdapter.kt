@@ -1,8 +1,10 @@
-package com.jenny.deara.mypages
+package com.jenny.deara.home
 
 import android.view.*
 import androidx.recyclerview.widget.RecyclerView
 import com.jenny.deara.databinding.TodolistviewItemBinding
+import com.jenny.deara.utils.FBAuth
+import com.jenny.deara.utils.FBRef
 
 private val TAG = TodoAdapter::class.java.simpleName
 
@@ -21,7 +23,7 @@ class TodoAdapter(val items: ArrayList<ToDoModel>) :
     }
 
 
-    override fun onBindViewHolder(holder:TodoViewholder, position: Int) {
+    override fun onBindViewHolder(holder: TodoViewholder, position: Int) {
 
         holder.bind(items[position])
 
@@ -43,6 +45,13 @@ class TodoAdapter(val items: ArrayList<ToDoModel>) :
 
             binding.todowrite.text = todo.write
             binding.clearCheck.isChecked = todo.clear
+
+//            val time = FBAuth.getTimeDiary()
+//            val uid = FBAuth.getUid()
+//
+//            FBRef.todoRef
+//                .push()
+//                .setValue(ToDoData(binding.todowrite.toString(), binding.clearCheck, time, uid))
 
 
         }
