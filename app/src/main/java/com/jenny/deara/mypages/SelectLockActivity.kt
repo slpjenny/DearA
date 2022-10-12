@@ -14,11 +14,11 @@ import kotlinx.android.synthetic.main.activity_select_lock.*
 
 class SelectLockActivity : AppCompatActivity() {
 
-    val binding by lazy { ActivitySignInBinding.inflate(layoutInflater) }
+//    val binding by lazy { ActivitySignInBinding.inflate(layoutInflater) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_select_lock)
 
         textView.text = if (switchButton.isChecked )
             "암호/지문 잠금 끄기" else "암호/지문 잠금 켜기"
