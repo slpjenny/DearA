@@ -139,6 +139,10 @@ class SignInActivity : AppCompatActivity() {
 
                                     Toast.makeText(baseContext,"회원가입이 완료되었습니다.",Toast.LENGTH_SHORT).show()
 
+                                    // 회원가입 완료시 [로그인] 페이지로 이동하기
+                                    val intent = Intent(this, LoginActivity::class.java)
+                                    startActivity(intent)
+
                                     // 회원가입 과정에서 오류나면 다음 메세지 생성
                                 } else  {
                                     // If sign in fails, display a message to the user.
