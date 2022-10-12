@@ -52,6 +52,9 @@
             android:name=".diary.DiaryDetailActivity"
             android:exported="false" />
         <activity
+            android:name=".diary.DiaryEditActivity"
+            android:exported="false" />
+        <activity
             android:name=".MyPageActivity"
             android:exported="false" />
         <activity
