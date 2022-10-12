@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.jenny.deara.R
 
-class DiaryListAdapter(val context: Context, val diarykeyList : MutableList<String>,): RecyclerView.Adapter<DiaryListAdapter.ViewHolder>(){
+class DiaryListAdapter(val context: Context, val diarykeyList : MutableList<String>): RecyclerView.Adapter<DiaryListAdapter.ViewHolder>(){
 
     var datas = mutableListOf<DiaryData>()
 
