@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DataSnapshot
@@ -92,15 +93,6 @@ class AlarmFragment : Fragment() {
                         .child(key)
                         .setValue(AlarmData(time, title, day, uid))
 
-
-                   /* datas.apply{
-                        add(AlarmData(time, title, day))
-
-                        AlarmListAdapter.datas = datas
-                        AlarmListAdapter.notifyDataSetChanged()
-                    }*/
-
-
                 }
 
             })
@@ -124,6 +116,18 @@ class AlarmFragment : Fragment() {
                         val dataModel = dataSnapshot.getValue(AlarmData::class.java)
 
                         if (dataModel != null) {
+
+                            // 삭제 기능
+                            dialog.rmAlarm.setOnClickListener {
+                                val key = alarmkeyList[position]
+                                Log.d("alarm", key)
+                                FBRef.alarmRef.child(key).removeValue()
+                                AlarmListAdapter.notifyDataSetChanged()
+                                dialog.dismiss()
+                            }
+
+                            // 이전 데이터 부르기
+
                             dialog.setAlarmName.setText(dataModel.title)
                             dialog.timePicker.hour = dataModel.time.substring(0 until 2).toInt()
                             dialog.timePicker.minute = dataModel.time.substring(3 until 5).toInt()
@@ -182,6 +186,7 @@ class AlarmFragment : Fragment() {
                         }
                     }
 
+
                     override fun onCancelled(databaseError: DatabaseError) {
                         // Getting Post failed, log a message
                         Log.w("alarmTest", "loadPost:onCancelled", databaseError.toException())
@@ -190,24 +195,11 @@ class AlarmFragment : Fragment() {
 
                 FBRef.alarmRef.child(key).addValueEventListener(postListener)
 
-                /*dialog.rmAlarm.setOnClickListener{
-                    Log.d("alarm", key)
-                }*/
-
-
-                /*// 삭제 하기
-                rmAlarm.setOnClickListener {
-                    FBRef.alarmRef.child(key).removeValue()
-                    AlarmListAdapter.notifyDataSetChanged()
-                    dialog.dismiss()
-                }*/
-
-
                 // 다시 수정하기
                 dialog.setOnClickedListener(object: AlarmDialog.ButtonClickListener {
 
-                    override fun onClicked(hour: String, minute: String,  title: String, day: String) {
 
+                    override fun onClicked(hour: String, minute: String,  title: String, day: String) {
 
                         var hour: String = hour
                         var minute: String = minute
@@ -265,7 +257,7 @@ class AlarmFragment : Fragment() {
         AlarmListAdapter.notifyDataSetChanged()
     }
 
-    //파이어베이스 데이터 불러오기
+    // 파이어베이스 데이터 불러오기
     private fun getFBAlarmData(){
 
         val postListener = object : ValueEventListener {
@@ -302,20 +294,3 @@ class AlarmFragment : Fragment() {
     }
 
 }
-
-/*    private fun initRecycler() {
-        AlarmListAdapter = AlarmListAdapter(requireContext())
-
-        val rv : RecyclerView = binding.rvAlarm
-        rv.adapter = AlarmListAdapter
-
-        // test 데이터
-        datas.apply{
-            add(AlarmData("13:00", "점심 약", "매일"))
-            add(AlarmData("19:30", "저녁 약", "주말"))
-
-            AlarmListAdapter.datas = datas
-            AlarmListAdapter.notifyDataSetChanged()
-        }
-    }*/
-
