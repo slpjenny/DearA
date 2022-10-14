@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
 
         val bnv_main = findViewById<BottomNavigationView>(R.id.bnv_main)
         var nav_diary = intent.getStringExtra("nav_diary")
+        var nav_board = intent.getStringExtra("nav_board")
         var dateCalendar = Calendar.getInstance()
         var defaultMonth = dateCalendar.get(Calendar.MONTH) + 1
         var defaultYear = dateCalendar.get(Calendar.YEAR)
@@ -51,6 +52,11 @@ class MainActivity : AppCompatActivity() {
             bnv_main.selectedItemId = R.id.fourth
             changeFragment(DiaryFragment(getMonth, getYear))
         }
+        if (nav_board == "fifth"){
+            bnv_main.selectedItemId = R.id.fifth
+            changeFragment(BoardMainFragment())
+        }
+
 
     }
 
