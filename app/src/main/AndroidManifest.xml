@@ -29,6 +29,9 @@
             android:name=".board.BoardInsideActivity"
             android:exported="false" />
         <activity
+            android:name=".board.BoardEditActivity"
+            android:exported="false" />
+        <activity
             android:name=".alarm.TimePickerActivity"
             android:exported="false" />
         <!--

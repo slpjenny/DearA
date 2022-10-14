@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:tools="http://schemas.android.com/tools">
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -30,6 +29,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
+            android:id="@+id/myPageBtn"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_marginRight="20dp"
@@ -41,66 +41,85 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="20dp"
+        android:paddingStart="20dp"
+        android:layout_marginEnd="20dp"
         android:id="@+id/boardMenu"
         app:layout_constraintTop_toBottomOf="@+id/boardTopBar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        tools:ignore="RtlSymmetry">
 
-        <TextView
-            android:id="@+id/boardListText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bottom_edge"
-            android:text="글 목록"
-            android:textColor="@color/black"
-            android:textSize="15sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/boardListText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bottom_edge"
+                android:text="글 목록"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:gravity="center"/>
 
-        <TextView
-            android:id="@+id/boardAlarmText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:background="@drawable/bottom_edge"
-            android:text="알림"
-            android:textColor="@color/board_menu_gray"
-            android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/boardListText" />
+            <TextView
+                android:id="@+id/boardAlarmText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="알림"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:textColor="@color/board_menu_gray"
+                android:textSize="18sp"
+                android:textAlignment="center"
+                android:gravity="center"/>
 
-        <TextView
-            android:id="@+id/MyWriteText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:background="@drawable/bottom_edge"
-            android:text="내가 쓴 글"
-            android:textColor="@color/board_menu_gray"
-            android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/boardAlarmText" />
+            <TextView
+                android:id="@+id/myBoard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="내가 쓴 글"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:textColor="@color/board_menu_gray"
+                android:textSize="18sp"
+                android:textAlignment="center"
+                android:gravity="center"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:background="@drawable/bottom_edge"
-            android:text="내가 쓴 댓글"
-            android:textColor="@color/board_menu_gray"
-            android:textSize="15sp"
-            app:layout_constraintStart_toEndOf="@+id/MyWriteText"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/myComment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="내가 쓴 댓글"
+                android:textStyle="bold"
+                android:layout_weight="1"
+                android:textColor="@color/board_menu_gray"
+                android:textSize="18sp"
+                app:layout_constraintStart_toEndOf="@+id/MyWriteText"
+                app:layout_constraintTop_toTopOf="parent"
+                android:textAlignment="center"
+                android:gravity="center"/>
 
+
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_marginTop="10dp"
         android:id="@+id/boardSearch"
+        android:visibility="visible"
         android:layout_width="0dp"
         app:layout_constraintWidth_percent="0.9"
         android:layout_height="wrap_content"
@@ -110,7 +129,7 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/SearchET"
+            android:id="@+id/searchET"
             android:layout_width="0dp"
             app:layout_constraintWidth_percent="0.8"
             android:layout_marginTop="5dp"
@@ -122,12 +141,12 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
+            android:id="@+id/searchBtn"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="5dp"
             android:src="@drawable/board_search"
-            app:layout_constraintStart_toEndOf="@+id/SearchET"
+            app:layout_constraintStart_toEndOf="@+id/searchET"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -160,7 +179,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
             android:text="이전"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/page_1"
@@ -173,7 +192,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginEnd="10dp"
             android:text="1"
-            android:textSize="20sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/page_2"
             app:layout_constraintStart_toEndOf="@+id/before" />
@@ -185,7 +204,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginEnd="10dp"
             android:text="2"
-            android:textSize="20sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/page_3"
             app:layout_constraintStart_toEndOf="@+id/page_1" />
@@ -197,7 +216,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginEnd="10dp"
             android:text="3"
-            android:textSize="20sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/page_4"
             app:layout_constraintStart_toEndOf="@+id/page_2" />
@@ -209,7 +228,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginEnd="10dp"
             android:text="4"
-            android:textSize="20sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/page_5"
             app:layout_constraintStart_toEndOf="@+id/page_3" />
@@ -221,7 +240,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginEnd="10dp"
             android:text="5"
-            android:textSize="20sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/after"
             app:layout_constraintStart_toEndOf="@+id/page_4" />
@@ -232,7 +251,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:text="다음"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

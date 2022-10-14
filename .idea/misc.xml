@@ -45,11 +45,29 @@
         <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/layout/pop_up.xml" value="0.67" />
         <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/menu/board_menu.xml" value="0.31833333333333336" />
         <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/menu/nav_menu.xml" value="0.31833333333333336" />
+        <entry key="..\:/Users/glgkw/StudioProjects/DearA2/app/src/main/res/drawable-v24/background_radius_diary.xml" value="0.3235" />
+        <entry key="..\:/Users/glgkw/StudioProjects/DearA2/app/src/main/res/drawable-v24/background_radius_list.xml" value="0.3235" />
+        <entry key="..\:/Users/glgkw/StudioProjects/DearA2/app/src/main/res/drawable-v24/background_radius_white.xml" value="0.3235" />
+        <entry key="..\:/Users/glgkw/StudioProjects/DearA2/app/src/main/res/drawable/all_edge.xml" value="0.3005" />
+        <entry key="..\:/Users/glgkw/StudioProjects/DearA2/app/src/main/res/drawable/background_radius_board.xml" value="0.3235" />
+        <entry key="..\:/Users/glgkw/StudioProjects/DearA2/app/src/main/res/drawable/background_radius_lock.xml" value="0.3235" />
+        <entry key="..\:/Users/glgkw/StudioProjects/DearA2/app/src/main/res/drawable/background_radius_record.xml" value="0.3235" />
+        <entry key="..\:/Users/glgkw/StudioProjects/DearA2/app/src/main/res/drawable/background_radius_set_alarm.xml" value="0.3235" />
+        <entry key="..\:/Users/glgkw/StudioProjects/DearA2/app/src/main/res/drawable/radius_board_pink.xml" value="0.3235" />
+        <entry key="..\:/Users/glgkw/StudioProjects/DearA2/app/src/main/res/drawable/radius_gray.xml" value="0.3235" />
+        <entry key="..\:/Users/glgkw/StudioProjects/DearA2/app/src/main/res/layout/activity_board_edit.xml" value="0.33" />
+        <entry key="..\:/Users/glgkw/StudioProjects/DearA2/app/src/main/res/layout/activity_board_inside.xml" value="0.5" />
+        <entry key="..\:/Users/glgkw/StudioProjects/DearA2/app/src/main/res/layout/activity_board_write.xml" value="0.33" />
         <entry key="..\:/Users/glgkw/StudioProjects/DearA2/app/src/main/res/layout/activity_diary_detail.xml" value="0.25" />
+        <entry key="..\:/Users/glgkw/StudioProjects/DearA2/app/src/main/res/layout/activity_diary_edit.xml" value="0.2656391659111514" />
         <entry key="..\:/Users/glgkw/StudioProjects/DearA2/app/src/main/res/layout/activity_diary_write.xml" value="0.22" />
         <entry key="..\:/Users/glgkw/StudioProjects/DearA2/app/src/main/res/layout/activity_my_page.xml" value="0.1" />
+        <entry key="..\:/Users/glgkw/StudioProjects/DearA2/app/src/main/res/layout/comment_list_item.xml" value="0.67" />
+        <entry key="..\:/Users/glgkw/StudioProjects/DearA2/app/src/main/res/layout/fragment_board_main.xml" value="0.33" />
+        <entry key="..\:/Users/glgkw/StudioProjects/DearA2/app/src/main/res/layout/fragment_board_popup.xml" value="0.25" />
         <entry key="..\:/Users/glgkw/StudioProjects/DearA2/app/src/main/res/layout/fragment_diary.xml" value="0.1661600810536981" />
         <entry key="..\:/Users/glgkw/StudioProjects/DearA2/app/src/main/res/layout/fragment_diary_write_ver1.xml" value="0.2151268115942029" />
+        <entry key="..\:/Users/glgkw/StudioProjects/DearA2/app/src/main/res/layout/fragment_popup.xml" value="0.31316725978647686" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/drawable-v24/background_radius_diary.xml" value="0.237" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/drawable-v24/background_radius_white.xml" value="0.265" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/drawable/background_radius_set_alarm.xml" value="0.2045" />
