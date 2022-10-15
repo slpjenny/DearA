@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.databinding.DataBindingUtil
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -11,6 +12,7 @@ import com.google.firebase.database.ValueEventListener
 import com.jenny.deara.MyPageActivity
 import com.jenny.deara.R
 import com.jenny.deara.databinding.ActivityBoardInsideBinding
+import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
 
 class BoardInsideActivity : AppCompatActivity() {
@@ -53,6 +55,13 @@ class BoardInsideActivity : AppCompatActivity() {
 
                 binding.titleArea.text = dataModel?.title
                 binding.contentArea.text = dataModel?.content
+                binding.boardTime.text = dataModel?.time
+                binding.boardWriter.text = dataModel?.uid?.let { FBAuth.getNick(it) }
+                if (dataModel != null) {
+                    if (dataModel.uid !== FBAuth.getUid()){
+                        binding.popupBtn.visibility = View.INVISIBLE
+                    }
+                }
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
