@@ -36,7 +36,9 @@ class BoardInsideActivity : AppCompatActivity() {
         }
 
         binding.popupBtn.setOnClickListener {
-            BoardPopupFragment(key).show(supportFragmentManager, "SampleDialog")
+            if (key != null) {
+                BoardPopupFragment(key).show(supportFragmentManager, "SampleDialog")
+            }
         }
 
     }

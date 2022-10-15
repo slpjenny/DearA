@@ -74,7 +74,7 @@ class DiaryDetailActivity : AppCompatActivity() {
                     binding.randomA.text = dataModel.r_contents
                 } else{
                     val intent = Intent(this@DiaryDetailActivity, MainActivity::class.java)
-                    intent.putExtra("nav_diary", "fourth")
+                    intent.putExtra("nav", "fourth")
                     startActivity(intent)
                 }
             }

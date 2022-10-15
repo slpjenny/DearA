@@ -53,7 +53,7 @@ class PopupFragment(var key: String) : DialogFragment() {
             // 다이어리 리스트로 이동
             val intent = Intent(context, MainActivity::class.java)
             //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-            intent.putExtra("nav_diary", "fourth")
+            intent.putExtra("nav", "fourth")
             startActivity(intent)
         }
         return binding.root

@@ -1,15 +1,12 @@
 package com.jenny.deara.board
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
-import com.jenny.deara.MyPageActivity
 import com.jenny.deara.R
 import com.jenny.deara.databinding.ActivityBoardWriteBinding
 import com.jenny.deara.diary.DiaryData
@@ -38,21 +35,24 @@ class BoardWriteActivity : AppCompatActivity() {
         }
 
         binding.saveBtn.setOnClickListener {
-            saveFBBoardData()
+            if(route == "edit"){  // 수정페이지
+                saveFBBoardData(key)
+            }else{ // 글 작성 페이지
+                key = FBRef.diaryRef.push().key.toString()
+                saveFBBoardData(key)
+            }
         }
     }
 
-    private fun saveFBBoardData(){
+    private fun saveFBBoardData(key: String){
         val title = binding.titleArea.text.toString()
         val content = binding.contentArea.text.toString()
         val uid = FBAuth.getUid()
-        val time = FBAuth.getTime()
-
-        val key = FBRef.boardRef.push().key.toString()
+        val time = FBAuth.getTimeBoard()
 
         FBRef.boardRef
             .child(key)
-            .setValue(DiaryData(title, content, uid, time))
+            .setValue(BoardModel(title, content, uid, time))
 
         finish()
     }

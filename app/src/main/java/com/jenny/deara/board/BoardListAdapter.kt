@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.jenny.deara.R
+import com.jenny.deara.utils.FBAuth
 
 class BoardListAdapter(val context: Context,val boardkeyList : MutableList<String>)
     : RecyclerView.Adapter<BoardListAdapter.ViewHolder>() {
@@ -34,7 +35,8 @@ class BoardListAdapter(val context: Context,val boardkeyList : MutableList<Strin
         fun bind(item: BoardModel, key:String) {
             title.text = item.title
             time.text = item.time
-            uid.text = item.uid
+            //uid.text = item.uid
+            uid.text = FBAuth.getNick(item.uid)
 
             // 내부페이지로 이동
             itemView.setOnClickListener {
