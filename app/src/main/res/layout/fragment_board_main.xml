@@ -58,7 +58,7 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
             <TextView
-                android:id="@+id/boardListText"
+                android:id="@+id/boardList"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bottom_edge"
@@ -71,7 +71,7 @@
                 android:gravity="center"/>
 
             <TextView
-                android:id="@+id/boardAlarmText"
+                android:id="@+id/boardAlarm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
