@@ -13,18 +13,13 @@ import androidx.core.content.ContextCompat.getDrawable
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
 import com.jenny.deara.MyPageActivity
 import com.jenny.deara.R
 import com.jenny.deara.databinding.FragmentBoardMainBinding
-import com.jenny.deara.diary.DiaryData
-import com.jenny.deara.diary.DiaryListAdapter
 import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
 
@@ -32,14 +27,14 @@ class BoardMainFragment : Fragment() {
 
     private lateinit var binding: FragmentBoardMainBinding
 
-    private lateinit var auth: FirebaseAuth
-    private lateinit var database: DatabaseReference
+//    private lateinit var auth: FirebaseAuth
+//    private lateinit var database: DatabaseReference
 
     lateinit var BoardListAdapter: BoardListAdapter
 
     val boardList = mutableListOf<BoardModel>()
     val boardkeyList = mutableListOf<String>()
-
+    var menu: String = "boardList"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,11 +44,10 @@ class BoardMainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_board_main, container, false)
 
         initRecycler()
-        getFBBoardData()
+        getFBBoardData(menu)
 
         binding.myPageBtn.setOnClickListener {
             val intent = Intent(context, MyPageActivity::class.java)
@@ -65,18 +59,22 @@ class BoardMainFragment : Fragment() {
             startActivity(intent)
         }
 
-        binding.boardListText.setOnClickListener {
+        binding.boardList.setOnClickListener {
             setText()
             binding.boardSearch.visibility = View.VISIBLE
-            binding.boardListText.background = context?.let { getDrawable(it, R.drawable.bottom_edge) }
-            binding.boardListText.setTextColor(Color.BLACK)
+            binding.boardList.background = context?.let { getDrawable(it, R.drawable.bottom_edge) }
+            binding.boardList.setTextColor(Color.BLACK)
+            menu = "boardList"
+            getFBBoardData(menu)
         }
 
-        binding.boardAlarmText.setOnClickListener {
+        binding.boardAlarm.setOnClickListener {
             setText()
+//            menu = "boardAlarm"
+//            getFBBoardData(menu)
             binding.boardSearch.visibility = View.GONE
-            binding.boardAlarmText.background = context?.let { getDrawable(it, R.drawable.bottom_edge) }
-            binding.boardAlarmText.setTextColor(Color.BLACK)
+            binding.boardAlarm.background = context?.let { getDrawable(it, R.drawable.bottom_edge) }
+            binding.boardAlarm.setTextColor(Color.BLACK)
         }
 
         binding.myBoard.setOnClickListener {
@@ -84,10 +82,14 @@ class BoardMainFragment : Fragment() {
             binding.boardSearch.visibility = View.GONE
             binding.myBoard.background = context?.let { getDrawable(it, R.drawable.bottom_edge) }
             binding.myBoard.setTextColor(Color.BLACK)
+            menu = "myBoard"
+            getFBBoardData(menu)
         }
 
         binding.myComment.setOnClickListener {
             setText()
+//            menu = "myComment"
+//            getFBBoardData(menu)
             binding.boardSearch.visibility = View.GONE
             binding.myComment.background = context?.let { getDrawable(it, R.drawable.bottom_edge) }
             binding.myComment.setTextColor(Color.BLACK)
@@ -99,7 +101,7 @@ class BoardMainFragment : Fragment() {
 
     @SuppressLint("NotifyDataSetChanged")
     private fun initRecycler() {
-        BoardListAdapter = BoardListAdapter(requireContext())
+        BoardListAdapter = BoardListAdapter(requireContext(), boardkeyList)
 
         val rv : RecyclerView = binding.rvBoard
         rv.adapter= BoardListAdapter
@@ -109,24 +111,39 @@ class BoardMainFragment : Fragment() {
     }
 
     //파이어베이스 데이터 불러오기 _ 글 목록
-    private fun getFBBoardData(){
+    private fun getFBBoardData(menu: String){
 
         val postListener = object : ValueEventListener {
             @SuppressLint("NotifyDataSetChanged")
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
                 boardList.clear()
+                boardkeyList.clear()
 
                 for (dataModel in dataSnapshot.children) {
 
                     Log.d("boardListTest", dataModel.toString())
 
                     val item = dataModel.getValue(BoardModel::class.java)
-                    if (item != null) {
-                        boardList.add(item)
+                    if (menu == "boardList"){
+                        // 글 목록
+                        if (item != null) {
+                            boardList.add(item)
+                            boardkeyList.add(dataModel.key.toString())
+                        }
+                    }else if( menu == "boardAlarm"){
+                        // 알람 목록
+                    }else if(menu == "myBoard"){
+                        // 내가 쓴 글
+                        if (item != null) {
+                            if (FBAuth.getUid() == item.uid){
+                                boardList.add(item)
+                                boardkeyList.add(dataModel.key.toString())
+                            }
+                        }
+                    }else{
+                        //내가 쓴 댓글
                     }
-                    boardkeyList.add(dataModel.key.toString())
-
                 }
                 boardkeyList.reverse()
                 boardList.reverse()
@@ -142,57 +159,14 @@ class BoardMainFragment : Fragment() {
         FBRef.boardRef.addValueEventListener(postListener)
     }
 
-    //파이어베이스 데이터 불러오기 _ 내 글 목록
-//    private fun getFBMyBoardData(){
-//
-//        val postListener = object : ValueEventListener {
-//            @SuppressLint("NotifyDataSetChanged")
-//            override fun onDataChange(dataSnapshot: DataSnapshot) {
-//
-//                boardList.clear()
-//
-//                for (dataModel in dataSnapshot.children) {
-//
-//                    Log.d("boardListTest", dataModel.toString())
-//
-//                    val item = dataModel.getValue(BoardModel::class.java)
-//                    // Auth 초기화
-//                    auth = Firebase.auth
-//
-//                    // 실시간 database reference 불러오기
-//                    database = Firebase.database.reference
-//                    val user = auth.currentUser
-//
-//                    if (item != null) {
-//                        if (item.uid == user.toString()) {
-//                            boardList.add(item)
-//                        }
-//                    }
-//                    boardkeyList.add(dataModel.key.toString())
-//
-//                }
-//                boardkeyList.reverse()
-//                boardList.reverse()
-//                BoardListAdapter.notifyDataSetChanged()
-//
-//                Log.d("boardListTest", boardList.toString())
-//            }
-//
-//            override fun onCancelled(databaseError: DatabaseError) {
-//                Log.w("boardListTest", "loadPost:onCancelled", databaseError.toException())
-//            }
-//        }
-//        FBRef.boardRef.addValueEventListener(postListener)
-//    }
-
     private fun setText(){
-        binding.boardListText.setTextColor(Color.parseColor("#CFCFCF"))
-        binding.boardAlarmText.setTextColor(Color.parseColor("#CFCFCF"))
+        binding.boardList.setTextColor(Color.parseColor("#CFCFCF"))
+        binding.boardAlarm.setTextColor(Color.parseColor("#CFCFCF"))
         binding.myBoard.setTextColor(Color.parseColor("#CFCFCF"))
         binding.myComment.setTextColor(Color.parseColor("#CFCFCF"))
 
-        binding.boardListText.setBackgroundColor(Color.parseColor("#00ff0000"))
-        binding.boardAlarmText.setBackgroundColor(Color.parseColor("#00ff0000"))
+        binding.boardList.setBackgroundColor(Color.parseColor("#00ff0000"))
+        binding.boardAlarm.setBackgroundColor(Color.parseColor("#00ff0000"))
         binding.myBoard.setBackgroundColor(Color.parseColor("#00ff0000"))
         binding.myComment.setBackgroundColor(Color.parseColor("#00ff0000"))
     }

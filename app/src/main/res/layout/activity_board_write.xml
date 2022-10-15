@@ -61,7 +61,7 @@
         app:layout_constraintTop_toBottomOf="@+id/boardTopBar">
 
         <EditText
-            android:id="@+id/BoardWriteTitle"
+            android:id="@+id/titleArea"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
@@ -110,7 +110,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/BoardWriteContent"
+            android:id="@+id/contentArea"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"

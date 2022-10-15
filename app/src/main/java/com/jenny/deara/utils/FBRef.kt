@@ -12,5 +12,6 @@ class FBRef {
         val alarmRef = database.getReference("alarm")
         val todoRef = database.getReference("todo")
         val boardRef = database.getReference("board")
+        val userRef = database.getReference("users")
     }
 }

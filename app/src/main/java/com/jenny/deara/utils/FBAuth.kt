@@ -25,6 +25,12 @@ class FBAuth {
             return dateFormat
         }
 
+        fun getTimeBoard(): String {
+            val currentDateTime = CalendarUtil.selectedDate.time
+
+            return SimpleDateFormat("yyyy/MM/dd HH:mm", Locale.KOREA).format(currentDateTime)
+        }
+
         //다이어리 날짜 저장 format
         fun getTimeDiary() : String{
             val currentDateTime = CalendarUtil.selectedDate.time
@@ -58,6 +64,11 @@ class FBAuth {
             var year = CalendarUtil.selectedDate.get(Calendar.YEAR)
 
             return year
+        }
+
+        // 사용자 닉네임 가져오기
+        fun getNick(uid: String) : String{
+            return FBRef.userRef.child(uid).toString()
         }
 
     }

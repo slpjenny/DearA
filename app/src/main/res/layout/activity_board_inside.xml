@@ -71,7 +71,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/boardTitle"
+            android:id="@+id/titleArea"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="서울슈니병원 진료 어떤가요?"
@@ -90,7 +90,7 @@
             android:background="#979797"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            app:layout_constraintTop_toBottomOf="@+id/boardTitle" />
+            app:layout_constraintTop_toBottomOf="@+id/titleArea" />
 
         <TextView
             android:id="@+id/boardTime"
@@ -128,7 +128,7 @@
             app:layout_constraintTop_toBottomOf="@+id/boardLineS" />
 
         <TextView
-            android:id="@+id/boardContent"
+            android:id="@+id/contentArea"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -150,35 +150,39 @@
             android:layout_marginRight="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/boardContent" />
+            app:layout_constraintTop_toBottomOf="@+id/contentArea" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/commentEdit"
         android:layout_marginBottom="20dp"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
+
         <EditText
-            android:id="@+id/commentET"
-            android:layout_width="300dp"
+            android:id="@+id/commentArea"
+            android:layout_width="match_parent"
             android:layout_height="30dp"
             android:background="@drawable/radius_gray"
             android:hint="댓글을 입력해주세요."
-            android:textSize="15sp"
             android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:textSize="15sp"
+            android:layout_marginEnd="70dp"
+            android:layout_marginStart="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="HardcodedText,RtlSymmetry" />
+            app:layout_constraintEnd_toStartOf="parent"/>
 
         <Button
-            android:id="@+id/writeBtn"
+            android:id="@+id/commentBtn"
             android:layout_width="50dp"
             android:layout_height="30dp"
             android:layout_marginStart="8dp"
@@ -186,8 +190,8 @@
             android:text=" 작성 "
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/commentET"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginEnd="10dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -298,30 +302,30 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/commentLineE"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="32dp"
-        android:background="#979797"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/boardComment2" />
+<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        android:id="@+id/commentLineE"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="1dp"-->
+<!--        android:layout_marginTop="32dp"-->
+<!--        android:background="#979797"-->
+<!--        android:layout_marginLeft="10dp"-->
+<!--        android:layout_marginRight="10dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/boardComment2" />-->
 
-    <Button
-        android:id="@+id/boardListBtn"
-        android:layout_width="85dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/radius_board_purple2"
-        android:textColor="@color/white"
-        android:text=" 글 목록 "
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/commentLineE" />
+<!--    <Button-->
+<!--        android:id="@+id/boardListBtn"-->
+<!--        android:layout_width="85dp"-->
+<!--        android:layout_height="35dp"-->
+<!--        android:layout_marginStart="32dp"-->
+<!--        android:layout_marginTop="32dp"-->
+<!--        android:background="@drawable/radius_board_purple2"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:text=" 글 목록 "-->
+<!--        android:textSize="16sp"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/commentLineE" />-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
