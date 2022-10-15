@@ -50,7 +50,6 @@ class BoardMainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_board_main, container, false)
 
         initRecycler()
@@ -108,7 +107,7 @@ class BoardMainFragment : Fragment() {
 
     @SuppressLint("NotifyDataSetChanged")
     private fun initRecycler() {
-        BoardListAdapter = BoardListAdapter(requireContext())
+        BoardListAdapter = BoardListAdapter(requireContext(), boardkeyList)
 
         val rv : RecyclerView = binding.rvBoard
         rv.adapter= BoardListAdapter
@@ -125,6 +124,7 @@ class BoardMainFragment : Fragment() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
                 boardList.clear()
+                boardkeyList.clear()
 
                 for (dataModel in dataSnapshot.children) {
 
@@ -135,6 +135,7 @@ class BoardMainFragment : Fragment() {
                         // 글 목록
                         if (item != null) {
                             boardList.add(item)
+                            boardkeyList.add(dataModel.key.toString())
                         }
                     }else if( menu == "boardAlarm"){
                         // 알람 목록
@@ -143,13 +144,12 @@ class BoardMainFragment : Fragment() {
                         if (item != null) {
                             if (FBAuth.getUid() == item.uid){
                                 boardList.add(item)
+                                boardkeyList.add(dataModel.key.toString())
                             }
                         }
                     }else{
                         //내가 쓴 댓글
                     }
-                    boardkeyList.add(dataModel.key.toString())
-
                 }
                 boardkeyList.reverse()
                 boardList.reverse()

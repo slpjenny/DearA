@@ -71,7 +71,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/boardTitle"
+            android:id="@+id/titleArea"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="서울슈니병원 진료 어떤가요?"
@@ -128,7 +128,7 @@
             app:layout_constraintTop_toBottomOf="@+id/boardLineS" />
 
         <TextView
-            android:id="@+id/boardContent"
+            android:id="@+id/contentArea"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -150,7 +150,7 @@
             android:layout_marginRight="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/boardContent" />
+            app:layout_constraintTop_toBottomOf="@+id/contentArea" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

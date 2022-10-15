@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.jenny.deara.R
 
-class BoardListAdapter(val context: Context)
+class BoardListAdapter(val context: Context,val boardkeyList : MutableList<String>)
     : RecyclerView.Adapter<BoardListAdapter.ViewHolder>() {
 
     var datas = mutableListOf<BoardModel>()
@@ -22,7 +22,7 @@ class BoardListAdapter(val context: Context)
     override fun getItemCount(): Int = datas.size
 
     override fun onBindViewHolder(holder:  BoardListAdapter.ViewHolder, position: Int) {
-        holder.bind(datas[position])
+        holder.bind(datas[position], boardkeyList[position])
     }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -31,7 +31,7 @@ class BoardListAdapter(val context: Context)
         private val time: TextView = itemView.findViewById(R.id.boardTime)
         private val uid: TextView = itemView.findViewById(R.id.boardWriter)
 
-        fun bind(item: BoardModel) {
+        fun bind(item: BoardModel, key:String) {
             title.text = item.title
             time.text = item.time
             uid.text = item.uid
@@ -39,7 +39,7 @@ class BoardListAdapter(val context: Context)
             // 내부페이지로 이동
             itemView.setOnClickListener {
                 val intent = Intent(context, BoardInsideActivity::class.java)
-                //intent.putExtra("key", boardkeyList[position])
+                intent.putExtra("key", boardkeyList[position])
                 itemView.context.startActivity(intent)
             }
         }

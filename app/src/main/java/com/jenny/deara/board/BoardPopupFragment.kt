@@ -13,7 +13,7 @@ import com.jenny.deara.databinding.FragmentBoardPopupBinding
 import com.jenny.deara.databinding.FragmentDatePickerBinding
 import com.jenny.deara.diary.DiaryEditActivity
 
-class BoardPopupFragment : DialogFragment() {
+class BoardPopupFragment(var key: String) : DialogFragment() {
 
     private lateinit var binding: FragmentBoardPopupBinding
 
@@ -30,11 +30,13 @@ class BoardPopupFragment : DialogFragment() {
         binding = FragmentBoardPopupBinding.inflate(inflater, container, false)
 
         binding.editBtn.setOnClickListener {
-            val intent = Intent(context, BoardEditActivity::class.java)
+            val intent = Intent(context, BoardWriteActivity::class.java)
+            intent.putExtra("route", "edit")
+            intent.putExtra("key", key)
             startActivity(intent)
         }
         binding.delBtn.setOnClickListener {
-            // 삭제 구현
+            // 삭제 구현 하기
             val intent = Intent(context, MainActivity::class.java)
             intent.putExtra("nav_board", "fifth")
             startActivity(intent)
