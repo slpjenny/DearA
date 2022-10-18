@@ -3,6 +3,7 @@ package com.jenny.deara.mypages
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+
 import android.util.Log
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
@@ -11,6 +12,12 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
+
+import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DatabaseReference
+
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.jenny.deara.R
@@ -47,6 +54,7 @@ class ChangeNickNameActivity : AppCompatActivity() {
         if(user!=null) {
             database.child("users").child(user.uid).get().addOnSuccessListener {
                 binding.myNick.setText(it.value.toString())
+
 
                 // 닉네임 처음에 -> pbl 화이팅 하얗게 해서 안보이게했다가
                 // 내 닉네임 불러와지면 text 색상도 바뀌게 하기
@@ -125,6 +133,12 @@ class ChangeNickNameActivity : AppCompatActivity() {
                     }
                 }
             }
+        }
+
+            }.addOnFailureListener {
+                binding.myNick.setText("닉네임 정보 없음")
+           }
+
         }
 
     }
