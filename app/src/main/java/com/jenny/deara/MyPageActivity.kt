@@ -1,12 +1,14 @@
 package com.jenny.deara
 
 import android.content.ContentValues.TAG
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 
 import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
@@ -15,10 +17,8 @@ import com.google.firebase.ktx.Firebase
 //import com.jenny.deara.PatternLock.PatternActivity
 
 import com.jenny.deara.databinding.ActivityMyPageBinding
-import com.jenny.deara.mypages.ChangeNickNameActivity
-import com.jenny.deara.mypages.ChangePwdActivity
-import com.jenny.deara.mypages.ContactUsActivity
-import com.jenny.deara.mypages.SelectLockActivity
+import com.jenny.deara.home.TodoDialog
+import com.jenny.deara.mypages.*
 import kotlinx.android.synthetic.main.activity_my_page.*
 
 class MyPageActivity : AppCompatActivity() {
@@ -86,17 +86,31 @@ class MyPageActivity : AppCompatActivity() {
             startActivity(intent4)
         }
 
+        // 로그아웃
+        binding.logoutBtn.setOnClickListener {
+            Firebase.auth.signOut()
 
-        // 회원탈퇴 기능
+            val intent5 = Intent(this, LoginActivity::class.java)
+            startActivity(intent5)
+        }
+
+
+        // 회원탈퇴
         binding.userRemoveBtn.setOnClickListener {
-            val user = Firebase.auth.currentUser!!
 
-            user.delete()
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        Log.d(TAG, "사용자 계정 삭제 완료")
-                    }
-                }
+            // 탈퇴여부 묻는 custom dialog 띄우기
+            val dialog = userRemoveDialog(baseContext)
+            dialog.showDialog()
+
+
+//            val user = Firebase.auth.currentUser!!
+//
+//            user.delete()
+//                .addOnCompleteListener { task ->
+//                    if (task.isSuccessful) {
+//                        Log.d(TAG, "사용자 계정 삭제 완료")
+//                    }
+//                }
         }
 
     }
