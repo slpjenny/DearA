@@ -26,7 +26,6 @@ class MyPageActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var database: DatabaseReference
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -52,9 +51,8 @@ class MyPageActivity : AppCompatActivity() {
                 binding.yourNick.setText(it.value.toString())
 
             }.addOnFailureListener {
-                Toast.makeText(baseContext,"해당하는 닉네임이 없습니다",Toast.LENGTH_SHORT).show()
+                binding.yourNick.setText("닉네임 정보 없음")
             }
-
         }
 
         // 비밀번호 변경 페이지로 이동
