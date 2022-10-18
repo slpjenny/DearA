@@ -16,8 +16,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/boardLineS1"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#7C7C7C"
+            android:layout_height="0dp"
+            android:background="#EAEAEA"
             app:layout_constraintBottom_toTopOf="@+id/boardTitle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -27,10 +27,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="30dp"
             android:text="title"
             android:textColor="@color/black"
-            android:textSize="18sp"
+            android:textSize="19sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/boardLineS1" />
@@ -41,6 +41,7 @@
             android:layout_marginEnd="16dp"
             android:background="@drawable/background_radius_board"
             android:text="1"
+            android:textColor="@color/purple2"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/boardLineS1" />
@@ -60,23 +61,23 @@
                 android:text="boardTime"
                 android:layout_marginRight="10dp"
                 android:textColor="#747474"
-                android:textSize="12sp" />
+                android:textSize="10sp" />
             <TextView
                 android:id="@+id/boardWriter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="boardWriter"
                 android:textColor="#747474"
-                android:textSize="12sp" />
+                android:textSize="10sp" />
 
         </LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/boardLineE1"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="25dp"
-            android:background="#7C7C7C"
+            android:layout_height="3dp"
+            android:layout_marginTop="30dp"
+            android:background="#EAEAEA"
             app:layout_constraintTop_toBottomOf="@+id/boardTimeWriter"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

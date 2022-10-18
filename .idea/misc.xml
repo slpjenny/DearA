@@ -122,6 +122,7 @@
         <entry key="app/src/main/res/layout/diary_edit_ver2.xml" value="0.29739583333333336" />
         <entry key="app/src/main/res/layout/diary_list_item.xml" value="0.29739583333333336" />
         <entry key="app/src/main/res/layout/fragment_alarm.xml" value="0.190625" />
+        <entry key="app/src/main/res/layout/fragment_board_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_contact_us.xml" value="0.2833333333333333" />
         <entry key="app/src/main/res/layout/fragment_diary.xml" value="0.22864583333333333" />
         <entry key="app/src/main/res/layout/pop_up.xml" value="0.29739583333333336" />
