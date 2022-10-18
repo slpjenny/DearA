@@ -3,6 +3,7 @@ package com.jenny.deara.mypages
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -71,9 +72,12 @@ class ChangeNickNameActivity : AppCompatActivity() {
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
 
                         // child 내에 있는 데이터만큼 반복합니다.
-                        // 회원가입에서는 제대로 중복확인 기능 돌아가는데 왜 여기서 똑같은 코드인데 안돌아가는거냐????
+                        // 회원가입에서는 제대로 중복확인 기능 돌아가는데 왜 여기서 똑같은 코드인데 안돌아가는거냐???? (진짜 모든 데이터가 다나오는데 이게머냐?)
                         // 심지어 닉네임 똑같은걸로 저장도 되어버림..
                         for (data in dataSnapshot.children) {
+
+                            Log.d("nicklist", data.value.toString())
+
                             if (nick == data.value.toString()){
                                 nickFor = 1
                                 Toast.makeText(baseContext,"다른 닉네임을 사용해주세요",Toast.LENGTH_SHORT).show()

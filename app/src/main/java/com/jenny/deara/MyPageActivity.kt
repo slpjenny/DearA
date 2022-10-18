@@ -1,8 +1,10 @@
 package com.jenny.deara
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
@@ -82,6 +84,19 @@ class MyPageActivity : AppCompatActivity() {
         binding.textView16.setOnClickListener {
             val intent4  = Intent(this, SelectLockActivity::class.java)
             startActivity(intent4)
+        }
+
+
+        // 회원탈퇴 기능
+        binding.userRemoveBtn.setOnClickListener {
+            val user = Firebase.auth.currentUser!!
+
+            user.delete()
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Log.d(TAG, "사용자 계정 삭제 완료")
+                    }
+                }
         }
 
     }
