@@ -1,5 +1,7 @@
 package com.jenny.deara
 
+import android.app.Activity
+import android.content.ContentProvider
 import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
@@ -99,18 +101,9 @@ class MyPageActivity : AppCompatActivity() {
         binding.userRemoveBtn.setOnClickListener {
 
             // 탈퇴여부 묻는 custom dialog 띄우기
-            val dialog = userRemoveDialog(baseContext)
+            val dialog = userRemoveDialog(this)
             dialog.showDialog()
 
-
-//            val user = Firebase.auth.currentUser!!
-//
-//            user.delete()
-//                .addOnCompleteListener { task ->
-//                    if (task.isSuccessful) {
-//                        Log.d(TAG, "사용자 계정 삭제 완료")
-//                    }
-//                }
         }
 
     }

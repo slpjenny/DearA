@@ -13,11 +13,6 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 
-import android.widget.Toast
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.database.DatabaseReference
-
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.jenny.deara.R
@@ -51,7 +46,7 @@ class ChangeNickNameActivity : AppCompatActivity() {
         val user = auth.currentUser
 
         // firebase 에서 닉네임 불러오기
-        if(user!=null) {
+        if (user != null) {
             database.child("users").child(user.uid).get().addOnSuccessListener {
                 binding.myNick.setText(it.value.toString())
 
@@ -62,7 +57,7 @@ class ChangeNickNameActivity : AppCompatActivity() {
 
             }.addOnFailureListener {
                 binding.myNick.setText("닉네임 정보 없음")
-           }
+            }
         }
 
 
@@ -71,9 +66,9 @@ class ChangeNickNameActivity : AppCompatActivity() {
             var nick = binding.editNickTxt.text.toString()
 
             // 닉네임 입력창 null 체크
-            if(nick.isNullOrEmpty()){
-                Toast.makeText(baseContext,"닉네임을 먼저 입력해주세요",Toast.LENGTH_SHORT).show()
-            }else{
+            if (nick.isNullOrEmpty()) {
+                Toast.makeText(baseContext, "닉네임을 먼저 입력해주세요", Toast.LENGTH_SHORT).show()
+            } else {
 
                 // 닉네임이 작성되어야 중복 확인 기능 작동
                 database.addValueEventListener(object : ValueEventListener {
@@ -86,22 +81,25 @@ class ChangeNickNameActivity : AppCompatActivity() {
 
                             Log.d("nicklist", data.value.toString())
 
-                            if (nick == data.value.toString()){
+                            if (nick == data.value.toString()) {
                                 nickFor = 1
-                                Toast.makeText(baseContext,"다른 닉네임을 사용해주세요",Toast.LENGTH_SHORT).show()
+                                Toast.makeText(baseContext, "다른 닉네임을 사용해주세요", Toast.LENGTH_SHORT)
+                                    .show()
                                 break
                             }
                         }
 
                         // 닉네임 중복 안되었을 때
-                        if (nickFor == 0){
-                            Toast.makeText(baseContext,"사용하실 수 있는 닉네임입니다.",Toast.LENGTH_SHORT).show()
+                        if (nickFor == 0) {
+                            Toast.makeText(baseContext, "사용하실 수 있는 닉네임입니다.", Toast.LENGTH_SHORT)
+                                .show()
 
                             // 닉네임 중복 확인 통과 체크
                             checkNickBtn = 1
                         }
 
-                   }
+                    }
+
                     override fun onCancelled(databaseError: DatabaseError) {}
                 })
             }
@@ -114,32 +112,27 @@ class ChangeNickNameActivity : AppCompatActivity() {
 
 
             // 닉네임 입력창 null 체크
-            if(nick.isNullOrEmpty()){
-                Toast.makeText(baseContext,"닉네임을 먼저 입력해주세요",Toast.LENGTH_SHORT).show()
-            }else{
+            if (nick.isNullOrEmpty()) {
+                Toast.makeText(baseContext, "닉네임을 먼저 입력해주세요", Toast.LENGTH_SHORT).show()
+            } else {
                 // 닉네임 중복 확인 여부 체크하기
-                if(checkNickBtn == 0){
-                    Toast.makeText(baseContext,"닉네임 중복 확인을 해주세요",Toast.LENGTH_SHORT).show()
-                }else{
+                if (checkNickBtn == 0) {
+                    Toast.makeText(baseContext, "닉네임 중복 확인을 해주세요", Toast.LENGTH_SHORT).show()
+                } else {
 
                     // 사용자의 uid 에 따라 닉네임을 저장
                     if (user != null) {
                         database.child("users").child(user.uid).setValue(nick)
 
-                        Toast.makeText(baseContext,"닉네임 변경이 완료되었습니다",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(baseContext, "닉네임 변경이 완료되었습니다", Toast.LENGTH_SHORT).show()
 
-                    }else{
-                        Toast.makeText(baseContext,"닉네임 정보 불러오기 오류", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(baseContext, "닉네임 정보 불러오기 오류", Toast.LENGTH_SHORT).show()
                     }
                 }
             }
         }
 
-            }.addOnFailureListener {
-                binding.myNick.setText("닉네임 정보 없음")
-           }
-
         }
 
     }
-}
