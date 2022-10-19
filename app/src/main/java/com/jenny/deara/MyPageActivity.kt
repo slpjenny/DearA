@@ -5,6 +5,7 @@ import android.content.ContentProvider
 import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -52,10 +53,12 @@ class MyPageActivity : AppCompatActivity() {
         // firebase 에서 닉네임 불러오기
         if(user!=null) {
             database.child("users").child(user.uid).get().addOnSuccessListener {
-                binding.yourNick.setText(it.value.toString())
+                binding.yourNick.setText(it.value.toString() + " 님")
+                binding.yourNick.setTextColor(Color.BLACK)
 
             }.addOnFailureListener {
                 binding.yourNick.setText("닉네임 정보 없음")
+                binding.yourNick.setTextColor(Color.BLACK)
             }
         }
 
