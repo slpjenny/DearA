@@ -45,6 +45,7 @@
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:text="PBL화이팅 님"
+        android:textColor="@color/purple1"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -85,7 +86,7 @@
             app:layout_constraintTop_toBottomOf="@+id/changePwdtxt"></TextView>
 
         <TextView
-            android:id="@+id/textView13"
+            android:id="@+id/logoutBtn"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_marginLeft="50dp"
@@ -96,7 +97,7 @@
             app:layout_constraintTop_toBottomOf="@+id/changeNickTxt"></TextView>
 
         <TextView
-            android:id="@+id/textView14"
+            android:id="@+id/userRemoveBtn"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_marginLeft="50dp"
@@ -104,7 +105,7 @@
             android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView13"></TextView>
+            app:layout_constraintTop_toBottomOf="@+id/logoutBtn"></TextView>
 
 
         <ImageView
@@ -115,7 +116,7 @@
             android:src="@drawable/one_line_maingray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView14"></ImageView>
+            app:layout_constraintTop_toBottomOf="@+id/userRemoveBtn"></ImageView>
 
 
         <TextView

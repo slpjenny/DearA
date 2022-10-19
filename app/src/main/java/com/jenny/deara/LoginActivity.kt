@@ -61,7 +61,7 @@ class LoginActivity : AppCompatActivity() {
                         if (task.isSuccessful) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d("로그인", "로그인 성공")
-                            Toast.makeText(baseContext, "로그인 인증 성공.",Toast.LENGTH_SHORT).show()
+                            Toast.makeText(baseContext, "로그인 성공.",Toast.LENGTH_SHORT).show()
 
                             // user: 로그인 된 현재 사용자
                             val user = auth.currentUser

@@ -1,19 +1,32 @@
 package com.jenny.deara.home
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.graphics.Color
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
 import com.jenny.deara.R
 import com.jenny.deara.utils.CalendarUtil
+import com.jenny.deara.utils.FBAuth
+import com.jenny.deara.utils.FBRef
 import java.util.*
 import kotlin.collections.ArrayList
 
-class CalendarAdapter(private val dayList: ArrayList<Date>, private val todoList : ArrayList<ToDoModel>) :
+class CalendarAdapter(private val context: Context,
+                      private val dayList: ArrayList<Date>,
+                      private val todoList : ArrayList<ToDoData>,
+                      val todokeyList : MutableList<String>) :
     RecyclerView.Adapter<CalendarAdapter.ItemViewHolder>() {
+
 
     interface ItemClick {
         fun onClick(view : View, position : Int)
@@ -63,11 +76,17 @@ class CalendarAdapter(private val dayList: ArrayList<Date>, private val todoList
         var iMonth = dateCalendar.get(Calendar.MONTH) + 1
         var iDay = dateCalendar.get(Calendar.DAY_OF_MONTH)
 
+        Log.d(TAG, "iMonth : " + iMonth)
+        Log.d(TAG, "iDay : " + iDay)
+        Log.d(TAG, "iYear : " + iYear)
 
         // 현재 날짜
         var selectYear = CalendarUtil.selectedDate.get(Calendar.YEAR)
         var selectMonth = CalendarUtil.selectedDate.get(Calendar.MONTH)+1
         var selectDay = CalendarUtil.selectedDate.get(Calendar.DAY_OF_MONTH)
+        Log.d(TAG, "selectYear : " + selectYear)
+        Log.d(TAG, "selecMonth : " + selectMonth)
+        Log.d(TAG, "selectDay : " + selectDay)
 
 
         // 넘어온 날짜와 현재 날짜 비교
@@ -79,21 +98,18 @@ class CalendarAdapter(private val dayList: ArrayList<Date>, private val todoList
                 holder.itemView.setOnClickListener { view ->
                     itemClick?.onClick(view, position)
 
+                    var month = iMonth
+                    var date = holder.dayText.text.toString()
+
                     if (selectedPosition != position) {
+                        getFBTodoData(month, date.toInt())
                         holder.itemView.setBackgroundResource(R.drawable.today_background)
                     }
 
                     notifyItemChanged(selectedPosition)
                     selectedPosition = position
+
                 }
-
-//                val time = FBAuth.getTimeDiary()
-//                val uid = FBAuth.getUid()
-
-//                FBRef.todoRef
-//                    .push()
-//                    .setValue(ToDoData(, time, uid))
-
 
             }
 
@@ -114,9 +130,42 @@ class CalendarAdapter(private val dayList: ArrayList<Date>, private val todoList
             holder.dayText.setTextColor(Color.parseColor("#ffffff"))
         }
 
+
     }
 
     override fun getItemCount(): Int {
         return dayList.size
+    }
+
+
+    // firebase에 저장된 투두리스트 목록 불러오기
+    fun getFBTodoData(Month : Int, date : Int){
+
+        val position = object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                todoList.clear()
+
+                for (dataModel in dataSnapshot.children){
+                    Log.d("todoList", dataModel.toString())
+
+                    val item = dataModel.getValue(ToDoData::class.java)
+
+                    if(item!!.month == Month && item!!.date == date ){
+                        todoList.add(item)
+
+                    }
+                    todokeyList.add(dataModel.key.toString())
+                    todoList
+                    Log.d(TAG, "todoList : " + todoList)
+
+                }
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        }
+        FBRef.todoRef.addValueEventListener(position)
     }
     }
