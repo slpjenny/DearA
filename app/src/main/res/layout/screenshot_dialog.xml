@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="300dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/dialog_confirm"
+    android:layout_gravity="center"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <TextView
+        android:id="@+id/dial_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="화면 캡쳐 감지"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/dial_tv_text"
+        android:layout_width="325dp"
+        android:layout_height="wrap_content"
+        android:text="이 게시판의 내용을 커뮤니티 외부로 유출하는 것은 \n금지되어 있습니다. 게시물을 복사∙스크린샷∙촬영하여\n외부 사이트∙대화방에 게시하거나 타인에게 공유하는 등 유출이 적발될 경우, 서비스 이용 제한 등의\n조치가 취해집니다."
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/dialog_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dial_text" />
+
+    <Button
+        android:id="@+id/dialog_btn"
+        android:layout_width="340dp"
+        android:layout_height="50dp"
+        android:background="@drawable/dialog_ok_confirm"
+        android:text="확인"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="MissingConstraints" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
