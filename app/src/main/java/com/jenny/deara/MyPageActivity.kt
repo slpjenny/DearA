@@ -1,10 +1,16 @@
 package com.jenny.deara
 
+import android.app.Activity
+import android.content.ContentProvider
+import android.content.ContentValues.TAG
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 
 import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
@@ -13,10 +19,8 @@ import com.google.firebase.ktx.Firebase
 //import com.jenny.deara.PatternLock.PatternActivity
 
 import com.jenny.deara.databinding.ActivityMyPageBinding
-import com.jenny.deara.mypages.ChangeNickNameActivity
-import com.jenny.deara.mypages.ChangePwdActivity
-import com.jenny.deara.mypages.ContactUsActivity
-import com.jenny.deara.mypages.SelectLockActivity
+import com.jenny.deara.home.TodoDialog
+import com.jenny.deara.mypages.*
 import kotlinx.android.synthetic.main.activity_my_page.*
 
 class MyPageActivity : AppCompatActivity() {
@@ -25,7 +29,6 @@ class MyPageActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var database: DatabaseReference
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,9 +55,8 @@ class MyPageActivity : AppCompatActivity() {
                 binding.yourNick.setText(it.value.toString())
 
             }.addOnFailureListener {
-                Toast.makeText(baseContext,"해당하는 닉네임이 없습니다",Toast.LENGTH_SHORT).show()
+                binding.yourNick.setText("닉네임 정보 없음")
             }
-
         }
 
         // 비밀번호 변경 페이지로 이동
@@ -84,6 +86,24 @@ class MyPageActivity : AppCompatActivity() {
         binding.textView16.setOnClickListener {
             val intent4  = Intent(this, SelectLockActivity::class.java)
             startActivity(intent4)
+        }
+
+        // 로그아웃
+        binding.logoutBtn.setOnClickListener {
+            Firebase.auth.signOut()
+
+            val intent5 = Intent(this, LoginActivity::class.java)
+            startActivity(intent5)
+        }
+
+
+        // 회원탈퇴
+        binding.userRemoveBtn.setOnClickListener {
+
+            // 탈퇴여부 묻는 custom dialog 띄우기
+            val dialog = userRemoveDialog(this)
+            dialog.showDialog()
+
         }
 
     }
