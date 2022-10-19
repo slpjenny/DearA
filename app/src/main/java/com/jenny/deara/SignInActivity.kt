@@ -31,6 +31,10 @@ class SignInActivity : AppCompatActivity() {
         // checkNickBtn : 닉네임 중복 확인 버튼 클릭 체크 여부
         var checkNickBtn = 0
 
+        // nickFor : 닉네임 중복확인 시, 중복된 닉네임이 있는지 확인
+        var nickFor = 0
+
+
         // Auth 초기화
         auth = Firebase.auth
 
@@ -64,16 +68,25 @@ class SignInActivity : AppCompatActivity() {
 
             database.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    for (data in dataSnapshot.children) {
 
-//                        // child 내에 있는 데이터만큼 반복합니다.
+                    // child 내에 있는 데이터만큼 반복합니다.
+                    for (data in dataSnapshot.children) {
                         if (nick == data.value.toString()){
+                            nickFor = 1
                             Toast.makeText(baseContext,"다른 닉네임을 사용해주세요",Toast.LENGTH_SHORT).show()
                             break
                         }
                     }
-                    Toast.makeText(baseContext,"사용하실 수 있는 닉네임입니다.",Toast.LENGTH_SHORT).show()
-                    checkNickBtn = 1
+
+                    // 닉네임 중복 안되었을 때
+                    if (nickFor == 0){
+                        Toast.makeText(baseContext,"사용하실 수 있는 닉네임입니다.",Toast.LENGTH_SHORT).show()
+
+                        // 닉네임 중복 확인 통과
+                        checkNickBtn = 1
+
+                    }
+
                 }
                 override fun onCancelled(databaseError: DatabaseError) {}
             })
@@ -126,6 +139,10 @@ class SignInActivity : AppCompatActivity() {
                                     }
 
                                     Toast.makeText(baseContext,"회원가입이 완료되었습니다.",Toast.LENGTH_SHORT).show()
+
+                                    // 회원가입 완료시 [로그인] 페이지로 이동하기
+                                    val intent = Intent(this, LoginActivity::class.java)
+                                    startActivity(intent)
 
                                     // 회원가입 과정에서 오류나면 다음 메세지 생성
                                 } else  {

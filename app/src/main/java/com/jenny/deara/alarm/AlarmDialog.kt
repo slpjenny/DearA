@@ -10,9 +10,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CompoundButton
+import android.widget.Toast
 import com.jenny.deara.R
 import com.jenny.deara.databinding.AlarmDialogBinding
 import com.jenny.deara.utils.FBRef
+import kotlinx.android.synthetic.main.alarm_dialog.*
 
 class AlarmDialog() : DialogFragment() {
 
@@ -76,10 +78,12 @@ class AlarmDialog() : DialogFragment() {
 
         // 타임피커 설정
         binding.timePicker.setIs24HourView(true)
+        hour = binding.timePicker.hour.toString()
+        minute = binding.timePicker.minute.toString()
+
         binding.timePicker.setOnTimeChangedListener { timePicker, h, m ->
             hour = h.toString()
             minute = m.toString()
-            // time= hour.toString() +":"+ minute.toString()
         }
 
         // 취소 버튼
@@ -90,15 +94,13 @@ class AlarmDialog() : DialogFragment() {
         binding.saveBtn.setOnClickListener {
             day = week.joinToString("")
             title = binding.setAlarmName.text.toString()
-            onClickedListener.onClicked(hour, minute, title, day)
-            dismiss()
+            if (title == "" || day == "") {
+                Toast.makeText(requireActivity(), "빈 칸을 채워주세요", Toast.LENGTH_LONG).show()
+            } else {
+                onClickedListener.onClicked(hour, minute, title, day)
+                dismiss()
+            }
         }
-
-         /*// 삭제 버튼
-        binding.rmAlarm.setOnClickListener {
-            FBRef.alarmRef.child(key).removeValue()
-            dismiss()
-        }*/
 
         return view
     }
@@ -106,7 +108,6 @@ class AlarmDialog() : DialogFragment() {
     interface ButtonClickListener{
         fun onClicked(hour: String, minute: String,  title: String, day: String)
     }
-
 
     private lateinit var onClickedListener: ButtonClickListener
 

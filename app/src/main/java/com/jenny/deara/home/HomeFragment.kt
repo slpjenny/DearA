@@ -1,5 +1,6 @@
 package com.jenny.deara.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
+import com.jenny.deara.MyPageActivity
 import com.jenny.deara.R
 import com.jenny.deara.databinding.FragmentHomeBinding
 import com.jenny.deara.utils.CalendarUtil
@@ -66,6 +68,19 @@ class HomeFragment : Fragment() {
         binding.todoplus.setOnClickListener {
             todoAdd()
         }
+
+
+        // 마이페이지로 이동
+        binding.mypageBtn.setOnClickListener {
+            val intent = Intent(context, MyPageActivity::class.java)
+            startActivity(intent)
+
+        }
+
+
+
+//        getFBRandomQData()
+
 
         return binding.root
     }

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.jenny.deara.R
+import com.jenny.deara.utils.FBRef
 
 class AlarmListAdapter(val context: Context, val alarmkeyList: MutableList<String>): RecyclerView.Adapter<AlarmListAdapter.ViewHolder>() {
 
@@ -37,9 +38,10 @@ class AlarmListAdapter(val context: Context, val alarmkeyList: MutableList<Strin
         }
     }
 
-    /*   fun removeItem(position: Int) {
-               datas.removeAt(position)
-               notifyDataSetChanged()
+       /*fun removeItem(position: Int) {
+           val key = alarmkeyList[position]
+           FBRef.alarmRef.child(key).removeValue()
+           notifyDataSetChanged()
        }*/
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {

@@ -54,13 +54,13 @@
 
 
     <Button
-        android:id="@+id/button8"
+        android:id="@+id/sendMailBtn"
         android:layout_width="300dp"
         android:layout_height="70dp"
         android:layout_marginTop="60dp"
         android:background="@drawable/background_radius_list"
         android:gravity="center"
-        android:text="문의 메일 보내기"
+        android:text="개발자에게 문의하기"
         android:textColor="#000000"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -77,7 +77,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="30dp"
-        app:layout_constraintTop_toBottomOf="@+id/button8"></ImageView>
+        app:layout_constraintTop_toBottomOf="@+id/sendMailBtn"></ImageView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

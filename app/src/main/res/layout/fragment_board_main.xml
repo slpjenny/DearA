@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".board.BoardMainFragment"
     android:orientation="vertical">
 
@@ -24,12 +24,13 @@
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
+            android:id="@+id/myPageBtn"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_marginRight="20dp"
@@ -41,66 +42,89 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="20dp"
+        android:paddingStart="20dp"
+        android:layout_marginEnd="20dp"
         android:id="@+id/boardMenu"
         app:layout_constraintTop_toBottomOf="@+id/boardTopBar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        tools:ignore="RtlSymmetry">
 
-        <TextView
-            android:id="@+id/boardListText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bottom_edge"
-            android:text="글 목록"
-            android:textColor="@color/black"
-            android:textSize="15sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/boardList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bottom_edge"
+                android:paddingBottom="5dp"
+                android:text="글 목록"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:gravity="center"/>
 
-        <TextView
-            android:id="@+id/boardAlarmText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:background="@drawable/bottom_edge"
-            android:text="알림"
-            android:textColor="@color/board_menu_gray"
-            android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/boardListText" />
+            <TextView
+                android:id="@+id/boardAlarm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="알림"
+                android:layout_weight="1"
+                android:paddingBottom="5dp"
+                android:textStyle="bold"
+                android:textColor="@color/board_menu_gray"
+                android:textSize="18sp"
+                android:textAlignment="center"
+                android:gravity="center"/>
 
-        <TextView
-            android:id="@+id/MyWriteText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:background="@drawable/bottom_edge"
-            android:text="내가 쓴 글"
-            android:textColor="@color/board_menu_gray"
-            android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/boardAlarmText" />
+            <TextView
+                android:id="@+id/myBoard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="내가 쓴 글"
+                android:paddingBottom="5dp"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:textColor="@color/board_menu_gray"
+                android:textSize="18sp"
+                android:textAlignment="center"
+                android:gravity="center"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:background="@drawable/bottom_edge"
-            android:text="내가 쓴 댓글"
-            android:textColor="@color/board_menu_gray"
-            android:textSize="15sp"
-            app:layout_constraintStart_toEndOf="@+id/MyWriteText"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/myComment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="내가 쓴 댓글"
+                android:paddingBottom="5dp"
+                android:textStyle="bold"
+                android:layout_weight="1"
+                android:textColor="@color/board_menu_gray"
+                android:textSize="18sp"
+                app:layout_constraintStart_toEndOf="@+id/MyWriteText"
+                app:layout_constraintTop_toTopOf="parent"
+                android:textAlignment="center"
+                android:gravity="center"/>
 
+
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_marginTop="20dp"
         android:id="@+id/boardSearch"
+        android:visibility="visible"
         android:layout_width="0dp"
         app:layout_constraintWidth_percent="0.9"
         android:layout_height="wrap_content"
@@ -110,24 +134,27 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/SearchET"
-            android:layout_width="0dp"
-            app:layout_constraintWidth_percent="0.8"
-            android:layout_marginTop="5dp"
+            android:id="@+id/searchET"
+            android:layout_width="match_parent"
+            android:layout_marginEnd="45dp"
             android:layout_height="30dp"
-            android:background="@drawable/all_edge"
-            android:hint=" "
+            android:background="@drawable/radius_gray"
+            android:hint="검색어를 입력해주세요."
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="5dp"
+            android:id="@+id/searchBtn"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginEnd="10dp"
             android:src="@drawable/board_search"
-            app:layout_constraintStart_toEndOf="@+id/SearchET"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -135,6 +162,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
         android:id="@+id/rvBoard"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:layout_width="match_parent"
@@ -145,35 +174,33 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/pageBtn"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rvBoard"
-        app:layout_constraintWidth_percent="0.5">
+        app:layout_constraintTop_toBottomOf="@+id/rvBoard">
 
-        <TextView
+        <ImageView
             android:id="@+id/before"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
             android:layout_marginEnd="10dp"
-            android:text="이전"
-            android:textSize="20sp"
-            android:textStyle="bold"
+            android:src="@drawable/beforebtn"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/page_1"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/page_1"
+            android:textColor="#747474"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
             android:layout_marginEnd="10dp"
             android:text="1"
-            android:textSize="20sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/page_2"
             app:layout_constraintStart_toEndOf="@+id/before" />
@@ -182,10 +209,11 @@
             android:id="@+id/page_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="#747474"
             android:layout_marginLeft="10dp"
             android:layout_marginEnd="10dp"
             android:text="2"
-            android:textSize="20sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/page_3"
             app:layout_constraintStart_toEndOf="@+id/page_1" />
@@ -194,10 +222,10 @@
             android:id="@+id/page_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:textColor="#747474"
             android:layout_marginEnd="10dp"
             android:text="3"
-            android:textSize="20sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/page_4"
             app:layout_constraintStart_toEndOf="@+id/page_2" />
@@ -206,10 +234,10 @@
             android:id="@+id/page_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:textColor="#747474"
             android:layout_marginEnd="10dp"
             android:text="4"
-            android:textSize="20sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/page_5"
             app:layout_constraintStart_toEndOf="@+id/page_3" />
@@ -218,25 +246,22 @@
             android:id="@+id/page_5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
             android:layout_marginEnd="10dp"
             android:text="5"
-            android:textSize="20sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/after"
             app:layout_constraintStart_toEndOf="@+id/page_4" />
 
-        <TextView
+        <ImageView
             android:id="@+id/after"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="다음"
-            android:textSize="20sp"
-            android:textStyle="bold"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:src="@drawable/afterbtn"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/page_5" />
+            app:layout_constraintStart_toEndOf="@+id/page_5"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

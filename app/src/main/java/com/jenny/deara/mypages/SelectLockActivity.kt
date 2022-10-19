@@ -14,11 +14,11 @@ import kotlinx.android.synthetic.main.activity_select_lock.*
 
 class SelectLockActivity : AppCompatActivity() {
 
-    val binding by lazy { ActivitySignInBinding.inflate(layoutInflater) }
+//    val binding by lazy { ActivitySignInBinding.inflate(layoutInflater) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_select_lock)
 
         textView.text = if (switchButton.isChecked )
             "암호/지문 잠금 끄기" else "암호/지문 잠금 켜기"
@@ -27,8 +27,10 @@ class SelectLockActivity : AppCompatActivity() {
         switchButton.setOnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked) {
                 textView.text = "암호/지문 잠금 끄기"
+                switchButton?.isSelected = switchButton?.isSelected != true
             } else {
                 textView.text = "암호/지문 잠금 켜기"
+                switchButton?.isSelected = switchButton?.isSelected != false
             }
         }
 
@@ -37,9 +39,9 @@ class SelectLockActivity : AppCompatActivity() {
         //btnChangePwd 클릭 시 지문인식 또는 이전 암호 확인 후 변경 가능
 
         //바인딩 오류 해결하기
-//        binding.back.setOnClickListener {
-//            val intent = Intent(context, MyPageActivity::class.java)
-//            startActivity(intent)
-//        }
+        back.setOnClickListener {
+            val intent = Intent(this, MyPageActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
