@@ -1,16 +1,13 @@
-package com.jenny.deara.fragments
+package com.jenny.deara.record
 
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import androidx.fragment.app.Fragment
-import com.jenny.deara.MainActivity
 import com.jenny.deara.R
 
-
-class NewRecordFragment : Fragment() {
+class RecordFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -19,8 +16,6 @@ class NewRecordFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(com.jenny.deara.R.layout.fragment_new_record, container, false)
+        return inflater.inflate(R.layout.fragment_record, container, false)
     }
-
 }
