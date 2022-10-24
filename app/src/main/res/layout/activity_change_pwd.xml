@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imageView5"
+            android:id="@+id/backBtn"
             android:layout_width="34dp"
             android:layout_height="34dp"
             android:layout_marginLeft="7dp"
@@ -34,7 +34,7 @@
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView5"
+            app:layout_constraintStart_toEndOf="@+id/backBtn"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -50,7 +50,7 @@
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/pwdTxt"
             android:layout_width="290dp"
             android:layout_height="50dp"
             android:layout_marginLeft="20dp"
@@ -85,7 +85,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView6">
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/newPwdTxt"
             android:layout_width="290dp"
             android:layout_height="50dp"
             android:layout_marginLeft="20dp"
@@ -120,7 +120,7 @@
         tools:layout_editor_absoluteX="0dp">
 
         <EditText
-            android:id="@+id/editText3"
+            android:id="@+id/rePwdtxt"
             android:layout_width="290dp"
             android:layout_height="50dp"
             android:layout_marginLeft="20dp"
@@ -146,7 +146,7 @@
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout5"></ImageView>
 
     <android.widget.Button
-        android:id="@+id/button"
+        android:id="@+id/saveBtn"
         android:layout_width="190dp"
         android:layout_height="60dp"
         android:background="@drawable/purple_btn_bg"
