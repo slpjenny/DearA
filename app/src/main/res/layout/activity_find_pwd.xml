@@ -65,7 +65,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView23">
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/writeEmail"
             android:layout_width="290dp"
             android:layout_height="50dp"
             android:background="@null"
@@ -91,7 +91,7 @@
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout3"></ImageView>
 
     <android.widget.Button
-        android:id="@+id/button"
+        android:id="@+id/findPwdBtn"
         android:layout_width="190dp"
         android:layout_height="60dp"
         android:background="@drawable/purple_btn_bg"
