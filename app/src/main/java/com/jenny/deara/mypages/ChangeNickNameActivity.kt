@@ -15,6 +15,7 @@ import com.google.firebase.database.ValueEventListener
 
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.jenny.deara.LoginActivity
 import com.jenny.deara.R
 import com.jenny.deara.databinding.ActivityChangeNickNameBinding
 import com.jenny.deara.databinding.ActivityMyPageBinding
@@ -50,7 +51,7 @@ class ChangeNickNameActivity : AppCompatActivity() {
             database.child("users").child(user.uid).get().addOnSuccessListener {
                 binding.myNick.setText(it.value.toString())
 
-
+                // 동기 방식으로 흐름 바꾸기!
                 // 닉네임 처음에 -> pbl 화이팅 하얗게 해서 안보이게했다가
                 // 내 닉네임 불러와지면 text 색상도 바뀌게 하기
                 binding.myNick.setTextColor(Color.BLACK)
@@ -74,25 +75,21 @@ class ChangeNickNameActivity : AppCompatActivity() {
                 database.addValueEventListener(object : ValueEventListener {
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
 
-                        // child 내에 있는 데이터만큼 반복합니다.
-                        // 회원가입에서는 제대로 중복확인 기능 돌아가는데 왜 여기서 똑같은 코드인데 안돌아가는거냐???? (진짜 모든 데이터가 다나오는데 이게머냐?)
-                        // 심지어 닉네임 똑같은걸로 저장도 되어버림..
-                        for (data in dataSnapshot.children) {
+                        var data = mapOf<String,String>()
 
-                            Log.d("nicklist", data.value.toString())
+                        // 이렇게 하면 users 밑의 uid와 닉네임들만 출력은 가능하다.
+//                        Log.d("nicklog",dataSnapshot.child("users").value.toString())
 
-                            if (nick == data.value.toString()) {
-                                nickFor = 1
-                                Toast.makeText(baseContext, "다른 닉네임을 사용해주세요", Toast.LENGTH_SHORT)
-                                    .show()
-                                break
-                            }
-                        }
+                        data  = dataSnapshot.child("users").value as Map<String, String>
 
-                        // 닉네임 중복 안되었을 때
-                        if (nickFor == 0) {
-                            Toast.makeText(baseContext, "사용하실 수 있는 닉네임입니다.", Toast.LENGTH_SHORT)
-                                .show()
+                        // 와 이제 이렇게 하면 닉네임들만 뜬다.
+                        Log.d("nicklog", data.values.toString())
+
+                        if (nick in data.values){
+                            Toast.makeText(baseContext, "다른 닉네임을 사용해주세요.", Toast.LENGTH_SHORT).show()
+
+                        } else{
+                            Toast.makeText(baseContext, "사용하실 수 있는 닉네임입니다.", Toast.LENGTH_SHORT).show()
 
                             // 닉네임 중복 확인 통과 체크
                             checkNickBtn = 1
