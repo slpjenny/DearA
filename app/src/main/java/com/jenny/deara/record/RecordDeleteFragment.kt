@@ -1,4 +1,4 @@
-package com.jenny.deara.fragments
+package com.jenny.deara.record
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
