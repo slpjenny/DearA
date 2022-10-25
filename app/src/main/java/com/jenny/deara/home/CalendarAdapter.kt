@@ -31,6 +31,7 @@ class CalendarAdapter(private val context: Context,
     interface ItemClick {
         fun onClick(view : View, position : Int)
     }
+
     var itemClick : ItemClick? = null
 
     var selectedPosition = -1
@@ -98,11 +99,11 @@ class CalendarAdapter(private val context: Context,
                 holder.itemView.setOnClickListener { view ->
                     itemClick?.onClick(view, position)
 
-                    var month = iMonth
+                    var month = iMonth.toString()
                     var date = holder.dayText.text.toString()
 
                     if (selectedPosition != position) {
-                        getFBTodoData(month, date.toInt())
+                        //getFBTodoData(month, date)
                         holder.itemView.setBackgroundResource(R.drawable.today_background)
                     }
 
@@ -139,7 +140,7 @@ class CalendarAdapter(private val context: Context,
 
 
     // firebase에 저장된 투두리스트 목록 불러오기
-    fun getFBTodoData(Month : Int, date : Int){
+    fun getFBTodoData(Month : String, date : String){
 
         val position = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -149,11 +150,16 @@ class CalendarAdapter(private val context: Context,
                     Log.d("todoList", dataModel.toString())
 
                     val item = dataModel.getValue(ToDoData::class.java)
-
-                    if(item!!.month == Month && item!!.date == date ){
-                        todoList.add(item)
-
+                    if (FBAuth.getUid() == item!!.uid){
+                        if(item!!.month == Month && item!!.date == date ){
+                            todoList.add(item)
+                            Log.d (TAG, "monthhh : " + item!!.month)
+                            Log.d (TAG, "monthhhh : " + Month)
+                            Log.d (TAG, "datehhh : " + item!!.date)
+                            Log.d (TAG, "datehhhh : " + date)
+                        }
                     }
+
                     todokeyList.add(dataModel.key.toString())
                     todoList
                     Log.d(TAG, "todoList : " + todoList)
@@ -162,8 +168,8 @@ class CalendarAdapter(private val context: Context,
 
             }
 
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+            override fun onCancelled(databaseError: DatabaseError) {
+                Log.w("getTodoFB", "loadPost:onCancelled", databaseError.toException())
             }
         }
         FBRef.todoRef.addValueEventListener(position)
