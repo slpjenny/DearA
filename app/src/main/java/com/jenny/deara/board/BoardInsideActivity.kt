@@ -56,10 +56,10 @@ class BoardInsideActivity : AppCompatActivity() {
                 binding.titleArea.text = dataModel?.title
                 binding.contentArea.text = dataModel?.content
                 binding.boardTime.text = dataModel?.time
-                binding.boardWriter.text = dataModel?.uid?.let { FBAuth.getNick(it) }
+                //binding.boardWriter.text = dataModel?.uid?.let { FBAuth.getNick(it) }
                 if (dataModel != null) {
-                    if (dataModel.uid !== FBAuth.getUid()){
-                        binding.popupBtn.visibility = View.INVISIBLE
+                    if (dataModel.uid == FBAuth.getUid()){
+                        binding.popupBtn.visibility = View.VISIBLE
                     }
                 }
             }
