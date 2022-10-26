@@ -10,10 +10,11 @@ import com.jenny.deara.databinding.TodolistviewItemBinding
 import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
 
-private val TAG = TodoAdapter::class.java.simpleName
+ val TAG = TodoAdapter::class.java.simpleName
 
 class TodoAdapter(val context : Context, val items: ArrayList<ToDoData>,val todokeyList : MutableList<String>) :
     RecyclerView.Adapter<TodoAdapter.TodoViewholder>() {
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodoViewholder {
 
@@ -55,18 +56,27 @@ class TodoAdapter(val context : Context, val items: ArrayList<ToDoData>,val todo
             todowrite.text = todo.todo
             clearcheck.isChecked = todo.check
 
+            Log.d(TAG, "keyList : " +todokeyList)
+            Log.d(TAG, "keyList2" + items)
 
             tododel.setOnClickListener {
 
 //                Log.d(TAG, "keyaddno : " + key)
 //                FBRef.todoRef.child(key).removeValue()
-                //Log.d(TAG, "useruid : " +  FBRef.todoRef.child("todo").child("uid"))
+                val key = todokeyList[position]
+                FBRef.todoRef.child(key).removeValue()
+                todokeyList.removeAt(position)
+                //notifyItemRemoved(position)
+                notifyItemRangeChanged(position, todokeyList.size)
 
+                Log.d(TAG, "key : " + key)
+                Log.d(TAG, "keyList3" + position)
+                notifyDataSetChanged()
 
-                items.removeAt(position)
-
-                notifyItemRemoved(position)
-                notifyItemRangeChanged(position, items.size)
+//                items.removeAt(position)
+//
+//                notifyItemRemoved(position)
+//                notifyItemRangeChanged(position, items.size)
 
             }
 
