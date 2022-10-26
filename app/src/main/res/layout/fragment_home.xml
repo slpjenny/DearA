@@ -481,7 +481,7 @@
                             android:layout_marginLeft="110dp"
                             android:layout_marginTop="20dp"
                             android:layout_marginBottom="3dp"
-                            android:background="@drawable/img_1"
+                            android:background="@drawable/plusbtn"
                             android:elevation="50dp"
                             android:textColor="@color/black"
                             android:textSize="25sp"
@@ -492,6 +492,7 @@
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/toDoListRV"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="18dp"
