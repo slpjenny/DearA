@@ -52,8 +52,10 @@ class ChangePwdActivity : AppCompatActivity() {
 
                 // ?? Pwd 가 기존 비밀번호랑 다른데 어떻게 사용자 재인증 성공한거임???
                 // 보니까 비밀번호 변경은 되는데 newPwd 로 저장되고 있는디... (아니다 이건 지금 두세번째 같은지 잘 확인되는디..)
+                // 이메일만 보고 사용자 가져오는데?...
                 val credential = EmailAuthProvider
-                    .getCredential(user?.email.toString(), pwd)
+                    .getCredential(user?.email.toString(), "1232534656")
+
 
                 // 사용자 재인증 성공시,
                 if (user != null) {

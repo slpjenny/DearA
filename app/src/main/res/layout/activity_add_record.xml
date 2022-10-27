@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".record.NewRecordFragment">
+    tools:context=".record.AddRecordActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout1"
@@ -14,10 +14,24 @@
         android:background="#f9f9f9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="horizontal">
 
         <Button
-            android:id="@+id/button9"
+            android:id="@+id/saveBtn"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:background="@android:color/transparent"
+            android:text="저장"
+            android:textColor="#808080"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/removeBtn"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/removeBtn"
             android:layout_width="50dp"
             android:layout_height="40dp"
             android:layout_marginRight="20dp"
@@ -31,14 +45,15 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:src="@drawable/back_btn"
+            android:id="@+id/backBtn"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginLeft="10dp"
 
+            android:src="@drawable/back_btn"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -90,19 +105,19 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/title"
+                <EditText
+                    android:id="@+id/hospitalName"
                     android:layout_width="340dp"
                     android:layout_height="50dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginLeft="25dp"
-                    android:layout_marginTop="25dp"
-                    android:text="세브란스 병원"
+                    android:layout_marginTop="10dp"
+                    android:hint="병원 이름을 작성해주세요"
                     android:maxLength="31"
                     android:maxLines="1"
                     android:ellipsize="none"
                     android:textColor="#000000"
-                    android:textSize="25sp"
+                    android:textSize="20sp"
                     android:background="@android:color/transparent"
                     app:layout_constraintEnd_toEndOf="@+id/list"
                     app:layout_constraintStart_toStartOf="@+id/list"
@@ -110,45 +125,32 @@
 
                 <TextView
                     android:id="@+id/date"
+                    android:text="임시 날짜"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginBottom="30dp"
-                    android:background="@android:color/transparent"
-                    android:ellipsize="none"
-                    android:maxLength="31"
-                    android:maxLines="1"
-                    android:text="2022. 9. 15"
-                    android:textColor="#A0A0A0"
-                    android:textSize="20sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/list"
-                    app:layout_constraintStart_toStartOf="@+id/list"
-                    app:layout_constraintTop_toBottomOf="@+id/title" />
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/time"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/hospitalName" />
 
                 <TextView
                     android:id="@+id/time"
+                    android:text="임시 시간"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginBottom="30dp"
-                    android:background="@android:color/transparent"
-                    android:ellipsize="none"
-                    android:maxLength="31"
-                    android:maxLines="1"
-                    android:text="오후 13:00"
-                    android:textColor="#A0A0A0"
-                    android:textSize="20sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/list"
-                    app:layout_constraintStart_toEndOf="@+id/date"
-                    app:layout_constraintTop_toBottomOf="@+id/title" />
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/button"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/hospitalName" />
 
                 <Button
+                    android:id="@+id/button"
                     android:layout_width="60dp"
                     android:layout_height="40dp"
-                    android:layout_marginRight="80dp"
                     android:layout_marginTop="43dp"
-                    android:text="날짜"
+                    android:layout_marginRight="80dp"
                     android:backgroundTint="#DBDFFF"
+                    android:text="날짜"
                     app:layout_constraintBottom_toBottomOf="@+id/list"
                     app:layout_constraintEnd_toEndOf="@+id/list"
                     app:layout_constraintTop_toTopOf="@+id/list" />
@@ -212,60 +214,11 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/title2"
-                    android:layout_width="160dp"
-                    android:layout_height="40dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginTop="20dp"
-                    android:background="@android:color/transparent"
-                    android:ellipsize="none"
-                    android:text="도모틴캡슐"
-                    android:maxLines="1"
-                    android:textColor="#000000"
-                    android:textSize="18sp"
-                    app:layout_constraintStart_toStartOf="@+id/list2"
-                    app:layout_constraintTop_toTopOf="@+id/list2" />
-
-                <TextView
-                    android:id="@+id/title3"
-                    android:layout_width="180dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="20dp"
-                    android:background="@android:color/transparent"
-                    android:ellipsize="none"
-                    android:text="아침/저녁 식후 30분"
-                    android:maxLines="1"
-                    android:textColor="#000000"
-                    android:textSize="18sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/title2"
-                    app:layout_constraintTop_toTopOf="@+id/list2" />
-
-                <ImageButton
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginRight="8dp"
-                    android:background="@drawable/record_delete"
-                    app:layout_constraintEnd_toEndOf="@+id/list2"
-                    app:layout_constraintTop_toTopOf="parent"/>
-
-                <ImageView
-                    android:id="@+id/list7"
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:background="@drawable/background_radius_record"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/list2" />
-
                 <EditText
-                    android:id="@+id/title6"
+                    android:id="@+id/pillName"
                     android:layout_width="170dp"
                     android:layout_height="40dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginLeft="25dp"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:background="@android:color/transparent"
                     android:ellipsize="none"
@@ -273,11 +226,11 @@
                     android:maxLines="1"
                     android:textColor="#000000"
                     android:textSize="15sp"
-                    app:layout_constraintStart_toStartOf="@+id/list7"
-                    app:layout_constraintTop_toTopOf="@+id/list7" />
+                    app:layout_constraintStart_toStartOf="@+id/list2"
+                    app:layout_constraintTop_toTopOf="@+id/list2" />
 
                 <EditText
-                    android:id="@+id/title7"
+                    android:id="@+id/dosage"
                     android:layout_width="170dp"
                     android:layout_height="40dp"
                     android:layout_marginTop="16dp"
@@ -288,8 +241,8 @@
                     android:textColor="#000000"
                     android:textSize="15sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/title6"
-                    app:layout_constraintTop_toTopOf="@+id/list7" />
+                    app:layout_constraintStart_toEndOf="@+id/pillName"
+                    app:layout_constraintTop_toTopOf="@+id/list2" />
 
 
                 <ListView
@@ -379,18 +332,18 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/title4"
+                <EditText
+                    android:id="@+id/memo"
                     android:layout_width="340dp"
-                    android:layout_height="100dp"
+                    android:layout_height="120dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginLeft="25dp"
-                    android:layout_marginTop="20dp"
-                    android:text="물 많이 마시기\n집중할 수 있는 거리 찾기(흥미찾기)\n스트레스 피하기\n"
+                    android:layout_marginTop="6dp"
+                    android:hint="메모는 여기에 작성해주세요\n\n\n"
                     android:ellipsize="none"
                     android:maxLines="4"
                     android:textColor="#000000"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:background="@android:color/transparent"
                     app:layout_constraintEnd_toEndOf="@+id/list4"
                     app:layout_constraintStart_toStartOf="@+id/list4"
@@ -432,25 +385,25 @@
                 <ImageView
                     android:id="@+id/list6"
                     android:layout_width="match_parent"
-                    android:layout_height="130dp"
+                    android:layout_height="200dp"
                     android:background="@drawable/background_radius_record"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/title5"
+                <EditText
+                    android:id="@+id/symptom"
                     android:layout_width="340dp"
-                    android:layout_height="100dp"
-                    android:layout_marginRight="20dp"
+                    android:layout_height="180dp"
                     android:layout_marginLeft="25dp"
-                    android:layout_marginTop="20dp"
-                    android:text="집중이 더 어려워짐\n정리정돈이 귀찮고 힘이 듦\n툭하면 물건을 잃어버림\n"
+                    android:layout_marginRight="20dp"
+                    android:background="@android:color/transparent"
                     android:ellipsize="none"
+                    android:hint="- 최근 증상을 작성해주세요\n-\n-\n"
                     android:maxLines="4"
                     android:textColor="#000000"
-                    android:textSize="18sp"
-                    android:background="@android:color/transparent"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/list6"
                     app:layout_constraintEnd_toEndOf="@+id/list6"
                     app:layout_constraintStart_toStartOf="@+id/list6"
                     app:layout_constraintTop_toTopOf="@+id/list6" />

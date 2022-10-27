@@ -1,5 +1,6 @@
 package com.jenny.deara.home
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -18,21 +19,34 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.jenny.deara.MyPageActivity
 import com.jenny.deara.R
+import com.jenny.deara.alarm.AlarmData
+import com.jenny.deara.alarm.AlarmListAdapter
 import com.jenny.deara.databinding.FragmentHomeBinding
+import com.jenny.deara.diary.DiaryListAdapter
 import com.jenny.deara.utils.CalendarUtil
 import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
+import kotlinx.android.synthetic.main.calendar_item.*
+import kotlinx.android.synthetic.main.fragment_diary.*
 import java.util.*
 import kotlin.collections.ArrayList
 
 class HomeFragment : Fragment() {
 
     private lateinit var binding : FragmentHomeBinding
+    lateinit var TodoAdapter: TodoAdapter
 
-    private val items = ArrayList<ToDoData>()
-    private val todokeyList = mutableListOf<String>()
+    val items = ArrayList<ToDoData>()
+    val todokeyList = mutableListOf<String>()
 
-    private val TAG = HomeFragment::class.java.simpleName
+    val TAG = HomeFragment::class.java.simpleName
+
+    var dateCalendar = Calendar.getInstance()
+
+    var year = (dateCalendar.get(Calendar.YEAR)).toString()
+    var month =(dateCalendar.get(Calendar.MONTH) + 1).toString()
+    var day = (dateCalendar.get(Calendar.DAY_OF_MONTH)).toString()
+    var day2 = (dateCalendar.get(Calendar.DAY_OF_MONTH)).toString()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,6 +63,9 @@ class HomeFragment : Fragment() {
 
         // 화면 설정
         setMonthView()
+
+        initRecycler()
+        getFBFirstTodoData()
 
         // 이전달 버튼 이벤트
         binding.preBtn.setOnClickListener {
@@ -78,41 +95,45 @@ class HomeFragment : Fragment() {
         }
 
 
-
-//        getFBRandomQData()
-
-
         return binding.root
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    private fun initRecycler(){
+
+        TodoAdapter = TodoAdapter(requireContext(), items, todokeyList)
+        val rv: RecyclerView = binding.toDoListRV
+        rv.adapter = TodoAdapter
+
+        TodoAdapter.notifyDataSetChanged()
     }
 
 
     // 파이어베이스에 데이터 저장
-    fun saveTodo(text: String){
+    fun saveTodo(year : String, month: String, day : String, text: String){
 
-        var dateCalendar = Calendar.getInstance()
 
         var todo : String = text
         var check : Boolean = false
         val time = FBAuth.getTimeDiary()
-        var month = dateCalendar.get(Calendar.MONTH) + 1
-        var date = dateCalendar.get(Calendar.DAY_OF_MONTH)
         val uid = FBAuth.getUid()
 
         // 할일 목록 추가
-        items.add(ToDoData(text, check, time, month, date, uid))
+        items.add(ToDoData(todo, check, time, year, month, day, uid))
+        Log.d(TAG, "saveTodo : " + items)
 
         val key = FBRef.todoRef.push().key.toString()
         Log.d(TAG, "keyadd : " + key)
 
         FBRef.todoRef
             .child(key)
-            .setValue(ToDoData(todo, check, time, month, date, uid))
+            .setValue(ToDoData(todo, check, time, year, month, day, uid))
     }
 
 
 
     // 투두리스트 다이얼로그로 추가
-    private fun todoAdd(){
+    fun todoAdd(){
 
         val dialog = TodoDialog(requireContext())
 
@@ -125,7 +146,7 @@ class HomeFragment : Fragment() {
                     Toast.makeText(context, "해아할 일을 입력해주세요.", Toast.LENGTH_SHORT).show()
                 }else {
                     // 파이어베이스에 투두 항목 저장하기
-                    saveTodo(text)
+                    saveTodo(year, month, day2, text)
                     val rv: RecyclerView = binding.toDoListRV
                     val rvRvAdapter = TodoAdapter(requireContext(), items, todokeyList)
 
@@ -138,6 +159,84 @@ class HomeFragment : Fragment() {
             }
         })
     }
+
+
+//  화면 시작할 시 해당 날짜 투두리스트 firebase에서 불러오기
+    fun getFBFirstTodoData(){
+
+        val position = object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                items.clear()
+
+                for (dataModel in dataSnapshot.children){
+                    Log.d("todoList", dataModel.toString())
+
+                    var firstMontn = (CalendarUtil.selectedDate.get(Calendar.MONTH)+1).toString()
+                    var firstday = CalendarUtil.selectedDate.get(Calendar.DAY_OF_MONTH).toString()
+                    Log.d(TAG, "firstMont :" + firstMontn)
+                    Log.d(TAG, "firstday : " + firstday)
+                    val item = dataModel.getValue(ToDoData::class.java)
+                    if (FBAuth.getUid() == item!!.uid){
+                        if(item!!.month == firstMontn && item!!.date == firstday ){
+                            items.add(item)
+                            todokeyList.add(dataModel.key.toString())
+                        }
+                    }
+                    item
+                    todokeyList
+                    TodoAdapter.notifyDataSetChanged()
+
+                    Log.d(TAG, "todoList : " + items)
+
+                }
+
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                Log.w("getTodoFB", "loadPost:onCancelled", databaseError.toException())
+            }
+        }
+        FBRef.todoRef.addValueEventListener(position)
+    }
+
+    // firebase에 저장된 투두리스트 목록 불러오기
+    fun getFBTodoData(Month : String, date : String){
+
+        val position = object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                items.clear()
+
+                for (dataModel in dataSnapshot.children){
+                    Log.d("todoList", dataModel.toString())
+
+                    val item = dataModel.getValue(ToDoData::class.java)
+                    if (FBAuth.getUid() == item!!.uid){
+                        if(item!!.month == Month && item!!.date == date ){
+                            items.add(item)
+                            todokeyList.add(dataModel.key.toString())
+                            Log.d (TAG, "monthhh : " + item!!.month)
+                            Log.d (TAG, "monthhhh : " + Month)
+                            Log.d (TAG, "datehhh : " + item!!.date)
+                            Log.d (TAG, "datehhhh : " + date)
+                        }
+                    }
+                    items.reverse()
+                    todokeyList.reverse()
+                    TodoAdapter.notifyDataSetChanged()
+
+                    Log.d(TAG, "todoList : " + items)
+
+                }
+
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                Log.w("getTodoFB", "loadPost:onCancelled", databaseError.toException())
+            }
+        }
+        FBRef.todoRef.addValueEventListener(position)
+    }
+
 
     // 날짜 화면에 보여주기
     private fun setMonthView() {
@@ -161,9 +260,25 @@ class HomeFragment : Fragment() {
 
         adapter.itemClick = object : CalendarAdapter.ItemClick {
             override fun onClick(view: View, position: Int) {
-                //Toast.makeText(context, dayList[position].toString(), Toast.LENGTH_LONG).show()
+                var dateCalendar = Calendar.getInstance()
+
+                year = CalendarUtil.selectedDate.get(Calendar.YEAR).toString()
+                month = (CalendarUtil.selectedDate.get(Calendar.MONTH)+1).toString()
+                day = dayList[position].toString()
+                day2 = (day[8].toString() + day[9].toString())
+
+                Log.d(TAG, "itemclick year : " + year)
+                Log.d(TAG, "itemclick month : " + month)
+                Log.d(TAG, "itemclick day : " + day2)
+
+
+                initRecycler()
+                getFBTodoData(month,day2)
+                TodoAdapter.notifyDataSetChanged()
+
             }
         }
+
 
 
     }

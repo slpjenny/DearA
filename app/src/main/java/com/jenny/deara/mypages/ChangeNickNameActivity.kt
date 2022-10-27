@@ -123,6 +123,10 @@ class ChangeNickNameActivity : AppCompatActivity() {
 
                         Toast.makeText(baseContext, "닉네임 변경이 완료되었습니다", Toast.LENGTH_SHORT).show()
 
+                        // 다시 중복체크 변수 초기화
+                        checkNickBtn = 0
+                        onRestart()
+
                     } else {
                         Toast.makeText(baseContext, "닉네임 정보 불러오기 오류", Toast.LENGTH_SHORT).show()
                     }
@@ -131,5 +135,11 @@ class ChangeNickNameActivity : AppCompatActivity() {
         }
 
         }
+
+
+    override fun onRestart() {
+        super.onRestart()
+    }
+
 
     }

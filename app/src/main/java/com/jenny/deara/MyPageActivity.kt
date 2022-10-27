@@ -114,4 +114,6 @@ class MyPageActivity : AppCompatActivity() {
     override fun onBackPressed() {
         super.onBackPressed()
     }
+
+
 }
