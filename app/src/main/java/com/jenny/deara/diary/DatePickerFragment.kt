@@ -215,7 +215,7 @@ class DatePickerFragment(var iMonth: Int, var iYear: Int) : DialogFragment() {
         val intent = Intent(context, MainActivity::class.java)
         intent.putExtra("iMonth", iMonth)
         intent.putExtra("iYear", iYear)
-        intent.putExtra("nav_diary","fourth")
+        intent.putExtra("nav","fourth")
         startActivity(intent)
     }
 }
