@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.jenny.deara.R
 import com.jenny.deara.utils.FBAuth
 
-class BoardListAdapter(val context: Context,val boardkeyList : MutableList<String>)
+class BoardListAdapter(val context: Context, val boardkeyList : MutableList<String>)
     : RecyclerView.Adapter<BoardListAdapter.ViewHolder>() {
 
     var datas = mutableListOf<BoardModel>()
