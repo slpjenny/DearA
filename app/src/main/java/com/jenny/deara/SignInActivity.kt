@@ -7,6 +7,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.actionCodeSettings
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -54,13 +55,31 @@ class SignInActivity : AppCompatActivity() {
             onBackPressed()
         }
 
-
-        // 이메일중복 확인
-        // firebase 내에서 자동 확인
-//        binding.checkEmail.setOnClickListener {
-//            var email = binding.writeEmailEtxt.text.toString()
+        // 이메일 유효성 체크
+        binding.emailCheck.setOnClickListener {
 //
-//        }
+//            val actionCodeSettings = actionCodeSettings {
+//                // URL you want to redirect back to. The domain (www.example.com) for this
+//                // URL must be whitelisted in the Firebase Console.
+//                url = "https://www.example.com/finishSignUp?cartId=1234"
+//                // This must be true
+//                handleCodeInApp = true
+//                setIOSBundleId("com.example.ios")
+//                setAndroidPackageName(
+//                    "com.example.android",
+//                    true, /* installIfNotAvailable */
+//                    "12" /* minimumVersion */)
+//            }
+//
+//            Firebase.auth.sendSignInLinkToEmail(email, actionCodeSettings)
+//                .addOnCompleteListener { task ->
+//                    if (task.isSuccessful) {
+//                        Log.d(TAG, "Email sent.")
+//                    }
+//                }
+
+        }
+
 
         // 닉네임 중복 확인
         binding.checkNick.setOnClickListener {
