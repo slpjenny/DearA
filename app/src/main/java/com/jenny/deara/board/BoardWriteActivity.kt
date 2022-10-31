@@ -13,6 +13,7 @@ import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.view.isVisible
 import androidx.core.view.marginRight
@@ -43,6 +44,7 @@ class BoardWriteActivity : AppCompatActivity() {
     lateinit var ImageListAdapter : ImageListAdapter
     val imageList = mutableListOf<Uri>()
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_board_write)
@@ -64,9 +66,13 @@ class BoardWriteActivity : AppCompatActivity() {
         }
 
         binding.imageBtn.setOnClickListener {
-            val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
-            startActivityForResult(gallery, 100)
-            //isImageUpload = true
+            if (imageList.size >= 10){
+                Toast.makeText(this, "사진은 최대 10개까지 업로드할 수 있습니다.", Toast.LENGTH_LONG).show()
+            }else{
+                val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
+                startActivityForResult(gallery, 100)
+                //isImageUpload = true
+            }
         }
 
         binding.saveBtn.setOnClickListener {
@@ -77,6 +83,8 @@ class BoardWriteActivity : AppCompatActivity() {
                 saveFBBoardData(key)
             }
         }
+
+        binding.imageCount.text = imageList.size.toString() + "/10"
     }
 
 //    @SuppressLint("NotifyDataSetChanged")
@@ -164,16 +172,24 @@ class BoardWriteActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if(resultCode == RESULT_OK && requestCode == 100) {
             // 이미지뷰 생성
-            val getImage = ImageView(this)
+            //val getImage = ImageView(this)
 //            val imageLayoutParams = LinearLayout.LayoutParams(
 //                changeDP(100),
 //                changeDP(100),
 //            )
 //            imageLayoutParams.rightMargin = changeDP(10)
 //            image.layoutParams = imageLayoutParams
-            getImage.setImageURI(data?.data)
+            //getImage.setImageURI(data?.data)
             //imageArea.addView(image)
-            data?.data?.let { imageList.add(it) }
+            if (imageList.size >= 10){
+                Toast.makeText(this, "사진은 최대 10개까지 업로드할 수 있습니다.", Toast.LENGTH_LONG).show()
+            }else{
+                val getImage = ImageView(this)
+                getImage.setImageURI(data?.data)
+                data?.data?.let { imageList.add(it) }
+                binding.imageCount.text = imageList.size.toString() + "/10"
+            }
+            //data?.data?.let { imageList.add(it) }
 //            delBtn1.setOnClickListener {
 //                imageList.removeAt(position)
 //            }
