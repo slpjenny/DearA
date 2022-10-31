@@ -43,7 +43,7 @@ class RecordListAdapter(val context: Context, val recordList : MutableList<Strin
             date.text = item.date
             time.text = item.time
 
-            // 화살표 버튼 클릭시
+            // 화살표 버튼 클릭시 상세 페이지
             val detailBtn = itemView.findViewById<Button>(R.id.detailBtn)
 
             detailBtn.setOnClickListener {
