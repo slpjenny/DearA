@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.jenny.deara.R
+import java.security.KeyStore
 
 class ImageListAdapter(val context: Context, var data: Intent?)
     : RecyclerView.Adapter<ImageListAdapter.ViewHolder>() {
@@ -35,6 +36,7 @@ class ImageListAdapter(val context: Context, var data: Intent?)
         @SuppressLint("NotifyDataSetChanged")
         fun bind(item: Uri, data: Intent?) {
             image.setImageURI(item)
+            image.clipToOutline = true
 
             delBtn.setOnClickListener {
                 datas.removeAt(position)
