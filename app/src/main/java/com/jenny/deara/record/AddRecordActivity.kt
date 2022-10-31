@@ -1,5 +1,7 @@
 package com.jenny.deara.record
 
+import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -10,6 +12,7 @@ import com.jenny.deara.diary.DiaryData
 import com.jenny.deara.diary.DiaryListAdapter
 import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
+import java.util.*
 
 class AddRecordActivity : AppCompatActivity() {
 
@@ -23,6 +26,18 @@ class AddRecordActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        // 날짜 선택하기
+        binding.dateBtn.setOnClickListener {
+            chooseDate()
+        }
+
+
+        // 시간 선택하기
+        binding.timeBtn.setOnClickListener {
+            choosetime()
+        }
+
+
         // 진료기록 저장
         binding.saveBtn.setOnClickListener {
             saveFBDiaryData()
@@ -35,6 +50,33 @@ class AddRecordActivity : AppCompatActivity() {
 
 
     }
+
+    // 날짜 - Datepicekr
+    private fun chooseDate(){
+        var dateString = ""
+
+        val cal = Calendar.getInstance()    //캘린더뷰 만들기
+        val dateSetListener = DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
+            dateString = "${year}년 ${month+1}월 ${dayOfMonth}일"
+            binding.date.text = dateString
+        }
+        DatePickerDialog(this, dateSetListener, cal.get(Calendar.YEAR),cal.get(Calendar.MONTH),cal.get(Calendar.DAY_OF_MONTH)).show()
+
+    }
+
+    // 시간 - TimePicker
+    private fun choosetime(){
+
+        var timeString =""
+
+        val cal = Calendar.getInstance()
+        val timeSetListener = TimePickerDialog.OnTimeSetListener { view, hourOfDay, minute ->
+            timeString = "${hourOfDay}시 ${minute}분"
+            binding.time.text = timeString
+        }
+        TimePickerDialog(this, timeSetListener, cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE),true).show()
+    }
+
 
     // 파이어베이스에 진료 기록 데이터 저장
     private fun saveFBDiaryData(){
