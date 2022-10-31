@@ -4,7 +4,7 @@ import android.util.Log
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.*
-//import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.tasks.await
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -12,6 +12,7 @@ class FBAuth {
     companion object {
 
         lateinit var auth: FirebaseAuth
+        lateinit var Nick: String
 
         fun getUid() : String {
 
@@ -72,7 +73,8 @@ class FBAuth {
 
         // 사용자 닉네임 가져오기
         fun getNick(uid: String) : String{
-            return FBRef.userRef.child(uid).toString()
+//            return FBRef.userRef.child(uid).toString()
+            return "init"
         }
 
     }
