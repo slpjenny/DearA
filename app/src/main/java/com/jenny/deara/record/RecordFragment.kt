@@ -13,11 +13,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
+import com.jenny.deara.MyPageActivity
 import com.jenny.deara.R
-import com.jenny.deara.databinding.FragmentDiaryBinding
 import com.jenny.deara.databinding.FragmentRecordBinding
-import com.jenny.deara.diary.DiaryData
-import com.jenny.deara.diary.DiaryListAdapter
 import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
 
@@ -44,11 +42,18 @@ class RecordFragment : Fragment() {
         initRecycler()
         getFBRecordData()
 
+        binding.plusButton.bringToFront()
 
         // 진료기록 추가 화면으로 페이지 전환
         binding.plusButton.setOnClickListener {
             val intent = Intent(context,AddRecordActivity::class.java)
             startActivity(intent)
+        }
+
+
+        binding.mypage.setOnClickListener {
+            val intent2 = Intent(context,MyPageActivity::class.java)
+            startActivity(intent2)
         }
 
         return binding.root
