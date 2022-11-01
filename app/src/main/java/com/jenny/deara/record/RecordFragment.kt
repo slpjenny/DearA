@@ -4,11 +4,11 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -18,6 +18,10 @@ import com.jenny.deara.R
 import com.jenny.deara.databinding.FragmentRecordBinding
 import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 class RecordFragment : Fragment() {
 
@@ -27,6 +31,8 @@ class RecordFragment : Fragment() {
 
     val recordList = mutableListOf<RecordData>()
     val recordkeyList = mutableListOf<String>()
+
+    val todayRecordList = mutableListOf<RecordData>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,6 +46,7 @@ class RecordFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_record, container, false)
 
         initRecycler()
+        initTodayRecycler()
         getFBRecordData()
 
         binding.plusButton.bringToFront()
@@ -56,6 +63,9 @@ class RecordFragment : Fragment() {
             val intent2 = Intent(context,MyPageActivity::class.java)
             startActivity(intent2)
         }
+
+
+        // 오늘 날짜에 해당하는 아이템있으면 띄우기
 
 
 
@@ -83,9 +93,30 @@ class RecordFragment : Fragment() {
         RecordListAdapter.notifyDataSetChanged()
     }
 
+
+    private fun initTodayRecycler() {
+        RecordListAdapter = RecordListAdapter(requireContext(),recordkeyList)
+
+        val rv : RecyclerView = binding.todayRcRv
+        rv.adapter= RecordListAdapter
+
+        RecordListAdapter.datas = todayRecordList
+        RecordListAdapter.notifyDataSetChanged()
+
+    }
+
+
+
     //파이어베이스 데이터 불러오기
     private fun getFBRecordData(){
 
+        // 오늘 날짜 불러오기
+        var now = LocalDate.now()
+        var nowDate = now.format(DateTimeFormatter.ofPattern("yyyy년 MM월 dd일"))
+
+//        Log.d("nowDate",nowDate)
+
+        // 데이터 불러오기
         val postListener = object : ValueEventListener {
             @SuppressLint("NotifyDataSetChanged")
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -101,6 +132,18 @@ class RecordFragment : Fragment() {
                         if(FBAuth.getUid() == item.uid){
                             recordList.add(item)
                             recordkeyList.add(dataModel.key.toString())
+
+                            Log.d("nowdate",item.date)
+                            Log.d("nowdatee",nowDate)
+                            //시스템상에서는 02일 이렇게 표기함
+
+
+                            // 날짜가 같은게 있다면, 따로 불러와서 todayRcRv 에 추가해야함
+                            if(item.date == nowDate){
+                                todayRecordList.add(item)
+                                Log.d("nowdate","존재함 ")
+                            }
+
                         }
                     }
 
