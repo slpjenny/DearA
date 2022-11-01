@@ -5,12 +5,16 @@ import android.util.Log
 import android.view.*
 import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
 import com.jenny.deara.R
 import com.jenny.deara.databinding.TodolistviewItemBinding
 import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
+import java.lang.reflect.Array.get
 
- val TAG = TodoAdapter::class.java.simpleName
+val TAG = TodoAdapter::class.java.simpleName
 
 class TodoAdapter(val context : Context, val items: ArrayList<ToDoData>,val todokeyList : MutableList<String>) :
     RecyclerView.Adapter<TodoAdapter.TodoViewholder>() {
@@ -34,13 +38,6 @@ class TodoAdapter(val context : Context, val items: ArrayList<ToDoData>,val todo
     override fun onBindViewHolder(holder: TodoViewholder, position: Int) {
         holder.bind(items[position])
 
-        // 투두리스트 아이템 삭제버튼 클릭 시
-//        holder.binding.tododel.setOnClickListener {
-//            items.removeAt(position)
-//            notifyItemRemoved(position);
-//            notifyItemRangeChanged(position, items.size);
-//        }
-
     }
 
     override fun getItemCount(): Int = items.size
@@ -56,35 +53,19 @@ class TodoAdapter(val context : Context, val items: ArrayList<ToDoData>,val todo
             todowrite.text = todo.todo
             clearcheck.isChecked = todo.check
 
-            Log.d(TAG, "keyList : " +todokeyList)
-            Log.d(TAG, "keyList2" + items)
 
+
+            // 할 일 목록 삭제
             tododel.setOnClickListener {
 
-//                Log.d(TAG, "keyaddno : " + key)
-//                FBRef.todoRef.child(key).removeValue()
-                val key = todokeyList[position]
+                val key = items[adapterPosition].key
                 FBRef.todoRef.child(key).removeValue()
-                todokeyList.removeAt(position)
-                //notifyItemRemoved(position)
-                notifyItemRangeChanged(position, todokeyList.size)
-
-                Log.d(TAG, "key : " + key)
-                Log.d(TAG, "keyList3" + position)
+                items.removeAt(adapterPosition)
+                notifyItemRemoved(adapterPosition)
                 notifyDataSetChanged()
 
-//                items.removeAt(position)
-//
-//                notifyItemRemoved(position)
-//                notifyItemRangeChanged(position, items.size)
-
-            }
-
-            Log.d(TAG, "todokeyList : " + todokeyList)
-
+   }
 
         }
-
+   }
     }
-
-}

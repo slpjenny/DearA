@@ -48,6 +48,11 @@ class HomeFragment : Fragment() {
     var day = (dateCalendar.get(Calendar.DAY_OF_MONTH)).toString()
     var day2 = (dateCalendar.get(Calendar.DAY_OF_MONTH)).toString()
 
+    var firstYear = (CalendarUtil.selectedDate.get(Calendar.YEAR).toString())
+    var firstMonth = (CalendarUtil.selectedDate.get(Calendar.MONTH)+1).toString()
+    var firstday = CalendarUtil.selectedDate.get(Calendar.DAY_OF_MONTH).toString()
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -65,7 +70,14 @@ class HomeFragment : Fragment() {
         setMonthView()
 
         initRecycler()
-        getFBFirstTodoData()
+
+        // 날짜 길이가 1인 경우 앞에 0 붙여주기
+        if (firstday.length == 1){
+            firstday = "0"+firstday
+        }
+        getFBTodoData(firstYear,firstMonth, firstday)
+        todokeyList.distinct()
+
 
         // 이전달 버튼 이벤트
         binding.preBtn.setOnClickListener {
@@ -118,16 +130,17 @@ class HomeFragment : Fragment() {
         val time = FBAuth.getTimeDiary()
         val uid = FBAuth.getUid()
 
-        // 할일 목록 추가
-        items.add(ToDoData(todo, check, time, year, month, day, uid))
-        Log.d(TAG, "saveTodo : " + items)
-
         val key = FBRef.todoRef.push().key.toString()
         Log.d(TAG, "keyadd : " + key)
 
+        // 할일 목록 추가
+        items.add(ToDoData(todo, check, time, year, month, day, uid, key))
+        Log.d(TAG, "saveTodo : " + items)
+
+
         FBRef.todoRef
             .child(key)
-            .setValue(ToDoData(todo, check, time, year, month, day, uid))
+            .setValue(ToDoData(todo, check, time, year, month, day, uid, key))
     }
 
 
@@ -145,6 +158,10 @@ class HomeFragment : Fragment() {
                 if (text.length == 0){
                     Toast.makeText(context, "해아할 일을 입력해주세요.", Toast.LENGTH_SHORT).show()
                 }else {
+
+                    if (day2.length == 1){
+                        day2 = "0"+day2
+                    }
                     // 파이어베이스에 투두 항목 저장하기
                     saveTodo(year, month, day2, text)
                     val rv: RecyclerView = binding.toDoListRV
@@ -161,46 +178,8 @@ class HomeFragment : Fragment() {
     }
 
 
-//  화면 시작할 시 해당 날짜 투두리스트 firebase에서 불러오기
-    fun getFBFirstTodoData(){
-
-        val position = object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                items.clear()
-
-                for (dataModel in dataSnapshot.children){
-                    Log.d("todoList", dataModel.toString())
-
-                    var firstMontn = (CalendarUtil.selectedDate.get(Calendar.MONTH)+1).toString()
-                    var firstday = CalendarUtil.selectedDate.get(Calendar.DAY_OF_MONTH).toString()
-                    Log.d(TAG, "firstMont :" + firstMontn)
-                    Log.d(TAG, "firstday : " + firstday)
-                    val item = dataModel.getValue(ToDoData::class.java)
-                    if (FBAuth.getUid() == item!!.uid){
-                        if(item!!.month == firstMontn && item!!.date == firstday ){
-                            items.add(item)
-                            todokeyList.add(dataModel.key.toString())
-                        }
-                    }
-                    item
-                    todokeyList
-                    TodoAdapter.notifyDataSetChanged()
-
-                    Log.d(TAG, "todoList : " + items)
-
-                }
-
-            }
-
-            override fun onCancelled(databaseError: DatabaseError) {
-                Log.w("getTodoFB", "loadPost:onCancelled", databaseError.toException())
-            }
-        }
-        FBRef.todoRef.addValueEventListener(position)
-    }
-
     // firebase에 저장된 투두리스트 목록 불러오기
-    fun getFBTodoData(Month : String, date : String){
+    fun getFBTodoData(Year : String, Month : String, date : String){
 
         val position = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -211,20 +190,20 @@ class HomeFragment : Fragment() {
 
                     val item = dataModel.getValue(ToDoData::class.java)
                     if (FBAuth.getUid() == item!!.uid){
-                        if(item!!.month == Month && item!!.date == date ){
+
+                        if(item!!.year == Year && item!!.month == Month && item!!.date == date ){
                             items.add(item)
-                            todokeyList.add(dataModel.key.toString())
-                            Log.d (TAG, "monthhh : " + item!!.month)
-                            Log.d (TAG, "monthhhh : " + Month)
-                            Log.d (TAG, "datehhh : " + item!!.date)
-                            Log.d (TAG, "datehhhh : " + date)
+                            if(todokeyList.none { it == dataModel.key }){
+                                todokeyList.add(dataModel.key.toString())
+                            }
+                            Log.d(TAG, "todokeyList : " + todokeyList)
                         }
                     }
-                    items.reverse()
-                    todokeyList.reverse()
+                    Log.d (TAG, "todokey distinct : " + todokeyList)
+                    //items.reverse()
+                    //todokeyList
                     TodoAdapter.notifyDataSetChanged()
 
-                    Log.d(TAG, "todoList : " + items)
 
                 }
 
@@ -258,14 +237,18 @@ class HomeFragment : Fragment() {
         // 어댑터 적용
         binding.calendarRv.adapter = adapter
 
+
+        // 날짜 선택할 시
         adapter.itemClick = object : CalendarAdapter.ItemClick {
             override fun onClick(view: View, position: Int) {
-                var dateCalendar = Calendar.getInstance()
 
                 year = CalendarUtil.selectedDate.get(Calendar.YEAR).toString()
                 month = (CalendarUtil.selectedDate.get(Calendar.MONTH)+1).toString()
                 day = dayList[position].toString()
                 day2 = (day[8].toString() + day[9].toString())
+
+                firstMonth = month
+                firstday = day2
 
                 Log.d(TAG, "itemclick year : " + year)
                 Log.d(TAG, "itemclick month : " + month)
@@ -273,7 +256,7 @@ class HomeFragment : Fragment() {
 
 
                 initRecycler()
-                getFBTodoData(month,day2)
+                getFBTodoData(year,month,day2)
                 TodoAdapter.notifyDataSetChanged()
 
             }
