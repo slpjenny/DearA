@@ -129,6 +129,7 @@
             android:layout_marginTop="1dp"/>
 
             <TextView
+                android:id="@+id/imageCount"
                 android:text="0/10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
