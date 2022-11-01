@@ -129,11 +129,12 @@
         <entry key="app/src/main/res/drawable/selfdiagnosis_btn_bg.xml" value="0.1265" />
         <entry key="app/src/main/res/drawable/switch_track_off.xml" value="0.1565" />
         <entry key="app/src/main/res/drawable/switch_track_on.xml" value="0.1565" />
-        <entry key="app/src/main/res/layout/activity_add_record.xml" value="0.45" />
+        <entry key="app/src/main/res/layout/activity_add_record.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_change_nick_name.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_change_pwd.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_contact_us.xml" value="0.190625" />
         <entry key="app/src/main/res/layout/activity_diary_detail.xml" value="0.22447916666666667" />
+        <entry key="app/src/main/res/layout/activity_diary_edit.xml" value="0.1388888888888889" />
         <entry key="app/src/main/res/layout/activity_diary_write.xml" value="0.22447916666666667" />
         <entry key="app/src/main/res/layout/activity_find_pwd.xml" value="0.2138482666015625" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.22864583333333333" />
@@ -143,6 +144,7 @@
         <entry key="app/src/main/res/layout/activity_pattern_lock.xml" value="0.22777777777777777" />
         <entry key="app/src/main/res/layout/activity_pattern_secure_mode.xml" value="0.22777777777777777" />
         <entry key="app/src/main/res/layout/activity_pin_lock.xml" value="0.125" />
+        <entry key="app/src/main/res/layout/activity_rm_record.xml" value="0.2328125" />
         <entry key="app/src/main/res/layout/activity_select_lock.xml" value="0.2490740740740741" />
         <entry key="app/src/main/res/layout/activity_self_diagnosis.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_set_pin.xml" value="0.190625" />
@@ -162,7 +164,7 @@
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.2515625" />
         <entry key="app/src/main/res/layout/fragment_new_record.xml" value="0.2515625" />
         <entry key="app/src/main/res/layout/fragment_popup.xml" value="0.25625" />
-        <entry key="app/src/main/res/layout/fragment_record.xml" value="0.30927835051546393" />
+        <entry key="app/src/main/res/layout/fragment_record.xml" value="0.375" />
         <entry key="app/src/main/res/layout/fragment_record_delete.xml" value="0.2515625" />
         <entry key="app/src/main/res/layout/fragment_record_end.xml" value="0.3202285766601563" />
         <entry key="app/src/main/res/layout/pop_up.xml" value="0.29739583333333336" />
