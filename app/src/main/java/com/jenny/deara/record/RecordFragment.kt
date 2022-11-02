@@ -51,12 +51,24 @@ class RecordFragment : Fragment() {
         }
 
 
+        // 마이페이지 버튼
         binding.mypage.setOnClickListener {
             val intent2 = Intent(context,MyPageActivity::class.java)
             startActivity(intent2)
         }
 
+
+
+
         return binding.root
+    }
+
+    override fun onStart() {
+        super.onStart()
+        initRecycler()
+        getFBRecordData()
+
+
     }
 
 
@@ -85,6 +97,7 @@ class RecordFragment : Fragment() {
                     val item = dataModel.getValue(RecordData::class.java)
 
                     if (item != null) {
+                        // uid 에 맞는 진료기록들을 불러오기
                         if(FBAuth.getUid() == item.uid){
                             recordList.add(item)
                             recordkeyList.add(dataModel.key.toString())
