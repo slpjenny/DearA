@@ -75,7 +75,7 @@
 
             <EditText
                 android:id="@+id/write_email_etxt"
-                android:layout_width="match_parent"
+                android:layout_width="220dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="40dp"
                 android:background="@null"
@@ -85,6 +85,17 @@
                 android:textSize="13sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"></EditText>
+
+            <android.widget.Button
+                android:id="@+id/emailCheck"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="이메일 확인"
+                android:layout_marginRight="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/write_email_etxt"
+                app:layout_constraintTop_toTopOf="parent"></android.widget.Button>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

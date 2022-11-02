@@ -43,11 +43,12 @@ class RecordListAdapter(val context: Context, val recordList : MutableList<Strin
             date.text = item.date
             time.text = item.time
 
-            // 화살표 버튼 클릭시
+            // 화살표 버튼 클릭시 상세 페이지
             val detailBtn = itemView.findViewById<Button>(R.id.detailBtn)
 
             detailBtn.setOnClickListener {
-                val intent = Intent(context, AddRecordActivity::class.java)
+                val intent = Intent(context, RmRecordActivity::class.java)
+                // 해당 Key로 몇번째 아이템인지 구별
                 intent.putExtra("key", recordList[position])
 
                 itemView.context.startActivity(intent)

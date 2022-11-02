@@ -138,40 +138,4 @@ class CalendarAdapter(private val context: Context,
         return dayList.size
     }
 
-
-    // firebase에 저장된 투두리스트 목록 불러오기
-    fun getFBTodoData(Month : String, date : String){
-
-        val position = object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                todoList.clear()
-
-                for (dataModel in dataSnapshot.children){
-                    Log.d("todoList", dataModel.toString())
-
-                    val item = dataModel.getValue(ToDoData::class.java)
-                    if (FBAuth.getUid() == item!!.uid){
-                        if(item!!.month == Month && item!!.date == date ){
-                            todoList.add(item)
-                            Log.d (TAG, "monthhh : " + item!!.month)
-                            Log.d (TAG, "monthhhh : " + Month)
-                            Log.d (TAG, "datehhh : " + item!!.date)
-                            Log.d (TAG, "datehhhh : " + date)
-                        }
-                    }
-
-                    todokeyList.add(dataModel.key.toString())
-                    todoList
-                    Log.d(TAG, "todoList : " + todoList)
-
-                }
-
-            }
-
-            override fun onCancelled(databaseError: DatabaseError) {
-                Log.w("getTodoFB", "loadPost:onCancelled", databaseError.toException())
-            }
-        }
-        FBRef.todoRef.addValueEventListener(position)
-    }
     }

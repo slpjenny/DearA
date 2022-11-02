@@ -26,23 +26,11 @@
             android:textColor="#808080"
             android:textSize="24sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/removeBtn"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/removeBtn"
-            android:layout_width="50dp"
-            android:layout_height="40dp"
             android:layout_marginRight="20dp"
-            android:background="@android:color/transparent"
-            android:text="삭제"
-            android:textColor="#808080"
-            android:textSize="24sp"
-            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
 
         <ImageView
             android:id="@+id/backBtn"
@@ -125,26 +113,24 @@
 
                 <TextView
                     android:id="@+id/date"
-                    android:text="임시 날짜"
-                    android:layout_width="wrap_content"
+                    android:layout_width="125dp"
                     android:layout_height="wrap_content"
+                    android:hint=""
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/time"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/hospitalName" />
 
                 <TextView
                     android:id="@+id/time"
-                    android:text="임시 시간"
-                    android:layout_width="wrap_content"
+                    android:layout_width="90dp"
                     android:layout_height="wrap_content"
+                    android:hint=""
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/button"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/dateBtn"
                     app:layout_constraintTop_toBottomOf="@+id/hospitalName" />
 
                 <Button
-                    android:id="@+id/button"
+                    android:id="@+id/dateBtn"
                     android:layout_width="60dp"
                     android:layout_height="40dp"
                     android:layout_marginTop="43dp"
@@ -156,6 +142,7 @@
                     app:layout_constraintTop_toTopOf="@+id/list" />
 
                 <Button
+                    android:id="@+id/timeBtn"
                     android:layout_width="60dp"
                     android:layout_height="40dp"
                     android:layout_marginRight="20dp"

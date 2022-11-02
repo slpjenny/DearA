@@ -112,44 +112,48 @@
 <!--            app:layout_constraintStart_toStartOf="parent"-->
 <!--            app:layout_constraintTop_toTopOf="parent" />-->
 
-        <ImageView
+        <LinearLayout
+            android:id="@+id/layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="35dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
             android:id="@+id/imageBtn"
             android:layout_width="27dp"
             android:layout_height="27dp"
             android:src="@drawable/imagebtn"
-            android:layout_marginRight="35dp"
-            android:layout_marginTop="5dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginTop="1dp"/>
 
-<!--        <TextView-->
-<!--            android:text="1/10"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            app:layout_constraintStart_toEndOf="@id/imageBtn"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            android:layout_marginStart="5dp"-->
-<!--            android:layout_marginTop="2dp"-->
-<!--            android:textStyle="bold"/>-->
-
-        <HorizontalScrollView
-            android:id="@+id/imageScrollView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageBtn"
-            android:paddingStart="25dp"
-            android:paddingEnd="25dp"
-            android:scrollbars="none"
-            android:visibility="gone">
-            <LinearLayout
-                android:id="@+id/imageArea"
+            <TextView
+                android:id="@+id/imageCount"
+                android:text="0/10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <!--이미지 삽입-->
-            </LinearLayout>
-        </HorizontalScrollView>
+                app:layout_constraintStart_toEndOf="@id/imageBtn"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="2dp"
+                android:textStyle="bold"
+                android:textColor="@color/point_gray"/>
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvImage"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout" />
+
 
         <EditText
             android:id="@+id/contentArea"
@@ -165,7 +169,7 @@
             android:padding="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageScrollView" />
+            app:layout_constraintTop_toBottomOf="@+id/rvImage" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

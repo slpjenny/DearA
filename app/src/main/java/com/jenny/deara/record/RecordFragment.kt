@@ -13,11 +13,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
+import com.jenny.deara.MyPageActivity
 import com.jenny.deara.R
-import com.jenny.deara.databinding.FragmentDiaryBinding
 import com.jenny.deara.databinding.FragmentRecordBinding
-import com.jenny.deara.diary.DiaryData
-import com.jenny.deara.diary.DiaryListAdapter
 import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
 
@@ -44,6 +42,7 @@ class RecordFragment : Fragment() {
         initRecycler()
         getFBRecordData()
 
+        binding.plusButton.bringToFront()
 
         // 진료기록 추가 화면으로 페이지 전환
         binding.plusButton.setOnClickListener {
@@ -51,7 +50,25 @@ class RecordFragment : Fragment() {
             startActivity(intent)
         }
 
+
+        // 마이페이지 버튼
+        binding.mypage.setOnClickListener {
+            val intent2 = Intent(context,MyPageActivity::class.java)
+            startActivity(intent2)
+        }
+
+
+
+
         return binding.root
+    }
+
+    override fun onStart() {
+        super.onStart()
+        initRecycler()
+        getFBRecordData()
+
+
     }
 
 
@@ -80,6 +97,7 @@ class RecordFragment : Fragment() {
                     val item = dataModel.getValue(RecordData::class.java)
 
                     if (item != null) {
+                        // uid 에 맞는 진료기록들을 불러오기
                         if(FBAuth.getUid() == item.uid){
                             recordList.add(item)
                             recordkeyList.add(dataModel.key.toString())
