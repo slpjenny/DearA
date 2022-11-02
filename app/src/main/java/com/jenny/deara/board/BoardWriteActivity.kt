@@ -20,6 +20,9 @@ import androidx.core.view.marginRight
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.Task
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -38,11 +41,12 @@ class BoardWriteActivity : AppCompatActivity() {
     private lateinit var binding: ActivityBoardWriteBinding
     private var route: String = "write"
     private lateinit var key: String
-    private lateinit var imageTest : ImageView
     private var isImageUpload = false
 
     lateinit var ImageListAdapter : ImageListAdapter
     val imageList = mutableListOf<Uri>()
+
+    //var storage = Firebase.storage
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,13 +56,12 @@ class BoardWriteActivity : AppCompatActivity() {
         //image = ImageView(this@BoardWriteActivity)
         //imageArea = binding.imageArea
 
-        //initRecycler()
-
         route = intent.getStringExtra("route").toString()
         key = intent.getStringExtra("key").toString()
 
         if (route == "edit"){ // 수정 버튼으로 들어온 경우
             getBoardData(key)
+            //getImageData(key)
         }
 
         binding.backBtn.setOnClickListener {
@@ -71,7 +74,7 @@ class BoardWriteActivity : AppCompatActivity() {
             }else{
                 val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
                 startActivityForResult(gallery, 100)
-                //isImageUpload = true
+                isImageUpload = true
             }
         }
 
@@ -139,15 +142,34 @@ class BoardWriteActivity : AppCompatActivity() {
         FBRef.boardRef.child(key).addValueEventListener(postListener)
     }
 
+//    private fun getImageData(key : String){
+//
+//        // Reference to an image file in Cloud Storage
+//        var imageRefer = Firebase.storage.reference.child(key + ".png")
+//        imageRefer.listAll().addOnSuccessListener(){
+//            var i = 1
+//            for ()
+//        }
+//        imageRefer.downloadUrl.addOnSuccessListener {
+//            imageList.add(it)
+//        }.addOnFailureListener {
+//            // Handle any errors
+//        }
+//        initRecycler()
+//
+//
+//    }
+
     private fun imageUpload(key : String){
         // Get the data from an ImageView as bytes
 
         val storage = Firebase.storage
         val storageRef = storage.reference
-        val mountainsRef = storageRef.child(key + ".png")
+        val mountainsRef = storageRef.child(key + ".png").child("imageTest.png")
         //var imageTest : ImageView
 
         for(i in imageList.indices){
+            val imageTest = ImageView(this)
             imageTest.setImageURI(imageList[i])
             imageTest.isDrawingCacheEnabled = true
             imageTest.buildDrawingCache()
@@ -193,18 +215,21 @@ class BoardWriteActivity : AppCompatActivity() {
 //            delBtn1.setOnClickListener {
 //                imageList.removeAt(position)
 //            }
+            initRecycler()
 
-            ImageListAdapter = ImageListAdapter(this, data)
-
-            val rv : RecyclerView = binding.rvImage
-            rv.adapter= ImageListAdapter
-            rv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-
-            ImageListAdapter.datas = imageList
-            ImageListAdapter.notifyDataSetChanged()
-
-            //binding.rvImage.visibility = View.VISIBLE
         }
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    private fun initRecycler(){
+        ImageListAdapter = ImageListAdapter(this)
+
+        val rv : RecyclerView = binding.rvImage
+        rv.adapter= ImageListAdapter
+        rv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+
+        ImageListAdapter.datas = imageList
+        ImageListAdapter.notifyDataSetChanged()
     }
 
 }

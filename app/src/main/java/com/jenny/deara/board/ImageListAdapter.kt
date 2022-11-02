@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.jenny.deara.R
 import java.security.KeyStore
 
-class ImageListAdapter(val context: Context, var data: Intent?)
+class ImageListAdapter(val context: Context)
     : RecyclerView.Adapter<ImageListAdapter.ViewHolder>() {
 
     var datas = mutableListOf<Uri>()
@@ -25,7 +25,7 @@ class ImageListAdapter(val context: Context, var data: Intent?)
     override fun getItemCount(): Int = datas.size
 
     override fun onBindViewHolder(holder:  ImageListAdapter.ViewHolder, position: Int) {
-        holder.bind(datas[position], data)
+        holder.bind(datas[position])
     }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -34,7 +34,7 @@ class ImageListAdapter(val context: Context, var data: Intent?)
         val delBtn: ImageView = itemView.findViewById(R.id.delBtn)
 
         @SuppressLint("NotifyDataSetChanged")
-        fun bind(item: Uri, data: Intent?) {
+        fun bind(item: Uri) {
             image.setImageURI(item)
             image.clipToOutline = true
 
