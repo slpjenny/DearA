@@ -67,15 +67,15 @@ class BoardWriteActivity : AppCompatActivity() {
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 //아이템이 클릭 되면 맨 위부터 position 0번부터 순서대로 동작하게 됩니다.
-                when(position) {
+                sort = when(position) {
                     0   ->  { //자유
-                        sort = "자유"
+                        "자유"
                     }
                     1   ->  { //질문
-                        sort = "질문"
+                        "질문"
                     }
                     else -> { //정보
-                        sort = "정보"
+                        "정보"
                     }
                 }
             }
