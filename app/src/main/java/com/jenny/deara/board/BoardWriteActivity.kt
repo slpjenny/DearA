@@ -11,9 +11,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import android.view.View
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.Toast
+import android.widget.*
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.view.isVisible
 import androidx.core.view.marginRight
@@ -32,7 +30,9 @@ import com.jenny.deara.R
 import com.jenny.deara.databinding.ActivityBoardWriteBinding
 import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
+import kotlinx.android.synthetic.main.activity_board_write.*
 import kotlinx.android.synthetic.main.image_list_item.*
+import kotlinx.android.synthetic.main.item_spinner.*
 import java.io.ByteArrayOutputStream
 import kotlinx.android.synthetic.main.image_list_item.delBtn as delBtn1
 
@@ -42,11 +42,10 @@ class BoardWriteActivity : AppCompatActivity() {
     private var route: String = "write"
     private lateinit var key: String
     private var isImageUpload = false
+    private var sort: String = "자유"
 
     lateinit var ImageListAdapter : ImageListAdapter
     val imageList = mutableListOf<Uri>()
-
-    //var storage = Firebase.storage
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,8 +55,37 @@ class BoardWriteActivity : AppCompatActivity() {
         //image = ImageView(this@BoardWriteActivity)
         //imageArea = binding.imageArea
 
+        val items = resources.getStringArray(R.array.my_array)
+        val spinnerAdapter = ArrayAdapter(this, R.layout.item_spinner, R.id.spinnerItemStyle, items)
+
         route = intent.getStringExtra("route").toString()
         key = intent.getStringExtra("key").toString()
+        binding.spinner.adapter = spinnerAdapter
+
+        //spinner.setSelection(2) // 2번째 포지션으로 이동합니다.
+
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                //아이템이 클릭 되면 맨 위부터 position 0번부터 순서대로 동작하게 됩니다.
+                when(position) {
+                    0   ->  { //자유
+                        sort = "자유"
+                    }
+                    1   ->  { //질문
+                        sort = "질문"
+                    }
+                    else -> { //정보
+                        sort = "정보"
+                    }
+                }
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+                TODO("Not yet implemented")
+            }
+
+        }
+
 
         if (route == "edit"){ // 수정 버튼으로 들어온 경우
             getBoardData(key)
@@ -111,7 +139,7 @@ class BoardWriteActivity : AppCompatActivity() {
 
         FBRef.boardRef
             .child(key)
-            .setValue(BoardModel(title, content, uid, time))
+            .setValue(BoardModel(title, content, uid, time, sort))
 
         if(isImageUpload) {
             imageUpload(key)
@@ -130,6 +158,12 @@ class BoardWriteActivity : AppCompatActivity() {
 
                 binding.titleArea.setText(dataModel?.title)
                 binding.contentArea.setText(dataModel?.content)
+                if (dataModel?.sort == "질문"){
+                    spinner.setSelection(2)
+                }
+                if (dataModel?.sort == "정보"){
+                    spinner.setSelection(3)
+                }
 
             }
 
@@ -142,35 +176,33 @@ class BoardWriteActivity : AppCompatActivity() {
         FBRef.boardRef.child(key).addValueEventListener(postListener)
     }
 
-//    private fun getImageData(key : String){
-//
-//        // Reference to an image file in Cloud Storage
-//        var imageRefer = Firebase.storage.reference.child(key + ".png")
-//        imageRefer.listAll().addOnSuccessListener(){
-//            var i = 1
-//            for ()
-//        }
-//        imageRefer.downloadUrl.addOnSuccessListener {
-//            imageList.add(it)
-//        }.addOnFailureListener {
-//            // Handle any errors
-//        }
-//        initRecycler()
-//
-//
-//    }
+    private fun getImageData(key : String){
+
+        // Reference to an image file in Cloud Storage
+        val imageRefer = Firebase.storage.reference.child(key)
+
+        imageRefer.downloadUrl.addOnSuccessListener {
+            imageList.add(it)
+        }.addOnFailureListener {
+            // Handle any errors
+        }
+        initRecycler()
+
+
+    }
 
     private fun imageUpload(key : String){
         // Get the data from an ImageView as bytes
 
         val storage = Firebase.storage
         val storageRef = storage.reference
-        val mountainsRef = storageRef.child(key + ".png").child("imageTest.png")
-        //var imageTest : ImageView
+        val mountainsRef = storageRef.child(key).child("imageTest.png")
+        val imageTest = ImageView(this)
 
+        //집가서 폰 연결해서 테스트하고 수정하기
         for(i in imageList.indices){
-            val imageTest = ImageView(this)
             imageTest.setImageURI(imageList[i])
+            Log.d("uploadLog",i.toString() + imageList[i].toString())
             imageTest.isDrawingCacheEnabled = true
             imageTest.buildDrawingCache()
             val bitmap = (imageTest.drawable as BitmapDrawable).bitmap

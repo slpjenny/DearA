@@ -44,85 +44,168 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:paddingStart="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginTop="15dp"
+        android:paddingStart="5dp"
+        android:paddingRight="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:id="@+id/boardMenu"
         app:layout_constraintTop_toBottomOf="@+id/boardTopBar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:orientation="horizontal"
-        tools:ignore="RtlSymmetry">
+        android:background="@drawable/bottom_edge"
+        tools:ignore="RtlSymmetry"
+        android:backgroundTint="#C2C2C2">
 
         <LinearLayout
+            android:id="@+id/menu1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="20dp">
+
             <TextView
                 android:id="@+id/boardList"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bottom_edge"
+                android:layout_weight="1"
+                android:background="@drawable/bottom_edge_bold"
+                android:gravity="center"
                 android:paddingBottom="5dp"
                 android:text="글 목록"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="18sp"
-                android:layout_weight="1"
                 android:textAlignment="center"
-                android:gravity="center"/>
+                android:textColor="@color/black"
+                android:textSize="19sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/boardAlarm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:text="알림"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:paddingBottom="5dp"
-                android:textStyle="bold"
-                android:textColor="@color/board_menu_gray"
-                android:textSize="18sp"
+                android:text="알림"
                 android:textAlignment="center"
-                android:gravity="center"/>
+                android:textColor="@color/board_menu_gray"
+                android:textSize="19sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/myBoard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:text="내가 쓴 글"
-                android:paddingBottom="5dp"
                 android:layout_weight="1"
-                android:textStyle="bold"
-                android:textColor="@color/board_menu_gray"
-                android:textSize="18sp"
+                android:gravity="center"
+                android:paddingBottom="5dp"
+                android:text="내가 쓴 글"
                 android:textAlignment="center"
-                android:gravity="center"/>
+                android:textColor="@color/board_menu_gray"
+                android:textSize="19sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/myComment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:text="내가 쓴 댓글"
-                android:paddingBottom="5dp"
-                android:textStyle="bold"
                 android:layout_weight="1"
-                android:textColor="@color/board_menu_gray"
-                android:textSize="18sp"
-                app:layout_constraintStart_toEndOf="@+id/MyWriteText"
-                app:layout_constraintTop_toTopOf="parent"
+                android:gravity="center"
+                android:paddingBottom="5dp"
+                android:text="내가 쓴 댓글"
                 android:textAlignment="center"
-                android:gravity="center"/>
-
+                android:textColor="@color/board_menu_gray"
+                android:textSize="19sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/MyWriteText"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_marginTop="20dp"
+        android:id="@+id/menu2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/boardMenu">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/sortAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/radius_purple_right"
+                android:paddingStart="20dp"
+                android:paddingTop="4dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="4dp"
+                android:text="전체"
+                android:textColor="@color/purple2"
+                android:textSize="17dp"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/sortFree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="20dp"
+                android:paddingTop="4dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="4dp"
+                android:text="자유"
+                android:textColor="#AFAFAF"
+                android:textSize="17dp"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/sortQuestion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="20dp"
+                android:paddingTop="4dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="4dp"
+                android:text="질문"
+                android:textColor="#AFAFAF"
+                android:textSize="17dp"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/sortInfor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="20dp"
+                android:paddingTop="4dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="4dp"
+                android:text="정보"
+                android:textColor="#AFAFAF"
+                android:textSize="17dp"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_marginTop="10dp"
         android:id="@+id/boardSearch"
         android:visibility="visible"
         android:layout_width="0dp"
@@ -130,13 +213,13 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/boardMenu"
+        app:layout_constraintTop_toBottomOf="@+id/menu2"
         android:orientation="horizontal">
 
         <EditText
             android:id="@+id/searchET"
             android:layout_width="match_parent"
-            android:layout_marginEnd="45dp"
+            android:layout_marginEnd="40dp"
             android:layout_height="30dp"
             android:background="@drawable/radius_gray"
             android:hint="검색어를 입력해주세요."
@@ -151,7 +234,6 @@
             android:id="@+id/searchBtn"
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:layout_marginEnd="10dp"
             android:src="@drawable/board_search"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
