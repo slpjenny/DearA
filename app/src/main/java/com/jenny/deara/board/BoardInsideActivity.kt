@@ -54,7 +54,8 @@ class BoardInsideActivity : AppCompatActivity() {
                 val dataModel = dataSnapshot.getValue(BoardModel::class.java)
 
                 binding.titleArea.text = dataModel?.title
-                binding.contentArea.text = dataModel?.content
+                binding.contentTextArea.text = dataModel?.content
+                binding.sortArea.text = dataModel?.sort
                 binding.boardTime.text = dataModel?.time
                 //binding.boardWriter.text = dataModel?.uid?.let { FBAuth.getNick(it) }
                 if (dataModel != null) {
