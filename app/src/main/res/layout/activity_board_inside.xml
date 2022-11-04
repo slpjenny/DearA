@@ -52,20 +52,24 @@
         android:id="@+id/boardList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="15dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/boardTopBar">
 
         <TextView
-            android:id="@+id/boardSort"
+            android:id="@+id/sortArea"
+            android:textSize="11sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="[질문]"
-            android:textColor="@color/black"
-            android:textSize="20sp"
+            android:paddingStart="6dp"
+            android:paddingRight="6dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            android:text="sort"
+            android:background="#ECECEC"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -74,13 +78,14 @@
             android:id="@+id/titleArea"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="서울슈니병원 진료 어떤가요?"
+            android:text="title"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:layout_marginStart="5dp"
-            app:layout_constraintStart_toEndOf="@+id/boardSort"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="17dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sortArea" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/boardLineS"
@@ -128,18 +133,52 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/boardLineS" />
 
-        <TextView
+        <LinearLayout
             android:id="@+id/contentArea"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="32dp"
             android:layout_marginRight="20dp"
-            android:text="이사 온지 얼마 안 지나서... 이쪽 동네를 잘 몰라요. 멀리에서 이사를 와버려서 병원을 옮겨야할 것 같아요. 그런데 저희 집에서 제일 가까운 곳이 서울슈니병원이더라고요. 혹시 서울슈니병원에 다니시는 분들 계실까요? 어떤지 후기 댓글 남겨주신다면 감사하겠습니다!"
+            android:text="content"
             app:layout_constraintBottom_toTopOf="@+id/boardLineE"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/boardTime" />
+            app:layout_constraintTop_toBottomOf="@+id/boardTime"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/contentTextArea"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="content" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:src="@drawable/testimg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+<!--        <TextView-->
+<!--            android:id="@+id/contentArea"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="20dp"-->
+<!--            android:layout_marginTop="32dp"-->
+<!--            android:layout_marginRight="20dp"-->
+<!--            android:text="content"-->
+<!--            app:layout_constraintBottom_toTopOf="@+id/boardLineE"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/boardTime" />-->
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/boardLineE"
@@ -157,10 +196,12 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/commentEdit"
-        android:layout_marginBottom="25dp"
+        android:paddingBottom="25dp"
+        android:paddingTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:backgroundTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -187,12 +228,14 @@
             android:layout_width="50dp"
             android:layout_height="30dp"
             android:layout_marginStart="8dp"
-            android:background="@drawable/radius_board_purple1"
+            android:background="@drawable/radius_gray"
             android:text=" 작성 "
+            android:backgroundTint="@color/purple1"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginEnd="10dp"/>
+            android:layout_marginEnd="10dp"
+            style="?android:attr/borderlessButtonStyle"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
