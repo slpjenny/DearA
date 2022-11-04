@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".record.AddRecordActivity">
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout1"
         android:layout_width="match_parent"
@@ -195,8 +196,8 @@
 
                 <ImageView
                     android:id="@+id/list2"
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
+                    android:layout_width="388dp"
+                    android:layout_height="66dp"
                     android:background="@drawable/background_radius_record"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -209,7 +210,7 @@
                     android:layout_marginTop="16dp"
                     android:background="@android:color/transparent"
                     android:ellipsize="none"
-                    android:hint="약 이름"
+                    android:hint="약 이름을 작성"
                     android:maxLines="1"
                     android:textColor="#000000"
                     android:textSize="15sp"
@@ -223,7 +224,7 @@
                     android:layout_marginTop="16dp"
                     android:background="@android:color/transparent"
                     android:ellipsize="none"
-                    android:hint="권장 복용량"
+                    android:hint="권장 복용량 작성"
                     android:maxLines="1"
                     android:textColor="#000000"
                     android:textSize="15sp"
@@ -232,13 +233,26 @@
                     app:layout_constraintTop_toTopOf="@+id/list2" />
 
 
-                <ListView
-                    android:id="@+id/record_list"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout4" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/pillRecord"
+                    android:layout_width="395dp"
+                    android:layout_height="73dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout5"

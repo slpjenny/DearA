@@ -18,6 +18,7 @@ import com.jenny.deara.R
 import com.jenny.deara.databinding.FragmentRecordBinding
 import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
+import kotlinx.android.synthetic.main.fragment_record.*
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -28,11 +29,14 @@ class RecordFragment : Fragment() {
     private lateinit var binding: FragmentRecordBinding
 
     lateinit var RecordListAdapter: RecordListAdapter
+    lateinit var TodayRecordAdapter: TodayRecordAdapter
 
     val recordList = mutableListOf<RecordData>()
     val recordkeyList = mutableListOf<String>()
 
-    val todayRecordList = mutableListOf<RecordData>()
+    // 오늘 진료기록 recyclerview 변수
+    val todayRecordList = mutableListOf<TodayRecordData>()
+    val todayRecordKeyList = mutableListOf<String>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,6 +54,7 @@ class RecordFragment : Fragment() {
         getFBRecordData()
 
         binding.plusButton.bringToFront()
+        binding.todayRcRv.bringToFront()
 
         // 진료기록 추가 화면으로 페이지 전환
         binding.plusButton.setOnClickListener {
@@ -65,20 +70,15 @@ class RecordFragment : Fragment() {
         }
 
 
-        // 오늘 날짜에 해당하는 아이템있으면 띄우기
-
-
-
-
         return binding.root
     }
 
     override fun onStart() {
         super.onStart()
+
         initRecycler()
+        initTodayRecycler()
         getFBRecordData()
-
-
     }
 
 
@@ -94,14 +94,15 @@ class RecordFragment : Fragment() {
     }
 
 
+    // 오늘 진료일정 리싸이클러뷰 띄우기
     private fun initTodayRecycler() {
-        RecordListAdapter = RecordListAdapter(requireContext(),recordkeyList)
+        TodayRecordAdapter = TodayRecordAdapter(requireContext(),todayRecordKeyList)
 
         val rv : RecyclerView = binding.todayRcRv
-        rv.adapter= RecordListAdapter
+        rv.adapter= TodayRecordAdapter
 
-        RecordListAdapter.datas = todayRecordList
-        RecordListAdapter.notifyDataSetChanged()
+        TodayRecordAdapter.datas = todayRecordList
+        TodayRecordAdapter.notifyDataSetChanged()
 
     }
 
@@ -112,9 +113,13 @@ class RecordFragment : Fragment() {
 
         // 오늘 날짜 불러오기
         var now = LocalDate.now()
-        var nowDate = now.format(DateTimeFormatter.ofPattern("yyyy년 MM월 dd일"))
+        var nowDate :String = now.format(DateTimeFormatter.ofPattern("yyyy년 MM월 "))
+        var nowDay :String = now.dayOfMonth.toString()
 
-//        Log.d("nowDate",nowDate)
+        // 시스템에서 불러오는 오늘 날짜는 두자리수로 표현되기에 한자리수로 맞추기위해 따로 처리해줌
+        nowDate = nowDate+nowDay+"일"
+
+
 
         // 데이터 불러오기
         val postListener = object : ValueEventListener {
@@ -122,10 +127,12 @@ class RecordFragment : Fragment() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
                 recordList.clear()
+                todayRecordList.clear()
 
                 for (dataModel in dataSnapshot.children) {
                     // 리싸이클러뷰 데이터에 항목 세개만 넣어서 추가하기
                     val item = dataModel.getValue(RecordData::class.java)
+                    val todayItem = dataModel.getValue(TodayRecordData::class.java)
 
                     if (item != null) {
                         // uid 에 맞는 진료기록들을 불러오기
@@ -133,15 +140,18 @@ class RecordFragment : Fragment() {
                             recordList.add(item)
                             recordkeyList.add(dataModel.key.toString())
 
-                            Log.d("nowdate",item.date)
-                            Log.d("nowdatee",nowDate)
-                            //시스템상에서는 02일 이렇게 표기함
+//                            Log.d("그냥기록 개수", recordList.size.toString())
 
 
-                            // 날짜가 같은게 있다면, 따로 불러와서 todayRcRv 에 추가해야함
+                            // 날짜가 같은게 있다면, 따로 불러와서 todayRcRv 에도!! 추가해야함
                             if(item.date == nowDate){
-                                todayRecordList.add(item)
-                                Log.d("nowdate","존재함 ")
+                                if (todayItem != null) {
+                                    todayRecordList.add(todayItem)
+                                    todayRecordKeyList.add(dataModel.key.toString())
+                                }
+//                                Log.d("오늘기록 개수",todayRecordList.size.toString())
+//                                Log.d("아이템", item.toString())
+
                             }
 
                         }
@@ -151,6 +161,7 @@ class RecordFragment : Fragment() {
                 recordkeyList.reverse()
                 recordList.reverse()
                 RecordListAdapter.notifyDataSetChanged()
+                TodayRecordAdapter.notifyDataSetChanged()
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
