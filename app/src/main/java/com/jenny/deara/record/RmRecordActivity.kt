@@ -1,5 +1,7 @@
 package com.jenny.deara.record
 
+import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +14,7 @@ import com.jenny.deara.databinding.ActivityAddRecordBinding
 import com.jenny.deara.databinding.ActivityRmRecordBinding
 import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
+import java.util.*
 
 class RmRecordActivity : AppCompatActivity() {
 
@@ -25,6 +28,14 @@ class RmRecordActivity : AppCompatActivity() {
         val key = intent.getStringExtra("key").toString()
         getRecordData(key)
 
+        // 날짜 선택
+        binding.reDateBtn.setOnClickListener {
+            chooseDate()
+        }
+
+        binding.reTimeBtn.setOnClickListener {
+            choosetime()
+        }
 
         // 뒤로가기
         binding.backBtn.setOnClickListener {
@@ -41,6 +52,45 @@ class RmRecordActivity : AppCompatActivity() {
             removeRecord(key)
         }
 
+    }
+
+
+    // 날짜 - Datepicekr
+    private fun chooseDate() {
+        var dateString = ""
+
+        val cal = Calendar.getInstance()    //캘린더뷰 만들기
+        val dateSetListener = DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
+            dateString = "${year}년 ${month + 1}월 ${dayOfMonth}일"
+            binding.reDate.text = dateString
+        }
+        DatePickerDialog(
+            this,
+            dateSetListener,
+            cal.get(Calendar.YEAR),
+            cal.get(Calendar.MONTH),
+            cal.get(Calendar.DAY_OF_MONTH)
+        ).show()
+
+    }
+
+    // 시간 - TimePicker
+    private fun choosetime() {
+
+        var timeString = ""
+
+        val cal = Calendar.getInstance()
+        val timeSetListener = TimePickerDialog.OnTimeSetListener { view, hourOfDay, minute ->
+            timeString = "${hourOfDay}시 ${minute}분"
+            binding.reTime.text = timeString
+        }
+        TimePickerDialog(
+            this,
+            timeSetListener,
+            cal.get(Calendar.HOUR_OF_DAY),
+            cal.get(Calendar.MINUTE),
+            true
+        ).show()
     }
 
 
