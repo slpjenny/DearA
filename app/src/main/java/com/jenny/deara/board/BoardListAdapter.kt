@@ -12,7 +12,7 @@ import com.jenny.deara.R
 import com.jenny.deara.utils.FBAuth
 
 
-class BoardListAdapter(val context: Context, val boardkeyList : MutableList<String>)
+class BoardListAdapter(val context: Context, var boardkeyList : MutableList<String>)
     : RecyclerView.Adapter<BoardListAdapter.ViewHolder>() {
 
     var datas = mutableListOf<BoardModel>()
@@ -29,8 +29,9 @@ class BoardListAdapter(val context: Context, val boardkeyList : MutableList<Stri
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setItems(list: MutableList<BoardModel>) {
+    fun setItems(list: MutableList<BoardModel>, keyList: MutableList<String>) {
         datas = list
+        boardkeyList = keyList
         notifyDataSetChanged()
     }
 
