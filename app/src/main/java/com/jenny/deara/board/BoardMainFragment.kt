@@ -36,8 +36,9 @@ class BoardMainFragment : Fragment() {
     lateinit var BoardListAdapter: BoardListAdapter
 
     var boardList = mutableListOf<BoardModel>()
-    val boardkeyList = mutableListOf<String>()
+    var boardkeyList = mutableListOf<String>()
     var searchList = mutableListOf<BoardModel>()
+    var searchKeyList = mutableListOf<String>()
     var menu: String = "boardList"
     var sort: String = "All"
 
@@ -149,9 +150,10 @@ class BoardMainFragment : Fragment() {
                 override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                     if (binding.searchET.text.toString() == ""){
                         binding.searchBtn.setColorFilter(Color.parseColor("#F3F3F3"))
-                        BoardListAdapter.setItems(boardList)
+                        BoardListAdapter.setItems(boardList, boardkeyList)
                     }else{
                         binding.searchBtn.setColorFilter(Color.parseColor("#B8B8F0"))
+                        search(binding.searchET.text.toString())
                     }
                 }
             }
@@ -285,14 +287,14 @@ class BoardMainFragment : Fragment() {
     // 검색
     private fun search(searchText: String){
         searchList.clear()
+        searchKeyList.clear()
 
         for (a in 0 until boardList.size) {
             if (boardList[a].title.lowercase().contains(searchText) || boardList[a].content.lowercase().contains(searchText)) {
                 searchList.add(boardList[a])
-                Log.d("searchFunTest", searchList.toString())
+                searchKeyList.add(boardkeyList[a])
             }
-            BoardListAdapter.setItems(searchList)
+            BoardListAdapter.setItems(searchList, searchKeyList)
         }
-
     }
 }

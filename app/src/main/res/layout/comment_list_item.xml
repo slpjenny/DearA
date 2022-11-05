@@ -7,12 +7,12 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal">
     <TextView
-        android:id="@+id/commentWriter1"
+        android:id="@+id/commentWriter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
-        android:text="슈니"
+        android:text="nickName"
         android:textColor="@color/purple2"
         android:textSize="15sp"
         android:textStyle="bold"
@@ -20,28 +20,28 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/commentContent1"
+        android:id="@+id/commentContent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
-        android:text="저 다니고 있는데 의사선생님들 다 좋으십니다!"
+        android:text="commentContent"
         android:textColor="@color/black"
         android:textSize="13sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/commentWriter1" />
+        app:layout_constraintTop_toBottomOf="@+id/commentWriter" />
 
     <TextView
-        android:id="@+id/commentTime1"
+        android:id="@+id/commentTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:text="2022-05-22 01:35"
+        android:text="commentTime"
         android:textColor="@color/board_menu_gray"
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/commentContent1" />
+        app:layout_constraintTop_toBottomOf="@+id/commentContent" />
 
     <TextView
         android:id="@+id/replyBtn"
@@ -52,7 +52,33 @@
         android:textSize="10sp"
         android:layout_marginStart="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/commentTime1"
-        app:layout_constraintTop_toBottomOf="@+id/commentContent1" />
+        app:layout_constraintStart_toEndOf="@+id/commentTime"
+        app:layout_constraintTop_toBottomOf="@+id/commentContent" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginEnd="35dp"
+        android:layout_marginTop="@dimen/_16dp">
+
+        <TextView
+            android:id="@+id/editBtn"
+            android:text="수정"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:textColor="@color/board_menu_gray"
+            android:textSize="10sp"/>
+        <TextView
+            android:id="@+id/delBtn"
+            android:text="삭제"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/board_menu_gray"
+            android:textSize="10sp"/>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

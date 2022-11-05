@@ -196,10 +196,9 @@ class BoardWriteActivity : AppCompatActivity() {
 
         val storage = Firebase.storage
         val storageRef = storage.reference
-        val mountainsRef = storageRef.child(key).child("imageTest.png")
+        val mountainsRef = storageRef.child(key)
         val imageTest = ImageView(this)
 
-        //집가서 폰 연결해서 테스트하고 수정하기
         for(i in imageList.indices){
             imageTest.setImageURI(imageList[i])
             Log.d("uploadLog",i.toString() + imageList[i].toString())
@@ -211,12 +210,11 @@ class BoardWriteActivity : AppCompatActivity() {
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
             val data = baos.toByteArray()
 
-            val uploadTask = mountainsRef.putBytes(data)
+            val uploadTask = mountainsRef.child("boardImage$i.png").putBytes(data)
             uploadTask.addOnFailureListener {
-                // Handle unsuccessful uploads
+                Log.d("uploadLog","Failure -> " + i.toString() + imageList[i].toString())
             }.addOnSuccessListener { taskSnapshot ->
-                // taskSnapshot.metadata contains file metadata such as size, content-type, etc.
-                // ...
+                Log.d("uploadLog","Success!(KEY:$key) imageNum -> " + i.toString() + "// URI ->"+imageList[i].toString())
             }
         }
     }
@@ -225,16 +223,6 @@ class BoardWriteActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if(resultCode == RESULT_OK && requestCode == 100) {
-            // 이미지뷰 생성
-            //val getImage = ImageView(this)
-//            val imageLayoutParams = LinearLayout.LayoutParams(
-//                changeDP(100),
-//                changeDP(100),
-//            )
-//            imageLayoutParams.rightMargin = changeDP(10)
-//            image.layoutParams = imageLayoutParams
-            //getImage.setImageURI(data?.data)
-            //imageArea.addView(image)
             if (imageList.size >= 10){
                 Toast.makeText(this, "사진은 최대 10개까지 업로드할 수 있습니다.", Toast.LENGTH_LONG).show()
             }else{
@@ -243,10 +231,6 @@ class BoardWriteActivity : AppCompatActivity() {
                 data?.data?.let { imageList.add(it) }
                 binding.imageCount.text = imageList.size.toString() + "/10"
             }
-            //data?.data?.let { imageList.add(it) }
-//            delBtn1.setOnClickListener {
-//                imageList.removeAt(position)
-//            }
             initRecycler()
 
         }
