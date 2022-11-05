@@ -1,6 +1,7 @@
 package com.jenny.deara.board
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -8,8 +9,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.jenny.deara.R
+import kotlinx.android.synthetic.main.image_list_item.view.*
 import java.security.KeyStore
 
 class ImageListAdapter(val context: Context)
@@ -35,7 +39,10 @@ class ImageListAdapter(val context: Context)
 
         @SuppressLint("NotifyDataSetChanged")
         fun bind(item: Uri) {
-            image.setImageURI(item)
+            //image.setImageURI(item)
+            Glide.with(itemView)
+                .load(item)
+                .into(image.image)
             image.clipToOutline = true
 
             delBtn.setOnClickListener {

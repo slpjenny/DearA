@@ -4,11 +4,14 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
 import com.jenny.deara.MainActivity
 import com.jenny.deara.databinding.FragmentBoardPopupBinding
 import com.jenny.deara.utils.FBRef
@@ -39,6 +42,7 @@ class BoardPopupFragment(var key: String) : DialogFragment() {
         }
         binding.delBtn.setOnClickListener {
             FBRef.boardRef.child(key).removeValue()
+            delStorage(key)
             Toast.makeText(context, "삭제완료", Toast.LENGTH_LONG).show()
 
             val intent = Intent(context, MainActivity::class.java)
@@ -50,6 +54,22 @@ class BoardPopupFragment(var key: String) : DialogFragment() {
         }
 
         return binding.root
+    }
+
+    // 나중에 수정하기
+    private fun delStorage(key: String){
+        for (i in 0 .. 10){
+            val imageRefer = Firebase.storage.reference.child(key).child("boardImage$i.png")
+
+            // Delete the file
+            imageRefer.delete().addOnSuccessListener {
+                Log.d("delLog", "Success -> boardImage$i.png")
+                // File deleted successfully
+            }.addOnFailureListener {
+                // Uh-oh, an error occurred!
+                Log.d("delLog", "Failure -> boardImage$i.png")
+            }
+        }
     }
 
 }

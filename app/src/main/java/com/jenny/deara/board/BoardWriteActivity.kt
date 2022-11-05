@@ -1,47 +1,49 @@
 package com.jenny.deara.board
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import android.view.View
-import android.widget.*
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.core.view.isVisible
-import androidx.core.view.marginRight
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.ImageView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.google.android.gms.tasks.OnCompleteListener
-import com.google.android.gms.tasks.Task
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.component1
 import com.google.firebase.storage.ktx.storage
 import com.jenny.deara.R
 import com.jenny.deara.databinding.ActivityBoardWriteBinding
 import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
 import kotlinx.android.synthetic.main.activity_board_write.*
-import kotlinx.android.synthetic.main.image_list_item.*
-import kotlinx.android.synthetic.main.item_spinner.*
+import java.io.BufferedInputStream
 import java.io.ByteArrayOutputStream
-import kotlinx.android.synthetic.main.image_list_item.delBtn as delBtn1
+import java.io.IOException
+import java.io.InputStream
+import java.net.URL
+import java.net.URLConnection
+
 
 class BoardWriteActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityBoardWriteBinding
     private var route: String = "write"
     private lateinit var key: String
-    private var isImageUpload = false
+    //private var isImageUpload = false
     private var sort: String = "자유"
 
     lateinit var ImageListAdapter : ImageListAdapter
@@ -89,7 +91,7 @@ class BoardWriteActivity : AppCompatActivity() {
 
         if (route == "edit"){ // 수정 버튼으로 들어온 경우
             getBoardData(key)
-            //getImageData(key)
+            getImageData(key)
         }
 
         binding.backBtn.setOnClickListener {
@@ -102,7 +104,7 @@ class BoardWriteActivity : AppCompatActivity() {
             }else{
                 val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
                 startActivityForResult(gallery, 100)
-                isImageUpload = true
+                //isImageUpload = true
             }
         }
 
@@ -118,17 +120,6 @@ class BoardWriteActivity : AppCompatActivity() {
         binding.imageCount.text = imageList.size.toString() + "/10"
     }
 
-//    @SuppressLint("NotifyDataSetChanged")
-//    private fun initRecycler() {
-//        ImageListAdapter = ImageListAdapter(this)
-//
-//        val rv : RecyclerView = binding.rvImage
-//        rv.adapter= ImageListAdapter
-//
-//        ImageListAdapter.datas = imageList
-//        ImageListAdapter.notifyDataSetChanged()
-//    }
-
     private fun saveFBBoardData(key: String){
         val title = binding.titleArea.text.toString()
         val content = binding.contentArea.text.toString()
@@ -141,11 +132,15 @@ class BoardWriteActivity : AppCompatActivity() {
             .child(key)
             .setValue(BoardModel(title, content, uid, time, sort))
 
-        if(isImageUpload) {
-            imageUpload(key)
+        if(imageList.size !== 0){
+            Thread {
+                imageUpload(key)
+            }.start()
         }
 
-        finish()
+        val intent = Intent(this, BoardInsideActivity::class.java)
+        intent.putExtra("key", key)
+        startActivity(intent)
     }
 
     // 이전 데이터 띄우기
@@ -176,36 +171,55 @@ class BoardWriteActivity : AppCompatActivity() {
         FBRef.boardRef.child(key).addValueEventListener(postListener)
     }
 
+    // 이전 이미지들 띄우기
     private fun getImageData(key : String){
+        val storage = Firebase.storage
+        val listRef = storage.reference.child(key)
 
-        // Reference to an image file in Cloud Storage
-        val imageRefer = Firebase.storage.reference.child(key)
-
-        imageRefer.downloadUrl.addOnSuccessListener {
-            imageList.add(it)
-        }.addOnFailureListener {
-            // Handle any errors
-        }
-        initRecycler()
-
-
+        // You'll need to import com.google.firebase.storage.ktx.component1 and
+        // com.google.firebase.storage.ktx.component2
+        listRef.listAll()
+            .addOnSuccessListener { (items) ->
+                items.forEach { item ->
+                    item.downloadUrl.addOnCompleteListener(OnCompleteListener { task ->
+                        if(task.isSuccessful){
+                            imageList.add(task.result)
+                            Log.d("getImageLog", task.result.toString())
+                            Log.d("getImageLog", imageList.toString())
+                            initRecycler()
+                        }else{
+                            Log.d("getImageLog", "task.Failure")
+                        }
+                    })
+                }
+            }
+            .addOnFailureListener {
+                // Uh-oh, an error occurred!
+                Log.d("getImageLog", "Failure")
+            }
+        Log.d("getImageLog", "final length "+imageList.toString())
     }
 
     private fun imageUpload(key : String){
         // Get the data from an ImageView as bytes
+        //delStorage(key)
 
         val storage = Firebase.storage
         val storageRef = storage.reference
         val mountainsRef = storageRef.child(key)
         val imageTest = ImageView(this)
+        lateinit var bitmap : Bitmap
 
         for(i in imageList.indices){
             imageTest.setImageURI(imageList[i])
             Log.d("uploadLog",i.toString() + imageList[i].toString())
             imageTest.isDrawingCacheEnabled = true
             imageTest.buildDrawingCache()
-            val bitmap = (imageTest.drawable as BitmapDrawable).bitmap
-
+            if (imageList[i].toString().lowercase().contains("https://")){
+                bitmap = getImageBitmap(imageList[i])
+            }else{
+                bitmap = (imageTest.drawable as BitmapDrawable).bitmap
+            }
             val baos = ByteArrayOutputStream()
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
             val data = baos.toByteArray()
@@ -214,7 +228,7 @@ class BoardWriteActivity : AppCompatActivity() {
             uploadTask.addOnFailureListener {
                 Log.d("uploadLog","Failure -> " + i.toString() + imageList[i].toString())
             }.addOnSuccessListener { taskSnapshot ->
-                Log.d("uploadLog","Success!(KEY:$key) imageNum -> " + i.toString() + "// URI ->"+imageList[i].toString())
+                Log.d("uploadLog","Success!(KEY:$key) imageNum -> " + i.toString() + " // URI ->"+imageList[i].toString())
             }
         }
     }
@@ -246,6 +260,39 @@ class BoardWriteActivity : AppCompatActivity() {
 
         ImageListAdapter.datas = imageList
         ImageListAdapter.notifyDataSetChanged()
+    }
+
+    // 나중에 수정하기
+    private fun delStorage(key: String){
+        for (i in 0 .. 10){
+            val imageRefer = Firebase.storage.reference.child(key).child("boardImage$i.png")
+
+            // Delete the file
+            imageRefer.delete().addOnSuccessListener {
+                Log.d("delLog", "Success -> boardImage$i.png")
+                // File deleted successfully
+            }.addOnFailureListener {
+                // Uh-oh, an error occurred!
+                Log.d("delLog", "Failure -> boardImage$i.png")
+            }
+        }
+    }
+
+    private fun getImageBitmap(url: Uri): Bitmap {
+        lateinit var bm: Bitmap
+        try {
+            val aURL = URL(url.toString())
+            val conn: URLConnection = aURL.openConnection()
+            conn.connect()
+            val `is`: InputStream = conn.getInputStream()
+            val bis = BufferedInputStream(`is`)
+            bm = BitmapFactory.decodeStream(bis)
+            bis.close()
+            `is`.close()
+        } catch (e: IOException) {
+            Log.e("BiteMap", "Error getting bitmap", e)
+        }
+        return bm
     }
 
 }
