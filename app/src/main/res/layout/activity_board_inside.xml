@@ -168,66 +168,19 @@
                         android:text="content"
                         android:padding="3dp"/>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                    <HorizontalScrollView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:scrollbars="none">
+                        <LinearLayout
+                            android:id="@+id/imageArea"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
 
-                        <ImageView
-                            android:src="@drawable/testimg"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content"
-                            android:adjustViewBounds="true"
-                            android:layout_margin="3dp"/>
-                        <ImageView
-                            android:src="@drawable/testimg"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content"
-                            android:adjustViewBounds="true"
-                            android:layout_margin="3dp"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        </LinearLayout>
 
-                        <ImageView
-                            android:src="@drawable/testimg"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content"
-                            android:adjustViewBounds="true"
-                            android:layout_margin="3dp"/>
-                        <ImageView
-                            android:src="@drawable/testimg"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content"
-                            android:adjustViewBounds="true"
-                            android:layout_margin="3dp"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:src="@drawable/testimg"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content"
-                            android:adjustViewBounds="true"
-                            android:layout_margin="3dp"/>
-                        <ImageView
-                            android:src="@drawable/testimg"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content"
-                            android:adjustViewBounds="true"
-                            android:layout_margin="3dp"/>
-                    </LinearLayout>
+                    </HorizontalScrollView>
 
                 </LinearLayout>
 

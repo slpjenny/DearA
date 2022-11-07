@@ -197,7 +197,7 @@ class BoardWriteActivity : AppCompatActivity() {
                 // Uh-oh, an error occurred!
                 Log.d("getImageLog", "Failure")
             }
-        Log.d("getImageLog", "final length "+imageList.toString())
+        Log.d("getImageLog", "final length : $imageList")
     }
 
     private fun imageUpload(key : String){
@@ -260,22 +260,6 @@ class BoardWriteActivity : AppCompatActivity() {
 
         ImageListAdapter.datas = imageList
         ImageListAdapter.notifyDataSetChanged()
-    }
-
-    // 나중에 수정하기
-    private fun delStorage(key: String){
-        for (i in 0 .. 10){
-            val imageRefer = Firebase.storage.reference.child(key).child("boardImage$i.png")
-
-            // Delete the file
-            imageRefer.delete().addOnSuccessListener {
-                Log.d("delLog", "Success -> boardImage$i.png")
-                // File deleted successfully
-            }.addOnFailureListener {
-                // Uh-oh, an error occurred!
-                Log.d("delLog", "Failure -> boardImage$i.png")
-            }
-        }
     }
 
     private fun getImageBitmap(url: Uri): Bitmap {

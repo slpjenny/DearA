@@ -39,10 +39,9 @@ class ImageListAdapter(val context: Context)
 
         @SuppressLint("NotifyDataSetChanged")
         fun bind(item: Uri) {
-            //image.setImageURI(item)
             Glide.with(itemView)
                 .load(item)
-                .into(image.image)
+                .into(itemView.image)
             image.clipToOutline = true
 
             delBtn.setOnClickListener {
