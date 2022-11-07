@@ -11,11 +11,13 @@
 
         <!--상단바-->
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/boardTopBar"
             android:layout_width="match_parent"
             android:layout_height="64dp"
             android:background="@color/contactus_gray"
-            android:id="@+id/boardTopBar"
-            tools:ignore="MissingConstraints">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/backBtn"
@@ -52,38 +54,34 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <!--본문 + 댓글 스크롤뷰-->
-        <ScrollView
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:scrollbars="none"
+            app:layout_constraintBottom_toTopOf="@+id/commentEdit"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/boardTopBar"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:paddingBottom="30dp"
-            android:scrollbars="none">
+            app:layout_constraintTop_toBottomOf="@+id/boardTopBar">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/boardList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/boardTopBar">
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/sortArea"
-                    android:textSize="11sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
+                    android:background="#ECECEC"
                     android:paddingStart="6dp"
-                    android:paddingRight="6dp"
                     android:paddingTop="3dp"
+                    android:paddingRight="6dp"
                     android:paddingBottom="3dp"
                     android:text="sort"
-                    android:background="#ECECEC"
+                    android:textSize="11sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -92,12 +90,12 @@
                     android:id="@+id/titleArea"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="17dp"
+                    android:layout_marginTop="10dp"
                     android:text="title"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginStart="17dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/sortArea" />
 
@@ -105,10 +103,10 @@
                     android:id="@+id/boardLineS"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_marginTop="16dp"
-                    android:background="#B6B6B6"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginTop="16dp"
                     android:layout_marginRight="10dp"
+                    android:background="#B6B6B6"
                     app:layout_constraintTop_toBottomOf="@+id/titleArea" />
 
                 <TextView
@@ -128,10 +126,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
+                    android:layout_marginRight="10dp"
                     android:text="writer"
                     android:textColor="#747474"
                     android:textSize="15sp"
-                    android:layout_marginRight="10dp"
                     app:layout_constraintEnd_toStartOf="@+id/popupBtn"
                     app:layout_constraintTop_toBottomOf="@+id/boardLineS" />
 
@@ -154,24 +152,25 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="32dp"
                     android:layout_marginRight="20dp"
+                    android:orientation="vertical"
                     android:text="content"
                     app:layout_constraintBottom_toTopOf="@+id/boardLineE"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/boardTime"
-                    android:orientation="vertical">
+                    app:layout_constraintTop_toBottomOf="@+id/boardTime">
 
                     <TextView
                         android:id="@+id/contentTextArea"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="content"
-                        android:padding="3dp"/>
+                        android:padding="3dp"
+                        android:text="content" />
 
                     <HorizontalScrollView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:scrollbars="none">
+
                         <LinearLayout
                             android:id="@+id/imageArea"
                             android:layout_width="wrap_content"
@@ -188,27 +187,37 @@
                     android:id="@+id/boardLineE"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_marginTop="30dp"
-                    android:background="#B6B6B6"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginTop="30dp"
                     android:layout_marginRight="10dp"
+                    android:background="#B6B6B6"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/contentArea" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvComment"
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="40dp"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/boardLineE" />
+                    app:layout_constraintTop_toTopOf="@+id/boardLineE"
+                    android:descendantFocusability="blocksDescendants">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvComment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:nestedScrollingEnabled="false"
+                        android:overScrollMode="never"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+                </RelativeLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </ScrollView>
+        </androidx.core.widget.NestedScrollView>
 
         <!--댓글 입력-->
         <androidx.constraintlayout.widget.ConstraintLayout
