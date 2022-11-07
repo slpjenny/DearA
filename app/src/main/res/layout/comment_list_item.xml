@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="19dp"
+        android:layout_marginTop="20dp"
         android:text="nickName"
         android:textColor="@color/black"
         android:textSize="13sp"
@@ -74,7 +74,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginEnd="35dp"
-        android:layout_marginTop="@dimen/_16dp">
+        android:layout_marginTop="20dp">
 
         <TextView
             android:id="@+id/editBtn"
