@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.jenny.deara.R
+import com.jenny.deara.board.comment.CommentModel
 import com.jenny.deara.utils.FBAuth
 
 

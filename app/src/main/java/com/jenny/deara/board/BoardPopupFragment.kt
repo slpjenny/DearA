@@ -90,7 +90,6 @@ class BoardPopupFragment(var key: String) : DialogFragment() {
                 Log.d("delLog", "listAll() Fail")
             }
 
-
     }
 
 }

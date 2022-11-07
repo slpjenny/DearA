@@ -11,20 +11,33 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="19dp"
         android:text="nickName"
         android:textColor="@color/black"
-        android:textSize="15sp"
+        android:textSize="13sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/boardWriter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="boardWriter"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/purple1"
+        android:textSize="10sp"
+        app:layout_constraintStart_toEndOf="@+id/commentWriter"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/commentContent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="5dp"
         android:text="commentContent"
         android:textColor="@color/black"
         android:textSize="13sp"
@@ -36,10 +49,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
+        android:layout_marginBottom="@dimen/_16dp"
         android:text="commentTime"
         android:textColor="@color/board_menu_gray"
         android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/commentContent" />
 
@@ -50,8 +63,8 @@
         android:text="답글"
         android:textColor="@color/board_menu_gray"
         android:textSize="10sp"
+        android:layout_marginBottom="@dimen/_16dp"
         android:layout_marginStart="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/commentTime"
         app:layout_constraintTop_toBottomOf="@+id/commentContent" />
 
@@ -80,5 +93,14 @@
             android:textSize="10sp"/>
 
     </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvCommentReply"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/replyBtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
