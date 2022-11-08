@@ -5,6 +5,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" /> <!-- 지문 인식 권한 -->
     <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
 
     <application
         android:allowBackup="true"
@@ -34,11 +35,6 @@
         <activity
             android:name=".alarm.TimePickerActivity"
             android:exported="false" />
-        <!--
-<activity
-            android:name=".alarm.AlarmMainActivity"
-            android:exported="false" />
-        -->
         <activity
             android:name=".mypages.ChangePwdActivity"
             android:exported="false" />
@@ -69,13 +65,11 @@
         <activity
             android:name=".LoginActivity"
             android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-             <intent-filter>
-             <action android:name="android.intent.action.MAIN" />
-
-
-             <category android:name="android.intent.category.LAUNCHER" />
-             </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".SplashActivity"
@@ -89,6 +83,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver
+            android:name=".alarm.AlertReceiver"
+            android:enabled="true"
+            android:exported="true" />
     </application>
 
 </manifest>
