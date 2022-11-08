@@ -5,4 +5,5 @@ data class AlarmData(
     val title: String = "",
     val day: String = "",
     val uid: String = "",
+    val alarmId: Int = 0,
 )
