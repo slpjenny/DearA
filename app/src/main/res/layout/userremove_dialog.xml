@@ -28,7 +28,7 @@
 
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/yesBtn"
             android:layout_width="70dp"
             android:layout_height="30dp"
             android:background="@drawable/radius_dialogbtn"
@@ -40,6 +40,7 @@
             app:layout_constraintTop_toTopOf="parent"></Button>
 
         <Button
+            android:id="@+id/noBtn"
             android:layout_width="70dp"
             android:layout_height="30dp"
             android:background="@drawable/radius_dialogbtn"
@@ -47,14 +48,10 @@
             android:textColor="#ffffff"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/button2"
+            app:layout_constraintStart_toEndOf="@+id/yesBtn"
             app:layout_constraintTop_toTopOf="parent"></Button>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

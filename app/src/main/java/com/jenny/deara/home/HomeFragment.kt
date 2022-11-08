@@ -1,29 +1,57 @@
 package com.jenny.deara.home
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
+import com.jenny.deara.MyPageActivity
 import com.jenny.deara.R
+import com.jenny.deara.alarm.AlarmData
+import com.jenny.deara.alarm.AlarmListAdapter
 import com.jenny.deara.databinding.FragmentHomeBinding
+import com.jenny.deara.diary.DiaryListAdapter
 import com.jenny.deara.utils.CalendarUtil
+import com.jenny.deara.utils.FBAuth
+import com.jenny.deara.utils.FBRef
+import kotlinx.android.synthetic.main.calendar_item.*
+import kotlinx.android.synthetic.main.fragment_diary.*
 import java.util.*
 import kotlin.collections.ArrayList
 
 class HomeFragment : Fragment() {
 
     private lateinit var binding : FragmentHomeBinding
+    lateinit var TodoAdapter: TodoAdapter
 
-    private val items = ArrayList<ToDoModel>()
+    val items = ArrayList<ToDoData>()
+    val todokeyList = mutableListOf<String>()
 
-    private val TAG = HomeFragment::class.java.simpleName
+    val TAG = HomeFragment::class.java.simpleName
+
+    var dateCalendar = Calendar.getInstance()
+
+    var year = (dateCalendar.get(Calendar.YEAR)).toString()
+    var month =(dateCalendar.get(Calendar.MONTH) + 1).toString()
+    var day = (dateCalendar.get(Calendar.DAY_OF_MONTH)).toString()
+    var day2 = (dateCalendar.get(Calendar.DAY_OF_MONTH)).toString()
+
+    var firstYear = (CalendarUtil.selectedDate.get(Calendar.YEAR).toString())
+    var firstMonth = (CalendarUtil.selectedDate.get(Calendar.MONTH)+1).toString()
+    var firstday = CalendarUtil.selectedDate.get(Calendar.DAY_OF_MONTH).toString()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +68,16 @@ class HomeFragment : Fragment() {
 
         // 화면 설정
         setMonthView()
+
+        initRecycler()
+
+        // 날짜 길이가 1인 경우 앞에 0 붙여주기
+        if (firstday.length == 1){
+            firstday = "0"+firstday
+        }
+        getFBTodoData(firstYear,firstMonth, firstday)
+        todokeyList.distinct()
+
 
         // 이전달 버튼 이벤트
         binding.preBtn.setOnClickListener {
@@ -60,37 +98,55 @@ class HomeFragment : Fragment() {
             todoAdd()
         }
 
-//        getFBRandomQData()
+
+        // 마이페이지로 이동
+        binding.mypageBtn.setOnClickListener {
+            val intent = Intent(context, MyPageActivity::class.java)
+            startActivity(intent)
+
+        }
+
 
         return binding.root
     }
 
-    //파이어베이스 데이터 불러오기
-//    private fun getFBRandomQData(){
-//
-//        val postListener = object : ValueEventListener {
-//            override fun onDataChange(dataSnapshot: DataSnapshot) {
-//
-//                items.clear()
-//
-//                for (dataModel in dataSnapshot.children) {
-//
-//                    Log.d("todoList", dataModel.toString())
-//
-//                }
-//                Log.d("todoList", items.toString())
-//
-//            }
-//
-//            override fun onCancelled(databaseError: DatabaseError) {
-//
-//            }
-//
-//        }
-//        FBRef.todoRef.addValueEventListener(postListener)
-//    }
+    @SuppressLint("NotifyDataSetChanged")
+    private fun initRecycler(){
+
+        TodoAdapter = TodoAdapter(requireContext(), items, todokeyList)
+        val rv: RecyclerView = binding.toDoListRV
+        rv.adapter = TodoAdapter
+
+        TodoAdapter.notifyDataSetChanged()
+    }
+
+
+    // 파이어베이스에 데이터 저장
+    fun saveTodo(year : String, month: String, day : String, text: String){
+
+
+        var todo : String = text
+        var check : Boolean = false
+        val time = FBAuth.getTimeDiary()
+        val uid = FBAuth.getUid()
+
+        val key = FBRef.todoRef.push().key.toString()
+        Log.d(TAG, "keyadd : " + key)
+
+        // 할일 목록 추가
+        items.add(ToDoData(todo, check, time, year, month, day, uid, key))
+        Log.d(TAG, "saveTodo : " + items)
+
+
+        FBRef.todoRef
+            .child(key)
+            .setValue(ToDoData(todo, check, time, year, month, day, uid, key))
+    }
+
+
+
     // 투두리스트 다이얼로그로 추가
-    private fun todoAdd(){
+    fun todoAdd(){
 
         val dialog = TodoDialog(requireContext())
 
@@ -101,34 +157,67 @@ class HomeFragment : Fragment() {
 
                 if (text.length == 0){
                     Toast.makeText(context, "해아할 일을 입력해주세요.", Toast.LENGTH_SHORT).show()
-                }else{
+                }else {
+
+                    if (day2.length == 1){
+                        day2 = "0"+day2
+                    }
                     // 파이어베이스에 투두 항목 저장하기
-//                    var todo : String = text
-//                    var check : Boolean = false
-//                    val time = FBAuth.getTimeDiary()
-//                    val uid = FBAuth.getUid()
-//
-//                    FBRef.todoRef
-//                        .push()
-//                        .setValue(ToDoData(todo,check, time, uid))
-
-
-                    // items 리스트에 할 목록 추가
-                    items.add(ToDoModel(text,false))
-                    Log.d(TAG, "items " + items.size)
-                    Log.d(TAG, "text : " + text)
-
-                    val rv : RecyclerView = binding.toDoListRV
-                    val rvRvAdapter = TodoAdapter(items)
+                    saveTodo(year, month, day2, text)
+                    val rv: RecyclerView = binding.toDoListRV
+                    val rvRvAdapter = TodoAdapter(requireContext(), items, todokeyList)
 
                     rv.adapter = rvRvAdapter
                     rv.layoutManager = LinearLayoutManager(context)
                     rvRvAdapter.notifyDataSetChanged()
+
                 }
 
             }
         })
     }
+
+
+    // firebase에 저장된 투두리스트 목록 불러오기
+    fun getFBTodoData(Year : String, Month : String, date : String){
+
+        val position = object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                items.clear()
+
+                for (dataModel in dataSnapshot.children){
+                    Log.d("todoList", dataModel.toString())
+
+                    val item = dataModel.getValue(ToDoData::class.java)
+                    if (FBAuth.getUid() == item!!.uid){
+
+                        if(item!!.year == Year && item!!.month == Month && item!!.date == date ){
+                            items.add(item)
+                            if(todokeyList.none { it == dataModel.key }){
+                                todokeyList.add(dataModel.key.toString())
+                            }
+                            Log.d(TAG, "todokeyList : " + todokeyList)
+                        }
+                    }
+                    Log.d (TAG, "todokey distinct : " + todokeyList)
+                    //items.reverse()
+                    //todokeyList
+                    TodoAdapter.notifyDataSetChanged()
+
+
+                }
+
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                Log.w("getTodoFB", "loadPost:onCancelled", databaseError.toException())
+            }
+        }
+        FBRef.todoRef.addValueEventListener(position)
+    }
+
+
+
 
     // 날짜 화면에 보여주기
     private fun setMonthView() {
@@ -139,7 +228,7 @@ class HomeFragment : Fragment() {
         val dayList = dayInMonthArray()
 
         // 어댑터 초기화
-        val adapter = CalendarAdapter(dayList, items)
+        val adapter = CalendarAdapter(requireContext(), dayList, items, todokeyList)
 
         // 레이아웃 설정 (열 7개)
         var manager : RecyclerView.LayoutManager = GridLayoutManager(context,7)
@@ -150,11 +239,31 @@ class HomeFragment : Fragment() {
         // 어댑터 적용
         binding.calendarRv.adapter = adapter
 
+
+        // 날짜 선택할 시
         adapter.itemClick = object : CalendarAdapter.ItemClick {
             override fun onClick(view: View, position: Int) {
-                //Toast.makeText(context, dayList[position].toString(), Toast.LENGTH_LONG).show()
+
+                year = CalendarUtil.selectedDate.get(Calendar.YEAR).toString()
+                month = (CalendarUtil.selectedDate.get(Calendar.MONTH)+1).toString()
+                day = dayList[position].toString()
+                day2 = (day[8].toString() + day[9].toString())
+
+                firstMonth = month
+                firstday = day2
+
+                Log.d(TAG, "itemclick year : " + year)
+                Log.d(TAG, "itemclick month : " + month)
+                Log.d(TAG, "itemclick day : " + day2)
+
+
+                initRecycler()
+                getFBTodoData(year,month,day2)
+                TodoAdapter.notifyDataSetChanged()
+
             }
         }
+
 
 
     }
