@@ -5,6 +5,7 @@ import android.app.Dialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.WindowManager
 import android.widget.Button
 import com.jenny.deara.MyPageActivity
 import com.jenny.deara.R
@@ -19,8 +20,8 @@ class SelectLockActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_select_lock)
-
-        textView.text = if (switchButton.isChecked )
+        window.addFlags(WindowManager.LayoutParams.FLAG_SECURE)
+        /*textView.text = if (switchButton.isChecked )
             "암호/지문 잠금 끄기" else "암호/지문 잠금 켜기"
 
 
@@ -32,7 +33,7 @@ class SelectLockActivity : AppCompatActivity() {
                 textView.text = "암호/지문 잠금 켜기"
                 switchButton?.isSelected = switchButton?.isSelected != false
             }
-        }
+        }*/
 
         //switchButton이 isChecked 된 경우 암호 설정+지문인식On
         //btnChangePwd는 switchButton이 isChecked된 상태에만 활성화
