@@ -18,6 +18,12 @@
         android:theme="@style/Theme.DearA"
         tools:targetApi="31">
         <activity
+            android:name=".record.RmRecordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".record.AddRecordActivity"
+            android:exported="false" />
+        <activity
             android:name=".mypages.ContactUsActivity"
             android:exported="false" />
         <activity
