@@ -217,6 +217,8 @@ class HomeFragment : Fragment() {
     }
 
 
+
+
     // 날짜 화면에 보여주기
     private fun setMonthView() {
         // 년월 테스트뷰 세팅

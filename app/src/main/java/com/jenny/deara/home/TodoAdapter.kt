@@ -9,6 +9,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.jenny.deara.R
+import com.jenny.deara.alarm.AlarmData
 import com.jenny.deara.databinding.TodolistviewItemBinding
 import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
@@ -22,18 +23,9 @@ class TodoAdapter(val context : Context, val items: ArrayList<ToDoData>,val todo
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodoViewholder {
 
-//        val binding =  TodolistviewItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-//        return TodoViewholder(binding).also { holder ->
-//            binding.clearCheck.setOnCheckedChangeListener{ buttonView, isChecked ->
-//                items.getOrNull(holder.adapterPosition)?.clear = isChecked
-//            }
-//        }
-
         val view = LayoutInflater.from(context).inflate(R.layout.todolistview_item, parent,false)
         return TodoViewholder(view)
-
     }
-
 
     override fun onBindViewHolder(holder: TodoViewholder, position: Int) {
         holder.bind(items[position])
@@ -45,14 +37,13 @@ class TodoAdapter(val context : Context, val items: ArrayList<ToDoData>,val todo
    inner class TodoViewholder(view : View) : RecyclerView.ViewHolder(view){
 
        private val todowrite : TextView = itemView.findViewById(R.id.todowrite)
-       private val clearcheck : CheckBox = itemView.findViewById(R.id.clear_check)
+       private var clearcheck : CheckBox = itemView.findViewById(R.id.clear_check)
        private var tododel : ImageButton = itemView.findViewById(R.id.tododel)
 
         fun bind(todo : ToDoData) {
 
             todowrite.text = todo.todo
             clearcheck.isChecked = todo.check
-
 
 
             // 할 일 목록 삭제
@@ -64,8 +55,32 @@ class TodoAdapter(val context : Context, val items: ArrayList<ToDoData>,val todo
                 notifyItemRemoved(adapterPosition)
                 notifyDataSetChanged()
 
-   }
+            }
 
+            // 할 일 목록 체크시
+            clearcheck.setOnClickListener {
+
+                // 완료한 항목 체크할 때
+                if (items[adapterPosition].check == false){
+
+                    items[adapterPosition].check = true
+                    FBRef.todoRef
+                        .child(items[adapterPosition].key)
+                        .child("check")
+                        .setValue(items[adapterPosition].check)
+
+                } else {    // 완료되지 않은 항목 체크할 때
+                    items[adapterPosition].check = false
+
+                    FBRef.todoRef
+                        .child(items[adapterPosition].key)
+                        .child("check")
+                        .setValue(items[adapterPosition].check)
+                }
+
+            }
         }
    }
+    
+
     }
