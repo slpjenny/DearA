@@ -3,6 +3,7 @@ package com.jenny.deara.mypages
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.jenny.deara.MyPageActivity
 import com.jenny.deara.R
 import com.jenny.deara.databinding.ActivitySignInBinding

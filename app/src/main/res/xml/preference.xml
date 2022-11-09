@@ -5,16 +5,12 @@
         app:iconSpaceReserved="false">
         <SwitchPreference
             app:key="LockSetting"
-            app:title="암호"
+            app:title="지문"
+            app:summary="잠금 해제 시 지문을 사용합니다."
             app:selectable="true"
             app:iconSpaceReserved="false">
         </SwitchPreference>
-        <Preference
-            app:key="LockChange"
-            app:title="암호 변경"
-            app:dependency="LockSetting"
-            app:iconSpaceReserved="false">
-        </Preference>
+
     </PreferenceCategory>
 
 </PreferenceScreen>
