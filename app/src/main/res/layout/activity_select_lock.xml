@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".mypages.SelectLockActivity">
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
@@ -24,6 +25,7 @@
             android:background="@drawable/back"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"></android.widget.Button>
+
 
         <TextView
             android:layout_width="wrap_content"
@@ -52,5 +54,18 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="700dp"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+            <fragment
+                android:id="@+id/main_pref"
+                android:name="com.jenny.deara.mypages.MainPreference"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
