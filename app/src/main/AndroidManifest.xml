@@ -5,7 +5,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" /> <!-- 지문 인식 권한 -->
     <uses-permission android:name="android.permission.USE_BIOMETRIC" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
 
     <application
         android:allowBackup="true"
@@ -17,6 +17,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DearA"
         tools:targetApi="31">
+<!--        <activity-->
+<!--            android:name=".preference"-->
+<!--            android:exported="false" />-->
+        <activity
+            android:name=".FingerPrintActivity"
+            android:exported="false" />
         <activity
             android:name=".record.RmRecordActivity"
             android:exported="false" />
@@ -41,11 +47,6 @@
         <activity
             android:name=".alarm.TimePickerActivity"
             android:exported="false" />
-        <!--
-<activity
-            android:name=".alarm.AlarmMainActivity"
-            android:exported="false" />
-        -->
         <activity
             android:name=".mypages.ChangePwdActivity"
             android:exported="false" />
@@ -76,7 +77,6 @@
         <activity
             android:name=".LoginActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -95,6 +95,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver
+            android:name=".alarm.AlertReceiver"
+            android:enabled="true"
+            android:exported="true" />
     </application>
 
 </manifest>
