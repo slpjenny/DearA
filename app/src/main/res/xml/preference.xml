@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:iconSpaceReserved="false">
+        <SwitchPreference
+            android:key="LockSetting"
+            android:title="지문"
+            android:summary="앱 잠금 해제를 위해 지문인식을 사용합니다."
+            android:selectable="true"
+            android:iconSpaceReserved="false">
+        </SwitchPreference>
+<!--        <Preference-->
+<!--            android:key="LockChange"-->
+<!--            android:title="암호 변경"-->
+<!--            android:dependency="LockSetting"-->
+<!--            android:iconSpaceReserved="false">-->
+<!--        </Preference>-->
+    </PreferenceCategory>
+</PreferenceScreen>

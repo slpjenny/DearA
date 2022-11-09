@@ -86,5 +86,7 @@ dependencies {
 
     //storage
     implementation 'com.google.firebase:firebase-storage-ktx'
+    //스위치 상태 저장
+    implementation 'androidx.preference:preference:1.1.0-alpha01'
 
 }

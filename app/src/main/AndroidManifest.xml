@@ -17,6 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DearA"
         tools:targetApi="31">
+<!--        <activity-->
+<!--            android:name=".preference"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".FingerPrintActivity"
             android:exported="false" />
