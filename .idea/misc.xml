@@ -115,6 +115,8 @@
         <entry key="app/src/main/res/drawable-v24/background_radius_white.xml" value="0.157" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1265" />
         <entry key="app/src/main/res/drawable/background_radius_set_alarm.xml" value="0.157" />
+        <entry key="app/src/main/res/drawable/dialog_confirm.xml" value="0.127" />
+        <entry key="app/src/main/res/drawable/dialog_edittext.xml" value="0.127" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1265" />
         <entry key="app/src/main/res/drawable/login_layout_background.xml" value="0.164" />
         <entry key="app/src/main/res/drawable/login_layout_bg.xml" value="0.1265" />
@@ -130,6 +132,9 @@
         <entry key="app/src/main/res/drawable/switch_track_off.xml" value="0.1565" />
         <entry key="app/src/main/res/drawable/switch_track_on.xml" value="0.1565" />
         <entry key="app/src/main/res/layout/activity_add_record.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_board_edit.xml" value="0.2713541666666667" />
+        <entry key="app/src/main/res/layout/activity_board_inside.xml" value="0.2713541666666667" />
+        <entry key="app/src/main/res/layout/activity_board_write.xml" value="0.2713541666666667" />
         <entry key="app/src/main/res/layout/activity_change_nick_name.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_change_pwd.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_contact_us.xml" value="0.190625" />
@@ -145,7 +150,7 @@
         <entry key="app/src/main/res/layout/activity_pattern_secure_mode.xml" value="0.22777777777777777" />
         <entry key="app/src/main/res/layout/activity_pin_lock.xml" value="0.125" />
         <entry key="app/src/main/res/layout/activity_rm_record.xml" value="0.2328125" />
-        <entry key="app/src/main/res/layout/activity_select_lock.xml" value="0.2490740740740741" />
+        <entry key="app/src/main/res/layout/activity_select_lock.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_self_diagnosis.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_set_pin.xml" value="0.190625" />
         <entry key="app/src/main/res/layout/activity_setting_pattern.xml" value="0.2490740740740741" />
@@ -159,14 +164,20 @@
         <entry key="app/src/main/res/layout/diary_edit_ver2.xml" value="0.29739583333333336" />
         <entry key="app/src/main/res/layout/diary_list_item.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_alarm.xml" value="0.190625" />
+        <entry key="app/src/main/res/layout/fragment_board_popup.xml" value="0.2713541666666667" />
         <entry key="app/src/main/res/layout/fragment_contact_us.xml" value="0.2833333333333333" />
         <entry key="app/src/main/res/layout/fragment_diary.xml" value="0.22864583333333333" />
+        <entry key="app/src/main/res/layout/fragment_diary_write_ver1.xml" value="0.2713541666666667" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.2515625" />
+        <entry key="app/src/main/res/layout/fragment_my_comment.xml" value="0.2713541666666667" />
+        <entry key="app/src/main/res/layout/fragment_my_write.xml" value="0.2713541666666667" />
         <entry key="app/src/main/res/layout/fragment_new_record.xml" value="0.2515625" />
         <entry key="app/src/main/res/layout/fragment_popup.xml" value="0.25625" />
         <entry key="app/src/main/res/layout/fragment_record.xml" value="0.375" />
         <entry key="app/src/main/res/layout/fragment_record_delete.xml" value="0.2515625" />
         <entry key="app/src/main/res/layout/fragment_record_end.xml" value="0.3202285766601563" />
+        <entry key="app/src/main/res/layout/fregment_swipe_delete.xml" value="0.2713541666666667" />
+        <entry key="app/src/main/res/layout/image_list_item.xml" value="0.2713541666666667" />
         <entry key="app/src/main/res/layout/pop_up.xml" value="0.29739583333333336" />
         <entry key="app/src/main/res/layout/recordlist_item.xml" value="0.335" />
         <entry key="app/src/main/res/layout/recordremove_dialog.xml" value="0.25052083333333336" />
@@ -174,6 +185,7 @@
         <entry key="app/src/main/res/layout/tododialog_item.xml" value="0.2359375" />
         <entry key="app/src/main/res/layout/todolistview_item.xml" value="0.2359375" />
         <entry key="app/src/main/res/layout/userremove_dialog.xml" value="0.335" />
+        <entry key="app/src/main/res/xml/preference.xml" value="0.1" />
       </map>
     </option>
   </component>
