@@ -19,6 +19,7 @@ import com.jenny.deara.LoginActivity
 import com.jenny.deara.R
 import com.jenny.deara.databinding.ActivityChangeNickNameBinding
 import com.jenny.deara.databinding.ActivityMyPageBinding
+import kotlin.concurrent.thread
 
 class ChangeNickNameActivity : AppCompatActivity() {
 
@@ -46,20 +47,41 @@ class ChangeNickNameActivity : AppCompatActivity() {
         // 현재 로그인 되어있는 정보 불러오기
         val user = auth.currentUser
 
-        // firebase 에서 닉네임 불러오기
-        if (user != null) {
-            database.child("users").child(user.uid).get().addOnSuccessListener {
-                binding.myNick.setText(it.value.toString())
+        thread(start = true){
 
-                // 동기 방식으로 흐름 바꾸기!
-                // 닉네임 처음에 -> pbl 화이팅 하얗게 해서 안보이게했다가
-                // 내 닉네임 불러와지면 text 색상도 바뀌게 하기
-                binding.myNick.setTextColor(Color.BLACK)
+            if (user != null) {
+                database.child("users").child(user.uid).get().addOnSuccessListener {
 
-            }.addOnFailureListener {
-                binding.myNick.setText("닉네임 정보 없음")
+                    runOnUiThread {
+                        binding.myNick.setText(it.value.toString())
+                    }
+
+                }.addOnFailureListener {
+
+                    runOnUiThread {
+                        binding.myNick.setText("닉네임 정보 없음")
+
+                    }
+                }
             }
+
         }
+
+        // firebase 에서 닉네임 불러오기
+//        if (user != null) {
+//            database.child("users").child(user.uid).get().addOnSuccessListener {
+//                binding.myNick.setText(it.value.toString())
+//
+//                // 동기 방식으로 흐름 바꾸기!
+//
+//                // 닉네임 처음에 -> pbl 화이팅 하얗게 해서 안보이게했다가
+//                // 내 닉네임 불러와지면 text 색상도 바뀌게 하기
+//                binding.myNick.setTextColor(Color.BLACK)
+//
+//            }.addOnFailureListener {
+//                binding.myNick.setText("닉네임 정보 없음")
+//            }
+//        }
 
 
         // [중복 확인] 버튼-> 닉네임 중복 확인
@@ -125,7 +147,10 @@ class ChangeNickNameActivity : AppCompatActivity() {
 
                         // 다시 중복체크 변수 초기화
                         checkNickBtn = 0
-                        onRestart()
+
+                        // Activity 새로고침
+                        finish()
+                        startActivity(getIntent())
 
                     } else {
                         Toast.makeText(baseContext, "닉네임 정보 불러오기 오류", Toast.LENGTH_SHORT).show()
