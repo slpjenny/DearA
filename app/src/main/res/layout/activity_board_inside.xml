@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
+<layout
+    xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".board.BoardInsideActivity"
-        android:orientation="vertical">
-
+        android:orientation="vertical"
+        android:id="@+id/layout">
 
         <!--상단바-->
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -55,10 +56,10 @@
 
         <!--본문 + 댓글 스크롤뷰-->
         <androidx.core.widget.NestedScrollView
+            android:id="@+id/main"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:scrollbars="none"
-            app:layout_constraintBottom_toTopOf="@+id/commentEdit"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/boardTopBar">
@@ -209,35 +210,39 @@
                     app:layout_constraintTop_toBottomOf="@+id/contentArea" />
 
                 <LinearLayout
+                    android:id="@+id/linearLayout4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:layout_marginEnd="30dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/boardLineE">
+
                     <ImageView
-                        android:layout_marginTop="3dp"
-                        android:src="@drawable/commentimg"
                         android:layout_width="20dp"
-                        android:layout_height="20dp"/>
+                        android:layout_height="20dp"
+                        android:layout_marginTop="3dp"
+                        android:src="@drawable/commentimg" />
+
                     <TextView
                         android:id="@+id/commentNum"
-                        android:text="5"
-                        android:textStyle="bold"
-                        android:textColor="#909090"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:text="5"
+                        android:textColor="#909090"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
                 <RelativeLayout
+                    android:id="@+id/commentList"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:descendantFocusability="blocksDescendants"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/boardLineE"
-                    android:descendantFocusability="blocksDescendants">
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rvComment"
@@ -245,7 +250,7 @@
                         android:layout_height="wrap_content"
                         android:nestedScrollingEnabled="false"
                         android:overScrollMode="never"
-                        android:paddingTop="30dp"
+                        android:paddingTop="10dp"
                         android:paddingBottom="10dp"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
                 </RelativeLayout>
@@ -256,7 +261,7 @@
 
         <!--댓글 입력-->
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/commentEdit"
+            android:id="@+id/commentWindow"
             android:paddingBottom="10dp"
             android:paddingTop="10dp"
             android:layout_width="match_parent"
@@ -273,10 +278,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:background="@drawable/radius_gray"
-                android:hint="댓글을 입력해주세요."
+                android:hint="댓글을 입력해주세요"
                 android:paddingStart="15dp"
                 android:paddingEnd="15dp"
                 android:textSize="15sp"
+                android:imeOptions="actionSearch"
                 android:layout_marginEnd="70dp"
                 android:layout_marginStart="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"

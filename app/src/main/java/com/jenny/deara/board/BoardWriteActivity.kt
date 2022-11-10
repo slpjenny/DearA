@@ -117,7 +117,7 @@ class BoardWriteActivity : AppCompatActivity() {
             }
         }
 
-        binding.imageCount.text = imageList.size.toString() + "/10"
+        //binding.imageCount.text = imageList.size.toString() + "/10"
     }
 
     private fun saveFBBoardData(key: String){
@@ -250,7 +250,7 @@ class BoardWriteActivity : AppCompatActivity() {
         }
     }
 
-    @SuppressLint("NotifyDataSetChanged")
+    @SuppressLint("NotifyDataSetChanged", "SetTextI18n")
     private fun initRecycler(){
         ImageListAdapter = ImageListAdapter(this)
 
@@ -260,6 +260,7 @@ class BoardWriteActivity : AppCompatActivity() {
 
         ImageListAdapter.datas = imageList
         ImageListAdapter.notifyDataSetChanged()
+        binding.imageCount.text = ImageListAdapter.itemCount.toString() +"/10"
     }
 
     private fun getImageBitmap(url: Uri): Bitmap {
