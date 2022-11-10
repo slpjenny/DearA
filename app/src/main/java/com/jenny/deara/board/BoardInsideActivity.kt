@@ -65,11 +65,12 @@ class BoardInsideActivity : AppCompatActivity() {
             getBoardData(key)
             getImageData(key)
             initRecycler()
-            //getCommentData(key)
+            getCommentData(key)
         }
 
-        initRecycler()
-        getCommentData("test")
+        //local
+        //initRecycler()
+        //getCommentData("test")
 
         binding.backBtn.setOnClickListener {
             finish()
@@ -90,12 +91,12 @@ class BoardInsideActivity : AppCompatActivity() {
         binding.commentBtn.setOnClickListener {
             if (commentReplyOn){ // 대댓글 작성
                 Log.d("commentInsert", "답글을 작성 : $getCommentKey")
-                //insertComment(getCommentKey)
+                insertComment(getCommentKey)
             }else{ //댓글 작성
                 Log.d("commentInsert", "댓글을 작성")
                 if (key != null) {
                     Log.d("commentInsert", "댓글을 작성")
-                    //insertComment(key)
+                    insertComment(key)
                 }
             }
         }
