@@ -123,6 +123,7 @@
         android:id="@+id/recordRv"
         android:layout_width="388dp"
         android:layout_height="400dp"
+        android:layout_marginTop="25dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
