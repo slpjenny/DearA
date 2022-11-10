@@ -196,7 +196,7 @@
 
                 <ImageView
                     android:id="@+id/list2"
-                    android:layout_width="388dp"
+                    android:layout_width="match_parent"
                     android:layout_height="66dp"
                     android:background="@drawable/background_radius_record"
                     app:layout_constraintStart_toStartOf="parent"
