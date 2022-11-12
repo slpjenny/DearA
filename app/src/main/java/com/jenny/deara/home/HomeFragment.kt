@@ -28,6 +28,8 @@ import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
 import kotlinx.android.synthetic.main.calendar_item.*
 import kotlinx.android.synthetic.main.fragment_diary.*
+import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_home.view.*
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -185,6 +187,8 @@ class HomeFragment : Fragment() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 items.clear()
 
+                var count = 0
+
                 for (dataModel in dataSnapshot.children){
                     Log.d("todoList", dataModel.toString())
 
@@ -197,12 +201,23 @@ class HomeFragment : Fragment() {
                                 todokeyList.add(dataModel.key.toString())
                             }
                             Log.d(TAG, "todokeyList : " + todokeyList)
+
+
+
+                            // 체크 된 할일 목록에 따라 프로그레스바 설정
+                            if(item!!.check == true){
+                                count ++
+                            }
+
+                            var percent  = count * 100/items.size
+                            progressBar.progress = percent
+
                         }
                     }
                     Log.d (TAG, "todokey distinct : " + todokeyList)
-                    //items.reverse()
-                    //todokeyList
+
                     TodoAdapter.notifyDataSetChanged()
+
 
 
                 }
@@ -256,6 +271,7 @@ class HomeFragment : Fragment() {
                 Log.d(TAG, "itemclick month : " + month)
                 Log.d(TAG, "itemclick day : " + day2)
 
+                progressBar.progress = 0
 
                 initRecycler()
                 getFBTodoData(year,month,day2)
