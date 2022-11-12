@@ -294,10 +294,14 @@
                                     android:id="@+id/calendarRv"
                                     android:layout_width="match_parent"
                                     android:layout_height="285dp"
+                                    android:layout_marginStart="20dp"
+                                    android:layout_marginEnd="20dp"
                                     android:nestedScrollingEnabled="false"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toTopOf="parent">
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    tools:itemCount="5"
+                                    tools:listitem="@layout/calendar_item">
 
                                 </androidx.recyclerview.widget.RecyclerView>
                             </androidx.constraintlayout.widget.ConstraintLayout>
