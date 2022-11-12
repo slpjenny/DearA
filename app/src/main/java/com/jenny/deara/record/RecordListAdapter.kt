@@ -14,6 +14,7 @@ class RecordListAdapter(val context: Context, val recordList : MutableList<Strin
 
     var datas = mutableListOf<RecordData>()
 
+
     // 뷰 홀더가 처음 생성될 때
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecordListAdapter.ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.recordlist_item, parent,false)
