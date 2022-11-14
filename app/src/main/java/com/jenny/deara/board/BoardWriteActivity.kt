@@ -109,11 +109,19 @@ class BoardWriteActivity : AppCompatActivity() {
         }
 
         binding.saveBtn.setOnClickListener {
-            if(route == "edit"){  // 수정페이지
-                saveFBBoardData(key)
-            }else{ // 글 작성 페이지
-                key = FBRef.diaryRef.push().key.toString()
-                saveFBBoardData(key)
+            if(binding.titleArea.text.toString() == ""){
+                Toast.makeText(this, "제목을 입력하세요.", Toast.LENGTH_LONG).show()
+                Log.d("nullCheck", "제목을 입력하세요")
+            }else if(binding.contentArea.text.toString() == ""){
+                Toast.makeText(this, "내용을 입력하세요.", Toast.LENGTH_LONG).show()
+                Log.d("nullCheck", "내용을 입력하세요")
+            }else{
+                if(route == "edit"){  // 수정페이지
+                    saveFBBoardData(key)
+                }else{ // 글 작성 페이지
+                    key = FBRef.diaryRef.push().key.toString()
+                    saveFBBoardData(key)
+                }
             }
         }
 

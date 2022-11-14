@@ -107,7 +107,8 @@ class CommentListAdapter(val context: Context, var commentKeyList: MutableList<S
                 }
 
                 val noButton = mDialogView.findViewById<View>(R.id.delBtn)
-                noButton.setOnClickListener { // 삭제버튼 클릭 이벤트
+                noButton.setOnClickListener {
+                    // 삭제버튼 클릭 이벤트
                     FBRef.commentRef.child(commentKeyList[position]).removeValue()
                     Toast.makeText(context, "삭제완료", Toast.LENGTH_LONG).show()
                     mDialogView.dismiss()
