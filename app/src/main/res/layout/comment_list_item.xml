@@ -87,14 +87,14 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/editBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="5dp"
-                android:text="수정"
-                android:textColor="@color/board_menu_gray"
-                android:textSize="10sp" />
+<!--            <TextView-->
+<!--                android:id="@+id/editBtn"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginEnd="5dp"-->
+<!--                android:text="수정"-->
+<!--                android:textColor="@color/board_menu_gray"-->
+<!--                android:textSize="10sp" />-->
 
             <TextView
                 android:id="@+id/delBtn"

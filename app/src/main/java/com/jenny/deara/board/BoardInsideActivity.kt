@@ -19,6 +19,7 @@ import android.view.Window
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -70,12 +71,12 @@ class BoardInsideActivity : AppCompatActivity() {
             getImageData(key)
             initRecycler()
             getCommentData(key)
-            Log.d("commentkey","${commentKeyList.toString()}")
+            Log.d("commentkey", commentKeyList.toString())
         }
 
         //local
-        //initRecycler()
-        //getCommentData("test")
+//        initRecycler()
+//        getCommentData("test")
 
         binding.backBtn.setOnClickListener {
             finish()
@@ -135,7 +136,7 @@ class BoardInsideActivity : AppCompatActivity() {
                         dialogFlag = true
                         val mDialogView = Dialog(this@BoardInsideActivity)
                         mDialogView.setContentView(R.layout.comment_popup)
-                        mDialogView?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                        mDialogView.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
                         mDialogView.show()
 
