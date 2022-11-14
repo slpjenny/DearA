@@ -13,6 +13,7 @@ import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
+import android.view.RoundedCorner
 import android.view.View
 import android.view.Window
 import android.view.inputmethod.InputMethodManager
@@ -26,6 +27,9 @@ import androidx.core.view.setMargins
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -224,19 +228,22 @@ class BoardInsideActivity : AppCompatActivity() {
         listRef.listAll()
             .addOnSuccessListener { (items) ->
 
-                val getImage = ImageView(this)
-                val imageLayoutParams = LinearLayout.LayoutParams(changeDP(150), changeDP(150))
-                imageLayoutParams.setMargins(changeDP(3))
-                getImage.layoutParams = imageLayoutParams
-                getImage.setBackgroundResource(R.drawable.corner)
-                getImage.clipToOutline = true
-                binding.imageArea.addView(imageArea)
+                //binding.imageArea.visibility = View.VISIBLE
                 items.forEach { item ->
+                    val getImage = ImageView(this)
+                    val imageLayoutParams = LinearLayout.LayoutParams(changeDP(150), changeDP(150))
+                    imageLayoutParams.setMargins(changeDP(3))
+                    getImage.layoutParams = imageLayoutParams
+                    getImage.setBackgroundResource(R.drawable.corner)
+                    getImage.clipToOutline = true
+                    binding.imageArea.addView(getImage)
                     item.downloadUrl.addOnCompleteListener { task ->
                         if (task.isSuccessful) {
                             // Glide 이용하여 이미지뷰에 로딩
                             Glide.with(this)
                                 .load(task.result)
+                                .override(changeDP(150),changeDP(150))
+                                .transform(CenterCrop(), RoundedCorners( 10))
                                 .into(getImage)
                         } else {
                             Log.d("getImageLog", "task.Failure")
@@ -246,7 +253,7 @@ class BoardInsideActivity : AppCompatActivity() {
             }
             .addOnFailureListener {
                 // Uh-oh, an error occurred!
-                binding.imageArea.isVisible = false
+                binding.imageArea.visibility = View.GONE
                 Log.d("getImageLog", "Failure")
             }
     }
