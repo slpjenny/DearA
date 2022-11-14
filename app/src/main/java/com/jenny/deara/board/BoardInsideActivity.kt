@@ -19,6 +19,7 @@ import android.view.Window
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -70,12 +71,12 @@ class BoardInsideActivity : AppCompatActivity() {
             getImageData(key)
             initRecycler()
             getCommentData(key)
-            Log.d("commentkey","${commentKeyList.toString()}")
+            Log.d("commentkey", commentKeyList.toString())
         }
 
         //local
-        //initRecycler()
-        //getCommentData("test")
+        initRecycler()
+        getCommentData("test")
 
         binding.backBtn.setOnClickListener {
             finish()
@@ -135,7 +136,7 @@ class BoardInsideActivity : AppCompatActivity() {
                         dialogFlag = true
                         val mDialogView = Dialog(this@BoardInsideActivity)
                         mDialogView.setContentView(R.layout.comment_popup)
-                        mDialogView?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                        mDialogView.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
                         mDialogView.show()
 
@@ -292,42 +293,42 @@ class BoardInsideActivity : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     fun getCommentData(key : String){
 
-        val postListener = object : ValueEventListener {
-            @SuppressLint("NotifyDataSetChanged")
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-
-                commentList.clear()
-                commentKeyList.clear()
-
-                for (dataModel in dataSnapshot.children) {
-
-                    val item = dataModel.getValue(CommentModel::class.java)
-                    commentList.add(item!!)
-                    commentKeyList.add(dataModel.key.toString())
-                    Log.d("getCommentLog", "{${commentKeyList}}")
-
-                    //getCommentReply(dataModel.key.toString()) //대댓글 리스트에 내용을 담는다.
-                }
-                CommentListAdapter.notifyDataSetChanged()
-            }
-
-            override fun onCancelled(databaseError: DatabaseError) {
-                // Getting Post failed, log a message
-                Log.w("getCommentData", "loadPost:onCancelled", databaseError.toException())
-            }
-        }
-        FBRef.commentRef.child(key).addValueEventListener(postListener)
+//        val postListener = object : ValueEventListener {
+//            @SuppressLint("NotifyDataSetChanged")
+//            override fun onDataChange(dataSnapshot: DataSnapshot) {
+//
+//                commentList.clear()
+//                commentKeyList.clear()
+//
+//                for (dataModel in dataSnapshot.children) {
+//
+//                    val item = dataModel.getValue(CommentModel::class.java)
+//                    commentList.add(item!!)
+//                    commentKeyList.add(dataModel.key.toString())
+//                    Log.d("getCommentLog", "{${commentKeyList}}")
+//
+//                    //getCommentReply(dataModel.key.toString()) //대댓글 리스트에 내용을 담는다.
+//                }
+//                CommentListAdapter.notifyDataSetChanged()
+//            }
+//
+//            override fun onCancelled(databaseError: DatabaseError) {
+//                // Getting Post failed, log a message
+//                Log.w("getCommentData", "loadPost:onCancelled", databaseError.toException())
+//            }
+//        }
+//        FBRef.commentRef.child(key).addValueEventListener(postListener)
 
         //test data//
-//        commentList.add(CommentModel("댓글입니다.","uid","2022/11/07 21:28"))
-//        commentList.add(CommentModel("두번째 댓글입니다.","uid","2022/11/07 21:28"))
-//        commentList.add(CommentModel("세번째 댓글입니다.","uid","2022/11/07 21:28"))
-//        commentList.add(CommentModel("네번째 댓글입니다.","uid","2022/11/07 21:28"))
-//
-//        commentKeyList.add("1")
-//        commentKeyList.add("2")
-//        commentKeyList.add("3")
-//        commentKeyList.add("4")
+        commentList.add(CommentModel("댓글입니다.","uid","2022/11/07 21:28"))
+        commentList.add(CommentModel("두번째 댓글입니다.","uid","2022/11/07 21:28"))
+        commentList.add(CommentModel("세번째 댓글입니다.","uid","2022/11/07 21:28"))
+        commentList.add(CommentModel("네번째 댓글입니다.","uid","2022/11/07 21:28"))
+
+        commentKeyList.add("1")
+        commentKeyList.add("2")
+        commentKeyList.add("3")
+        commentKeyList.add("4")
 
         //binding.commentNum.text = CommentListAdapter.itemCount.toString() + CommentListAdapter.getReplyItemCount()
     }
