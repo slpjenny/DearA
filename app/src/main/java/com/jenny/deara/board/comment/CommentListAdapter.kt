@@ -128,29 +128,29 @@ class CommentListAdapter(val context: Context, var commentKeyList: MutableList<S
 
     private fun getCommentReply(commentKey: String) {
         // 파이어베이스에 대댓글 리스트 담기
-//        val postListener = object : ValueEventListener {
-//            @SuppressLint("NotifyDataSetChanged")
-//            override fun onDataChange(dataSnapshot: DataSnapshot) {
-//
-//                datasReply.clear()
-//
-//                for (dataModel in dataSnapshot.children) {
-//
-//                    val item = dataModel.getValue(CommentModel::class.java)
-//                    datasReply.add(item!!)
-//                }
-//            }
-//
-//            override fun onCancelled(databaseError: DatabaseError) {
-//                // Getting Post failed, log a message
-//                Log.w("getCommentData", "loadPost:onCancelled", databaseError.toException())
-//            }
-//        }
-//        FBRef.commentReplyRef.child(commentKey).addValueEventListener(postListener)
+        val postListener = object : ValueEventListener {
+            @SuppressLint("NotifyDataSetChanged")
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
 
-        datasReply.add(CommentModel("대댓글입니다.","uid","2022/11/07 21:28"))
-        datasReply.add(CommentModel("두번째 대댓글입니다. 엄청엄청 긴 댓글 입니다. 엄청엄청 긴 댓글 입니다. 엄청엄청 긴 댓글 입니다. 엄청엄청 긴 댓글 입니다.","uid","2022/11/07 21:28"))
-        datasReply.add(CommentModel("세번째 대댓글입니다.","uid","2022/11/07 21:28"))
+                datasReply.clear()
+
+                for (dataModel in dataSnapshot.children) {
+
+                    val item = dataModel.getValue(CommentModel::class.java)
+                    datasReply.add(item!!)
+                }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Getting Post failed, log a message
+                Log.w("getCommentData", "loadPost:onCancelled", databaseError.toException())
+            }
+        }
+        FBRef.commentReplyRef.child(commentKey).addValueEventListener(postListener)
+
+//        datasReply.add(CommentModel("대댓글입니다.","uid","2022/11/07 21:28"))
+//        datasReply.add(CommentModel("두번째 대댓글입니다. 엄청엄청 긴 댓글 입니다. 엄청엄청 긴 댓글 입니다. 엄청엄청 긴 댓글 입니다. 엄청엄청 긴 댓글 입니다.","uid","2022/11/07 21:28"))
+//        datasReply.add(CommentModel("세번째 대댓글입니다.","uid","2022/11/07 21:28"))
 
         // 여기서 갯수를 리스트를 반환
         size = datasReply.size
