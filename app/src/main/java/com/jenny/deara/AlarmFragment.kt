@@ -12,30 +12,22 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.gms.tasks.Task
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
-import com.jenny.deara.alarm.AlarmData
-import com.jenny.deara.alarm.AlarmDialog
-import com.jenny.deara.alarm.AlarmListAdapter
-import com.jenny.deara.alarm.AlertReceiver
+import com.jenny.deara.alarm.*
 import com.jenny.deara.databinding.FragmentAlarmBinding
 import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
 import kotlinx.android.synthetic.main.alarm_dialog.*
 import java.security.SecureRandom
 import java.util.*
-import kotlin.properties.Delegates
 
-
-class AlarmFragment : Fragment() {
+class AlarmFragment : Fragment(), OnClickInterface {
 
     private lateinit var binding: FragmentAlarmBinding
 
@@ -59,10 +51,12 @@ class AlarmFragment : Fragment() {
         getFBAlarmData()
         initRecycler()
         startAlarm()
+        var OnOff = updateOnOff()
 
         var alarmIdList = addAlarmID()
         val secureRandom = SecureRandom()
         var alarmId: Int = secureRandom.nextInt()
+
 
         // 마이페이지 버튼
         binding.myPageBtn.setOnClickListener {
@@ -74,6 +68,7 @@ class AlarmFragment : Fragment() {
         binding.addAlarmBtn.setOnClickListener {
             var uid = FBAuth.getUid()
             var key = FBRef.alarmRef.push().key.toString()
+
 
             val dialog = AlarmDialog()
             dialog.show(parentFragmentManager, "CustomDialog")
@@ -117,7 +112,7 @@ class AlarmFragment : Fragment() {
 
                     FBRef.alarmRef
                         .child(key)
-                        .setValue(AlarmData(time, title, day, uid, alarmId))
+                        .setValue(AlarmData(time, title, day, uid, alarmId, true))
 
                 }
 
@@ -133,7 +128,7 @@ class AlarmFragment : Fragment() {
 
                 val dialog = AlarmDialog()
                 val key = alarmkeyList[position]
-                var alarmID by Delegates.notNull<Int>()
+                var alarmID = 0
                 dialog.show(parentFragmentManager, "CustomDialog")
 
                 // 이전 데이터 띄우기
@@ -255,7 +250,7 @@ class AlarmFragment : Fragment() {
 
                         FBRef.alarmRef
                             .child(key)
-                            .setValue(AlarmData(time, title, day, uid, alarmID))
+                            .setValue(AlarmData(time, title, day, uid, alarmID, true))
                     }
 
                 })
@@ -265,9 +260,19 @@ class AlarmFragment : Fragment() {
         return binding.root
     }
 
+    private fun updateOnOff() {
+
+        AlarmListAdapter.setOnClickedListener(object: AlarmListAdapter.SwitchClickListener {
+            override fun onClicked(position: Int, OnOff: Boolean) {
+                val key = alarmkeyList[position]
+                val onOff = OnOff
+                FBRef.alarmRef.child(key).child("OnOff").setValue(onOff)
+            }
+        })
+    }
+
     private fun addAlarmID(): ArrayList<Int> {
         var alarmIdList = ArrayList<Int>()
-
 
         val postListener = object : ValueEventListener {
             @SuppressLint("NotifyDataSetChanged")
@@ -301,7 +306,7 @@ class AlarmFragment : Fragment() {
                     val item = dataModel.getValue(AlarmData::class.java)
                     if(FBAuth.getUid() == item!!.uid && item != null) {
 
-                        requireActivity().runOnUiThread {
+                        requireActivity()?.runOnUiThread {
 
                             var alarmId = item.alarmId
                             var alarmManager: AlarmManager = requireActivity().getSystemService(Context.ALARM_SERVICE) as AlarmManager
@@ -327,7 +332,7 @@ class AlarmFragment : Fragment() {
                                 cTime += interval
                             }
 
-                            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, cTime, interval.toLong(), pendingIntent)
+                            alarmManager.setExact(AlarmManager.RTC_WAKEUP, cTime,pendingIntent)
                         }
                     }
 
@@ -360,7 +365,7 @@ class AlarmFragment : Fragment() {
 
     @SuppressLint("NotifyDataSetChanged")
     private fun initRecycler() {
-        AlarmListAdapter = AlarmListAdapter(requireContext(), alarmkeyList)
+        AlarmListAdapter = AlarmListAdapter(requireContext(), alarmkeyList, this)
 
         val rv : RecyclerView = binding.rvAlarm
         rv.adapter= AlarmListAdapter
