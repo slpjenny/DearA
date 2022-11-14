@@ -70,6 +70,7 @@ class BoardInsideActivity : AppCompatActivity() {
             getImageData(key)
             initRecycler()
             getCommentData(key)
+            Log.d("commentkey","${commentKeyList.toString()}")
         }
 
         //local
@@ -119,12 +120,13 @@ class BoardInsideActivity : AppCompatActivity() {
         CommentListAdapter.setOnItemClickListener(object: CommentListAdapter.OnItemClickListener{
             @SuppressLint("ServiceCast", "ClickableViewAccessibility")
             override fun onItemClick(v: View, position: Int) {
-                view.findViewById<View>(R.id.Area1).setBackgroundColor(Color.parseColor("#EFF1FF"))
+                v.findViewById<View>(R.id.Area1).setBackgroundColor(Color.parseColor("#EFF1FF"))
                 // 대댓글 작성하기
                 commentReplyOn = true
                 binding.commentArea.requestFocus()
                 imm.showSoftInput(binding.commentArea, InputMethodManager.SHOW_IMPLICIT)
                 binding.commentArea.hint = "답글을 입력해주세요"
+                getCommentKey = commentKeyList[position]
 
                 Log.d("TouchTest", "click comment : $commentReplyOn")
                 binding.main.setOnTouchListener { v, event ->
@@ -150,7 +152,7 @@ class BoardInsideActivity : AppCompatActivity() {
                             hideKeyboard()
                             binding.commentArea.text = null
                             binding.commentArea.hint = "댓글을 입력해주세요"
-                            view.findViewById<View>(R.id.Area1).setBackgroundColor(Color.parseColor("#00FF0000"))
+                            v.findViewById<View>(R.id.Area1).setBackgroundColor(Color.parseColor("#00FF0000"))
                             mDialogView.dismiss()
                             dialogFlag = false
                         }
@@ -295,12 +297,15 @@ class BoardInsideActivity : AppCompatActivity() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
                 commentList.clear()
+                commentKeyList.clear()
 
                 for (dataModel in dataSnapshot.children) {
 
                     val item = dataModel.getValue(CommentModel::class.java)
                     commentList.add(item!!)
                     commentKeyList.add(dataModel.key.toString())
+                    Log.d("getCommentLog", "{${commentKeyList}}")
+
                     //getCommentReply(dataModel.key.toString()) //대댓글 리스트에 내용을 담는다.
                 }
                 CommentListAdapter.notifyDataSetChanged()
