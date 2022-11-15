@@ -30,7 +30,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.bumptech.glide.request.RequestOptions
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -46,7 +45,6 @@ import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
 import kotlinx.android.synthetic.main.activity_board_inside.*
 import kotlinx.android.synthetic.main.fragment_board_popup.*
-import kotlin.properties.Delegates
 
 class BoardInsideActivity : AppCompatActivity() {
 
@@ -214,6 +212,9 @@ class BoardInsideActivity : AppCompatActivity() {
                 if (dataModel != null) {
                     if (dataModel.uid == FBAuth.getUid()){
                         binding.popupBtn.visibility = View.VISIBLE
+                    }
+                    else if (dataModel.uid != FBAuth.getUid()){
+                        binding.shingoBtn.visibility = View.VISIBLE
                     }
                 }
             }
