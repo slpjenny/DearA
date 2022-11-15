@@ -169,6 +169,7 @@
         <entry key="app/src/main/res/layout/diary_list_item.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_alarm.xml" value="0.190625" />
         <entry key="app/src/main/res/layout/fragment_board_alarm.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_board_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_board_popup.xml" value="0.2713541666666667" />
         <entry key="app/src/main/res/layout/fragment_board_shingo.xml" value="0.2713541666666667" />
         <entry key="app/src/main/res/layout/fragment_contact_us.xml" value="0.2833333333333333" />
