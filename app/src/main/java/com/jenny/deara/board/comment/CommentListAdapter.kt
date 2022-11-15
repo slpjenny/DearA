@@ -24,7 +24,7 @@ import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
 import kotlin.properties.Delegates
 
-class CommentListAdapter(val context: Context, var commentKeyList: MutableList<String>) : RecyclerView.Adapter<CommentListAdapter.ViewHolder>() {
+class CommentListAdapter(val context: Context, var commentKeyList: MutableList<String>, val boardKey: String) : RecyclerView.Adapter<CommentListAdapter.ViewHolder>() {
 
     var datas = mutableListOf<CommentModel>()
     var reply by Delegates.notNull<Int>()
@@ -109,7 +109,7 @@ class CommentListAdapter(val context: Context, var commentKeyList: MutableList<S
                 val noButton = mDialogView.findViewById<View>(R.id.delBtn)
                 noButton.setOnClickListener {
                     // 삭제버튼 클릭 이벤트
-                    FBRef.commentRef.child(commentKeyList[position]).removeValue()
+                    FBRef.commentRef.child(boardKey).child(commentKeyList[position]).removeValue()
                     Toast.makeText(context, "삭제완료", Toast.LENGTH_LONG).show()
                     mDialogView.dismiss()
                 }

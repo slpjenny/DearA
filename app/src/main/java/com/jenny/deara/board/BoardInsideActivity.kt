@@ -69,7 +69,7 @@ class BoardInsideActivity : AppCompatActivity() {
         if (key != null) {
             getBoardData(key)
             getImageData(key)
-            initRecycler()
+            initRecycler(key)
             getCommentData(key)
             Log.d("commentkey", commentKeyList.toString())
         }
@@ -94,10 +94,12 @@ class BoardInsideActivity : AppCompatActivity() {
         }
 
 
+        // 댓글 작성
         binding.commentBtn.setOnClickListener {
             if (commentReplyOn){ // 대댓글 작성
                 Log.d("commentInsert", "답글을 작성 : $getCommentKey")
-                insertComment(getCommentKey)
+                insertReComment(getCommentKey)
+                commentReplyOn = false
             }else{ //댓글 작성
                 Log.d("commentInsert", "댓글을 작성")
                 if (key != null) {
@@ -114,8 +116,8 @@ class BoardInsideActivity : AppCompatActivity() {
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    private fun initRecycler() {
-        CommentListAdapter = CommentListAdapter(this, commentKeyList)
+    private fun initRecycler(boardKey: String) {
+        CommentListAdapter = CommentListAdapter(this, commentKeyList, boardKey)
         val imm: InputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
 
         CommentListAdapter.setOnItemClickListener(object: CommentListAdapter.OnItemClickListener{
@@ -269,8 +271,8 @@ class BoardInsideActivity : AppCompatActivity() {
 
     private fun insertComment(key: String){
         // comment
-        //   - BoardKey (Commentkey)
-        //        - CommentKey (reCommentKey)
+        //   - BoardKey
+        //        - CommentKey
         //            - CommentData
         //            - CommentData
         //            - CommentData
@@ -286,6 +288,29 @@ class BoardInsideActivity : AppCompatActivity() {
             )
 
         Toast.makeText(this, "댓글 입력 완료", Toast.LENGTH_SHORT).show()
+        binding.commentArea.setText("")
+    }
+
+    // 답글
+    private fun insertReComment(key: String){
+        // commentReply
+        //   - CommentKey
+        //        - reCommentKey
+        //            - CommentData
+        //            - CommentData
+        //            - CommentData
+        FBRef.commentReplyRef
+            .child(key)
+            .push()
+            .setValue(
+                CommentModel(
+                    binding.commentArea.text.toString(),
+                    FBAuth.getUid(),
+                    FBAuth.getTimeBoard()
+                )
+            )
+
+        Toast.makeText(this, "답글 입력 완료", Toast.LENGTH_SHORT).show()
         binding.commentArea.setText("")
     }
 
