@@ -99,7 +99,6 @@ class BoardInsideActivity : AppCompatActivity() {
             if (commentReplyOn){ // 대댓글 작성
                 Log.d("commentInsert", "답글을 작성 : $getCommentKey")
                 insertReComment(getCommentKey)
-                commentReplyOn = false
             }else{ //댓글 작성
                 Log.d("commentInsert", "댓글을 작성")
                 if (key != null) {
@@ -312,6 +311,8 @@ class BoardInsideActivity : AppCompatActivity() {
 
         Toast.makeText(this, "답글 입력 완료", Toast.LENGTH_SHORT).show()
         binding.commentArea.setText("")
+        commentReplyOn = false
+        binding.commentArea.hint = "댓글을 입력해주세요"
     }
 
     // 댓글 가져오기
