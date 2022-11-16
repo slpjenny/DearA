@@ -40,6 +40,7 @@ import com.jenny.deara.MyPageActivity
 import com.jenny.deara.R
 import com.jenny.deara.board.comment.CommentListAdapter
 import com.jenny.deara.board.comment.CommentModel
+import com.jenny.deara.board.report.ReportActivity
 import com.jenny.deara.databinding.ActivityBoardInsideBinding
 import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
@@ -89,6 +90,11 @@ class BoardInsideActivity : AppCompatActivity() {
             if (key != null) {
                 BoardPopupFragment(key).show(supportFragmentManager, "SampleDialog")
             }
+        }
+
+        binding.shingoBtn.setOnClickListener {
+            val intent = Intent(this, ReportActivity::class.java)
+            startActivity(intent)
         }
 
 
