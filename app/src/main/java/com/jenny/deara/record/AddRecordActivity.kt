@@ -2,13 +2,19 @@ package com.jenny.deara.record
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.Context
 import android.content.pm.PackageManager
 import android.media.MediaPlayer
 import android.media.MediaRecorder
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.appcompat.app.ActionBar
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.common.wrappers.Wrappers.packageManager
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -22,6 +28,7 @@ import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
 import java.util.*
 import java.util.jar.Manifest
+
 
 class AddRecordActivity : AppCompatActivity() {
 
@@ -69,7 +76,6 @@ class AddRecordActivity : AppCompatActivity() {
             chooseDate()
         }
 
-
         // 시간 선택하기
         binding.timeBtn.setOnClickListener {
             choosetime()
@@ -80,6 +86,18 @@ class AddRecordActivity : AppCompatActivity() {
         binding.saveBtn.setOnClickListener {
             saveFBDiaryData()
         }
+
+        // 복용 약 추가
+        binding.addPillBtn.setOnClickListener{
+            val layoutInflater = this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+
+            val customLayout = layoutInflater.inflate(R.layout.pilllist_item,null)
+
+            binding.pillLayout.addView(customLayout)
+
+
+        }
+
 
         // 뒤로가기 버튼
         binding.backBtn.setOnClickListener {
@@ -152,6 +170,7 @@ class AddRecordActivity : AppCompatActivity() {
 
         finish()
     }
+
 
     // 어떤 permission을 요청할 것인가
     // 어떤 request 결과를 받을것인지 requestCode 지정

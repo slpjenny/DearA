@@ -172,6 +172,7 @@
         <entry key="app/src/main/res/layout/fragment_record_end.xml" value="0.3202285766601563" />
         <entry key="app/src/main/res/layout/fregment_swipe_delete.xml" value="0.1" />
         <entry key="app/src/main/res/layout/pill_record_item.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/pilllist_item.xml" value="0.375" />
         <entry key="app/src/main/res/layout/pop_up.xml" value="0.29739583333333336" />
         <entry key="app/src/main/res/layout/recordlist_item.xml" value="0.335" />
         <entry key="app/src/main/res/layout/recordremove_dialog.xml" value="0.25052083333333336" />
