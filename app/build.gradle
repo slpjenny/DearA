@@ -46,7 +46,10 @@ android {
     buildFeatures {
         viewBinding true
     }
-
+    //manifest 오류 해결
+    lintOptions {
+        disable "Instantiatable"
+    }
 }
 
 dependencies {
@@ -99,5 +102,8 @@ dependencies {
 
     //스위치 상태 저장
     implementation 'androidx.preference:preference:1.1.0-alpha01'
+    // 스크린샷 탐지
+    implementation 'com.akexorcist:screenshot-detection:1.0.2'
+
 
 }

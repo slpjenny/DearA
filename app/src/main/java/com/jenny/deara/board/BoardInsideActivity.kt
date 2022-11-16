@@ -11,7 +11,11 @@ import android.text.Editable
 import android.text.Layout
 import android.text.TextWatcher
 import android.util.Log
-import android.view.*
+import android.view.LayoutInflater
+import android.view.MotionEvent
+import android.view.RoundedCorner
+import android.view.View
+import android.view.Window
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -58,8 +62,6 @@ class BoardInsideActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_board_inside)
-        //캡쳐 방지
-        window.addFlags(WindowManager.LayoutParams.FLAG_SECURE)
 
         val key = intent.getStringExtra("key")
         if (key != null) {
