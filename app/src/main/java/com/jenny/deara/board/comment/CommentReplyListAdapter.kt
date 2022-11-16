@@ -1,6 +1,7 @@
 package com.jenny.deara.board.comment
 
 import android.app.Dialog
+import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
@@ -13,7 +14,9 @@ import com.jenny.deara.R
 import com.jenny.deara.databinding.CommentReplyListItemBinding
 import com.jenny.deara.utils.FBRef
 
-class CommentReplyListAdapter (private val datas: MutableList<CommentModel>) : RecyclerView.Adapter<CommentReplyListAdapter.ViewHolder>() {
+class CommentReplyListAdapter (val context: Context,
+                               private val datas: MutableList<CommentModel>,
+                               private var commentReplyKeyList: MutableList<String>) : RecyclerView.Adapter<CommentReplyListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = CommentReplyListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -32,29 +35,29 @@ class CommentReplyListAdapter (private val datas: MutableList<CommentModel>) : R
             binding.commentContent.text = item.content
             binding.commentTime.text = item.time
             binding.commentWriter.text = "작성자"
-//            binding.delBtn.setOnClickListener {
-//                // popup
-//                val mDialogView = Dialog(context)
-//                mDialogView.setContentView(R.layout.comment_popup)
-//                mDialogView.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-//
-//                mDialogView.show()
-//
-//                val cancel = mDialogView.findViewById<View>(R.id.cancelBtn)
-//                cancel.setOnClickListener {
-//                    mDialogView.dismiss()
-//                }
-//
-//                val noButton = mDialogView.findViewById<View>(R.id.delBtn)
-//                noButton.setOnClickListener {
-//                    // 삭제버튼 클릭 이벤트
-//                    FBRef.commentRef.child(boardKey).child(commentKeyList[position]).removeValue()
-//                    Toast.makeText(getContext, "삭제완료", Toast.LENGTH_LONG).show()
-//                    mDialogView.dismiss()
-//                }
-//            }
-//            }
             //uid.text = FBAuth.getNick(item.uid)
+
+            binding.delBtn.setOnClickListener {
+                // popup
+                val mDialogView = Dialog(context)
+                mDialogView.setContentView(R.layout.comment_popup)
+                mDialogView.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+                mDialogView.show()
+
+                val cancel = mDialogView.findViewById<View>(R.id.cancelBtn)
+                cancel.setOnClickListener {
+                    mDialogView.dismiss()
+                }
+
+                val noButton = mDialogView.findViewById<View>(R.id.delBtn)
+                noButton.setOnClickListener {
+                    // 삭제버튼 클릭 이벤트
+                    FBRef.commentRef.child(commentReplyKeyList[position]).removeValue()
+                    Toast.makeText(context, "삭제완료", Toast.LENGTH_LONG).show()
+                    mDialogView.dismiss()
+                }
+            }
         }
     }
 }

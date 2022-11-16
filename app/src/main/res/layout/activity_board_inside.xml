@@ -109,7 +109,6 @@
                     android:layout_marginRight="10dp"
                     android:background="#B6B6B6"
                     app:layout_constraintTop_toBottomOf="@+id/titleArea" />
-
                 <TextView
                     android:id="@+id/boardTime"
                     android:layout_width="wrap_content"
@@ -127,7 +126,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginRight="13dp"
                     android:text="writer"
                     android:textColor="#747474"
                     android:textSize="15sp"
@@ -145,6 +144,19 @@
                     android:visibility="invisible"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/boardLineS" />
+
+                <TextView
+                    android:id="@+id/shingoBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="17dp"
+                    android:layout_marginEnd="13dp"
+                    android:gravity="left"
+                    android:text="신고"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/boardLineS" />
+
 
                 <LinearLayout
                     android:id="@+id/contentArea"
@@ -210,7 +222,6 @@
                         android:layout_height="20dp"
                         android:layout_marginTop="3dp"
                         android:src="@drawable/commentimg" />
-
                     <TextView
                         android:id="@+id/commentNum"
                         android:layout_width="wrap_content"

@@ -31,6 +31,7 @@ class CommentListAdapter(val context: Context, var commentKeyList: MutableList<S
     var replyCount : Int = 0
     var datasReply = mutableListOf<CommentModel>()
     var size : Int = 0
+    var commentReplyKeyList = mutableListOf<String>()
 
     // 커스텀 리스너
     interface OnItemClickListener{
@@ -88,7 +89,7 @@ class CommentListAdapter(val context: Context, var commentKeyList: MutableList<S
             Log.d("sizeRe", "size$size")
 
             rv.apply {
-                adapter = CommentReplyListAdapter(datasReply)
+                adapter = CommentReplyListAdapter(context, datasReply, commentReplyKeyList)
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
             }
 
@@ -109,7 +110,7 @@ class CommentListAdapter(val context: Context, var commentKeyList: MutableList<S
                 val noButton = mDialogView.findViewById<View>(R.id.delBtn)
                 noButton.setOnClickListener {
                     // 삭제버튼 클릭 이벤트
-                    FBRef.commentRef.child(boardKey).child(commentKeyList[position]).removeValue()
+                    FBRef.commentRef.child(commentKeyList[position]).removeValue()
                     Toast.makeText(context, "삭제완료", Toast.LENGTH_LONG).show()
                     mDialogView.dismiss()
                 }
@@ -137,7 +138,12 @@ class CommentListAdapter(val context: Context, var commentKeyList: MutableList<S
                 for (dataModel in dataSnapshot.children) {
 
                     val item = dataModel.getValue(CommentModel::class.java)
-                    datasReply.add(item!!)
+                    if (item != null) {
+                        if (item.parent == commentKey){
+                            datasReply.add(item!!)
+                            commentReplyKeyList.add(dataModel.key.toString())
+                        }
+                    }
                 }
             }
 
@@ -146,7 +152,7 @@ class CommentListAdapter(val context: Context, var commentKeyList: MutableList<S
                 Log.w("getCommentData", "loadPost:onCancelled", databaseError.toException())
             }
         }
-        FBRef.commentReplyRef.child(commentKey).addValueEventListener(postListener)
+        FBRef.commentReplyRef.addValueEventListener(postListener)
 
 //        datasReply.add(CommentModel("대댓글입니다.","uid","2022/11/07 21:28"))
 //        datasReply.add(CommentModel("두번째 대댓글입니다. 엄청엄청 긴 댓글 입니다. 엄청엄청 긴 댓글 입니다. 엄청엄청 긴 댓글 입니다. 엄청엄청 긴 댓글 입니다.","uid","2022/11/07 21:28"))
