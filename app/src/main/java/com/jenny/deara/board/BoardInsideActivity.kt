@@ -68,7 +68,6 @@ class BoardInsideActivity : AppCompatActivity() {
             getImageData(key)
             initRecycler(key)
             getCommentData(key)
-            Log.d("commentkey", commentKeyList.toString())
         }
 
         //local
@@ -100,8 +99,8 @@ class BoardInsideActivity : AppCompatActivity() {
         binding.commentBtn.setOnClickListener {
             if (commentReplyOn){ // 대댓글 작성
                 Log.d("commentInsert", "답글을 작성 : $getCommentKey")
-                insertReComment(getCommentKey)
-                commentReplyOn = false
+                insertComment(getCommentKey)
+
             }else{ //댓글 작성
                 Log.d("commentInsert", "댓글을 작성")
                 if (key != null) {
@@ -274,50 +273,56 @@ class BoardInsideActivity : AppCompatActivity() {
         return dp
     }
 
+    // 댓글 작성하기
     private fun insertComment(key: String){
         // comment
-        //   - BoardKey
         //        - CommentKey
         //            - CommentData
         //            - CommentData
         //            - CommentData
+        //            - parentKey
         FBRef.commentRef
-            .child(key)
             .push()
             .setValue(
                 CommentModel(
                     binding.commentArea.text.toString(),
                     FBAuth.getUid(),
-                    FBAuth.getTimeBoard()
+                    FBAuth.getTimeBoard(),
+                    key
                 )
             )
 
-        Toast.makeText(this, "댓글 입력 완료", Toast.LENGTH_SHORT).show()
+        if(commentReplyOn){
+            Toast.makeText(this, "답글 입력 완료", Toast.LENGTH_SHORT).show()
+        }else{
+            Toast.makeText(this, "댓글 입력 완료", Toast.LENGTH_SHORT).show()
+        }
+        commentReplyOn = false
         binding.commentArea.setText("")
     }
 
     // 답글
-    private fun insertReComment(key: String){
-        // commentReply
-        //   - CommentKey
-        //        - reCommentKey
-        //            - CommentData
-        //            - CommentData
-        //            - CommentData
-        FBRef.commentReplyRef
-            .child(key)
-            .push()
-            .setValue(
-                CommentModel(
-                    binding.commentArea.text.toString(),
-                    FBAuth.getUid(),
-                    FBAuth.getTimeBoard()
-                )
-            )
-
-        Toast.makeText(this, "답글 입력 완료", Toast.LENGTH_SHORT).show()
-        binding.commentArea.setText("")
-    }
+//    private fun insertReComment(key: String){
+//        // commentReply
+//        //   - CommentKey
+//        //        - reCommentKey
+//        //            - CommentData
+//        //            - CommentData
+//        //            - CommentData
+//        FBRef.commentReplyRef
+//            .child(key)
+//            .push()
+//            .setValue(
+//                CommentModel(
+//                    binding.commentArea.text.toString(),
+//                    FBAuth.getUid(),
+//                    FBAuth.getTimeBoard()
+//                )
+//            )
+//
+//        Toast.makeText(this, "답글 입력 완료", Toast.LENGTH_SHORT).show()
+//        binding.commentArea.setText("")
+//    }
 
     // 댓글 가져오기
     @SuppressLint("SetTextI18n")
@@ -333,8 +338,11 @@ class BoardInsideActivity : AppCompatActivity() {
                 for (dataModel in dataSnapshot.children) {
 
                     val item = dataModel.getValue(CommentModel::class.java)
-                    commentList.add(item!!)
-                    commentKeyList.add(dataModel.key.toString())
+                    if (item != null) {
+                        if (item.parent == key)
+                            commentList.add(item!!)
+                            commentKeyList.add(dataModel.key.toString())
+                    }
                     Log.d("getCommentLog", "{${commentKeyList}}")
 
                     //getCommentReply(dataModel.key.toString()) //대댓글 리스트에 내용을 담는다.
@@ -347,7 +355,7 @@ class BoardInsideActivity : AppCompatActivity() {
                 Log.w("getCommentData", "loadPost:onCancelled", databaseError.toException())
             }
         }
-        FBRef.commentRef.child(key).addValueEventListener(postListener)
+        FBRef.commentRef.addValueEventListener(postListener)
 
         //test data//
 //        commentList.add(CommentModel("댓글입니다.","uid","2022/11/07 21:28"))
