@@ -77,6 +77,10 @@ dependencies {
     //firebase realtime database
     implementation 'com.google.firebase:firebase-database-ktx'
 
+    //firebase dynamic links
+    implementation 'com.google.firebase:firebase-dynamic-links-ktx'
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+
     //지문 인식
     implementation 'androidx.biometric:biometric:1.2.0-alpha04'
 
