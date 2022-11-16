@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.jenny.deara.MyPageActivity
 import com.jenny.deara.R
+import com.jenny.deara.board.comment.CommentModel
 import com.jenny.deara.databinding.FragmentBoardMainBinding
 import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
@@ -36,6 +37,7 @@ class BoardMainFragment : Fragment() {
     var boardkeyList = mutableListOf<String>()
     var searchList = mutableListOf<BoardModel>()
     var searchKeyList = mutableListOf<String>()
+    var commentList = mutableListOf<CommentModel>()
     var menu: String = "boardList"
     var sort: String = "All"
 
@@ -66,6 +68,8 @@ class BoardMainFragment : Fragment() {
             startActivity(intent)
         }
 
+
+        //// menu ////
         binding.boardList.setOnClickListener {
             setText()
             binding.boardSearch.visibility = View.VISIBLE
@@ -99,14 +103,16 @@ class BoardMainFragment : Fragment() {
 
         binding.myComment.setOnClickListener {
             setText()
-//            menu = "myComment"
-//            getFBBoardData(menu)
+            menu = "myComment"
+            getCommentData()
             binding.boardSearch.visibility = View.GONE
             binding.menu2.visibility = View.GONE
             binding.myComment.background = context?.let { getDrawable(it, R.drawable.bottom_edge_bold) }
             binding.myComment.setTextColor(Color.BLACK)
         }
 
+
+        // sort //
         binding.sortAll.setOnClickListener {
             sort = "All"
             setSortText()
@@ -175,7 +181,7 @@ class BoardMainFragment : Fragment() {
 
     @SuppressLint("NotifyDataSetChanged")
     private fun initRecycler() {
-        BoardListAdapter = BoardListAdapter(requireContext(), boardkeyList)
+        BoardListAdapter = BoardListAdapter(requireContext(), boardkeyList, menu)
 
         val rv : RecyclerView = binding.rvBoard
         rv.adapter= BoardListAdapter
@@ -186,6 +192,7 @@ class BoardMainFragment : Fragment() {
 //        boardkeyList.add("sdfs")
 
         BoardListAdapter.datas = boardList
+        BoardListAdapter.myComments = commentList
         BoardListAdapter.notifyDataSetChanged()
     }
 
@@ -257,6 +264,37 @@ class BoardMainFragment : Fragment() {
             }
         }
         FBRef.boardRef.addValueEventListener(postListener)
+    }
+
+    // 댓글 가져오기
+    private fun getCommentData(){
+        menu = "myComment"
+        val postListener = object : ValueEventListener {
+            @SuppressLint("NotifyDataSetChanged")
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+
+                //boardList.clear()
+                commentList.clear()
+                //commentKeyList.clear()
+
+                for (dataModel in dataSnapshot.children) {
+
+                    val item = dataModel.getValue(CommentModel::class.java)
+                    commentList.add(item!!)
+                    //commentKeyList.add(dataModel.key.toString())
+                    //Log.d("getCommentLog", "{${commentKeyList}}")
+
+                    //getCommentReply(dataModel.key.toString()) //대댓글 리스트에 내용을 담는다.
+                }
+                BoardListAdapter.notifyDataSetChanged()
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Getting Post failed, log a message
+                Log.w("getCommentData", "loadPost:onCancelled", databaseError.toException())
+            }
+        }
+        FBRef.commentRef.addValueEventListener(postListener)
     }
 
     private fun setText(){
