@@ -13,7 +13,7 @@ android {
 
     defaultConfig {
         applicationId "com.jenny.deara"
-        minSdk 24
+        minSdk 26
         targetSdk 32
         versionCode 1
         versionName "1.0"
@@ -46,7 +46,10 @@ android {
     buildFeatures {
         viewBinding true
     }
-
+    //manifest 오류 해결
+    lintOptions {
+        disable "Instantiatable"
+    }
 }
 
 dependencies {
@@ -77,6 +80,10 @@ dependencies {
     //firebase realtime database
     implementation 'com.google.firebase:firebase-database-ktx'
 
+    //firebase dynamic links
+    implementation 'com.google.firebase:firebase-dynamic-links-ktx'
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+
     //지문 인식
     implementation 'androidx.biometric:biometric:1.2.0-alpha04'
 
@@ -95,5 +102,8 @@ dependencies {
 
     //스위치 상태 저장
     implementation 'androidx.preference:preference:1.1.0-alpha01'
+    // 스크린샷 탐지
+    implementation 'com.akexorcist:screenshot-detection:1.0.2'
+
 
 }

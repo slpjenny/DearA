@@ -50,17 +50,6 @@ class MyPageActivity : AppCompatActivity() {
         binding.yourEmail.setText(email)
 
 
-        // firebase 에서 닉네임 불러오기
-        if(user!=null) {
-            database.child("users").child(user.uid).get().addOnSuccessListener {
-                binding.yourNick.setText(it.value.toString() + " 님")
-                binding.yourNick.setTextColor(Color.BLACK)
-
-            }.addOnFailureListener {
-                binding.yourNick.setText("닉네임 정보 없음")
-                binding.yourNick.setTextColor(Color.BLACK)
-            }
-        }
 
         // 비밀번호 변경 페이지로 이동
         binding.changePwdtxt.setOnClickListener {
@@ -113,6 +102,28 @@ class MyPageActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
+    }
+
+    // 새로고침
+    override fun onResume() {
+        super.onResume()
+
+        // firebase 에서 이메일 불러오기
+        val user = auth.currentUser
+
+
+        // firebase 에서 닉네임 불러오기
+        if(user!=null) {
+            database.child("users").child(user.uid).get().addOnSuccessListener {
+                binding.yourNick.setText(it.value.toString() + " 님")
+                binding.yourNick.setTextColor(Color.BLACK)
+
+            }.addOnFailureListener {
+                binding.yourNick.setText("닉네임 정보 없음")
+                binding.yourNick.setTextColor(Color.BLACK)
+            }
+        }
+
     }
 
 
