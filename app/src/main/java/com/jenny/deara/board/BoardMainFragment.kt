@@ -4,43 +4,54 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.os.SystemClock
+import android.text.Editable
+import android.text.TextUtils
+import android.text.TextWatcher
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat.getColor
+import android.widget.Toast
 import androidx.core.content.ContextCompat.getDrawable
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import com.jenny.deara.MyPageActivity
 import com.jenny.deara.R
 import com.jenny.deara.databinding.FragmentBoardMainBinding
 import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
+import kotlinx.android.synthetic.main.fragment_board_main.*
+import java.util.*
 
 class BoardMainFragment : Fragment() {
 
     private lateinit var binding: FragmentBoardMainBinding
 
-//    private lateinit var auth: FirebaseAuth
-//    private lateinit var database: DatabaseReference
+    private val TAG = "BoardMainFragment"
 
     lateinit var BoardListAdapter: BoardListAdapter
 
-    val boardList = mutableListOf<BoardModel>()
-    val boardkeyList = mutableListOf<String>()
+
+    var boardList = mutableListOf<BoardModel>()
+    var boardkeyList = mutableListOf<String>()
+    var searchList = mutableListOf<BoardModel>()
+    var searchKeyList = mutableListOf<String>()
     var menu: String = "boardList"
     var sort: String = "All"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+//        binding.writeBtn.setOnSingleClickListener {
+//            Log.d(TAG, "클릭")
+//        }
     }
+
 
     @SuppressLint("ResourceAsColor")
     override fun onCreateView(
@@ -50,14 +61,18 @@ class BoardMainFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_board_main, container, false)
 
         initRecycler()
-        getFBBoardData(menu, sort)
+        getFBBoardData()
+        binding.searchBtn.setColorFilter(Color.parseColor("#F3F3F3"))
 
         binding.myPageBtn.setOnClickListener {
-            val intent = Intent(context, MyPageActivity::class.java)
+//            val intent = Intent(context, MyPageActivity::class.java)
+//            startActivity(intent)
+            val intent = Intent(context, BoardInsideActivity::class.java)
             startActivity(intent)
         }
 
-        binding.writeBtn.setOnClickListener {
+        binding.writeBtn.setOnSingleClickListener {
+            Log.d(TAG, "click")
             val intent = Intent(context, BoardWriteActivity::class.java)
             startActivity(intent)
         }
@@ -70,7 +85,7 @@ class BoardMainFragment : Fragment() {
             binding.boardList.setTextColor(Color.BLACK)
             menu = "boardList"
             sort = "All"
-            getFBBoardData(menu, sort)
+            getFBBoardData()
         }
 
         binding.boardAlarm.setOnClickListener {
@@ -90,7 +105,7 @@ class BoardMainFragment : Fragment() {
             binding.myBoard.background = context?.let { getDrawable(it, R.drawable.bottom_edge_bold) }
             binding.myBoard.setTextColor(Color.BLACK)
             menu = "myBoard"
-            getFBBoardData(menu, sort)
+            getFBBoardData()
         }
 
         binding.myComment.setOnClickListener {
@@ -108,6 +123,7 @@ class BoardMainFragment : Fragment() {
             setSortText()
             binding.sortAll.background = context?.let { getDrawable(it, R.drawable.radius_purple_right) }
             binding.sortAll.setTextColor(R.color.purple2)
+            getFBBoardData()
         }
 
         binding.sortFree.setOnClickListener {
@@ -115,6 +131,7 @@ class BoardMainFragment : Fragment() {
             setSortText()
             binding.sortFree.background = context?.let { getDrawable(it, R.drawable.radius_purple_right) }
             binding.sortFree.setTextColor(R.color.purple2)
+            getFBBoardData()
         }
 
         binding.sortQuestion.setOnClickListener {
@@ -122,6 +139,7 @@ class BoardMainFragment : Fragment() {
             setSortText()
             binding.sortQuestion.background = context?.let { getDrawable(it, R.drawable.radius_purple_right) }
             binding.sortQuestion.setTextColor(R.color.purple2)
+            getFBBoardData()
         }
 
         binding.sortInfor.setOnClickListener {
@@ -129,9 +147,40 @@ class BoardMainFragment : Fragment() {
             setSortText()
             binding.sortInfor.background = context?.let { getDrawable(it, R.drawable.radius_purple_right) }
             binding.sortInfor.setTextColor(R.color.purple2)
+            getFBBoardData()
         }
 
+        binding.searchET.addTextChangedListener(object : TextWatcher {
+                override fun afterTextChanged(p0: Editable?) {
 
+                }
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+                }
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                    if (binding.searchET.text.toString() == ""){
+                        binding.searchBtn.setColorFilter(Color.parseColor("#F3F3F3"))
+                        BoardListAdapter.setItems(boardList, boardkeyList)
+                    }else{
+                        binding.searchBtn.setColorFilter(Color.parseColor("#B8B8F0"))
+                        search(binding.searchET.text.toString())
+                    }
+                }
+            }
+        )
+
+        binding.delSearchBtn.setOnClickListener {
+            binding.searchET.text = null
+        }
+
+        binding.searchBtn.setOnClickListener {
+            if (TextUtils.isEmpty(binding.searchET.text)){
+                Log.d("searchTest", "입력 값 없음")
+            }else{
+                Log.d("searchTest", "not null + " + binding.searchET.text.toString())
+                search(binding.searchET.text.toString())
+            }
+        }
         return binding.root
     }
 
@@ -142,12 +191,17 @@ class BoardMainFragment : Fragment() {
         val rv : RecyclerView = binding.rvBoard
         rv.adapter= BoardListAdapter
 
+//        boardList.add(BoardModel("bb","bb","아이디","시간","자유"))
+//        boardList.add(BoardModel("aaa","bb","아이디","시간","자유"))
+//        boardkeyList.add("sdf")
+//        boardkeyList.add("sdfs")
+
         BoardListAdapter.datas = boardList
         BoardListAdapter.notifyDataSetChanged()
     }
 
     //파이어베이스 데이터 불러오기 _ 글 목록
-    private fun getFBBoardData(menu: String, sort: String){
+    private fun getFBBoardData(){
 
         val postListener = object : ValueEventListener {
             @SuppressLint("NotifyDataSetChanged")
@@ -162,7 +216,6 @@ class BoardMainFragment : Fragment() {
 
                     val item = dataModel.getValue(BoardModel::class.java)
                     if (menu == "boardList"){
-                        // 글 목록
                         if (item != null) {
                             when (sort) {
                                 "All" -> {
@@ -240,4 +293,20 @@ class BoardMainFragment : Fragment() {
         binding.sortQuestion.setBackgroundColor(Color.parseColor("#00ff0000"))
         binding.sortInfor.setBackgroundColor(Color.parseColor("#00ff0000"))
     }
+
+    // 검색
+    private fun search(searchText: String){
+        searchList.clear()
+        searchKeyList.clear()
+
+        for (a in 0 until boardList.size) {
+            if (boardList[a].title.lowercase().contains(searchText) || boardList[a].content.lowercase().contains(searchText)) {
+                searchList.add(boardList[a])
+                searchKeyList.add(boardkeyList[a])
+            }
+            BoardListAdapter.setItems(searchList, searchKeyList)
+        }
+    }
+
+
 }

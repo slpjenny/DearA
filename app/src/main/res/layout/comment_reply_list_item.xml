@@ -5,22 +5,38 @@
     android:id="@+id/boardComment"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:layout_margin="5dp">
+
+    <ImageView
+        android:id="@+id/imageView13"
+        android:layout_width="12dp"
+        android:layout_height="15dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/reply"
+        android:layout_marginStart="23dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/Area1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="3dp"
+        android:background="@drawable/corner"
+        android:backgroundTint="#F5F5F5"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView13"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/commentWriter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginStart="23dp"
+            android:layout_marginTop="15dp"
             android:text="nickName"
             android:textColor="@color/black"
             android:textSize="13sp"
@@ -45,11 +61,13 @@
             android:id="@+id/commentContent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
+            android:layout_marginStart="23dp"
             android:layout_marginTop="5dp"
+            android:layout_marginEnd="23dp"
             android:text="commentContent"
             android:textColor="@color/black"
             android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/commentWriter" />
 
@@ -57,44 +75,31 @@
             android:id="@+id/commentTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
+            android:layout_marginStart="23dp"
+            android:layout_marginBottom="@dimen/_16dp"
             android:text="commentTime"
             android:textColor="@color/board_menu_gray"
             android:textSize="10sp"
-            android:layout_marginBottom="18dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/commentContent" />
-
-        <TextView
-            android:id="@+id/replyBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:text="답글"
-            android:layout_marginBottom="18dp"
-            android:textColor="@color/board_menu_gray"
-            android:textSize="10sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/commentTime"
             app:layout_constraintTop_toBottomOf="@+id/commentContent" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
             android:layout_marginEnd="35dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-<!--            <TextView-->
-<!--                android:id="@+id/editBtn"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginEnd="5dp"-->
-<!--                android:text="수정"-->
-<!--                android:textColor="@color/board_menu_gray"-->
-<!--                android:textSize="10sp" />-->
+            <TextView
+                android:id="@+id/editBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:text="수정"
+                android:textColor="@color/board_menu_gray"
+                android:textSize="10sp" />
 
             <TextView
                 android:id="@+id/delBtn"
@@ -107,14 +112,5 @@
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvCommentReply"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Area1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
