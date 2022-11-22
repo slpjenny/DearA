@@ -97,17 +97,12 @@ class BoardInsideActivity : AppCompatActivity() {
 
         // 댓글 작성
         binding.commentBtn.setOnClickListener {
-            if (commentReplyOn){ // 대댓글 작성
-                Log.d("commentInsert", "답글을 작성 : $getCommentKey")
-                insertComment(getCommentKey)
-
-            }else{ //댓글 작성
-                Log.d("commentInsert", "댓글을 작성")
-                if (key != null) {
-                    Log.d("commentInsert", "댓글을 작성")
-                    insertComment(key)
-                }
-            }
+           if(!commentReplyOn){
+               Log.d("commentInsert", "댓글을 작성")
+               if (key != null) {
+                   insertComment(key, key)
+               }
+           }
         }
 
         Log.d("commentCount", CommentListAdapter.getAllItemCount().toString())
@@ -163,6 +158,16 @@ class BoardInsideActivity : AppCompatActivity() {
                     }
                     Log.d("TouchTest", "popup$commentReplyOn")
                     false
+                }
+
+                // 답글은 여기서 작성
+                binding.commentBtn.setOnClickListener{
+                    if (commentReplyOn){
+                        Log.d("commentInsert", "답글을 작성 : $getCommentKey")
+                        insertComment(getCommentKey, boardKey)
+                        binding.commentArea.hint = "댓글을 입력해주세요"
+                        v.findViewById<View>(R.id.Area1).setBackgroundColor(Color.parseColor("#00FF0000"))
+                    }
                 }
 
                 // 텍스트 입력부분 이벤트 처리
@@ -274,7 +279,7 @@ class BoardInsideActivity : AppCompatActivity() {
     }
 
     // 댓글 작성하기
-    private fun insertComment(key: String){
+    private fun insertComment(parentKey: String, key: String){
         // comment
         //        - CommentKey
         //            - CommentData
@@ -288,6 +293,7 @@ class BoardInsideActivity : AppCompatActivity() {
                     binding.commentArea.text.toString(),
                     FBAuth.getUid(),
                     FBAuth.getTimeBoard(),
+                    parentKey,
                     key
                 )
             )
@@ -300,29 +306,6 @@ class BoardInsideActivity : AppCompatActivity() {
         commentReplyOn = false
         binding.commentArea.setText("")
     }
-
-    // 답글
-//    private fun insertReComment(key: String){
-//        // commentReply
-//        //   - CommentKey
-//        //        - reCommentKey
-//        //            - CommentData
-//        //            - CommentData
-//        //            - CommentData
-//        FBRef.commentReplyRef
-//            .child(key)
-//            .push()
-//            .setValue(
-//                CommentModel(
-//                    binding.commentArea.text.toString(),
-//                    FBAuth.getUid(),
-//                    FBAuth.getTimeBoard()
-//                )
-//            )
-//
-//        Toast.makeText(this, "답글 입력 완료", Toast.LENGTH_SHORT).show()
-//        binding.commentArea.setText("")
-//    }
 
     // 댓글 가져오기
     @SuppressLint("SetTextI18n")

@@ -4,5 +4,6 @@ class CommentModel (
     val content : String = "",
     val uid : String = "",
     val time : String = "",
-    val parent : String = ""
+    val parent : String = "",
+    val boardKey : String = ""
 )
