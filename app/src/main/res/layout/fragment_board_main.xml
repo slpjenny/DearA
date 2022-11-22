@@ -253,9 +253,9 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvBoard"
         android:paddingTop="10dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
         android:paddingBottom="100dp"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

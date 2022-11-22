@@ -18,20 +18,19 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
-import com.jenny.deara.MyPageActivity
 import com.jenny.deara.R
 import com.jenny.deara.board.comment.CommentModel
+import com.jenny.deara.board.comment.MyCommentListAdapter
 import com.jenny.deara.databinding.FragmentBoardMainBinding
 import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
-import kotlinx.android.synthetic.main.fragment_board_main.*
-import java.util.*
 
 class BoardMainFragment : Fragment() {
 
     private lateinit var binding: FragmentBoardMainBinding
 
     lateinit var BoardListAdapter: BoardListAdapter
+    lateinit var myCommentListAdapter: MyCommentListAdapter
 
     var boardList = mutableListOf<BoardModel>()
     var boardkeyList = mutableListOf<String>()
@@ -74,11 +73,13 @@ class BoardMainFragment : Fragment() {
             setText()
             binding.boardSearch.visibility = View.VISIBLE
             binding.menu2.visibility = View.VISIBLE
+            binding.writeBtn.visibility = View.VISIBLE
             binding.boardList.background = context?.let { getDrawable(it, R.drawable.bottom_edge_bold) }
             binding.boardList.setTextColor(Color.BLACK)
             menu = "boardList"
             sort = "All"
             getFBBoardData()
+            initRecycler()
         }
 
         binding.boardAlarm.setOnClickListener {
@@ -95,18 +96,22 @@ class BoardMainFragment : Fragment() {
             setText()
             binding.boardSearch.visibility = View.GONE
             binding.menu2.visibility = View.GONE
+            binding.writeBtn.visibility = View.GONE
             binding.myBoard.background = context?.let { getDrawable(it, R.drawable.bottom_edge_bold) }
             binding.myBoard.setTextColor(Color.BLACK)
             menu = "myBoard"
             getFBBoardData()
+            initRecycler()
         }
 
         binding.myComment.setOnClickListener {
             setText()
             menu = "myComment"
+            initCommentRecycler()
             getCommentData()
             binding.boardSearch.visibility = View.GONE
             binding.menu2.visibility = View.GONE
+            binding.writeBtn.visibility = View.GONE
             binding.myComment.background = context?.let { getDrawable(it, R.drawable.bottom_edge_bold) }
             binding.myComment.setTextColor(Color.BLACK)
         }
@@ -194,6 +199,22 @@ class BoardMainFragment : Fragment() {
         BoardListAdapter.datas = boardList
         BoardListAdapter.myComments = commentList
         BoardListAdapter.notifyDataSetChanged()
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    private fun initCommentRecycler() {
+        myCommentListAdapter = MyCommentListAdapter(requireContext())
+
+        val rv : RecyclerView = binding.rvBoard
+        rv.adapter= myCommentListAdapter
+
+//        commentList.add(CommentModel("댓글 내용입니다.","작성자","시간","부모키"))
+//        commentList.add(CommentModel("댓글 내용입니다22.","작성자22","시간22","부모키22"))
+//        boardkeyList.add("sdf")
+//        boardkeyList.add("sdfs")
+
+        myCommentListAdapter.datas = commentList
+        myCommentListAdapter.notifyDataSetChanged()
     }
 
     //파이어베이스 데이터 불러오기 _ 글 목록
