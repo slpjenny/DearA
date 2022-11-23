@@ -55,7 +55,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="425dp"
+        android:layout_height="450dp"
         android:layout_marginTop="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/yourNick"
@@ -154,6 +154,18 @@
             app:layout_constraintTop_toBottomOf="@+id/textView16"></ImageView>
 
         <TextView
+            android:id="@+id/communityRule"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="커뮤니티 이용규칙"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="15dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView11" ></TextView>
+
+        <TextView
             android:id="@+id/contactUsTxt"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
@@ -161,9 +173,9 @@
             android:textColor="@color/black"
             android:textSize="16sp"
             android:layout_marginLeft="50dp"
-            android:layout_marginTop="15dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView11" ></TextView>
+            app:layout_constraintTop_toBottomOf="@+id/communityRule" ></TextView>
+
 
         <TextView
             android:id="@+id/textView18"

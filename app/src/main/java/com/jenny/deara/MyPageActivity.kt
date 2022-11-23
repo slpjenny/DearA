@@ -98,6 +98,13 @@ class MyPageActivity : AppCompatActivity() {
 
         }
 
+        // 커뮤니티 이용규칙
+        binding.communityRule.setOnClickListener {
+
+            val intent5  = Intent(this, CommunityRuleActivity::class.java)
+            startActivity(intent5)
+        }
+
     }
 
     override fun onBackPressed() {
