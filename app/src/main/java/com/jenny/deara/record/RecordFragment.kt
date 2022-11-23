@@ -140,18 +140,12 @@ class RecordFragment : Fragment() {
                             recordList.add(item)
                             recordkeyList.add(dataModel.key.toString())
 
-//                            Log.d("그냥기록 개수", recordList.size.toString())
-
-
                             // 날짜가 같은게 있다면, 따로 불러와서 todayRcRv 에도!! 추가해야함
                             if(item.date == nowDate){
                                 if (todayItem != null) {
                                     todayRecordList.add(todayItem)
                                     todayRecordKeyList.add(dataModel.key.toString())
                                 }
-//                                Log.d("오늘기록 개수",todayRecordList.size.toString())
-//                                Log.d("아이템", item.toString())
-
                             }
 
                         }

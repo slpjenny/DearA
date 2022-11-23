@@ -34,7 +34,7 @@
             android:name=".FingerPrintActivity"
             android:exported="false" />
         <activity
-            android:name=".record.RmRecordActivity"
+            android:name=".record.EditRecordActivity"
             android:exported="false" />
         <activity
             android:name=".record.AddRecordActivity"
