@@ -42,6 +42,7 @@ import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
 import kotlinx.android.synthetic.main.activity_board_inside.*
 import kotlinx.android.synthetic.main.fragment_board_popup.*
+import java.util.*
 
 class BoardInsideActivity : AppCompatActivity() {
 
@@ -100,7 +101,7 @@ class BoardInsideActivity : AppCompatActivity() {
            if(!commentReplyOn){
                Log.d("commentInsert", "댓글을 작성")
                if (key != null) {
-                   insertComment("zero", key)
+                   insertComment("null", key)
                }
            }
         }
@@ -114,8 +115,14 @@ class BoardInsideActivity : AppCompatActivity() {
     @SuppressLint("NotifyDataSetChanged")
     private fun initRecycler(boardKey: String) {
         CommentListAdapter = CommentListAdapter(this, commentKeyList, boardKey)
-        val imm: InputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
 
+        val rv : RecyclerView = binding.rvComment
+        rv.adapter= CommentListAdapter
+
+        CommentListAdapter.datas = commentList
+        CommentListAdapter.notifyDataSetChanged()
+
+        val imm: InputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
         CommentListAdapter.setOnItemClickListener(object: CommentListAdapter.OnItemClickListener{
             @SuppressLint("ServiceCast", "ClickableViewAccessibility")
             override fun onItemClick(v: View, position: Int) {
@@ -189,19 +196,6 @@ class BoardInsideActivity : AppCompatActivity() {
                 })
             }
         })
-
-        val rv : RecyclerView = binding.rvComment
-        rv.adapter= CommentListAdapter
-
-        CommentListAdapter.datas = commentList
-
-//        val commentCount = CommentListAdapter.itemCount + CommentListAdapter.getReplyItemCount()
-//        Log.w("commentCount", "CommentListAdapter.itemCount")
-//        Log.w("commentCount", "CommentListAdapter.getReplyItemCount()")
-//        Log.w("commentCount", "commentCount")
-//        binding.commentNum.text = CommentListAdapter.getAllItemCount().toString()
-//        Log.w("commentCountAll", CommentListAdapter.getAllItemCount().toString())
-        CommentListAdapter.notifyDataSetChanged()
     }
 
     // 이전 데이터 띄우기
@@ -280,12 +274,12 @@ class BoardInsideActivity : AppCompatActivity() {
 
     // 댓글 작성하기
     private fun insertComment(parentKey: String, key: String){
-        // comment
-        //        - CommentKey
-        //            - CommentData
-        //            - CommentData
-        //            - CommentData
-        //            - parentKey
+
+        val viewType = if (parentKey == "null"){
+            1
+        }else{
+            2
+        }
         FBRef.commentRef
             .push()
             .setValue(
@@ -294,7 +288,8 @@ class BoardInsideActivity : AppCompatActivity() {
                     FBAuth.getUid(),
                     FBAuth.getTimeBoard(),
                     parentKey,
-                    key
+                    key,
+                    viewType
                 )
             )
 
@@ -311,6 +306,8 @@ class BoardInsideActivity : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     fun getCommentData(key : String){
 
+        val commentCountList = mutableListOf<String>()
+
         val postListener = object : ValueEventListener {
             @SuppressLint("NotifyDataSetChanged")
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -323,14 +320,19 @@ class BoardInsideActivity : AppCompatActivity() {
                     val item = dataModel.getValue(CommentModel::class.java)
                     if (item != null) {
                         if (item.boardKey == key)
-                            if (item.parent == "zero"){
+                            if (item.parent == "null"){
                                 commentList.add(item!!)
                                 commentKeyList.add(dataModel.key.toString())
                             }else{ // 대댓글인 경우 리스트의 중간에 삽입하기
                                 val arrayItem = item.parent
                                 val index = commentKeyList.indexOf(arrayItem)
-                                commentList.add(index+1, item)
-                                commentKeyList.add(index+1, dataModel.key.toString())
+
+                                val count = Collections.frequency(commentCountList, arrayItem) + 1
+
+                                commentList.add(index + count, item)
+                                commentKeyList.add(index + count, dataModel.key.toString())
+
+                                commentCountList.add(arrayItem)
                             }
                     }
                     Log.d("getCommentLog", "{${commentKeyList}}")
