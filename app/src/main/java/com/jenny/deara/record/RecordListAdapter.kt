@@ -48,7 +48,7 @@ class RecordListAdapter(val context: Context, val recordList : MutableList<Strin
             val detailBtn = itemView.findViewById<Button>(R.id.detailBtn)
 
             detailBtn.setOnClickListener {
-                val intent = Intent(context, RmRecordActivity::class.java)
+                val intent = Intent(context, EditRecordActivity::class.java)
                 // 해당 Key로 몇번째 아이템인지 구별
                 intent.putExtra("key", recordList[position])
 

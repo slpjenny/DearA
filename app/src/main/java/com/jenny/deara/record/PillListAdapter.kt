@@ -10,9 +10,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.jenny.deara.R
 
-class PillListAdapter (val context: Context, val pillList:MutableList<String>):RecyclerView.Adapter<PillListAdapter.ViewHolder>(){
+class PillListAdapter (val context: Context, val pillList:MutableList<pillData>):RecyclerView.Adapter<PillListAdapter.ViewHolder>(){
 
-    var pills = mutableListOf<pillData>()
+//    var pills = mutableListOf<pillData>()
 
     // 뷰 홀더가 처음 생성될 때
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PillListAdapter.ViewHolder {
@@ -21,13 +21,13 @@ class PillListAdapter (val context: Context, val pillList:MutableList<String>):R
     }
 
     override fun getItemCount(): Int {
-        return pills.size
+        return pillList.size
     }
 
     // 재활용 하는 곳
     // 각각의 자리에 알맞은 값을 넣어준다.
     override fun onBindViewHolder(holder: PillListAdapter.ViewHolder, position: Int) {
-        holder.bind(pills[position],pillList[position])
+        holder.bind(pillList[position])
     }
 
 
@@ -38,7 +38,7 @@ class PillListAdapter (val context: Context, val pillList:MutableList<String>):R
 
 
         // RecordData 객체에서 이것만 리싸이클러뷰 데이터로 만들거임
-        fun bind(item: pillData, s: String) {
+        fun bind(item: pillData) {
             pillName.text = item.pillName
             dosage.text = item.dosage
 

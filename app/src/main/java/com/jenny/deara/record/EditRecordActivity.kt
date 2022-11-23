@@ -16,7 +16,7 @@ import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
 import java.util.*
 
-class RmRecordActivity : AppCompatActivity() {
+class EditRecordActivity : AppCompatActivity() {
 
     val binding by lazy { ActivityRmRecordBinding.inflate(layoutInflater) }
 
@@ -104,8 +104,8 @@ class RmRecordActivity : AppCompatActivity() {
                 binding.reHospitalName.setText(dataModel?.hospitalName)
                 binding.reDate.setText(dataModel?.date)
                 binding.reTime.setText(dataModel?.time)
-                binding.rePillName.setText(dataModel?.pillName)
-                binding.reDosage.setText(dataModel?.dosage)
+//                binding.rePillName.setText(dataModel?.pillName)
+//                binding.reDosage.setText(dataModel?.dosage)
                 binding.reMemo.setText(dataModel?.memo)
                 binding.reSymptom.setText(dataModel?.symptom)
             }
@@ -129,8 +129,8 @@ class RmRecordActivity : AppCompatActivity() {
                 binding.reHospitalName.text.toString(),
                 binding.reDate.text.toString(),
                 binding.reTime.text.toString(),
-                binding.rePillName.text.toString(),
-                binding.reDosage.text.toString(),
+//                binding.rePillName.text.toString(),
+//                binding.reDosage.text.toString(),
                 binding.reMemo.text.toString(),
                 binding.reSymptom.text.toString(),
                 FBAuth.getUid()
