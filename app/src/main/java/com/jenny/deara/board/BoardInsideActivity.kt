@@ -100,13 +100,13 @@ class BoardInsideActivity : AppCompatActivity() {
            if(!commentReplyOn){
                Log.d("commentInsert", "댓글을 작성")
                if (key != null) {
-                   insertComment(key, key)
+                   insertComment("zero", key)
                }
            }
         }
 
-        Log.d("commentCount", CommentListAdapter.getAllItemCount().toString())
-        binding.commentNum.text = CommentListAdapter.getAllItemCount().toString()
+//        Log.d("commentCount", CommentListAdapter.getAllItemCount().toString())
+//        binding.commentNum.text = CommentListAdapter.getAllItemCount().toString()
 
 
     }
@@ -322,9 +322,16 @@ class BoardInsideActivity : AppCompatActivity() {
 
                     val item = dataModel.getValue(CommentModel::class.java)
                     if (item != null) {
-                        if (item.parent == key)
-                            commentList.add(item!!)
-                            commentKeyList.add(dataModel.key.toString())
+                        if (item.boardKey == key)
+                            if (item.parent == "zero"){
+                                commentList.add(item!!)
+                                commentKeyList.add(dataModel.key.toString())
+                            }else{ // 대댓글인 경우 리스트의 중간에 삽입하기
+                                val arrayItem = item.parent
+                                val index = commentKeyList.indexOf(arrayItem)
+                                commentList.add(index+1, item)
+                                commentKeyList.add(index+1, dataModel.key.toString())
+                            }
                     }
                     Log.d("getCommentLog", "{${commentKeyList}}")
 

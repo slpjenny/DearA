@@ -10,6 +10,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.ktx.Firebase
@@ -50,6 +51,15 @@ class CommentListAdapter(val context: Context, var commentKeyList: MutableList<S
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.comment_list_item, parent,false)
         return ViewHolder(view)
+//
+//        var view: View
+//        if ( datas== "myComment"){ // 댓글로 연결
+//            view = LayoutInflater.from(context).inflate(R.layout.comment_list_item, parent,false)
+//            return CommentViewHolder(view)
+//        }else{
+//            view = LayoutInflater.from(context).inflate(R.layout.board_list_item, parent,false)
+//            return ViewHolder(view)
+//        }
     }
 
     override fun getItemCount(): Int = datas.size
@@ -67,6 +77,7 @@ class CommentListAdapter(val context: Context, var commentKeyList: MutableList<S
         private val replyBtn: TextView = itemView.findViewById(R.id.replyBtn)
         private val comment: View = itemView.findViewById(R.id.boardComment)
         private val delBtn: TextView = itemView.findViewById(R.id.delBtn)
+        private val reply: ImageView = itemView.findViewById(R.id.reply)
 
         init{
             view.setOnClickListener {
@@ -83,15 +94,20 @@ class CommentListAdapter(val context: Context, var commentKeyList: MutableList<S
             uid.text = "yet"
             //uid.text = FBAuth.getNick(item.uid)
 
-            getCommentReply(commentKeyList[position])
+            if (item.parent == "zero"){
+                reply.visibility = View.GONE
+            }
+
+            //getCommentReply(commentKeyList[position])
             replyCount += size
             Log.d("sizeRe", "replyCount$replyCount")
             Log.d("sizeRe", "size$size")
 
-            rv.apply {
-                adapter = CommentReplyListAdapter(context, datasReply, commentReplyKeyList)
-                layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-            }
+            Log.d("recomment", "2 -> ${datasReply}")
+//            rv.apply {
+//                adapter = CommentReplyListAdapter(context, datasReply, commentReplyKeyList)
+//                layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+//            }
 
             //댓글 삭제 하기
             delBtn.setOnClickListener {
@@ -125,40 +141,42 @@ class CommentListAdapter(val context: Context, var commentKeyList: MutableList<S
         }
     }
 
-    fun getAllItemCount(): Int = replyCount + itemCount
+    //fun getAllItemCount(): Int = replyCount + itemCount
 
-    private fun getCommentReply(commentKey: String) {
-        // 파이어베이스에 대댓글 리스트 담기
-        val postListener = object : ValueEventListener {
-            @SuppressLint("NotifyDataSetChanged")
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-
-                datasReply.clear()
-
-                for (dataModel in dataSnapshot.children) {
-
-                    val item = dataModel.getValue(CommentModel::class.java)
-                    if (item != null) {
-                        if (item.parent == commentKey){
-                            datasReply.add(item!!)
-                            commentReplyKeyList.add(dataModel.key.toString())
-                        }
-                    }
-                }
-            }
-
-            override fun onCancelled(databaseError: DatabaseError) {
-                // Getting Post failed, log a message
-                Log.w("getCommentData", "loadPost:onCancelled", databaseError.toException())
-            }
-        }
-        FBRef.commentReplyRef.addValueEventListener(postListener)
-
-//        datasReply.add(CommentModel("대댓글입니다.","uid","2022/11/07 21:28"))
-//        datasReply.add(CommentModel("두번째 대댓글입니다. 엄청엄청 긴 댓글 입니다. 엄청엄청 긴 댓글 입니다. 엄청엄청 긴 댓글 입니다. 엄청엄청 긴 댓글 입니다.","uid","2022/11/07 21:28"))
-//        datasReply.add(CommentModel("세번째 대댓글입니다.","uid","2022/11/07 21:28"))
-
-        // 여기서 갯수를 리스트를 반환
-        size = datasReply.size
-    }
+//    private fun getCommentReply(commentKey: String) {
+//        // 파이어베이스에 대댓글 리스트 담기
+//        val postListener = object : ValueEventListener {
+//            @SuppressLint("NotifyDataSetChanged")
+//            override fun onDataChange(dataSnapshot: DataSnapshot) {
+//
+//                datasReply.clear()
+//                commentReplyKeyList.clear()
+//
+//                for (dataModel in dataSnapshot.children) {
+//
+//                    val item = dataModel.getValue(CommentModel::class.java)
+//                    if (item != null) {
+//                        if (item.parent == commentKey){
+//                            datasReply.add(item!!)
+//                            commentReplyKeyList.add(dataModel.key.toString())
+//                        }
+//                    }
+//                    Log.d("recomment", "${datasReply}")
+//                }
+//            }
+//
+//            override fun onCancelled(databaseError: DatabaseError) {
+//                // Getting Post failed, log a message
+//                Log.w("getCommentData", "loadPost:onCancelled", databaseError.toException())
+//            }
+//        }
+//        FBRef.commentRef.addValueEventListener(postListener)
+//
+////        datasReply.add(CommentModel("대댓글입니다.","uid","2022/11/07 21:28"))
+////        datasReply.add(CommentModel("두번째 대댓글입니다. 엄청엄청 긴 댓글 입니다. 엄청엄청 긴 댓글 입니다. 엄청엄청 긴 댓글 입니다. 엄청엄청 긴 댓글 입니다.","uid","2022/11/07 21:28"))
+////        datasReply.add(CommentModel("세번째 대댓글입니다.","uid","2022/11/07 21:28"))
+//
+//        // 여기서 갯수를 리스트를 반환
+//        size = datasReply.size
+//    }
 }
