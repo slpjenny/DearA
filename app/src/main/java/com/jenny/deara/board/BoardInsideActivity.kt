@@ -42,6 +42,7 @@ import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
 import kotlinx.android.synthetic.main.activity_board_inside.*
 import kotlinx.android.synthetic.main.fragment_board_popup.*
+import java.util.*
 
 class BoardInsideActivity : AppCompatActivity() {
 
@@ -311,6 +312,8 @@ class BoardInsideActivity : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     fun getCommentData(key : String){
 
+        var commentCountList = mutableListOf<String>()
+
         val postListener = object : ValueEventListener {
             @SuppressLint("NotifyDataSetChanged")
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -329,8 +332,13 @@ class BoardInsideActivity : AppCompatActivity() {
                             }else{ // 대댓글인 경우 리스트의 중간에 삽입하기
                                 val arrayItem = item.parent
                                 val index = commentKeyList.indexOf(arrayItem)
-                                commentList.add(index+1, item)
-                                commentKeyList.add(index+1, dataModel.key.toString())
+
+                                val count = Collections.frequency(commentCountList, arrayItem) + 1
+
+                                commentList.add(index + count, item)
+                                commentKeyList.add(index + count, dataModel.key.toString())
+
+                                commentCountList.add(arrayItem)
                             }
                     }
                     Log.d("getCommentLog", "{${commentKeyList}}")
