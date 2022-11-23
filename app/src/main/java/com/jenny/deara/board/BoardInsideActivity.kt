@@ -101,7 +101,7 @@ class BoardInsideActivity : AppCompatActivity() {
            if(!commentReplyOn){
                Log.d("commentInsert", "댓글을 작성")
                if (key != null) {
-                   insertComment("zero", key)
+                   insertComment("null", key)
                }
            }
         }
@@ -287,6 +287,12 @@ class BoardInsideActivity : AppCompatActivity() {
         //            - CommentData
         //            - CommentData
         //            - parentKey
+
+        val viewType = if (parentKey == "null"){
+            1
+        }else{
+            2
+        }
         FBRef.commentRef
             .push()
             .setValue(
@@ -295,7 +301,8 @@ class BoardInsideActivity : AppCompatActivity() {
                     FBAuth.getUid(),
                     FBAuth.getTimeBoard(),
                     parentKey,
-                    key
+                    key,
+                    viewType
                 )
             )
 
@@ -312,7 +319,7 @@ class BoardInsideActivity : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     fun getCommentData(key : String){
 
-        var commentCountList = mutableListOf<String>()
+        val commentCountList = mutableListOf<String>()
 
         val postListener = object : ValueEventListener {
             @SuppressLint("NotifyDataSetChanged")
@@ -326,7 +333,7 @@ class BoardInsideActivity : AppCompatActivity() {
                     val item = dataModel.getValue(CommentModel::class.java)
                     if (item != null) {
                         if (item.boardKey == key)
-                            if (item.parent == "zero"){
+                            if (item.parent == "null"){
                                 commentList.add(item!!)
                                 commentKeyList.add(dataModel.key.toString())
                             }else{ // 대댓글인 경우 리스트의 중간에 삽입하기

@@ -21,18 +21,20 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.jenny.deara.R
 import com.jenny.deara.board.BoardInsideActivity
+import com.jenny.deara.board.BoardModel
 import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
 import kotlin.properties.Delegates
 
-class CommentListAdapter(val context: Context, var commentKeyList: MutableList<String>, val boardKey: String) : RecyclerView.Adapter<CommentListAdapter.ViewHolder>() {
+class CommentListAdapter(val context: Context,
+                         var commentKeyList: MutableList<String>,
+                         val boardKey: String)
+    : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     var datas = mutableListOf<CommentModel>()
-    var reply by Delegates.notNull<Int>()
     var replyCount : Int = 0
     var datasReply = mutableListOf<CommentModel>()
     var size : Int = 0
-    var commentReplyKeyList = mutableListOf<String>()
 
     // 커스텀 리스너
     interface OnItemClickListener{
@@ -48,11 +50,29 @@ class CommentListAdapter(val context: Context, var commentKeyList: MutableList<S
     }
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.comment_list_item, parent,false)
-        return ViewHolder(view)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+//        val view = LayoutInflater.from(context).inflate(R.layout.comment_list_item, parent,false)
+//        return ViewHolder(view)
 //
-//        var view: View
+        var view: View
+        return when(viewType) {
+            multi_type1 -> {
+                view = LayoutInflater.from(parent.context).inflate(
+                    R.layout.comment_list_item,
+                    parent,
+                    false
+                )
+                ViewHolder(view)
+            }
+            else -> {
+                view = LayoutInflater.from(parent.context).inflate(
+                    R.layout.comment_reply_list_item,
+                    parent,
+                    false
+                )
+                ReplyViewHolder(view)
+            }
+        }
 //        if ( datas== "myComment"){ // 댓글로 연결
 //            view = LayoutInflater.from(context).inflate(R.layout.comment_list_item, parent,false)
 //            return CommentViewHolder(view)
@@ -64,8 +84,19 @@ class CommentListAdapter(val context: Context, var commentKeyList: MutableList<S
 
     override fun getItemCount(): Int = datas.size
 
-    override fun onBindViewHolder(holder:  CommentListAdapter.ViewHolder, position: Int) {
-        holder.bind(datas[position], commentKeyList[position])
+    override fun onBindViewHolder(holder:  RecyclerView.ViewHolder, position: Int) {
+        //holder.bind(datas[position], commentKeyList[position])
+
+        when(datas[position].type) {
+            multi_type1 -> {
+                (holder as ViewHolder).bind(datas[position], commentKeyList[position])
+                holder.setIsRecyclable(false) // 리사이클러뷰 재사용 막기
+            }
+            else -> {
+                (holder as ReplyViewHolder).bind(datas[position], commentKeyList[position])
+                holder.setIsRecyclable(false)
+            }
+        }
     }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -74,6 +105,71 @@ class CommentListAdapter(val context: Context, var commentKeyList: MutableList<S
         private val time: TextView = itemView.findViewById(R.id.commentTime)
         private val uid: TextView = itemView.findViewById(R.id.commentWriter)
         public val rv: RecyclerView = itemView.findViewById(R.id.rvCommentReply)
+        private val replyBtn: TextView = itemView.findViewById(R.id.replyBtn)
+        private val comment: View = itemView.findViewById(R.id.boardComment)
+        private val delBtn: TextView = itemView.findViewById(R.id.delBtn)
+
+        init{
+            view.setOnClickListener {
+                val pos = adapterPosition
+                if(pos != RecyclerView.NO_POSITION && mOnItemClickListener != null){
+                    mOnItemClickListener.onItemClick(view, pos)
+                }
+            }
+        }
+
+        fun bind(item: CommentModel, s: String) {
+            content.text = item.content
+            time.text = item.time
+            uid.text = "yet"
+            //uid.text = FBAuth.getNick(item.uid)
+
+            //댓글 삭제 하기
+            delBtn.setOnClickListener {
+                // popup
+                val mDialogView = Dialog(context)
+                mDialogView.setContentView(R.layout.comment_popup)
+                mDialogView.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+                mDialogView.show()
+
+                val cancel = mDialogView.findViewById<View>(R.id.cancelBtn)
+                cancel.setOnClickListener {
+                    mDialogView.dismiss()
+                }
+
+                val noButton = mDialogView.findViewById<View>(R.id.delBtn)
+                noButton.setOnClickListener {
+                    // 삭제버튼 클릭 이벤트
+                    FBRef.commentRef.child(commentKeyList[position]).removeValue()
+                    Toast.makeText(context, "삭제완료", Toast.LENGTH_LONG).show()
+                    mDialogView.dismiss()
+
+//                    val delList = mutableListOf<String>()
+//                    val postListener = object : ValueEventListener {
+//                        override fun onDataChange(dataSnapshot: DataSnapshot) {
+//
+//                            val dataModel = dataSnapshot.getValue(BoardModel::class.java)
+//                            if (item.parent == commentKeyList[position]){
+//                                delList.add()
+//                            }
+//                        }
+//
+//                        override fun onCancelled(databaseError: DatabaseError) {
+//                            Log.w("boardTitleFromComment", "loadPost:onCancelled", databaseError.toException())
+//                        }
+//                    }
+//                    FBRef.commentRef.child(commentKeyList[position]).addValueEventListener(postListener)
+                }
+            }
+        }
+    }
+
+    inner class ReplyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+
+        private val content: TextView = itemView.findViewById(R.id.commentContent)
+        private val time: TextView = itemView.findViewById(R.id.commentTime)
+        private val uid: TextView = itemView.findViewById(R.id.commentWriter)
         private val replyBtn: TextView = itemView.findViewById(R.id.replyBtn)
         private val comment: View = itemView.findViewById(R.id.boardComment)
         private val delBtn: TextView = itemView.findViewById(R.id.delBtn)
@@ -93,21 +189,6 @@ class CommentListAdapter(val context: Context, var commentKeyList: MutableList<S
             time.text = item.time
             uid.text = "yet"
             //uid.text = FBAuth.getNick(item.uid)
-
-            if (item.parent == "zero"){
-                reply.visibility = View.GONE
-            }
-
-            //getCommentReply(commentKeyList[position])
-            replyCount += size
-            Log.d("sizeRe", "replyCount$replyCount")
-            Log.d("sizeRe", "size$size")
-
-            Log.d("recomment", "2 -> ${datasReply}")
-//            rv.apply {
-//                adapter = CommentReplyListAdapter(context, datasReply, commentReplyKeyList)
-//                layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-//            }
 
             //댓글 삭제 하기
             delBtn.setOnClickListener {
@@ -131,52 +212,6 @@ class CommentListAdapter(val context: Context, var commentKeyList: MutableList<S
                     mDialogView.dismiss()
                 }
             }
-
-//            reply = rv.adapter?.itemCount!!
-//            replyCount += reply
-
-//            replyBtn.setOnClickListener {
-//                comment.setBackgroundColor(Color.parseColor("#EFF1FF"))
-//            }
         }
     }
-
-    //fun getAllItemCount(): Int = replyCount + itemCount
-
-//    private fun getCommentReply(commentKey: String) {
-//        // 파이어베이스에 대댓글 리스트 담기
-//        val postListener = object : ValueEventListener {
-//            @SuppressLint("NotifyDataSetChanged")
-//            override fun onDataChange(dataSnapshot: DataSnapshot) {
-//
-//                datasReply.clear()
-//                commentReplyKeyList.clear()
-//
-//                for (dataModel in dataSnapshot.children) {
-//
-//                    val item = dataModel.getValue(CommentModel::class.java)
-//                    if (item != null) {
-//                        if (item.parent == commentKey){
-//                            datasReply.add(item!!)
-//                            commentReplyKeyList.add(dataModel.key.toString())
-//                        }
-//                    }
-//                    Log.d("recomment", "${datasReply}")
-//                }
-//            }
-//
-//            override fun onCancelled(databaseError: DatabaseError) {
-//                // Getting Post failed, log a message
-//                Log.w("getCommentData", "loadPost:onCancelled", databaseError.toException())
-//            }
-//        }
-//        FBRef.commentRef.addValueEventListener(postListener)
-//
-////        datasReply.add(CommentModel("대댓글입니다.","uid","2022/11/07 21:28"))
-////        datasReply.add(CommentModel("두번째 대댓글입니다. 엄청엄청 긴 댓글 입니다. 엄청엄청 긴 댓글 입니다. 엄청엄청 긴 댓글 입니다. 엄청엄청 긴 댓글 입니다.","uid","2022/11/07 21:28"))
-////        datasReply.add(CommentModel("세번째 대댓글입니다.","uid","2022/11/07 21:28"))
-//
-//        // 여기서 갯수를 리스트를 반환
-//        size = datasReply.size
-//    }
 }
