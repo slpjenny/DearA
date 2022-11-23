@@ -62,13 +62,11 @@ class RecordFragment : Fragment() {
             startActivity(intent)
         }
 
-
         // 마이페이지 버튼
         binding.mypage.setOnClickListener {
             val intent2 = Intent(context,MyPageActivity::class.java)
             startActivity(intent2)
         }
-
 
         return binding.root
     }
@@ -105,7 +103,6 @@ class RecordFragment : Fragment() {
         TodayRecordAdapter.notifyDataSetChanged()
 
     }
-
 
 
     //파이어베이스 데이터 불러오기

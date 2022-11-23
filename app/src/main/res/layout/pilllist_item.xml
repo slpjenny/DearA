@@ -67,6 +67,7 @@
             app:layout_constraintTop_toTopOf="@+id/constraintLayout4" />
 
         <ImageView
+            android:id="@+id/removeImv"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:background="@drawable/delall"
