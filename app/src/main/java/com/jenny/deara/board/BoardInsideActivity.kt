@@ -115,8 +115,14 @@ class BoardInsideActivity : AppCompatActivity() {
     @SuppressLint("NotifyDataSetChanged")
     private fun initRecycler(boardKey: String) {
         CommentListAdapter = CommentListAdapter(this, commentKeyList, boardKey)
-        val imm: InputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
 
+        val rv : RecyclerView = binding.rvComment
+        rv.adapter= CommentListAdapter
+
+        CommentListAdapter.datas = commentList
+        CommentListAdapter.notifyDataSetChanged()
+
+        val imm: InputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
         CommentListAdapter.setOnItemClickListener(object: CommentListAdapter.OnItemClickListener{
             @SuppressLint("ServiceCast", "ClickableViewAccessibility")
             override fun onItemClick(v: View, position: Int) {
@@ -190,19 +196,6 @@ class BoardInsideActivity : AppCompatActivity() {
                 })
             }
         })
-
-        val rv : RecyclerView = binding.rvComment
-        rv.adapter= CommentListAdapter
-
-        CommentListAdapter.datas = commentList
-
-//        val commentCount = CommentListAdapter.itemCount + CommentListAdapter.getReplyItemCount()
-//        Log.w("commentCount", "CommentListAdapter.itemCount")
-//        Log.w("commentCount", "CommentListAdapter.getReplyItemCount()")
-//        Log.w("commentCount", "commentCount")
-//        binding.commentNum.text = CommentListAdapter.getAllItemCount().toString()
-//        Log.w("commentCountAll", CommentListAdapter.getAllItemCount().toString())
-        CommentListAdapter.notifyDataSetChanged()
     }
 
     // 이전 데이터 띄우기
@@ -281,12 +274,6 @@ class BoardInsideActivity : AppCompatActivity() {
 
     // 댓글 작성하기
     private fun insertComment(parentKey: String, key: String){
-        // comment
-        //        - CommentKey
-        //            - CommentData
-        //            - CommentData
-        //            - CommentData
-        //            - parentKey
 
         val viewType = if (parentKey == "null"){
             1

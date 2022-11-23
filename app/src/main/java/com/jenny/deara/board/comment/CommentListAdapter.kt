@@ -32,9 +32,6 @@ class CommentListAdapter(val context: Context,
     : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     var datas = mutableListOf<CommentModel>()
-    var replyCount : Int = 0
-    var datasReply = mutableListOf<CommentModel>()
-    var size : Int = 0
 
     // 커스텀 리스너
     interface OnItemClickListener{
@@ -49,6 +46,7 @@ class CommentListAdapter(val context: Context,
         mOnItemClickListener = onItemClickListener
     }
 
+    override fun getItemCount(): Int = datas.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 //        val view = LayoutInflater.from(context).inflate(R.layout.comment_list_item, parent,false)
@@ -73,20 +71,9 @@ class CommentListAdapter(val context: Context,
                 ReplyViewHolder(view)
             }
         }
-//        if ( datas== "myComment"){ // 댓글로 연결
-//            view = LayoutInflater.from(context).inflate(R.layout.comment_list_item, parent,false)
-//            return CommentViewHolder(view)
-//        }else{
-//            view = LayoutInflater.from(context).inflate(R.layout.board_list_item, parent,false)
-//            return ViewHolder(view)
-//        }
     }
 
-    override fun getItemCount(): Int = datas.size
-
     override fun onBindViewHolder(holder:  RecyclerView.ViewHolder, position: Int) {
-        //holder.bind(datas[position], commentKeyList[position])
-
         when(datas[position].type) {
             multi_type1 -> {
                 (holder as ViewHolder).bind(datas[position], commentKeyList[position])
@@ -104,9 +91,6 @@ class CommentListAdapter(val context: Context,
         private val content: TextView = itemView.findViewById(R.id.commentContent)
         private val time: TextView = itemView.findViewById(R.id.commentTime)
         private val uid: TextView = itemView.findViewById(R.id.commentWriter)
-        public val rv: RecyclerView = itemView.findViewById(R.id.rvCommentReply)
-        private val replyBtn: TextView = itemView.findViewById(R.id.replyBtn)
-        private val comment: View = itemView.findViewById(R.id.boardComment)
         private val delBtn: TextView = itemView.findViewById(R.id.delBtn)
 
         init{
@@ -142,24 +126,14 @@ class CommentListAdapter(val context: Context,
                 noButton.setOnClickListener {
                     // 삭제버튼 클릭 이벤트
                     FBRef.commentRef.child(commentKeyList[position]).removeValue()
+                    // 답글 삭제
+                    for (i in 0 until datas.size){
+                        if (datas[i].parent == commentKeyList[position]){
+                            FBRef.commentRef.child(commentKeyList[i]).removeValue()
+                        }
+                    }
                     Toast.makeText(context, "삭제완료", Toast.LENGTH_LONG).show()
                     mDialogView.dismiss()
-
-//                    val delList = mutableListOf<String>()
-//                    val postListener = object : ValueEventListener {
-//                        override fun onDataChange(dataSnapshot: DataSnapshot) {
-//
-//                            val dataModel = dataSnapshot.getValue(BoardModel::class.java)
-//                            if (item.parent == commentKeyList[position]){
-//                                delList.add()
-//                            }
-//                        }
-//
-//                        override fun onCancelled(databaseError: DatabaseError) {
-//                            Log.w("boardTitleFromComment", "loadPost:onCancelled", databaseError.toException())
-//                        }
-//                    }
-//                    FBRef.commentRef.child(commentKeyList[position]).addValueEventListener(postListener)
                 }
             }
         }
@@ -170,10 +144,7 @@ class CommentListAdapter(val context: Context,
         private val content: TextView = itemView.findViewById(R.id.commentContent)
         private val time: TextView = itemView.findViewById(R.id.commentTime)
         private val uid: TextView = itemView.findViewById(R.id.commentWriter)
-        private val replyBtn: TextView = itemView.findViewById(R.id.replyBtn)
-        private val comment: View = itemView.findViewById(R.id.boardComment)
         private val delBtn: TextView = itemView.findViewById(R.id.delBtn)
-        private val reply: ImageView = itemView.findViewById(R.id.reply)
 
         init{
             view.setOnClickListener {
