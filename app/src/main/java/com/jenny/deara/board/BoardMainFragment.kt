@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
+import com.jenny.deara.MyPageActivity
 import com.jenny.deara.R
 import com.jenny.deara.board.comment.CommentModel
 import com.jenny.deara.board.comment.MyCommentListAdapter
@@ -61,6 +62,7 @@ class BoardMainFragment : Fragment() {
 //            startActivity(intent)
             val intent = Intent(context, BoardInsideActivity::class.java)
             startActivity(intent)
+
         }
 
         binding.writeBtn.setOnClickListener {

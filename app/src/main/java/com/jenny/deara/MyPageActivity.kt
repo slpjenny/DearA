@@ -9,7 +9,6 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-
 import android.widget.Toast
 import androidx.core.content.ContentProviderCompat.requireContext
 import com.google.firebase.auth.FirebaseAuth
@@ -17,8 +16,6 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-//import com.jenny.deara.PatternLock.PatternActivity
-
 import com.jenny.deara.databinding.ActivityMyPageBinding
 import com.jenny.deara.home.TodoDialog
 import com.jenny.deara.mypages.*
@@ -103,6 +100,13 @@ class MyPageActivity : AppCompatActivity() {
 
             val intent5  = Intent(this, CommunityRuleActivity::class.java)
             startActivity(intent5)
+        }
+
+        // 앱 커버 변경
+        binding.textView15.setOnClickListener {
+
+            val intent6  = Intent(this, AppCoverActivity::class.java)
+            startActivity(intent6)
         }
 
     }
