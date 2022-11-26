@@ -116,8 +116,6 @@ class RecordFragment : Fragment() {
         // 시스템에서 불러오는 오늘 날짜는 두자리수로 표현되기에 한자리수로 맞추기위해 따로 처리해줌
         nowDate = nowDate+nowDay+"일"
 
-
-
         // 데이터 불러오기
         val postListener = object : ValueEventListener {
             @SuppressLint("NotifyDataSetChanged")
@@ -142,6 +140,8 @@ class RecordFragment : Fragment() {
                                 if (todayItem != null) {
                                     todayRecordList.add(todayItem)
                                     todayRecordKeyList.add(dataModel.key.toString())
+
+                                    Log.d("gggg", todayItem.toString())
                                 }
                             }
 
