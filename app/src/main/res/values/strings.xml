@@ -47,4 +47,7 @@
     <string name="community_rule16">바르고 유익한 커뮤니티가 될 수 있도록 이용규칙을 준수해주세요!</string>
     <string name="community_rule17">감사합니다:)</string>
 
+    <string name="perm_label">Do Something</string>
+    <string name="perm_description">You can do what you need to do</string>
+
 </resources>
