@@ -239,7 +239,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <ImageView
-                android:layout_width="380dp"
+                android:layout_width="370dp"
                 android:layout_height="2dp"
                 android:layout_gravity="center"
                 android:background="@drawable/one_line_pointgray" />
