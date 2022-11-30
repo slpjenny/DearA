@@ -13,7 +13,7 @@ android {
 
     defaultConfig {
         applicationId "com.jenny.deara"
-        minSdk 26
+        minSdk 24
         targetSdk 32
         versionCode 1
         versionName "1.0"
@@ -23,7 +23,7 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }

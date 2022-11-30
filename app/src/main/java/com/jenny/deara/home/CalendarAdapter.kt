@@ -2,6 +2,9 @@ package com.jenny.deara.home
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
+import android.content.Intent.getIntent
+import android.content.Intent.getIntentOld
 import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
@@ -24,7 +27,8 @@ import kotlin.collections.ArrayList
 class CalendarAdapter(private val context: Context,
                       private val dayList: ArrayList<Date>,
                       private val todoList : ArrayList<ToDoData>,
-                      val todokeyList : MutableList<String>) :
+                      val todokeyList : MutableList<String>,
+                    val percent : Int) :
     RecyclerView.Adapter<CalendarAdapter.ItemViewHolder>() {
 
 
@@ -56,6 +60,7 @@ class CalendarAdapter(private val context: Context,
     @SuppressLint("ResourceType")
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
 
+        Log.d(TAG, "percent : " + percent)
         var monthDate = dayList[holder.adapterPosition]
 
         // 초기화
@@ -93,6 +98,9 @@ class CalendarAdapter(private val context: Context,
         // 넘어온 날짜와 현재 날짜 비교
         if (iYear == selectYear && iMonth == selectMonth){  // 같다면 검정 색상
             holder.dayText.setTextColor(Color.BLACK)
+            //holder.itemView.setBackgroundResource(R.drawable.background_todolist_green)
+
+
 
             // 날짜 선택할 시 밑줄
             if (itemClick != null) {
@@ -126,9 +134,57 @@ class CalendarAdapter(private val context: Context,
 
             }
 
+            var day = dayNo.toString()
+            if(day.length == 1){
+                day = "0"+day
+            }
+
+            val position = object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+
+                    for (dataModel in dataSnapshot.children) {
+                        Log.d("todoList", dataModel.toString())
+
+                        val item = dataModel.getValue(ToDoData::class.java)
+                        if (FBAuth.getUid() == item!!.uid) {
+
+
+                            if (item!!.year == iYear.toString() && item!!.month == iMonth.toString() && item!!.date == day) {
+
+                                var percent = item!!.percent
+
+                                Log.d(TAG, "firebaseper : " + percent)
+
+                                if (percent>=25 && percent < 50){
+                                    holder.itemView.setBackgroundResource(R.drawable.background_todolist_pink)
+                                }
+                                else if(percent>=50 && percent <75){
+                                    holder.itemView.setBackgroundResource(R.drawable.background_todolist_yellow)
+                                }
+                                else if (percent>=75 && percent<=100){
+                                    holder.itemView.setBackgroundResource(R.drawable.background_todolist_green)
+                                }
+
+
+                                Log.d(TAG, "percentpercent : " + percent)
+
+
+                            }
+                        }
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+
+                }
+            }
+            FBRef.todoRef.addValueEventListener(position)
+
+
+
         } else{ // 다르다면 하얀 색상
             holder.itemView.setBackgroundColor(Color.parseColor("#00ff0000"))
-            holder.dayText.setTextColor(Color.parseColor("#ffffff"))
+            holder.dayText.setTextColor(Color.parseColor("#00ff0000"))
         }
 
 

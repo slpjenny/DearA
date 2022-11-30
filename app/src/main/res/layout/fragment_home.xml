@@ -79,7 +79,7 @@
                             android:layout_marginTop="20dp"
                             android:layout_marginEnd="30dp"
                             android:max="100"
-                            android:progress="50"
+                            android:progress="0"
                             android:progressDrawable="@drawable/progressbar_radius"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/achiveText"
@@ -387,6 +387,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:visibility="visible"
+                        android:orientation="vertical"
                         app:layout_constraintTop_toBottomOf="@+id/constraintLayout3">
 
                         <TextView
@@ -399,60 +400,77 @@
                             android:textColor="@color/black"
                             android:textSize="25sp"
                             android:textStyle="bold"
+                            android:layout_marginBottom="10dp"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="350dp"
-                            android:layout_height="75dp"
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/todayRcRvMain"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
                             android:layout_marginTop="10dp"
-                            android:layout_marginBottom="10dp"
-                            android:background="@drawable/schedule_radius"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            app:layout_constrainedHeight="true"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/scheduleText"
-                            android:elevation="5dp">
+                            app:layout_constraintTop_toBottomOf="@+id/scheduleText">
 
-                            <TextView
-                                android:id="@+id/hospitalName"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="30dp"
-                                android:layout_marginTop="8dp"
-                                android:text="세브란스 병원"
-                                android:textColor="@color/black"
-                                android:textSize="20dp"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                            <TextView
-                                android:id="@+id/hospitalTime"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="0dp"
-                                android:layout_marginRight="150dp"
-                                android:layout_marginTop="2dp"
-                                android:text="15:00"
-                                android:textColor="@color/black"
-                                android:textSize="20dp"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toStartOf="@+id/imageView3"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/hospitalName" />
-
-                            <ImageView
-                                android:id="@+id/imageView3"
-                                android:layout_width="45dp"
-                                android:layout_height="45dp"
-                                android:layout_marginRight="30dp"
-                                android:src="@drawable/clock"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.recyclerview.widget.RecyclerView>
 
 
-                        </androidx.constraintlayout.widget.ConstraintLayout>
+<!--                        <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                            android:layout_width="350dp"-->
+<!--                            android:layout_height="75dp"-->
+<!--                            android:layout_marginTop="10dp"-->
+<!--                            android:layout_marginBottom="10dp"-->
+<!--                            android:background="@drawable/schedule_radius"-->
+<!--                            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                            app:layout_constraintEnd_toEndOf="parent"-->
+<!--                            app:layout_constraintStart_toStartOf="parent"-->
+<!--                            app:layout_constraintTop_toBottomOf="@+id/scheduleText"-->
+<!--                            android:elevation="5dp">-->
+
+<!--                            <TextView-->
+<!--                                android:id="@+id/hospitalName"-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_marginLeft="30dp"-->
+<!--                                android:layout_marginTop="8dp"-->
+<!--                                android:text="세브란스 병원"-->
+<!--                                android:textColor="@color/black"-->
+<!--                                android:textSize="20dp"-->
+<!--                                app:layout_constraintStart_toStartOf="parent"-->
+<!--                                app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--                            <TextView-->
+<!--                                android:id="@+id/hospitalTime"-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_marginLeft="0dp"-->
+<!--                                android:layout_marginRight="150dp"-->
+<!--                                android:layout_marginTop="2dp"-->
+<!--                                android:text="15:00"-->
+<!--                                android:textColor="@color/black"-->
+<!--                                android:textSize="20dp"-->
+<!--                                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                                app:layout_constraintEnd_toStartOf="@+id/imageView3"-->
+<!--                                app:layout_constraintStart_toStartOf="parent"-->
+<!--                                app:layout_constraintTop_toBottomOf="@+id/hospitalName" />-->
+
+<!--                            <ImageView-->
+<!--                                android:id="@+id/imageView3"-->
+<!--                                android:layout_width="45dp"-->
+<!--                                android:layout_height="45dp"-->
+<!--                                android:layout_marginRight="30dp"-->
+<!--                                android:src="@drawable/clock"-->
+<!--                                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                                app:layout_constraintTop_toTopOf="parent" />-->
+
+
+<!--                        </androidx.constraintlayout.widget.ConstraintLayout>-->
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 

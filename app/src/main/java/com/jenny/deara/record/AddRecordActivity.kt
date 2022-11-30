@@ -11,9 +11,13 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.common.wrappers.Wrappers.packageManager
 import com.google.firebase.database.DataSnapshot
@@ -26,6 +30,8 @@ import com.jenny.deara.diary.DiaryData
 import com.jenny.deara.diary.DiaryListAdapter
 import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
+import kotlinx.android.synthetic.main.pilllist_item.view.*
+import org.w3c.dom.Text
 import java.util.*
 import java.util.jar.Manifest
 
@@ -36,6 +42,12 @@ class AddRecordActivity : AppCompatActivity() {
 
     lateinit var RecordListAdapter: RecordListAdapter
     val recordList = mutableListOf<RecordData>()
+
+    // 복용 약 리싸이클러뷰
+    lateinit var  PillListAdapter : PillListAdapter
+    val pillList = mutableListOf<pillData>()
+    val pillkeyList = mutableListOf<String>()
+
 
     private val recordButton: RecordButton by lazy { findViewById(R.id.record_play)}
 
@@ -60,16 +72,19 @@ class AddRecordActivity : AppCompatActivity() {
     private var player: MediaPlayer? = null
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
 
         requestAudioPermission()
         initViews()
         bindViews()
         initVariables()
+
+        // 복용약 RecyclerView 테스트 코드
+//        pillList.add(pillData("hi","itsme"))
+        initRecycler()
+
 
         // 날짜 선택하기
         binding.dateBtn.setOnClickListener {
@@ -84,17 +99,21 @@ class AddRecordActivity : AppCompatActivity() {
 
         // 진료기록 저장
         binding.saveBtn.setOnClickListener {
-            saveFBDiaryData()
+            saveFBRecordData()
         }
+
 
         // 복용 약 추가
         binding.addPillBtn.setOnClickListener{
-            val layoutInflater = this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
-            val customLayout = layoutInflater.inflate(R.layout.pilllist_item,null)
+            // 내용 존재할때만 추가 가능
+            if(binding.pillName.text.toString().trim().isEmpty() || binding.dosage.text.toString().trim().isEmpty()){
 
-            binding.pillLayout.addView(customLayout)
-
+            }else{
+                // 파이어베이스에 복용약 내용 따로 저장
+                saveFBPillData()
+                PillListAdapter.notifyDataSetChanged()
+            }
 
         }
 
@@ -147,14 +166,14 @@ class AddRecordActivity : AppCompatActivity() {
 
 
     // 파이어베이스에 진료 기록 데이터 저장
-    private fun saveFBDiaryData() {
+    private fun saveFBRecordData() {
         // 병원명,복용약,진료 메모 등 한꺼번에 객체로 저장해야함
         // 리싸이클러뷰로 불러올때에는 객체에서 특정 항목만 데이터리스트에 추가해야함!!
         val hospitalName = binding.hospitalName.text.toString()
         val date = binding.date.text.toString()
         val time = binding.time.text.toString()
-        val pillName = binding.pillName.text.toString()
-        val dosage = binding.dosage.text.toString()
+//        val pillName = binding.pillName.text.toString()
+//        val dosage = binding.dosage.text.toString()
         val memo = binding.memo.text.toString()
         val symptom = binding.symptom.text.toString()
         val uid = FBAuth.getUid()
@@ -164,12 +183,49 @@ class AddRecordActivity : AppCompatActivity() {
         // 진료 기록 객체 형태로 저장
         FBRef.recordRef
             .child(key)
-            .setValue(RecordData(hospitalName, date, time, pillName, dosage, memo, symptom, uid))
+            .setValue(RecordData(hospitalName, date, time, memo, symptom, uid))
+
 
         Toast.makeText(this, "진료 기록이 저장되었습니다.", Toast.LENGTH_LONG).show()
 
         finish()
     }
+
+
+    private fun saveFBPillData(){
+
+        var pillNameTxt : String = binding.pillName.text.toString()
+        var dosageTxt : String = binding.dosage.text.toString()
+
+        var key = FBRef.pillRef.push().key.toString()
+        val uid = FBAuth.getUid()
+
+        // 복용 약 객체 형태로 저장
+        FBRef.pillRef
+            .child(key)
+            .setValue(pillData(pillNameTxt,dosageTxt,uid))
+
+        // recyclerview 데이터 리스트에 저장
+        pillList.add(pillData(pillNameTxt,dosageTxt))
+
+        // 저장 후에 editTextView 빈칸으로 비우기
+        binding.pillName.setText("")
+        binding.dosage.setText("")
+
+    }
+
+    // 복용 약 RecyclerView 띄우기
+    private fun initRecycler(){
+        PillListAdapter = PillListAdapter(this,pillList)
+
+        val rv : RecyclerView = binding.pillLayout
+        rv.adapter= PillListAdapter
+
+//        PillListAdapter.pills = pillList
+        PillListAdapter.notifyDataSetChanged()
+    }
+
+
 
 
     // 어떤 permission을 요청할 것인가

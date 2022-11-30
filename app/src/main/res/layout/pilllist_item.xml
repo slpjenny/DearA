@@ -1,54 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout4"
         android:layout_width="374dp"
-        android:layout_height="wrap_content"
+        android:layout_height="66dp"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/background_radius_record"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/list2"
-            android:layout_width="match_parent"
-            android:layout_height="66dp"
-            android:background="@drawable/background_radius_record"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+<!--        <ImageView-->
+<!--            android:id="@+id/list2"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="66dp"-->
+<!--            android:background="@drawable/background_radius_record"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
 
         <EditText
             android:id="@+id/pillName"
-            android:layout_width="170dp"
+            android:layout_width="150dp"
             android:layout_height="40dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
             android:background="@android:color/transparent"
             android:ellipsize="none"
-            android:hint="약 이름을 작성"
+            android:hint="약 이름 "
+            android:textAlignment="center"
             android:maxLines="1"
             android:textColor="#000000"
             android:textSize="15sp"
-            app:layout_constraintStart_toStartOf="@+id/list2"
-            app:layout_constraintTop_toTopOf="@+id/list2" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/constraintLayout4"
+            app:layout_constraintTop_toTopOf="@+id/constraintLayout4" />
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:background="@drawable/line"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/pillName"
+            app:layout_constraintTop_toTopOf="parent" />
+
 
         <EditText
             android:id="@+id/dosage"
-            android:layout_width="170dp"
+            android:layout_width="150dp"
             android:layout_height="40dp"
-            android:layout_marginTop="16dp"
             android:background="@android:color/transparent"
             android:ellipsize="none"
-            android:hint="권장 복용량 작성"
+            android:hint="권장 복용량"
             android:maxLines="1"
+            android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/pillName"
-            app:layout_constraintTop_toTopOf="@+id/list2" />
+            app:layout_constraintTop_toTopOf="@+id/constraintLayout4" />
+
+        <ImageView
+            android:id="@+id/removeImv"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/delall"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/dosage"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

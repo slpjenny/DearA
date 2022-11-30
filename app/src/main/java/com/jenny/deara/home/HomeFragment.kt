@@ -22,14 +22,20 @@ import com.jenny.deara.R
 import com.jenny.deara.alarm.AlarmData
 import com.jenny.deara.alarm.AlarmListAdapter
 import com.jenny.deara.databinding.FragmentHomeBinding
+import com.jenny.deara.diary.DiaryDetailActivity
 import com.jenny.deara.diary.DiaryListAdapter
+import com.jenny.deara.record.RecordData
+import com.jenny.deara.record.TodayRecordData
 import com.jenny.deara.utils.CalendarUtil
 import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
 import kotlinx.android.synthetic.main.calendar_item.*
+import kotlinx.android.synthetic.main.calendar_item.view.*
 import kotlinx.android.synthetic.main.fragment_diary.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -37,9 +43,17 @@ class HomeFragment : Fragment() {
 
     private lateinit var binding : FragmentHomeBinding
     lateinit var TodoAdapter: TodoAdapter
+    lateinit var CalendarAdapter : CalendarAdapter
 
+    // 투두 Recyclerview 관련 변수
     val items = ArrayList<ToDoData>()
     val todokeyList = mutableListOf<String>()
+
+    // 오늘 진료기록 Recyclerview 관련 변수
+    lateinit var MainTodayRcAdapter: MainTodayRcAdapter
+
+    val records = mutableListOf<MainTodayRecordData>()
+    val recordKeyList = mutableListOf<String>()
 
     val TAG = HomeFragment::class.java.simpleName
 
@@ -55,6 +69,8 @@ class HomeFragment : Fragment() {
     var firstday = CalendarUtil.selectedDate.get(Calendar.DAY_OF_MONTH).toString()
 
 
+    var percent = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -68,10 +84,17 @@ class HomeFragment : Fragment() {
         // binding 초기화
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
 
+
         // 화면 설정
+        setMonthView(percent)
+
         setMonthView()
 
         initRecycler()
+
+            // 오늘 진료기록 띄우기
+        initTodayRecycler()
+        getFBTodayRcData()
 
         // 날짜 길이가 1인 경우 앞에 0 붙여주기
         if (firstday.length == 1){
@@ -80,19 +103,22 @@ class HomeFragment : Fragment() {
         getFBTodoData(firstYear,firstMonth, firstday)
         todokeyList.distinct()
 
+        Log.d(TAG, "percent 1 : " + percent)
+
+
 
         // 이전달 버튼 이벤트
         binding.preBtn.setOnClickListener {
             // 현재 월 -1 변수 담기
             CalendarUtil.selectedDate.add(Calendar.MONTH, -1) // 현재 달 -1
-            setMonthView()
+            setMonthView(percent)
         }
 
         // 다음달 버튼 이벤트
         binding.nextBtn.setOnClickListener {
 
             CalendarUtil.selectedDate.add(Calendar.MONTH , 1) // 현재 달 +1
-            setMonthView()
+            setMonthView(percent)
         }
 
         // 투두리스트 추가
@@ -122,6 +148,18 @@ class HomeFragment : Fragment() {
         TodoAdapter.notifyDataSetChanged()
     }
 
+    // 오늘 진료기록 RecyclerView 초기화
+    private fun initTodayRecycler(){
+
+        MainTodayRcAdapter = MainTodayRcAdapter(requireContext(), recordKeyList)
+        val todayRv: RecyclerView = binding.todayRcRvMain
+        todayRv.adapter = MainTodayRcAdapter
+
+        MainTodayRcAdapter.datas = records
+        MainTodayRcAdapter.notifyDataSetChanged()
+    }
+
+
 
     // 파이어베이스에 데이터 저장
     fun saveTodo(year : String, month: String, day : String, text: String){
@@ -136,13 +174,13 @@ class HomeFragment : Fragment() {
         Log.d(TAG, "keyadd : " + key)
 
         // 할일 목록 추가
-        items.add(ToDoData(todo, check, time, year, month, day, uid, key))
+        items.add(ToDoData(todo, check, time, year, month, day, uid, key, percent))
         Log.d(TAG, "saveTodo : " + items)
 
 
         FBRef.todoRef
             .child(key)
-            .setValue(ToDoData(todo, check, time, year, month, day, uid, key))
+            .setValue(ToDoData(todo, check, time, year, month, day, uid, key, percent))
     }
 
 
@@ -179,6 +217,60 @@ class HomeFragment : Fragment() {
         })
     }
 
+    // firebase에서 오늘 진료 기록 불러오기
+    private fun getFBTodayRcData(){
+
+        // 오늘 날짜 불러오기
+        var now = LocalDate.now()
+        var nowDate :String = now.format(DateTimeFormatter.ofPattern("yyyy년 MM월 "))
+        var nowDay :String = now.dayOfMonth.toString()
+
+        // 시스템에서 불러오는 오늘 날짜는 두자리수로 표현되기에 한자리수로 맞추기위해 따로 처리해줌
+        nowDate = nowDate+nowDay+"일"
+
+        val postListener = object : ValueEventListener{
+            @SuppressLint("NotifyDataSetChanged")
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+
+                records.clear()
+
+                for (dataModel in dataSnapshot.children) {
+                    // 리싸이클러뷰 데이터에 항목 세개만 넣어서 추가하기
+                    val item = dataModel.getValue(RecordData::class.java)
+                    val todayItem = dataModel.getValue(MainTodayRecordData::class.java)
+
+                    if (item != null) {
+                        // uid 에 맞는 진료기록들을 불러오기
+                        if(FBAuth.getUid() == item.uid){
+
+                            // 날짜가 같은게 있다면, 따로 불러와서 todayRcRv 에도!! 추가해야함
+                            if(item.date == nowDate){
+                                if (todayItem != null) {
+                                    records.add(todayItem)
+                                    recordKeyList.add(dataModel.key.toString())
+
+                                    Log.d("today", todayItem.toString())
+                                    Log.d("today11", item.toString())
+
+                                }
+                            }
+
+                        }
+                    }
+
+                }
+
+                MainTodayRcAdapter.notifyDataSetChanged()
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                Log.w("recordListTest", "취소되었습니다.", databaseError.toException())
+            }
+        }
+        FBRef.recordRef.addValueEventListener(postListener)
+
+    }
+
 
     // firebase에 저장된 투두리스트 목록 불러오기
     fun getFBTodoData(Year : String, Month : String, date : String){
@@ -195,30 +287,38 @@ class HomeFragment : Fragment() {
                     val item = dataModel.getValue(ToDoData::class.java)
                     if (FBAuth.getUid() == item!!.uid){
 
-                        if(item!!.year == Year && item!!.month == Month && item!!.date == date ){
+                        if(item!!.year == Year && item!!.month == Month && item!!.date == date ) {
                             items.add(item)
-                            if(todokeyList.none { it == dataModel.key }){
+                            if (todokeyList.none { it == dataModel.key }) {
                                 todokeyList.add(dataModel.key.toString())
                             }
                             Log.d(TAG, "todokeyList : " + todokeyList)
-
-
+                            Log.d(TAG, "todokeyList : " + todokeyList)
 
                             // 체크 된 할일 목록에 따라 프로그레스바 설정
-                            if(item!!.check == true){
-                                count ++
+                            if (item!!.check == true) {
+                                count++
                             }
 
-                            var percent  = count * 100/items.size
-                            progressBar.progress = percent
+                            percent = count * 100 / items.size
+                            progressBar.progress = item.percent
+
+
+                            setMonthView(percent)
+
+                            FBRef.todoRef
+                                .child(item.key)
+                                .child("percent")
+                                .setValue(percent)
+
+                            Log.d(TAG, "item.key : " + item.key)
 
                         }
                     }
+
                     Log.d (TAG, "todokey distinct : " + todokeyList)
 
                     TodoAdapter.notifyDataSetChanged()
-
-
 
                 }
 
@@ -232,10 +332,12 @@ class HomeFragment : Fragment() {
     }
 
 
-
+    private fun percent(p : Int){
+        percent = p
+    }
 
     // 날짜 화면에 보여주기
-    private fun setMonthView() {
+    private fun setMonthView(percent : Int) {
         // 년월 테스트뷰 세팅
         binding.dateText.text = monthYearFromData(CalendarUtil.selectedDate)
 
@@ -243,7 +345,7 @@ class HomeFragment : Fragment() {
         val dayList = dayInMonthArray()
 
         // 어댑터 초기화
-        val adapter = CalendarAdapter(requireContext(), dayList, items, todokeyList)
+        val adapter = CalendarAdapter(requireContext(), dayList, items, todokeyList, percent)
 
         // 레이아웃 설정 (열 7개)
         var manager : RecyclerView.LayoutManager = GridLayoutManager(context,7)
@@ -278,6 +380,8 @@ class HomeFragment : Fragment() {
                 TodoAdapter.notifyDataSetChanged()
 
             }
+
+
         }
 
 

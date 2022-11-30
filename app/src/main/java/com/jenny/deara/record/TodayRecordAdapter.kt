@@ -49,7 +49,7 @@ class TodayRecordAdapter(val context: Context, val todayRecordList:MutableList<S
             val tdDetailBtn = itemView.findViewById<Button>(R.id.tdDetailBtn)
 
             tdDetailBtn.setOnClickListener {
-                val intent = Intent(context, RmRecordActivity::class.java)
+                val intent = Intent(context, EditRecordActivity::class.java)
                 // 해당 Key로 몇번째 아이템인지 구별
                 intent.putExtra("key", todayRecordList[position])
 

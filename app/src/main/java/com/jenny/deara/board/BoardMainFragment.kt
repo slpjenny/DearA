@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
+import com.jenny.deara.MyPageActivity
 import com.jenny.deara.R
 import com.jenny.deara.board.comment.CommentModel
 import com.jenny.deara.board.comment.MyCommentListAdapter
@@ -37,6 +38,7 @@ class BoardMainFragment : Fragment() {
     var searchList = mutableListOf<BoardModel>()
     var searchKeyList = mutableListOf<String>()
     var commentList = mutableListOf<CommentModel>()
+    var commentBoardKeyList = mutableListOf<String>()
     var menu: String = "boardList"
     var sort: String = "All"
 
@@ -60,6 +62,7 @@ class BoardMainFragment : Fragment() {
 //            startActivity(intent)
             val intent = Intent(context, BoardInsideActivity::class.java)
             startActivity(intent)
+
         }
 
         binding.writeBtn.setOnClickListener {
@@ -214,6 +217,7 @@ class BoardMainFragment : Fragment() {
 //        boardkeyList.add("sdfs")
 
         myCommentListAdapter.datas = commentList
+        myCommentListAdapter.commentBoardKeyList = commentBoardKeyList
         myCommentListAdapter.notifyDataSetChanged()
     }
 
@@ -289,21 +293,21 @@ class BoardMainFragment : Fragment() {
 
     // 댓글 가져오기
     private fun getCommentData(){
-        menu = "myComment"
+        //menu = "myComment"
         val postListener = object : ValueEventListener {
             @SuppressLint("NotifyDataSetChanged")
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
                 //boardList.clear()
                 commentList.clear()
-                //commentKeyList.clear()
+                commentBoardKeyList.clear()
 
                 for (dataModel in dataSnapshot.children) {
 
                     val item = dataModel.getValue(CommentModel::class.java)
                     commentList.add(item!!)
-                    //commentKeyList.add(dataModel.key.toString())
-                    //Log.d("getCommentLog", "{${commentKeyList}}")
+                    commentBoardKeyList.add(item.boardKey)
+                    Log.d("getCommentLog", "{${commentBoardKeyList}}")
 
                     //getCommentReply(dataModel.key.toString()) //대댓글 리스트에 내용을 담는다.
                 }
