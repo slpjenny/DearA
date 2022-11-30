@@ -1,4 +1,4 @@
-package com.jenny.deara
+package com.jenny.deara.diary
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -13,12 +13,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
+import com.jenny.deara.MyPageActivity
+import com.jenny.deara.R
 import com.jenny.deara.databinding.FragmentDiaryBinding
-import com.jenny.deara.diary.*
 import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
 
@@ -134,7 +132,7 @@ class DiaryFragment(var iMonth: Int, var iYear: Int) : Fragment() {
 
                     val item = dataModel.getValue(DiaryData::class.java)
                     // 일기 장석 여부 확인하기
-                    if(item!!.time == currentTime){
+                    if(item!!.time == currentTime && FBAuth.getUid() == item.uid){
                         todayDiary = true
                     }
                     // 선택한 날짜 일기 리스트 띄우기

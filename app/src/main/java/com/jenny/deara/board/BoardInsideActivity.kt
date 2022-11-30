@@ -38,6 +38,7 @@ import com.jenny.deara.board.comment.CommentListAdapter
 import com.jenny.deara.board.comment.CommentModel
 import com.jenny.deara.board.report.ReportActivity
 import com.jenny.deara.databinding.ActivityBoardInsideBinding
+import com.jenny.deara.diary.DiaryDetailActivity
 import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
 import kotlinx.android.synthetic.main.activity_board_inside.*
@@ -253,6 +254,13 @@ class BoardInsideActivity : AppCompatActivity() {
                                 .override(changeDP(150),changeDP(150))
                                 .transform(CenterCrop(), RoundedCorners( 10))
                                 .into(getImage)
+
+                            // 이미지 누르면 크게 보기
+                            getImage.setOnClickListener {
+                                val intent = Intent(this, BoardImageViewActivity::class.java)
+                                intent.putExtra("url", task.result)
+                                startActivity(intent)
+                            }
                         } else {
                             Log.d("getImageLog", "task.Failure")
                         }
