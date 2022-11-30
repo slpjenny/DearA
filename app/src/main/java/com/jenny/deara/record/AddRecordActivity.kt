@@ -76,19 +76,13 @@ class AddRecordActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        // customLayout 동적 생성하기 위한 변수 선언
-        // 원래 onCreate에 있던거 앞으로 빼봤음
-//        val lft = this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-//        val customLayout = lft.inflate(R.layout.pilllist_item,null)
-
         requestAudioPermission()
         initViews()
         bindViews()
         initVariables()
 
-
         // 복용약 RecyclerView 테스트 코드
-        pillList.add(pillData("hi","itsme"))
+//        pillList.add(pillData("hi","itsme"))
         initRecycler()
 
 
@@ -106,27 +100,20 @@ class AddRecordActivity : AppCompatActivity() {
         // 진료기록 저장
         binding.saveBtn.setOnClickListener {
             saveFBRecordData()
-
-            // 첫번째 동적 view의 요소 접근까지는 가능하지만,
-            // 2번재부터는 첫번째의 view가 remove되지 않았다고 하고
-            // 요소 접근 불가 -> 로그 출력 불가 -> 앱 다운으로 이어짐
-//            val view = customLayout.findViewById<EditText>(R.id.pillName).text.toString()
-//            Log.d("custom",view)
         }
 
+
         // 복용 약 추가
-        // 리싸이클러뷰 따로 생성
         binding.addPillBtn.setOnClickListener{
 
+            // 내용 존재할때만 추가 가능
+            if(binding.pillName.text.toString().trim().isEmpty() || binding.dosage.text.toString().trim().isEmpty()){
 
-
-            // 파이어베이스에 복용약 내용 따로 저장
-            saveFBPillData()
-
-            PillListAdapter.notifyDataSetChanged()
-
-//            // 추가 버튼 누를때 동적 view 생성됨
-//            binding.pillLayout.addView(customLayout)
+            }else{
+                // 파이어베이스에 복용약 내용 따로 저장
+                saveFBPillData()
+                PillListAdapter.notifyDataSetChanged()
+            }
 
         }
 
@@ -221,8 +208,11 @@ class AddRecordActivity : AppCompatActivity() {
         // recyclerview 데이터 리스트에 저장
         pillList.add(pillData(pillNameTxt,dosageTxt))
 
-    }
+        // 저장 후에 editTextView 빈칸으로 비우기
+        binding.pillName.setText("")
+        binding.dosage.setText("")
 
+    }
 
     // 복용 약 RecyclerView 띄우기
     private fun initRecycler(){

@@ -30,7 +30,7 @@
             android:layout_marginStart="16dp"
             android:background="@android:color/transparent"
             android:ellipsize="none"
-            android:hint="약 이름 들어감"
+            android:hint="약 이름 "
             android:textAlignment="center"
             android:maxLines="1"
             android:textColor="#000000"
@@ -55,7 +55,7 @@
             android:layout_height="40dp"
             android:background="@android:color/transparent"
             android:ellipsize="none"
-            android:hint="권장 복용량 들어감"
+            android:hint="권장 복용량"
             android:maxLines="1"
             android:textAlignment="center"
             android:textColor="#000000"
@@ -67,6 +67,7 @@
             app:layout_constraintTop_toTopOf="@+id/constraintLayout4" />
 
         <ImageView
+            android:id="@+id/removeImv"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:background="@drawable/delall"

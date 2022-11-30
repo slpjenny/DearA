@@ -47,9 +47,9 @@ class AlarmListAdapter(val context: Context, val alarmkeyList: MutableList<Strin
             dataClickListener.onClick(it, position)
         }
 
-        val onOffBtn: Switch = holder.itemView.findViewById(R.id.OnOffBtn)
+        val OnOffBtn: Switch = holder.itemView.findViewById(R.id.OnOffBtn)
 
-        onOffBtn.setOnCheckedChangeListener { compoundButton, isChecked ->
+        OnOffBtn.setOnCheckedChangeListener { compoundButton, isChecked ->
             if(isChecked) {
                 onClickedListener.onClicked(position,true)
             } else {
@@ -70,7 +70,7 @@ class AlarmListAdapter(val context: Context, val alarmkeyList: MutableList<Strin
             time.text = item.time
             title.text = item.title
             day.text = item.day
-            OnOffBtn.isChecked = item.OnOff
+            OnOffBtn.isChecked = item.onOff
             }
 
     }

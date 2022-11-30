@@ -12,6 +12,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.core.app.NotificationCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
@@ -50,8 +52,9 @@ class AlarmFragment : Fragment(), OnClickInterface {
 
         getFBAlarmData()
         initRecycler()
-        startAlarm()
-        var OnOff = updateOnOff()
+        updateOnOff()
+        // startAlarm()
+        // var OnOff = updateOnOff()
 
         var alarmIdList = addAlarmID()
         val secureRandom = SecureRandom()
@@ -114,6 +117,9 @@ class AlarmFragment : Fragment(), OnClickInterface {
                         .child(key)
                         .setValue(AlarmData(time, title, day, uid, alarmId, true))
 
+                    // sendOnChannel1(title)
+                    startAlarm(time, alarmId, title)
+
                 }
 
             })
@@ -139,10 +145,11 @@ class AlarmFragment : Fragment(), OnClickInterface {
 
                         if (dataModel != null) {
 
+                            /*val rmAlarm = dialog.findViewById<Button>(R.id.rmAlarm)*/
                             // 삭제 기능
                             dialog.rmAlarm.setOnClickListener {
                                 alarmID = dataModel.alarmId
-                                cancelAlarm(alarmID)
+                                removeAlarm(alarmID)
                                 FBRef.alarmRef.child(key).removeValue()
                                 AlarmListAdapter.notifyDataSetChanged()
                                 dialog.dismiss()
@@ -251,6 +258,9 @@ class AlarmFragment : Fragment(), OnClickInterface {
                         FBRef.alarmRef
                             .child(key)
                             .setValue(AlarmData(time, title, day, uid, alarmID, true))
+
+                        removeAlarm(alarmId)
+                        startAlarm(time, alarmId, title)
                     }
 
                 })
@@ -260,13 +270,43 @@ class AlarmFragment : Fragment(), OnClickInterface {
         return binding.root
     }
 
+/*    private fun sendOnChannel1(title: String) {
+        var notificationHelper: NotificationHelper = NotificationHelper(context)
+
+        var nb: NotificationCompat.Builder = notificationHelper.getChannelNotification(title)
+
+        //알림 호출
+        notificationHelper.getManager().notify(1, nb.build())
+    }*/
+
     private fun updateOnOff() {
 
         AlarmListAdapter.setOnClickedListener(object: AlarmListAdapter.SwitchClickListener {
             override fun onClicked(position: Int, OnOff: Boolean) {
                 val key = alarmkeyList[position]
-                val onOff = OnOff
-                FBRef.alarmRef.child(key).child("OnOff").setValue(onOff)
+                FBRef.alarmRef.child(key).child("onOff").setValue(OnOff)
+
+                val postListener = object : ValueEventListener {
+                    override fun onDataChange(dataSnapshot: DataSnapshot) {
+
+                        val dataModel = dataSnapshot.getValue(AlarmData::class.java)
+
+                        if (dataModel != null) {
+                            if(dataModel.onOff){
+                                startAlarm(dataModel.time, dataModel.alarmId, dataModel.title)
+                            } else {
+                                removeAlarm(dataModel.alarmId)
+                            }
+                        }
+                    }
+
+                    override fun onCancelled(databaseError: DatabaseError) {
+                        // Getting Post failed, log a message
+                        Log.w("alarmTest", "loadPost:onCancelled", databaseError.toException())
+                    }
+                }
+
+                FBRef.alarmRef.child(key).addValueEventListener(postListener)
             }
         })
     }
@@ -296,58 +336,38 @@ class AlarmFragment : Fragment(), OnClickInterface {
         return alarmIdList
     }
 
-    private fun startAlarm() {
+    private fun startAlarm(time: String, alarmId: Int, title: String) {
+        requireActivity()?.runOnUiThread {
 
-        val postListener = object : ValueEventListener {
-            @SuppressLint("NotifyDataSetChanged")
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                for (dataModel in dataSnapshot.children) {
+            var alarmManager: AlarmManager = requireActivity().getSystemService(Context.ALARM_SERVICE) as AlarmManager
+            var intent = Intent(requireActivity(), AlertReceiver::class.java)
+            intent.putExtra("title", title)
+            var pendingIntent = PendingIntent.getBroadcast(requireActivity(), alarmId, intent,
+                FLAG_MUTABLE or FLAG_UPDATE_CURRENT)
 
-                    val item = dataModel.getValue(AlarmData::class.java)
-                    if(FBAuth.getUid() == item!!.uid && item != null) {
-
-                        requireActivity()?.runOnUiThread {
-
-                            var alarmId = item.alarmId
-                            var alarmManager: AlarmManager = requireActivity().getSystemService(Context.ALARM_SERVICE) as AlarmManager
-                            var intent = Intent(requireActivity(), AlertReceiver::class.java)
-                            var pendingIntent = PendingIntent.getBroadcast(requireActivity(), alarmId, intent,
-                                FLAG_MUTABLE or FLAG_UPDATE_CURRENT)
-
-                            var c = Calendar.getInstance()
-                            c.set(Calendar.HOUR_OF_DAY, item.time.substring(0 until 2).toInt()) //시
-                            c.set(Calendar.MINUTE, item.time.substring(3 until 5).toInt())//분
-                            c.set(Calendar.SECOND, 0)//초
-                            c.set(Calendar.MILLISECOND, 0)
+            var c = Calendar.getInstance()
+            c.set(Calendar.HOUR_OF_DAY, time.substring(0 until 2).toInt()) //시
+            c.set(Calendar.MINUTE, time.substring(3 until 5).toInt())//분
+            c.set(Calendar.SECOND, 0)//초
+            c.set(Calendar.MILLISECOND, 0)
 
 
-                            var sTime =  System.currentTimeMillis()
-                            var cTime = c.timeInMillis
+            var sTime =  System.currentTimeMillis()
+            var cTime = c.timeInMillis
 
 
-                            val interval = 1000 * 60 * 60 *24 // 하루 뒤
+            val interval = 1000 * 60 * 60 *24 // 하루 뒤
 
-                            //설정 시간이 현재시간 이전이면 +1일
-                            while (sTime > cTime) {
-                                cTime += interval
-                            }
-
-                            alarmManager.setExact(AlarmManager.RTC_WAKEUP, cTime,pendingIntent)
-                        }
-                    }
-
-                }
+            //설정 시간이 현재시간 이전이면 +1일
+            while (sTime > cTime) {
+                cTime += interval
             }
 
-            override fun onCancelled(databaseError: DatabaseError) {
-                // Getting Post failed, log a message
-                Log.w("alarmListTest", "loadPost:onCancelled", databaseError.toException())
-            }
+            alarmManager.setExact(AlarmManager.RTC_WAKEUP, cTime,pendingIntent)
         }
-        FBRef.alarmRef.addValueEventListener(postListener)
     }
 
-    private fun cancelAlarm(alarmId: Int) {
+    private fun removeAlarm(alarmId: Int) {
         var alarmManager: AlarmManager = requireActivity().getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
         requireActivity().runOnUiThread {
@@ -356,11 +376,8 @@ class AlarmFragment : Fragment(), OnClickInterface {
                 FLAG_MUTABLE or FLAG_UPDATE_CURRENT)
 
             alarmManager.cancel(pendingIntent)
-
         }
-
-
-
+        Log.d("editAlarm", "remove")
     }
 
     @SuppressLint("NotifyDataSetChanged")
