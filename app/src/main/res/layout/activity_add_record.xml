@@ -176,15 +176,15 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageButton
-                    android:id="@+id/plus_button"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginLeft="7dp"
-                    android:layout_marginTop="2dp"
-                    android:background="@drawable/plus_button"
-                    app:layout_constraintStart_toEndOf="@+id/textView25"
-                    app:layout_constraintTop_toTopOf="parent" />
+<!--                <ImageButton-->
+<!--                    android:id="@+id/addPillBtn"-->
+<!--                    android:layout_width="25dp"-->
+<!--                    android:layout_height="25dp"-->
+<!--                    android:layout_marginLeft="7dp"-->
+<!--                    android:layout_marginTop="2dp"-->
+<!--                    android:background="@drawable/plus_button"-->
+<!--                    app:layout_constraintStart_toEndOf="@+id/textView25"-->
+<!--                    app:layout_constraintTop_toTopOf="parent" />-->
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -194,62 +194,73 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp">
 
-                <ImageView
-                    android:id="@+id/list2"
-                    android:layout_width="match_parent"
-                    android:layout_height="66dp"
-                    android:background="@drawable/background_radius_record"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
                     android:id="@+id/pillName"
                     android:layout_width="170dp"
                     android:layout_height="40dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
                     android:background="@android:color/transparent"
                     android:ellipsize="none"
                     android:hint="약 이름을 작성"
+                    android:textAlignment="center"
+                    android:textStyle="italic"
                     android:maxLines="1"
                     android:textColor="#000000"
                     android:textSize="15sp"
-                    app:layout_constraintStart_toStartOf="@+id/list2"
-                    app:layout_constraintTop_toTopOf="@+id/list2" />
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
                     android:id="@+id/dosage"
-                    android:layout_width="170dp"
+                    android:layout_width="165dp"
                     android:layout_height="40dp"
-                    android:layout_marginTop="16dp"
                     android:background="@android:color/transparent"
                     android:ellipsize="none"
                     android:hint="권장 복용량 작성"
+                    android:textStyle="italic"
+                    android:textAlignment="center"
                     android:maxLines="1"
                     android:textColor="#000000"
                     android:textSize="15sp"
-                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/pillName"
-                    app:layout_constraintTop_toTopOf="@+id/list2" />
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/addPillBtn"
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
+                    android:backgroundTint="#DBDFFF"
+                    android:text="추가"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ImageView
+                android:layout_width="370dp"
+                android:layout_height="2dp"
+                android:layout_gravity="center"
+                android:background="@drawable/one_line_pointgray" />
+
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/pillRecord"
-                    android:layout_width="395dp"
-                    android:layout_height="73dp"
+                    android:id="@+id/pillLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constrainedHeight="true"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
-
                 </androidx.recyclerview.widget.RecyclerView>
-
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -258,7 +269,7 @@
                 android:id="@+id/constraintLayout5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp">
 
@@ -275,46 +286,32 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageButton
-                    android:id="@+id/record_start"
-                    android:layout_width="25dp"
-                    android:layout_height="27dp"
-                    android:layout_marginTop="6dp"
-                    android:layout_marginLeft="5dp"
-                    android:background="@drawable/microphone"
-                    app:layout_constraintStart_toEndOf="@+id/textView24"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageButton
-                    android:id="@+id/record_stop"
-                    android:layout_width="25dp"
-                    android:layout_height="32dp"
-                    android:layout_marginTop="3dp"
-                    android:background="@drawable/no_recording"
-                    app:layout_constraintStart_toEndOf="@+id/record_start"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageButton
+                <com.jenny.deara.record.RecordButton
                     android:id="@+id/record_play"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_marginTop="6dp"
-                    android:layout_marginLeft="2dp"
-                    android:background="@drawable/play_button"
-                    app:layout_constraintStart_toEndOf="@+id/record_stop"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/record_start"
+                    app:layout_constraintStart_toEndOf="@+id/textView24"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
 
                 <TextView
                     android:id="@+id/textView27"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:text="녹음시에는 의사 선생님의\n동의를 잊지 마세요 !"
                     android:textColor="#FF0000"
                     android:textSize="9sp"
                     app:layout_constraintStart_toEndOf="@+id/record_play"
                     app:layout_constraintTop_toTopOf="parent" />
+
+
+
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout

@@ -9,7 +9,6 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-
 import android.widget.Toast
 import androidx.core.content.ContentProviderCompat.requireContext
 import com.google.firebase.auth.FirebaseAuth
@@ -17,8 +16,6 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-//import com.jenny.deara.PatternLock.PatternActivity
-
 import com.jenny.deara.databinding.ActivityMyPageBinding
 import com.jenny.deara.home.TodoDialog
 import com.jenny.deara.mypages.*
@@ -50,17 +47,6 @@ class MyPageActivity : AppCompatActivity() {
         binding.yourEmail.setText(email)
 
 
-        // firebase 에서 닉네임 불러오기
-        if(user!=null) {
-            database.child("users").child(user.uid).get().addOnSuccessListener {
-                binding.yourNick.setText(it.value.toString() + " 님")
-                binding.yourNick.setTextColor(Color.BLACK)
-
-            }.addOnFailureListener {
-                binding.yourNick.setText("닉네임 정보 없음")
-                binding.yourNick.setTextColor(Color.BLACK)
-            }
-        }
 
         // 비밀번호 변경 페이지로 이동
         binding.changePwdtxt.setOnClickListener {
@@ -109,10 +95,46 @@ class MyPageActivity : AppCompatActivity() {
 
         }
 
+        // 커뮤니티 이용규칙
+        binding.communityRule.setOnClickListener {
+
+            val intent5  = Intent(this, CommunityRuleActivity::class.java)
+            startActivity(intent5)
+        }
+
+        // 앱 커버 변경
+        binding.textView15.setOnClickListener {
+
+            val intent6  = Intent(this, AppCoverActivity::class.java)
+            startActivity(intent6)
+        }
+
     }
 
     override fun onBackPressed() {
         super.onBackPressed()
+    }
+
+    // 새로고침
+    override fun onResume() {
+        super.onResume()
+
+        // firebase 에서 이메일 불러오기
+        val user = auth.currentUser
+
+
+        // firebase 에서 닉네임 불러오기
+        if(user!=null) {
+            database.child("users").child(user.uid).get().addOnSuccessListener {
+                binding.yourNick.setText(it.value.toString() + " 님")
+                binding.yourNick.setTextColor(Color.BLACK)
+
+            }.addOnFailureListener {
+                binding.yourNick.setText("닉네임 정보 없음")
+                binding.yourNick.setTextColor(Color.BLACK)
+            }
+        }
+
     }
 
 

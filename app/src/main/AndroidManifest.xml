@@ -5,18 +5,31 @@
 
     <uses-permission android:name="android.permission.INTERNET" /> <!-- 지문 인식 권한 -->
     <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
 
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_launcher_purple"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DearA"
         tools:targetApi="31">
+        <activity
+            android:name=".mypages.AppCoverActivity"
+            android:exported="false" />
+        <activity
+            android:name=".mypages.CommunityRuleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".board.report.ReportActivity"
+            android:exported="false" /> <!-- <activity -->
+        <!-- android:name=".preference" -->
+        <!-- android:exported="false" /> -->
         <!-- <activity -->
         <!-- android:name=".preference" -->
         <!-- android:exported="false" /> -->
@@ -24,7 +37,7 @@
             android:name=".FingerPrintActivity"
             android:exported="false" />
         <activity
-            android:name=".record.RmRecordActivity"
+            android:name=".record.EditRecordActivity"
             android:exported="false" />
         <activity
             android:name=".record.AddRecordActivity"
@@ -70,20 +83,31 @@
             android:exported="false" />
         <activity
             android:name=".SignInActivity"
-            android:exported="false" />
+            android:exported="true">
+
+            <!-- 딥 링크용 인텐트 필터 -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="host"
+                    android:scheme="deeplink" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".SelfDiagnosisActivity"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
             android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-             <intent-filter>
-             <action android:name="android.intent.action.MAIN" />
-
-
-             <category android:name="android.intent.category.LAUNCHER" />
-             </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".SplashActivity"
@@ -102,6 +126,32 @@
             android:name=".alarm.AlertReceiver"
             android:enabled="true"
             android:exported="true" />
+
+        <activity-alias android:label="DearA"
+            android:icon="@mipmap/ic_launcher_purple"
+            android:roundIcon="@mipmap/ic_launcher_purple"
+            android:name=".MainActivityAlias1"
+            android:enabled="true"
+            android:exported="true"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias android:label="@string/app_name"
+            android:icon="@mipmap/ic_launcher_white"
+            android:roundIcon="@mipmap/ic_launcher_white"
+            android:name=".MainActivityAlias2"
+            android:enabled="false"
+            android:exported="true"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
     </application>
 
 </manifest>

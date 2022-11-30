@@ -11,11 +11,7 @@ import android.text.Editable
 import android.text.Layout
 import android.text.TextWatcher
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.MotionEvent
-import android.view.RoundedCorner
-import android.view.View
-import android.view.Window
+import android.view.*
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -40,11 +36,13 @@ import com.jenny.deara.MyPageActivity
 import com.jenny.deara.R
 import com.jenny.deara.board.comment.CommentListAdapter
 import com.jenny.deara.board.comment.CommentModel
+import com.jenny.deara.board.report.ReportActivity
 import com.jenny.deara.databinding.ActivityBoardInsideBinding
 import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
 import kotlinx.android.synthetic.main.activity_board_inside.*
 import kotlinx.android.synthetic.main.fragment_board_popup.*
+import java.util.*
 
 class BoardInsideActivity : AppCompatActivity() {
 
@@ -63,13 +61,14 @@ class BoardInsideActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_board_inside)
 
+        window.addFlags(WindowManager.LayoutParams.FLAG_SECURE)
+
         val key = intent.getStringExtra("key")
         if (key != null) {
             getBoardData(key)
             getImageData(key)
             initRecycler(key)
             getCommentData(key)
-            Log.d("commentkey", commentKeyList.toString())
         }
 
         //local
@@ -91,24 +90,24 @@ class BoardInsideActivity : AppCompatActivity() {
             }
         }
 
+        binding.shingoBtn.setOnClickListener {
+            val intent = Intent(this, ReportActivity::class.java)
+            startActivity(intent)
+        }
+
 
         // 댓글 작성
         binding.commentBtn.setOnClickListener {
-            if (commentReplyOn){ // 대댓글 작성
-                Log.d("commentInsert", "답글을 작성 : $getCommentKey")
-                insertReComment(getCommentKey)
-                commentReplyOn = false
-            }else{ //댓글 작성
-                Log.d("commentInsert", "댓글을 작성")
-                if (key != null) {
-                    Log.d("commentInsert", "댓글을 작성")
-                    insertComment(key)
-                }
-            }
+           if(!commentReplyOn){
+               Log.d("commentInsert", "댓글을 작성")
+               if (key != null) {
+                   insertComment("null", key)
+               }
+           }
         }
 
-        Log.d("commentCount", CommentListAdapter.getAllItemCount().toString())
-        binding.commentNum.text = CommentListAdapter.getAllItemCount().toString()
+//        Log.d("commentCount", CommentListAdapter.getAllItemCount().toString())
+//        binding.commentNum.text = CommentListAdapter.getAllItemCount().toString()
 
 
     }
@@ -116,8 +115,14 @@ class BoardInsideActivity : AppCompatActivity() {
     @SuppressLint("NotifyDataSetChanged")
     private fun initRecycler(boardKey: String) {
         CommentListAdapter = CommentListAdapter(this, commentKeyList, boardKey)
-        val imm: InputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
 
+        val rv : RecyclerView = binding.rvComment
+        rv.adapter= CommentListAdapter
+
+        CommentListAdapter.datas = commentList
+        CommentListAdapter.notifyDataSetChanged()
+
+        val imm: InputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
         CommentListAdapter.setOnItemClickListener(object: CommentListAdapter.OnItemClickListener{
             @SuppressLint("ServiceCast", "ClickableViewAccessibility")
             override fun onItemClick(v: View, position: Int) {
@@ -162,6 +167,16 @@ class BoardInsideActivity : AppCompatActivity() {
                     false
                 }
 
+                // 답글은 여기서 작성
+                binding.commentBtn.setOnClickListener{
+                    if (commentReplyOn){
+                        Log.d("commentInsert", "답글을 작성 : $getCommentKey")
+                        insertComment(getCommentKey, boardKey)
+                        binding.commentArea.hint = "댓글을 입력해주세요"
+                        v.findViewById<View>(R.id.Area1).setBackgroundColor(Color.parseColor("#00FF0000"))
+                    }
+                }
+
                 // 텍스트 입력부분 이벤트 처리
                 binding.commentArea.addTextChangedListener(object : TextWatcher {
                     override fun afterTextChanged(p0: Editable?) {
@@ -181,19 +196,6 @@ class BoardInsideActivity : AppCompatActivity() {
                 })
             }
         })
-
-        val rv : RecyclerView = binding.rvComment
-        rv.adapter= CommentListAdapter
-
-        CommentListAdapter.datas = commentList
-
-//        val commentCount = CommentListAdapter.itemCount + CommentListAdapter.getReplyItemCount()
-//        Log.w("commentCount", "CommentListAdapter.itemCount")
-//        Log.w("commentCount", "CommentListAdapter.getReplyItemCount()")
-//        Log.w("commentCount", "commentCount")
-//        binding.commentNum.text = CommentListAdapter.getAllItemCount().toString()
-//        Log.w("commentCountAll", CommentListAdapter.getAllItemCount().toString())
-        CommentListAdapter.notifyDataSetChanged()
     }
 
     // 이전 데이터 띄우기
@@ -270,54 +272,41 @@ class BoardInsideActivity : AppCompatActivity() {
         return dp
     }
 
-    private fun insertComment(key: String){
-        // comment
-        //   - BoardKey
-        //        - CommentKey
-        //            - CommentData
-        //            - CommentData
-        //            - CommentData
+    // 댓글 작성하기
+    private fun insertComment(parentKey: String, key: String){
+
+        val viewType = if (parentKey == "null"){
+            1
+        }else{
+            2
+        }
         FBRef.commentRef
-            .child(key)
             .push()
             .setValue(
                 CommentModel(
                     binding.commentArea.text.toString(),
                     FBAuth.getUid(),
-                    FBAuth.getTimeBoard()
+                    FBAuth.getTimeBoard(),
+                    parentKey,
+                    key,
+                    viewType
                 )
             )
 
-        Toast.makeText(this, "댓글 입력 완료", Toast.LENGTH_SHORT).show()
-        binding.commentArea.setText("")
-    }
-
-    // 답글
-    private fun insertReComment(key: String){
-        // commentReply
-        //   - CommentKey
-        //        - reCommentKey
-        //            - CommentData
-        //            - CommentData
-        //            - CommentData
-        FBRef.commentReplyRef
-            .child(key)
-            .push()
-            .setValue(
-                CommentModel(
-                    binding.commentArea.text.toString(),
-                    FBAuth.getUid(),
-                    FBAuth.getTimeBoard()
-                )
-            )
-
-        Toast.makeText(this, "답글 입력 완료", Toast.LENGTH_SHORT).show()
+        if(commentReplyOn){
+            Toast.makeText(this, "답글 입력 완료", Toast.LENGTH_SHORT).show()
+        }else{
+            Toast.makeText(this, "댓글 입력 완료", Toast.LENGTH_SHORT).show()
+        }
+        commentReplyOn = false
         binding.commentArea.setText("")
     }
 
     // 댓글 가져오기
     @SuppressLint("SetTextI18n")
     fun getCommentData(key : String){
+
+        val commentCountList = mutableListOf<String>()
 
         val postListener = object : ValueEventListener {
             @SuppressLint("NotifyDataSetChanged")
@@ -329,8 +318,23 @@ class BoardInsideActivity : AppCompatActivity() {
                 for (dataModel in dataSnapshot.children) {
 
                     val item = dataModel.getValue(CommentModel::class.java)
-                    commentList.add(item!!)
-                    commentKeyList.add(dataModel.key.toString())
+                    if (item != null) {
+                        if (item.boardKey == key)
+                            if (item.parent == "null"){
+                                commentList.add(item!!)
+                                commentKeyList.add(dataModel.key.toString())
+                            }else{ // 대댓글인 경우 리스트의 중간에 삽입하기
+                                val arrayItem = item.parent
+                                val index = commentKeyList.indexOf(arrayItem)
+
+                                val count = Collections.frequency(commentCountList, arrayItem) + 1
+
+                                commentList.add(index + count, item)
+                                commentKeyList.add(index + count, dataModel.key.toString())
+
+                                commentCountList.add(arrayItem)
+                            }
+                    }
                     Log.d("getCommentLog", "{${commentKeyList}}")
 
                     //getCommentReply(dataModel.key.toString()) //대댓글 리스트에 내용을 담는다.
@@ -343,7 +347,7 @@ class BoardInsideActivity : AppCompatActivity() {
                 Log.w("getCommentData", "loadPost:onCancelled", databaseError.toException())
             }
         }
-        FBRef.commentRef.child(key).addValueEventListener(postListener)
+        FBRef.commentRef.addValueEventListener(postListener)
 
         //test data//
 //        commentList.add(CommentModel("댓글입니다.","uid","2022/11/07 21:28"))

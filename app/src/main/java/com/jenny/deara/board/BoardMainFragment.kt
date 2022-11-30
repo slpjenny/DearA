@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.os.SystemClock
 import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
@@ -12,7 +11,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.content.ContextCompat.getDrawable
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -22,36 +20,31 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.jenny.deara.MyPageActivity
 import com.jenny.deara.R
+import com.jenny.deara.board.comment.CommentModel
+import com.jenny.deara.board.comment.MyCommentListAdapter
 import com.jenny.deara.databinding.FragmentBoardMainBinding
 import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
-import kotlinx.android.synthetic.main.fragment_board_main.*
-import java.util.*
 
 class BoardMainFragment : Fragment() {
 
     private lateinit var binding: FragmentBoardMainBinding
 
-    private val TAG = "BoardMainFragment"
-
     lateinit var BoardListAdapter: BoardListAdapter
-
+    lateinit var myCommentListAdapter: MyCommentListAdapter
 
     var boardList = mutableListOf<BoardModel>()
     var boardkeyList = mutableListOf<String>()
     var searchList = mutableListOf<BoardModel>()
     var searchKeyList = mutableListOf<String>()
+    var commentList = mutableListOf<CommentModel>()
+    var commentBoardKeyList = mutableListOf<String>()
     var menu: String = "boardList"
     var sort: String = "All"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-//        binding.writeBtn.setOnSingleClickListener {
-//            Log.d(TAG, "클릭")
-//        }
     }
-
 
     @SuppressLint("ResourceAsColor")
     override fun onCreateView(
@@ -69,23 +62,27 @@ class BoardMainFragment : Fragment() {
 //            startActivity(intent)
             val intent = Intent(context, BoardInsideActivity::class.java)
             startActivity(intent)
+
         }
 
-        binding.writeBtn.setOnSingleClickListener {
-            Log.d(TAG, "click")
+        binding.writeBtn.setOnClickListener {
             val intent = Intent(context, BoardWriteActivity::class.java)
             startActivity(intent)
         }
 
+
+        //// menu ////
         binding.boardList.setOnClickListener {
             setText()
             binding.boardSearch.visibility = View.VISIBLE
             binding.menu2.visibility = View.VISIBLE
+            binding.writeBtn.visibility = View.VISIBLE
             binding.boardList.background = context?.let { getDrawable(it, R.drawable.bottom_edge_bold) }
             binding.boardList.setTextColor(Color.BLACK)
             menu = "boardList"
             sort = "All"
             getFBBoardData()
+            initRecycler()
         }
 
         binding.boardAlarm.setOnClickListener {
@@ -102,22 +99,28 @@ class BoardMainFragment : Fragment() {
             setText()
             binding.boardSearch.visibility = View.GONE
             binding.menu2.visibility = View.GONE
+            binding.writeBtn.visibility = View.GONE
             binding.myBoard.background = context?.let { getDrawable(it, R.drawable.bottom_edge_bold) }
             binding.myBoard.setTextColor(Color.BLACK)
             menu = "myBoard"
             getFBBoardData()
+            initRecycler()
         }
 
         binding.myComment.setOnClickListener {
             setText()
-//            menu = "myComment"
-//            getFBBoardData(menu)
+            menu = "myComment"
+            initCommentRecycler()
+            getCommentData()
             binding.boardSearch.visibility = View.GONE
             binding.menu2.visibility = View.GONE
+            binding.writeBtn.visibility = View.GONE
             binding.myComment.background = context?.let { getDrawable(it, R.drawable.bottom_edge_bold) }
             binding.myComment.setTextColor(Color.BLACK)
         }
 
+
+        // sort //
         binding.sortAll.setOnClickListener {
             sort = "All"
             setSortText()
@@ -186,7 +189,7 @@ class BoardMainFragment : Fragment() {
 
     @SuppressLint("NotifyDataSetChanged")
     private fun initRecycler() {
-        BoardListAdapter = BoardListAdapter(requireContext(), boardkeyList)
+        BoardListAdapter = BoardListAdapter(requireContext(), boardkeyList, menu)
 
         val rv : RecyclerView = binding.rvBoard
         rv.adapter= BoardListAdapter
@@ -197,7 +200,25 @@ class BoardMainFragment : Fragment() {
 //        boardkeyList.add("sdfs")
 
         BoardListAdapter.datas = boardList
+        BoardListAdapter.myComments = commentList
         BoardListAdapter.notifyDataSetChanged()
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    private fun initCommentRecycler() {
+        myCommentListAdapter = MyCommentListAdapter(requireContext())
+
+        val rv : RecyclerView = binding.rvBoard
+        rv.adapter= myCommentListAdapter
+
+//        commentList.add(CommentModel("댓글 내용입니다.","작성자","시간","부모키"))
+//        commentList.add(CommentModel("댓글 내용입니다22.","작성자22","시간22","부모키22"))
+//        boardkeyList.add("sdf")
+//        boardkeyList.add("sdfs")
+
+        myCommentListAdapter.datas = commentList
+        myCommentListAdapter.commentBoardKeyList = commentBoardKeyList
+        myCommentListAdapter.notifyDataSetChanged()
     }
 
     //파이어베이스 데이터 불러오기 _ 글 목록
@@ -270,6 +291,37 @@ class BoardMainFragment : Fragment() {
         FBRef.boardRef.addValueEventListener(postListener)
     }
 
+    // 댓글 가져오기
+    private fun getCommentData(){
+        //menu = "myComment"
+        val postListener = object : ValueEventListener {
+            @SuppressLint("NotifyDataSetChanged")
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+
+                //boardList.clear()
+                commentList.clear()
+                commentBoardKeyList.clear()
+
+                for (dataModel in dataSnapshot.children) {
+
+                    val item = dataModel.getValue(CommentModel::class.java)
+                    commentList.add(item!!)
+                    commentBoardKeyList.add(item.boardKey)
+                    Log.d("getCommentLog", "{${commentBoardKeyList}}")
+
+                    //getCommentReply(dataModel.key.toString()) //대댓글 리스트에 내용을 담는다.
+                }
+                BoardListAdapter.notifyDataSetChanged()
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Getting Post failed, log a message
+                Log.w("getCommentData", "loadPost:onCancelled", databaseError.toException())
+            }
+        }
+        FBRef.commentRef.addValueEventListener(postListener)
+    }
+
     private fun setText(){
         binding.boardList.setTextColor(Color.parseColor("#CFCFCF"))
         binding.boardAlarm.setTextColor(Color.parseColor("#CFCFCF"))
@@ -307,6 +359,4 @@ class BoardMainFragment : Fragment() {
             BoardListAdapter.setItems(searchList, searchKeyList)
         }
     }
-
-
 }
