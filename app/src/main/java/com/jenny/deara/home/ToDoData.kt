@@ -8,5 +8,6 @@ data class ToDoData (
     var month : String = "",
     var date : String = "",
     var uid : String = "",
-    var key : String = ""
+    var key : String = "",
+    var percent : Int = 0
 )
