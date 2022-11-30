@@ -8,19 +8,19 @@ import com.jenny.deara.databinding.ActivityBoardImageViewBinding
 
 class BoardImageViewActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityBoardImageViewBinding
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_board_image_view)
-
-        val url = intent.getByteExtra()
-
-        binding.x.setOnClickListener {
-            finish()
-        }
-
-        binding.imageView.setImageURI(url)
-    }
+//    private lateinit var binding : ActivityBoardImageViewBinding
+//
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//
+//        binding = DataBindingUtil.setContentView(this, R.layout.activity_board_image_view)
+//
+//        val url = intent.getByteExtra()
+//
+//        binding.x.setOnClickListener {
+//            finish()
+//        }
+//
+//        binding.imageView.setImageURI(url)
+//    }
 }

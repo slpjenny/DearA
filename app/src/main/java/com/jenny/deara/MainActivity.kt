@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.jenny.deara.board.BoardMainFragment
+import com.jenny.deara.diary.DiaryFragment
 import com.jenny.deara.record.RecordFragment
 import com.jenny.deara.home.HomeFragment
 import java.util.*
