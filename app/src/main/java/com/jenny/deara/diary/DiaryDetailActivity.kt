@@ -67,6 +67,7 @@ class DiaryDetailActivity : AppCompatActivity() {
                     }
                 }
                 if (dataModel != null){
+                    binding.date.text = dataModel.time
                     binding.contents1.text = dataModel.contents1
                     binding.contents2.text = dataModel.contents2
                     binding.contents3.text = dataModel.contents3
