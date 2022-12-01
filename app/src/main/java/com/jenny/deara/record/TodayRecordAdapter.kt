@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.jenny.deara.R
@@ -46,7 +47,7 @@ class TodayRecordAdapter(val context: Context, val todayRecordList:MutableList<S
             time.text = item.time
 
             // 화살표 버튼 클릭시 상세 페이지
-            val tdDetailBtn = itemView.findViewById<Button>(R.id.tdDetailBtn)
+            val tdDetailBtn = itemView.findViewById<ImageView>(R.id.tdDetailBtn)
 
             tdDetailBtn.setOnClickListener {
                 val intent = Intent(context, EditRecordActivity::class.java)

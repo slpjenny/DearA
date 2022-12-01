@@ -191,7 +191,7 @@
         <entry key="app/src/main/res/layout/fragment_my_write.xml" value="0.2713541666666667" />
         <entry key="app/src/main/res/layout/fragment_new_record.xml" value="0.2515625" />
         <entry key="app/src/main/res/layout/fragment_popup.xml" value="0.25625" />
-        <entry key="app/src/main/res/layout/fragment_record.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/fragment_record.xml" value="0.5" />
         <entry key="app/src/main/res/layout/fragment_record_delete.xml" value="0.2515625" />
         <entry key="app/src/main/res/layout/fragment_record_end.xml" value="0.3202285766601563" />
         <entry key="app/src/main/res/layout/fragment_report_popup.xml" value="0.25729166666666664" />
