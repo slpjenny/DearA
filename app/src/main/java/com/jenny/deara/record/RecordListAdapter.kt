@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.jenny.deara.R
@@ -45,7 +46,7 @@ class RecordListAdapter(val context: Context, val recordList : MutableList<Strin
             time.text = item.time
 
             // 화살표 버튼 클릭시 상세 페이지
-            val detailBtn = itemView.findViewById<Button>(R.id.detailBtn)
+            val detailBtn = itemView.findViewById<ImageView>(R.id.detailBtn)
 
             detailBtn.setOnClickListener {
                 val intent = Intent(context, EditRecordActivity::class.java)
