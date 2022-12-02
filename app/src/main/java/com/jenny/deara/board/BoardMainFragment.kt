@@ -85,15 +85,15 @@ class BoardMainFragment : Fragment() {
             initRecycler()
         }
 
-        binding.boardAlarm.setOnClickListener {
-            setText()
-//            menu = "boardAlarm"
-//            getFBBoardData(menu)
-            binding.boardSearch.visibility = View.GONE
-            binding.menu2.visibility = View.GONE
-            binding.boardAlarm.background = context?.let { getDrawable(it, R.drawable.bottom_edge_bold) }
-            binding.boardAlarm.setTextColor(Color.BLACK)
-        }
+//        binding.boardAlarm.setOnClickListener {
+//            setText()
+////            menu = "boardAlarm"
+////            getFBBoardData(menu)
+//            binding.boardSearch.visibility = View.GONE
+//            binding.menu2.visibility = View.GONE
+//            binding.boardAlarm.background = context?.let { getDrawable(it, R.drawable.bottom_edge_bold) }
+//            binding.boardAlarm.setTextColor(Color.BLACK)
+//        }
 
         binding.myBoard.setOnClickListener {
             setText()
@@ -324,12 +324,12 @@ class BoardMainFragment : Fragment() {
 
     private fun setText(){
         binding.boardList.setTextColor(Color.parseColor("#CFCFCF"))
-        binding.boardAlarm.setTextColor(Color.parseColor("#CFCFCF"))
+        //binding.boardAlarm.setTextColor(Color.parseColor("#CFCFCF"))
         binding.myBoard.setTextColor(Color.parseColor("#CFCFCF"))
         binding.myComment.setTextColor(Color.parseColor("#CFCFCF"))
 
         binding.boardList.setBackgroundColor(Color.parseColor("#00ff0000"))
-        binding.boardAlarm.setBackgroundColor(Color.parseColor("#00ff0000"))
+        //binding.boardAlarm.setBackgroundColor(Color.parseColor("#00ff0000"))
         binding.myBoard.setBackgroundColor(Color.parseColor("#00ff0000"))
         binding.myComment.setBackgroundColor(Color.parseColor("#00ff0000"))
     }
