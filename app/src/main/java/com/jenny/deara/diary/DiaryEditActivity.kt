@@ -21,6 +21,7 @@ class DiaryEditActivity : AppCompatActivity() {
     private lateinit var sort : String
     private var month : Int = 0
     private var year : Int = 2022
+    private var day : Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,8 +75,9 @@ class DiaryEditActivity : AppCompatActivity() {
                     binding.randomA.text.toString(),
                     sort,
                     FBAuth.getTimeDiary(),
-                    month,
                     year,
+                    month,
+                    day,
                     FBAuth.getUid()
                 )
             )
@@ -100,10 +102,13 @@ class DiaryEditActivity : AppCompatActivity() {
                 binding.content3Area.setText(dataModel?.contents3)
                 binding.randomQ.text = dataModel?.r_question
                 binding.randomA.setText(dataModel?.r_contents)
-                binding.date.text = dataModel?.time
                 sort = dataModel?.sort.toString()
+                if (dataModel != null) {
+                    year = dataModel.year
+                }
                 month = dataModel?.month!!
-                year = dataModel.year
+                day = dataModel.day
+                binding.date.text = FBAuth.setFormat(year, month, day)
                 if (sort == "ver1"){
                     binding.toggleBtn1.setBackgroundResource(R.drawable.toggle_on)
                     binding.title1.text = "좋았던 일"

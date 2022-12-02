@@ -2,6 +2,7 @@ package com.jenny.deara
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.jenny.deara.board.BoardMainFragment
@@ -24,6 +25,13 @@ class MainActivity : AppCompatActivity() {
         var getMonth = intent.getIntExtra("iMonth", defaultMonth)
         var getYear = intent.getIntExtra("iYear", defaultYear)
 
+        // 데이터 넘기기
+        val diaryFragment = DiaryFragment()
+        var bundle = Bundle()
+        bundle.putInt("iMonth", getMonth)
+        bundle.putInt("iYear", getYear)
+        diaryFragment.arguments = bundle
+
         bnv_main.setOnItemSelectedListener { item ->
             changeFragment(
                 when (item.itemId) {
@@ -37,7 +45,7 @@ class MainActivity : AppCompatActivity() {
                         HomeFragment()
                     }
                     R.id.fourth -> {
-                        DiaryFragment(defaultMonth, defaultYear)
+                        diaryFragment
                     }
                     else -> {
                         BoardMainFragment()
@@ -49,14 +57,14 @@ class MainActivity : AppCompatActivity() {
         bnv_main.selectedItemId = R.id.third
 
         if (nav == "fourth"){
-            bnv_main.selectedItemId = R.id.fourth
-            changeFragment(DiaryFragment(getMonth, getYear))
-        }
-        if (nav == "fifth"){
-            bnv_main.selectedItemId = R.id.fifth
-            changeFragment(BoardMainFragment())
+            Handler().postDelayed({bnv_main.selectedItemId = R.id.fourth
+                changeFragment(diaryFragment)},1000L)
         }
 
+        if (nav == "fifth"){
+            Handler().postDelayed({bnv_main.selectedItemId = R.id.fifth
+            changeFragment(BoardMainFragment())}, 1000L)
+        }
 
     }
 

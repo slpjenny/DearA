@@ -11,6 +11,7 @@ import com.google.firebase.database.ValueEventListener
 import com.jenny.deara.MainActivity
 import com.jenny.deara.R
 import com.jenny.deara.databinding.ActivityDiaryDetailBinding
+import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
 
 class DiaryDetailActivity : AppCompatActivity() {
@@ -73,6 +74,7 @@ class DiaryDetailActivity : AppCompatActivity() {
                     binding.contents3.text = dataModel.contents3
                     binding.randomQ.text = dataModel.r_question
                     binding.randomA.text = dataModel.r_contents
+                    binding.date.text = FBAuth.setFormat(dataModel.year, dataModel.month, dataModel.day)
                 } else{
                     val intent = Intent(this@DiaryDetailActivity, MainActivity::class.java)
                     intent.putExtra("nav", "fourth")
