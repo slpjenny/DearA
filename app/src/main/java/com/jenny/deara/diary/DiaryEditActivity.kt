@@ -74,7 +74,6 @@ class DiaryEditActivity : AppCompatActivity() {
                     binding.randomQ.text.toString(),
                     binding.randomA.text.toString(),
                     sort,
-                    FBAuth.getTimeDiary(),
                     year,
                     month,
                     day,
