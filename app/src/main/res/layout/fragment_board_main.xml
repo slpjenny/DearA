@@ -77,19 +77,19 @@
                 android:textSize="19sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/boardAlarm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:paddingBottom="5dp"
-                android:text="알림"
-                android:textAlignment="center"
-                android:textColor="@color/board_menu_gray"
-                android:textSize="19sp"
-                android:textStyle="bold" />
+<!--            <TextView-->
+<!--                android:id="@+id/boardAlarm"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="10dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:gravity="center"-->
+<!--                android:paddingBottom="5dp"-->
+<!--                android:text="알림"-->
+<!--                android:textAlignment="center"-->
+<!--                android:textColor="@color/board_menu_gray"-->
+<!--                android:textSize="19sp"-->
+<!--                android:textStyle="bold" />-->
 
             <TextView
                 android:id="@+id/myBoard"
