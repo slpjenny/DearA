@@ -20,7 +20,7 @@ import com.jenny.deara.databinding.FragmentDiaryBinding
 import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
 
-class DiaryFragment(var iMonth: Int, var iYear: Int) : Fragment() {
+class DiaryFragment : Fragment() {
 
     private lateinit var binding: FragmentDiaryBinding
 
@@ -36,6 +36,7 @@ class DiaryFragment(var iMonth: Int, var iYear: Int) : Fragment() {
     val stringMonth : List<String> = listOf("JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC")
     val intYear = arrayListOf<Int>()
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -46,14 +47,28 @@ class DiaryFragment(var iMonth: Int, var iYear: Int) : Fragment() {
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_diary, container, false)
 
+        // 선택한 년도, 월
+        val iMonth = arguments?.getInt("iMonth")
+        Log.d("argTest", iMonth.toString())
+        var iYear = arguments?.getInt("iYear")
+        Log.d("argTest", iYear.toString())
+
         // init setting! //
         for (i in 2000 .. 2030){
             intYear.add(i)
         }
         initRecycler()
-        showMonth(iMonth)
-        showYear(iYear)
-        getFBDiaryData()
+        if (iMonth != null) {
+            showMonth(iMonth)
+        }
+        if (iYear != null) {
+            showYear(iYear)
+        }
+        if (iMonth != null) {
+            if (iYear != null) {
+                getFBDiaryData(iMonth, iYear)
+            }
+        }
 
 
         //마이페이지 버튼
@@ -75,7 +90,15 @@ class DiaryFragment(var iMonth: Int, var iYear: Int) : Fragment() {
 
         //날짜 선택하기
         binding.datapicker.setOnClickListener {
-            showDatePickerDialog(iMonth, iYear)
+            if (iMonth != null) {
+                if (iYear != null) {
+                    var args = Bundle()
+                    args.putInt("iMonth", iMonth)
+                    args.putInt("iYear", iYear)
+
+                    showDatePickerDialog(args)
+                }
+            }
         }
 
         return binding.root
@@ -93,8 +116,9 @@ class DiaryFragment(var iMonth: Int, var iYear: Int) : Fragment() {
     }
 
     // 날짜 선택 다이얼로그 띄우기
-    private fun showDatePickerDialog(iMonth: Int, iYear: Int){
-        val dialog = DatePickerFragment(iMonth, iYear)
+    private fun showDatePickerDialog(args: Bundle){
+        val dialog = DatePickerFragment()
+        dialog.arguments = args
         dialog.show(childFragmentManager, "DatePickerDialog")
     }
 
@@ -117,7 +141,7 @@ class DiaryFragment(var iMonth: Int, var iYear: Int) : Fragment() {
     }
 
     //파이어베이스 데이터 불러오기
-    private fun getFBDiaryData(){
+    private fun getFBDiaryData(iMonth: Int, iYear: Int){
 
         val postListener = object : ValueEventListener {
             @SuppressLint("NotifyDataSetChanged")
