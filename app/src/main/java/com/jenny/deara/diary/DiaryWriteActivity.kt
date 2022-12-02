@@ -130,7 +130,7 @@ class DiaryWriteActivity : AppCompatActivity() {
 
         FBRef.diaryRef
             .child(key)
-            .setValue(DiaryData(contents1, contents2, contents3, r_question, r_contents, sort, time, year, month, day, uid))
+            .setValue(DiaryData(contents1, contents2, contents3, r_question, r_contents, sort, year, month, day, uid))
 
         Toast.makeText(this, "일기가 저장되었습니다.", Toast.LENGTH_LONG).show()
 

@@ -156,13 +156,18 @@ class DiaryFragment : Fragment() {
 
                     val item = dataModel.getValue(DiaryData::class.java)
                     // 일기 장석 여부 확인하기
-                    if(item!!.time == currentTime && FBAuth.getUid() == item.uid){
-                        todayDiary = true
+                    if (item != null) {
+                        if(FBAuth.getYear() == item.year && FBAuth.getMonth() == item.month && FBAuth.getDay() == item.day
+                            && FBAuth.getUid() == item.uid){
+                            todayDiary = true
+                        }
                     }
                     // 선택한 날짜 일기 리스트 띄우기
-                    if(item.month == iMonth && item.year == iYear && FBAuth.getUid() == item.uid){
-                        diaryList.add(item)
-                        diarykeyList.add(dataModel.key.toString())
+                    if (item != null) {
+                        if(item.month == iMonth && item.year == iYear && FBAuth.getUid() == item.uid){
+                            diaryList.add(item)
+                            diarykeyList.add(dataModel.key.toString())
+                        }
                     }
                 }
                 diarykeyList.reverse()
