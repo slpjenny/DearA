@@ -36,7 +36,7 @@ class FBAuth {
             return SimpleDateFormat("yyyy/MM/dd HH:mm", Locale.KOREA).format(currentDateTime)
         }
 
-        //다이어리 날짜 저장 format
+        //현재 시간 불러오기
         fun getTimeDiary() : String{
             val currentDateTime = CalendarUtil.selectedDate.time
             val dateFormat = SimpleDateFormat("yyyy년 MM월 dd일", Locale.KOREA).format(currentDateTime)
@@ -87,7 +87,7 @@ class FBAuth {
 
         // 요일 구하기
         fun getWeek(year: Int, month: Int, day: Int): String{
-            val date = CalendarUtil.selectedDate
+            var date : Calendar = Calendar.getInstance()
             date.set(year, month, day)
 
             val week = when (date.get(Calendar.DAY_OF_WEEK)) {
