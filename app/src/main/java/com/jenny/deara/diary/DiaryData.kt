@@ -8,7 +8,8 @@ data class DiaryData (
         var r_contents : String = "",
         var sort: String = "",
         val time : String = "",
-        val month: Int = 1,
         val year: Int = 2022,
+        val month: Int = 1,
+        val day: Int = 1,
         val uid : String = ""
 )

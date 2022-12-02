@@ -121,15 +121,16 @@ class DiaryWriteActivity : AppCompatActivity() {
         val r_question = binding.randomQ.text.toString()
         val r_contents = binding.randomA.text.toString()
         val time = FBAuth.getTimeDiary()
-        val month = FBAuth.getMonth()
         val year = FBAuth.getYear()
+        val month = FBAuth.getMonth()
+        val day = FBAuth.getDay()
         val uid = FBAuth.getUid()
 
         val key = FBRef.diaryRef.push().key.toString()
 
         FBRef.diaryRef
             .child(key)
-            .setValue(DiaryData(contents1, contents2, contents3, r_question, r_contents, sort, time, month, year, uid))
+            .setValue(DiaryData(contents1, contents2, contents3, r_question, r_contents, sort, time, year, month, day, uid))
 
         Toast.makeText(this, "일기가 저장되었습니다.", Toast.LENGTH_LONG).show()
 
