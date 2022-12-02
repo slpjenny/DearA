@@ -58,10 +58,10 @@ class BoardMainFragment : Fragment() {
         binding.searchBtn.setColorFilter(Color.parseColor("#F3F3F3"))
 
         binding.myPageBtn.setOnClickListener {
-//            val intent = Intent(context, MyPageActivity::class.java)
-//            startActivity(intent)
-            val intent = Intent(context, BoardInsideActivity::class.java)
+            val intent = Intent(context, MyPageActivity::class.java)
             startActivity(intent)
+//            val intent = Intent(context, BoardInsideActivity::class.java)
+//            startActivity(intent)
 
         }
 
