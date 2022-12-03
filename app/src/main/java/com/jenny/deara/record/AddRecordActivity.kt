@@ -48,7 +48,6 @@ class AddRecordActivity : AppCompatActivity() {
     val pillList = mutableListOf<pillData>()
     val pillkeyList = mutableListOf<String>()
 
-
     private val recordButton: RecordButton by lazy { findViewById(R.id.record_play)}
 
     // 녹음관련 필요한 권한 선언
@@ -80,9 +79,6 @@ class AddRecordActivity : AppCompatActivity() {
         initViews()
         bindViews()
         initVariables()
-
-        // 복용약 RecyclerView 테스트 코드
-//        pillList.add(pillData("hi","itsme"))
         initRecycler()
 
 
@@ -114,7 +110,6 @@ class AddRecordActivity : AppCompatActivity() {
                 saveFBPillData()
                 PillListAdapter.notifyDataSetChanged()
             }
-
         }
 
 
@@ -122,7 +117,6 @@ class AddRecordActivity : AppCompatActivity() {
         binding.backBtn.setOnClickListener {
             onBackPressed()
         }
-
 
     }
 

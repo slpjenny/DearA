@@ -1,4 +1,4 @@
-package com.jenny.deara
+package com.jenny.deara.diary
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -13,16 +13,14 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
+import com.jenny.deara.MyPageActivity
+import com.jenny.deara.R
 import com.jenny.deara.databinding.FragmentDiaryBinding
-import com.jenny.deara.diary.*
 import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
 
-class DiaryFragment(var iMonth: Int, var iYear: Int) : Fragment() {
+class DiaryFragment : Fragment() {
 
     private lateinit var binding: FragmentDiaryBinding
 
@@ -38,6 +36,7 @@ class DiaryFragment(var iMonth: Int, var iYear: Int) : Fragment() {
     val stringMonth : List<String> = listOf("JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC")
     val intYear = arrayListOf<Int>()
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -48,14 +47,28 @@ class DiaryFragment(var iMonth: Int, var iYear: Int) : Fragment() {
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_diary, container, false)
 
+        // 선택한 년도, 월
+        val iMonth = arguments?.getInt("iMonth")
+        Log.d("argTest", iMonth.toString())
+        var iYear = arguments?.getInt("iYear")
+        Log.d("argTest", iYear.toString())
+
         // init setting! //
         for (i in 2000 .. 2030){
             intYear.add(i)
         }
         initRecycler()
-        showMonth(iMonth)
-        showYear(iYear)
-        getFBDiaryData()
+        if (iMonth != null) {
+            showMonth(iMonth)
+        }
+        if (iYear != null) {
+            showYear(iYear)
+        }
+        if (iMonth != null) {
+            if (iYear != null) {
+                getFBDiaryData(iMonth, iYear)
+            }
+        }
 
 
         //마이페이지 버튼
@@ -77,7 +90,15 @@ class DiaryFragment(var iMonth: Int, var iYear: Int) : Fragment() {
 
         //날짜 선택하기
         binding.datapicker.setOnClickListener {
-            showDatePickerDialog(iMonth, iYear)
+            if (iMonth != null) {
+                if (iYear != null) {
+                    var args = Bundle()
+                    args.putInt("iMonth", iMonth)
+                    args.putInt("iYear", iYear)
+
+                    showDatePickerDialog(args)
+                }
+            }
         }
 
         return binding.root
@@ -95,8 +116,9 @@ class DiaryFragment(var iMonth: Int, var iYear: Int) : Fragment() {
     }
 
     // 날짜 선택 다이얼로그 띄우기
-    private fun showDatePickerDialog(iMonth: Int, iYear: Int){
-        val dialog = DatePickerFragment(iMonth, iYear)
+    private fun showDatePickerDialog(args: Bundle){
+        val dialog = DatePickerFragment()
+        dialog.arguments = args
         dialog.show(childFragmentManager, "DatePickerDialog")
     }
 
@@ -119,7 +141,7 @@ class DiaryFragment(var iMonth: Int, var iYear: Int) : Fragment() {
     }
 
     //파이어베이스 데이터 불러오기
-    private fun getFBDiaryData(){
+    private fun getFBDiaryData(iMonth: Int, iYear: Int){
 
         val postListener = object : ValueEventListener {
             @SuppressLint("NotifyDataSetChanged")
@@ -134,13 +156,18 @@ class DiaryFragment(var iMonth: Int, var iYear: Int) : Fragment() {
 
                     val item = dataModel.getValue(DiaryData::class.java)
                     // 일기 장석 여부 확인하기
-                    if(item!!.time == currentTime){
-                        todayDiary = true
+                    if (item != null) {
+                        if(FBAuth.getYear() == item.year && FBAuth.getMonth() == item.month && FBAuth.getDay() == item.day
+                            && FBAuth.getUid() == item.uid){
+                            todayDiary = true
+                        }
                     }
                     // 선택한 날짜 일기 리스트 띄우기
-                    if(item.month == iMonth && item.year == iYear && FBAuth.getUid() == item.uid){
-                        diaryList.add(item)
-                        diarykeyList.add(dataModel.key.toString())
+                    if (item != null) {
+                        if(item.month == iMonth && item.year == iYear && FBAuth.getUid() == item.uid){
+                            diaryList.add(item)
+                            diarykeyList.add(dataModel.key.toString())
+                        }
                     }
                 }
                 diarykeyList.reverse()

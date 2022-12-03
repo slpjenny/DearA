@@ -6,5 +6,5 @@ class CommentModel (
     val time : String = "",
     val parent : String = "",
     val boardKey : String = "",
-    val type : Int
+    val type : Int = 1
 )

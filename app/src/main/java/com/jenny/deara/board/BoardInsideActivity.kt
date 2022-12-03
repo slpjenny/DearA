@@ -36,8 +36,11 @@ import com.jenny.deara.MyPageActivity
 import com.jenny.deara.R
 import com.jenny.deara.board.comment.CommentListAdapter
 import com.jenny.deara.board.comment.CommentModel
+import com.jenny.deara.board.report.CustomDialog
 import com.jenny.deara.board.report.ReportActivity
+import com.jenny.deara.board.report.ReportModel
 import com.jenny.deara.databinding.ActivityBoardInsideBinding
+import com.jenny.deara.diary.DiaryDetailActivity
 import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
 import kotlinx.android.synthetic.main.activity_board_inside.*
@@ -50,6 +53,7 @@ class BoardInsideActivity : AppCompatActivity() {
 
     lateinit var CommentListAdapter: CommentListAdapter
 
+    var count : Int = 0
     var commentList = mutableListOf<CommentModel>()
     var commentKeyList = mutableListOf<String>()
     var commentReplyOn : Boolean = false
@@ -91,8 +95,9 @@ class BoardInsideActivity : AppCompatActivity() {
         }
 
         binding.shingoBtn.setOnClickListener {
-            val intent = Intent(this, ReportActivity::class.java)
-            startActivity(intent)
+            if (key != null) {
+                reportTwice(key)
+            }
         }
 
 
@@ -253,6 +258,13 @@ class BoardInsideActivity : AppCompatActivity() {
                                 .override(changeDP(150),changeDP(150))
                                 .transform(CenterCrop(), RoundedCorners( 10))
                                 .into(getImage)
+
+                            // 이미지 누르면 크게 보기
+                            getImage.setOnClickListener {
+                                val intent = Intent(this, BoardImageViewActivity::class.java)
+                                intent.putExtra("url", task.result)
+                                startActivity(intent)
+                            }
                         } else {
                             Log.d("getImageLog", "task.Failure")
                         }
@@ -362,6 +374,112 @@ class BoardInsideActivity : AppCompatActivity() {
 
         //binding.commentNum.text = CommentListAdapter.itemCount.toString() + CommentListAdapter.getReplyItemCount()
     }
+
+    //중복 신고 막기
+    private fun reportTwice(key : String) {
+
+        val key : String = key
+
+        FBRef.reportRef
+            .child(key)
+            .addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    var dataModel = snapshot.getValue(ReportModel::class.java)
+                    val uid = FBAuth.getUid()
+                    var value = dataModel?.report_count
+                    var user1 = dataModel?.reporter_uid1
+                    var user2 = dataModel?.reporter_uid2
+                    var user3 = dataModel?.reporter_uid3
+                    var user4 = dataModel?.reporter_uid4
+                    var user5 = dataModel?.reporter_uid5
+
+                    if (value == null)
+                    {
+                        val intent = Intent(this@BoardInsideActivity, ReportActivity::class.java)
+                        intent.putExtra("key", key)
+                        startActivity(intent)
+                    }
+
+                    if (value != null) {
+                        count = value
+                        when (count) {
+                            1 -> {
+                                user2 = uid
+                                if (user1 == user2)
+                                    Toast.makeText(
+                                        this@BoardInsideActivity,
+                                        "이미 신고한 게시글입니다",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                else {
+                                    val intent = Intent(this@BoardInsideActivity, ReportActivity::class.java)
+                                    intent.putExtra("key", key)
+                                    startActivity(intent)
+                                }
+                            }
+
+                            2 -> {
+                                user3 = uid
+                                if (user1 == user3 || user2 == user3)
+                                    Toast.makeText(
+                                        this@BoardInsideActivity,
+                                        "이미 신고한 게시글입니다",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                else {
+                                    val intent = Intent(this@BoardInsideActivity, ReportActivity::class.java)
+                                    intent.putExtra("key", key)
+                                    startActivity(intent)
+                                }
+                            }
+                            3 -> {
+                                user4 = uid
+                                if (user1 == user4 || user2 == user4 || user3 == user4)
+                                    Toast.makeText(
+                                        this@BoardInsideActivity,
+                                        "이미 신고한 게시글입니다",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                else {
+                                    val intent = Intent(this@BoardInsideActivity, ReportActivity::class.java)
+                                    intent.putExtra("key", key)
+                                    startActivity(intent)
+                                }
+                            }
+                            4 -> {
+                                user5 = uid
+                                if (user1 == user5 || user2 == user5 || user3 == user5 || user4 == user5)
+                                    Toast.makeText(
+                                        this@BoardInsideActivity,
+                                        "이미 신고한 게시글입니다",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                else {
+                                    val intent = Intent(this@BoardInsideActivity, ReportActivity::class.java)
+                                    intent.putExtra("key", key)
+                                    startActivity(intent)
+                                }
+                            }
+                            5 -> {
+                                FBRef.boardRef.child(key.toString()).removeValue()
+                                //FBRef.reportRef.child(key).removeValue()
+                                Toast.makeText(this@BoardInsideActivity, "삭제 완료", Toast.LENGTH_SHORT)
+                                    .show() // 없앨 코드
+                            }
+                        }
+                    }
+
+
+                }
+
+            })
+    }
+
+
 
     // 화면 밖 누르면 키보드 내리기
     open fun hideKeyboard() {

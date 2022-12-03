@@ -88,7 +88,7 @@ class HomeFragment : Fragment() {
         // 화면 설정
         setMonthView(percent)
 
-        setMonthView()
+        setMonthView(percent)
 
         initRecycler()
 

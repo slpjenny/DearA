@@ -5,6 +5,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +15,7 @@ import com.jenny.deara.MainActivity
 import com.jenny.deara.R
 import com.jenny.deara.databinding.FragmentDatePickerBinding
 
-class DatePickerFragment(var iMonth: Int, var iYear: Int) : DialogFragment() {
+class DatePickerFragment() : DialogFragment() {
 
     private lateinit var binding: FragmentDatePickerBinding
 
@@ -32,6 +33,12 @@ class DatePickerFragment(var iMonth: Int, var iYear: Int) : DialogFragment() {
     ): View? {
         binding = FragmentDatePickerBinding.inflate(inflater, container, false)
 
+        // 선택한 년도, 월
+        var iMonth = arguments?.getInt("iMonth")
+        Log.d("argTest", iMonth.toString())
+        var iYear = arguments?.getInt("iYear")
+        Log.d("argTest", iYear.toString())
+
         // 배경 제거하기
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
@@ -42,21 +49,27 @@ class DatePickerFragment(var iMonth: Int, var iYear: Int) : DialogFragment() {
 
         //날짜 기본값
         binding.year.text = iYear.toString()
-        monthPicker(iMonth)
+        if (iMonth != null) {
+            monthPicker(iMonth)
+        }
 
         //년도 -1 버튼
         binding.yearChange1.setOnClickListener {
-            if (iYear > 2000) { // 최솟값 2000
-                iYear -= 1
-                binding.year.text = iYear.toString()
+            if (iYear != null) {
+                if (iYear > 2000) { // 최솟값 2000
+                    iYear -= 1
+                    binding.year.text = iYear.toString()
+                }
             }
         }
 
         //년도 +1 버튼
         binding.yearChange2.setOnClickListener {
-            if (iYear < 2030){ // 최댓값 2000
-                iYear += 1
-                binding.year.text = iYear.toString()
+            if (iYear != null) {
+                if (iYear < 2030){ // 최댓값 2000
+                    iYear += 1
+                    binding.year.text = iYear.toString()
+                }
             }
         }
 
@@ -64,75 +77,97 @@ class DatePickerFragment(var iMonth: Int, var iYear: Int) : DialogFragment() {
         binding.month1.setOnClickListener {
             iMonth = 1
             setBackgrounDefault()
-            monthPicker(iMonth)
-            goDiaryFragment(iMonth, iYear)
+            monthPicker(iMonth!!)
+            if (iYear != null) {
+                goDiaryFragment(iMonth!!, iYear)
+            }
 
         }
         binding.month2.setOnClickListener {
             iMonth = 2
             setBackgrounDefault()
-            monthPicker(iMonth)
-            goDiaryFragment(iMonth, iYear)
+            monthPicker(iMonth!!)
+            iYear?.let { goDiaryFragment(iMonth!!, it) }
         }
         binding.month3.setOnClickListener {
             iMonth = 3
             setBackgrounDefault()
-            monthPicker(iMonth)
-            goDiaryFragment(iMonth, iYear)
+            monthPicker(iMonth!!)
+            if (iYear != null) {
+                goDiaryFragment(iMonth!!, iYear)
+            }
         }
         binding.month4.setOnClickListener {
             iMonth = 4
             setBackgrounDefault()
-            monthPicker(iMonth)
-            goDiaryFragment(iMonth, iYear)
+            monthPicker(iMonth!!)
+            if (iYear != null) {
+                goDiaryFragment(iMonth!!, iYear)
+            }
         }
         binding.month5.setOnClickListener {
             iMonth = 5
             setBackgrounDefault()
-            monthPicker(iMonth)
-            goDiaryFragment(iMonth, iYear)
+            monthPicker(iMonth!!)
+            if (iYear != null) {
+                goDiaryFragment(iMonth!!, iYear)
+            }
         }
         binding.month6.setOnClickListener {
             iMonth = 6
             setBackgrounDefault()
-            monthPicker(iMonth)
-            goDiaryFragment(iMonth, iYear)
+            monthPicker(iMonth!!)
+            if (iYear != null) {
+                goDiaryFragment(iMonth!!, iYear)
+            }
         }
         binding.month7.setOnClickListener {
             iMonth = 7
             setBackgrounDefault()
-            monthPicker(iMonth)
-            goDiaryFragment(iMonth, iYear)
+            monthPicker(iMonth!!)
+            if (iYear != null) {
+                goDiaryFragment(iMonth!!, iYear)
+            }
         }
         binding.month8.setOnClickListener {
             iMonth = 8
             setBackgrounDefault()
-            monthPicker(iMonth)
-            goDiaryFragment(iMonth, iYear)
+            monthPicker(iMonth!!)
+            if (iYear != null) {
+                goDiaryFragment(iMonth!!, iYear)
+            }
         }
         binding.month9.setOnClickListener {
             iMonth = 9
             setBackgrounDefault()
-            monthPicker(iMonth)
-            goDiaryFragment(iMonth, iYear)
+            monthPicker(iMonth!!)
+            if (iYear != null) {
+                goDiaryFragment(iMonth!!, iYear)
+            }
         }
         binding.month10.setOnClickListener {
             iMonth = 10
             setBackgrounDefault()
-            monthPicker(iMonth)
-            goDiaryFragment(iMonth, iYear)
+            monthPicker(iMonth!!)
+            if (iYear != null) {
+                goDiaryFragment(iMonth!!, iYear)
+            }
         }
         binding.month11.setOnClickListener {
             iMonth = 11
             setBackgrounDefault()
-            monthPicker(iMonth)
-            goDiaryFragment(iMonth, iYear)
+            monthPicker(iMonth!!)
+            if (iYear != null) {
+                goDiaryFragment(iMonth!!, iYear)
+            }
         }
         binding.month12.setOnClickListener {
             iMonth = 12
             setBackgrounDefault()
-            monthPicker(iMonth)
-            goDiaryFragment(iMonth, iYear)
+            monthPicker(iMonth!!)
+            if (iYear != null) {
+                goDiaryFragment(iMonth!!, iYear)
+            }
         }
 
         return binding.root
