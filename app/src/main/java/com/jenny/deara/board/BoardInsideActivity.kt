@@ -215,7 +215,7 @@ class BoardInsideActivity : AppCompatActivity() {
                 binding.contentTextArea.text = dataModel?.content
                 binding.sortArea.text = dataModel?.sort
                 binding.boardTime.text = dataModel?.time
-                //binding.boardWriter.text = dataModel?.uid?.let { FBAuth.getNick(it) }
+                binding.boardWriter.text = dataModel?.uid?.let { FBAuth.getNick(it) }
                 if (dataModel != null) {
                     if (dataModel.uid == FBAuth.getUid()){
                         binding.popupBtn.visibility = View.VISIBLE

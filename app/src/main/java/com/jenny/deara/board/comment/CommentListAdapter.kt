@@ -48,11 +48,15 @@ class CommentListAdapter(val context: Context,
 
     override fun getItemCount(): Int = datas.size
 
+    override fun getItemViewType(position: Int): Int {
+        return datas[position].type
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 //        val view = LayoutInflater.from(context).inflate(R.layout.comment_list_item, parent,false)
 //        return ViewHolder(view)
 //
-        var view: View
+        val view: View
         return when(viewType) {
             multi_type1 -> {
                 view = LayoutInflater.from(parent.context).inflate(
