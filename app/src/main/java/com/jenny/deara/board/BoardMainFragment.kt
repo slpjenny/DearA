@@ -11,6 +11,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat.getDrawable
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -65,7 +66,7 @@ class BoardMainFragment : Fragment() {
 
         }
 
-        binding.writeBtn.setOnClickListener {
+        binding.writeBtn.setOnSingleClickListener {
             val intent = Intent(context, BoardWriteActivity::class.java)
             startActivity(intent)
         }
