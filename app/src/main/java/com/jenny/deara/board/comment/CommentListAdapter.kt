@@ -109,8 +109,7 @@ class CommentListAdapter(val context: Context,
         fun bind(item: CommentModel, s: String) {
             content.text = item.content
             time.text = item.time
-            uid.text = "yet"
-            //uid.text = FBAuth.getNick(item.uid)
+            uid.text = FBAuth.getNick(item.uid)
 
             //댓글 삭제 하기
             delBtn.setOnClickListener {

@@ -361,18 +361,7 @@ class BoardInsideActivity : AppCompatActivity() {
         }
         FBRef.commentRef.addValueEventListener(postListener)
 
-        //test data//
-//        commentList.add(CommentModel("댓글입니다.","uid","2022/11/07 21:28"))
-//        commentList.add(CommentModel("두번째 댓글입니다.","uid","2022/11/07 21:28"))
-//        commentList.add(CommentModel("세번째 댓글입니다.","uid","2022/11/07 21:28"))
-//        commentList.add(CommentModel("네번째 댓글입니다.","uid","2022/11/07 21:28"))
-//
-//        commentKeyList.add("1")
-//        commentKeyList.add("2")
-//        commentKeyList.add("3")
-//        commentKeyList.add("4")
-
-        //binding.commentNum.text = CommentListAdapter.itemCount.toString() + CommentListAdapter.getReplyItemCount()
+        binding.commentNum.text = CommentListAdapter.itemCount.toString()
     }
 
     //중복 신고 막기
