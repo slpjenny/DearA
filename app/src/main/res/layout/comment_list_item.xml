@@ -66,18 +66,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/commentContent" />
 
-        <TextView
-            android:id="@+id/replyBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:text="답글"
-            android:layout_marginBottom="18dp"
-            android:textColor="@color/board_menu_gray"
-            android:textSize="10sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/commentTime"
-            app:layout_constraintTop_toBottomOf="@+id/commentContent" />
+<!--        <TextView-->
+<!--            android:id="@+id/replyBtn"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="10dp"-->
+<!--            android:text="답글"-->
+<!--            android:layout_marginBottom="18dp"-->
+<!--            android:textColor="@color/board_menu_gray"-->
+<!--            android:textSize="10sp"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/commentTime"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/commentContent" />-->
 
         <LinearLayout
             android:layout_width="wrap_content"
