@@ -126,12 +126,12 @@
         </activity>
 
         <activity-alias
-            android:name=".MainActivityAlias2"
-            android:enabled="false"
+            android:name=".MainActivityAlias1"
+            android:enabled="true"
             android:exported="true"
-            android:icon="@mipmap/ic_launcher_white"
-            android:label="@string/app_name"
-            android:roundIcon="@mipmap/ic_launcher_white"
+            android:icon="@mipmap/ic_launcher_purple"
+            android:label="DearA"
+            android:roundIcon="@mipmap/ic_launcher_purple"
             android:targetActivity=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -140,12 +140,12 @@
             </intent-filter>
         </activity-alias>
         <activity-alias
-            android:name=".MainActivityAlias1"
-            android:enabled="true"
+            android:name=".MainActivityAlias2"
+            android:enabled="false"
             android:exported="true"
-            android:icon="@mipmap/ic_launcher_purple"
-            android:label="DearA"
-            android:roundIcon="@mipmap/ic_launcher_purple"
+            android:icon="@mipmap/ic_launcher_white"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_white"
             android:targetActivity=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
