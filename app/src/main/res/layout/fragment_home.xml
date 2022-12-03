@@ -396,11 +396,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="50dp"
                             android:layout_marginTop="20dp"
-                            android:text="진료일정"
+                            android:text="오늘 진료일정"
                             android:textColor="@color/black"
                             android:textSize="25sp"
                             android:textStyle="bold"
-                            android:layout_marginBottom="10dp"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
@@ -494,6 +493,19 @@
                             android:textSize="25sp"
                             android:textStyle="bold"
                             app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/dateText2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginTop="35dp"
+                            android:text="12월 4일"
+                            android:textAllCaps="false"
+                            android:textColor="#55525A"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toEndOf="@+id/toDoText"
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <androidx.appcompat.widget.AppCompatButton
