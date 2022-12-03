@@ -369,6 +369,8 @@ class HomeFragment : Fragment() {
                 firstMonth = month
                 firstday = day2
 
+                binding.dateText2.text = month + "월 " + day2 + "일"
+
                 Log.d(TAG, "itemclick year : " + year)
                 Log.d(TAG, "itemclick month : " + month)
                 Log.d(TAG, "itemclick day : " + day2)
