@@ -100,19 +100,19 @@ class CustomDialog(key: String) : DialogFragment() {
                                 user3=uid
                                 FBRef.reportRef
                                     .child(key)
-                                    .setValue(ReportModel(++count, user1!!, user3))
+                                    .setValue(ReportModel(++count, user1!!, user2!!, user3))
                             }
                             3-> {
                                 user4=uid
                                 FBRef.reportRef
                                     .child(key)
-                                    .setValue(ReportModel(++count, user1!!, user4))
+                                    .setValue(ReportModel(++count, user1!!, user2!!, user3!!, user4))
                             }
                             4-> {
                                 user5=uid
                                 FBRef.reportRef
                                     .child(key)
-                                    .setValue(ReportModel(++count, user1!!, user5))
+                                    .setValue(ReportModel(++count, user1!!, user2!!, user3!!, user4!!, user5))
                             }
                         }
 
