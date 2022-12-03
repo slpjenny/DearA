@@ -48,11 +48,15 @@ class CommentListAdapter(val context: Context,
 
     override fun getItemCount(): Int = datas.size
 
+    override fun getItemViewType(position: Int): Int {
+        return datas[position].type
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 //        val view = LayoutInflater.from(context).inflate(R.layout.comment_list_item, parent,false)
 //        return ViewHolder(view)
 //
-        var view: View
+        val view: View
         return when(viewType) {
             multi_type1 -> {
                 view = LayoutInflater.from(parent.context).inflate(
@@ -105,14 +109,13 @@ class CommentListAdapter(val context: Context,
         fun bind(item: CommentModel, s: String) {
             content.text = item.content
             time.text = item.time
-            uid.text = "yet"
-            //uid.text = FBAuth.getNick(item.uid)
+            uid.text = FBAuth.getNick(item.uid)
 
             //댓글 삭제 하기
             delBtn.setOnClickListener {
                 // popup
                 val mDialogView = Dialog(context)
-                mDialogView.setContentView(R.layout.comment_popup)
+                mDialogView.setContentView(R.layout.comment_popup_del)
                 mDialogView.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
                 mDialogView.show()
@@ -146,20 +149,20 @@ class CommentListAdapter(val context: Context,
         private val uid: TextView = itemView.findViewById(R.id.commentWriter)
         private val delBtn: TextView = itemView.findViewById(R.id.delBtn)
 
-        init{
-            view.setOnClickListener {
-                val pos = adapterPosition
-                if(pos != RecyclerView.NO_POSITION && mOnItemClickListener != null){
-                    mOnItemClickListener.onItemClick(view, pos)
-                }
-            }
-        }
+//        init{
+//            view.setOnClickListener {
+//                val pos = adapterPosition
+//                if(pos != RecyclerView.NO_POSITION && mOnItemClickListener != null){
+//                    mOnItemClickListener.onItemClick(view, pos)
+//                }
+//            }
+//        }
 
         fun bind(item: CommentModel, s: String) {
             content.text = item.content
             time.text = item.time
-            uid.text = "yet"
-            //uid.text = FBAuth.getNick(item.uid)
+            //uid.text = "yet"
+            uid.text = FBAuth.getNick(item.uid)
 
             //댓글 삭제 하기
             delBtn.setOnClickListener {

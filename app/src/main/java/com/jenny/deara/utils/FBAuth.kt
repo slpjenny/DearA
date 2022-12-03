@@ -107,7 +107,7 @@ class FBAuth {
         // 사용자 닉네임 가져오기
         fun getNick(uid: String) : String{
 //            return FBRef.userRef.child(uid).toString()
-            return "init"
+            return "익명"
         }
 
     }
