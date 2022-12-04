@@ -65,7 +65,7 @@ class BoardInsideActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_board_inside)
 
-        window.addFlags(WindowManager.LayoutParams.FLAG_SECURE)
+//        window.addFlags(WindowManager.LayoutParams.FLAG_SECURE)
 
         val key = intent.getStringExtra("key")
         if (key != null) {
