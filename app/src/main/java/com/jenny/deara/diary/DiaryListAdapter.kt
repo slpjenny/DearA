@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.jenny.deara.R
+import com.jenny.deara.utils.FBAuth
 
 class DiaryListAdapter(val context: Context, val diarykeyList : MutableList<String>): RecyclerView.Adapter<DiaryListAdapter.ViewHolder>(){
 
@@ -30,6 +31,8 @@ class DiaryListAdapter(val context: Context, val diarykeyList : MutableList<Stri
         private val contents1: TextView = itemView.findViewById(R.id.content1Area)
         private val title2: TextView = itemView.findViewById(R.id.title2Area)
         private val contents2: TextView = itemView.findViewById(R.id.content2Area)
+        private val day: TextView = itemView.findViewById(R.id.dayArea)
+        private val week: TextView = itemView.findViewById(R.id.weekArea)
 
         fun bind(item: DiaryData, key: String) {
             if (item.sort == "ver1"){
@@ -41,6 +44,12 @@ class DiaryListAdapter(val context: Context, val diarykeyList : MutableList<Stri
             }
             contents1.text = item.contents1
             contents2.text = item.contents2
+            if (item.day >= 10){
+                day.text = item.day.toString()
+            }else{
+                day.text = "0" + item.day.toString()
+            }
+            week.text = FBAuth.getWeek(item.year, item.month, item.day)
 
             // 내부페이지로 이동
             itemView.setOnClickListener {

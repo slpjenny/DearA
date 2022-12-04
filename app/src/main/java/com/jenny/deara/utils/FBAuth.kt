@@ -36,7 +36,7 @@ class FBAuth {
             return SimpleDateFormat("yyyy/MM/dd HH:mm", Locale.KOREA).format(currentDateTime)
         }
 
-        //다이어리 날짜 저장 format
+        //현재 시간 불러오기
         fun getTimeDiary() : String{
             val currentDateTime = CalendarUtil.selectedDate.time
             val dateFormat = SimpleDateFormat("yyyy년 MM월 dd일", Locale.KOREA).format(currentDateTime)
@@ -54,14 +54,14 @@ class FBAuth {
                 else -> { "토요일" }
             }
 
+            Log.d("currentTime", dateFormat)
             return "$dateFormat $weekString"
         }
 
-        // 월 가져오기
-        fun getMonth() : Int{
-            var month = CalendarUtil.selectedDate.get(Calendar.MONTH) + 1
+        fun setFormat(year: Int, month: Int, day: Int): String{
+            val week = getWeek(year, month, day)
 
-            return month
+            return year.toString() + "년 "+ month.toString() + "월 " + day.toString() + "일 " + week
         }
 
         //년 가져오기
@@ -71,10 +71,43 @@ class FBAuth {
             return year
         }
 
+        // 월 가져오기
+        fun getMonth() : Int{
+            var month = CalendarUtil.selectedDate.get(Calendar.MONTH) + 1
+
+            return month
+        }
+
+        // 일 가져오기
+        fun getDay() : Int{
+            var day = CalendarUtil.selectedDate.get(Calendar.DATE)
+
+            return day
+        }
+
+        // 요일 구하기
+        fun getWeek(year: Int, month: Int, day: Int): String{
+            var date : Calendar = Calendar.getInstance()
+            date.set(year, month, day)
+
+            val week = when (date.get(Calendar.DAY_OF_WEEK)) {
+                1 -> { "목요일" }
+                2 -> { "금요일" }
+                3 -> { "토요일" }
+                4 -> { "일요일" }
+                5 -> { "월요일" }
+                6 -> { "화요일" }
+                else -> { "수요일" }
+            }
+
+            Log.d("currentTime: week ->", week)
+            return week
+        }
+
         // 사용자 닉네임 가져오기
         fun getNick(uid: String) : String{
 //            return FBRef.userRef.child(uid).toString()
-            return "init"
+            return "익명"
         }
 
     }

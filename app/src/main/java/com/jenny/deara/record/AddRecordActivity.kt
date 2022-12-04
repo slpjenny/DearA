@@ -11,6 +11,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -81,6 +82,14 @@ class AddRecordActivity : AppCompatActivity() {
         initVariables()
         initRecycler()
 
+
+        binding.root.setOnClickListener {
+            hideKeyboard()
+        }
+
+        binding.linearlayout.setOnClickListener {
+            hideKeyboard()
+        }
 
         // 날짜 선택하기
         binding.dateBtn.setOnClickListener {
@@ -338,6 +347,13 @@ class AddRecordActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
+    }
+
+    private fun hideKeyboard() {
+        if(this != null && this.currentFocus != null) {
+            val inputManager: InputMethodManager = this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            inputManager.hideSoftInputFromWindow(this.currentFocus?.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
+        }
     }
 
 

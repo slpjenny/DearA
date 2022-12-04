@@ -76,7 +76,9 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/todayRcRv"
             android:layout_width="374dp"
+
             android:layout_height="180dp"
+
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

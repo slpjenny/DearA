@@ -32,7 +32,7 @@
                     android:id="@+id/text1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="삭제하시겠습니까?"
+                    android:text="댓글을 삭제하시겠습니까?"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:layout_marginBottom="3dp"/>

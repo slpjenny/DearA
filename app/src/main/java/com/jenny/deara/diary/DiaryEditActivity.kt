@@ -1,8 +1,10 @@
 package com.jenny.deara.diary
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.google.firebase.database.DataSnapshot
@@ -21,6 +23,7 @@ class DiaryEditActivity : AppCompatActivity() {
     private lateinit var sort : String
     private var month : Int = 0
     private var year : Int = 2022
+    private var day : Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +32,10 @@ class DiaryEditActivity : AppCompatActivity() {
 
         val key = intent.getStringExtra("key").toString()
         getDiaryData(key)
+
+        binding.root.setOnClickListener {
+            hideKeyboard()
+        }
 
         binding.closeBtn.setOnClickListener {
             finish()
@@ -73,9 +80,9 @@ class DiaryEditActivity : AppCompatActivity() {
                     binding.randomQ.text.toString(),
                     binding.randomA.text.toString(),
                     sort,
-                    FBAuth.getTimeDiary(),
-                    month,
                     year,
+                    month,
+                    day,
                     FBAuth.getUid()
                 )
             )
@@ -100,10 +107,13 @@ class DiaryEditActivity : AppCompatActivity() {
                 binding.content3Area.setText(dataModel?.contents3)
                 binding.randomQ.text = dataModel?.r_question
                 binding.randomA.setText(dataModel?.r_contents)
-                binding.date.text = dataModel?.time
                 sort = dataModel?.sort.toString()
+                if (dataModel != null) {
+                    year = dataModel.year
+                }
                 month = dataModel?.month!!
-                year = dataModel.year
+                day = dataModel.day
+                binding.date.text = FBAuth.setFormat(year, month, day)
                 if (sort == "ver1"){
                     binding.toggleBtn1.setBackgroundResource(R.drawable.toggle_on)
                     binding.title1.text = "좋았던 일"
@@ -126,6 +136,13 @@ class DiaryEditActivity : AppCompatActivity() {
         }
 
         FBRef.diaryRef.child(key).addValueEventListener(postListener)
+    }
+
+    private fun hideKeyboard() {
+        if(this != null && this.currentFocus != null) {
+            val inputManager: InputMethodManager = this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            inputManager.hideSoftInputFromWindow(this.currentFocus?.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
+        }
     }
 
 }

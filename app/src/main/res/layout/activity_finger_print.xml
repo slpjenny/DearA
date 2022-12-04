@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/contactus_gray"
+    android:background="@color/purple3"
     tools:context=".FingerPrintActivity">
 
 
@@ -14,10 +14,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:background="@color/contactus_gray"
         android:text=""
         android:textSize="20sp"
-        android:textColor="@color/black"
+        android:textColor="@color/dark_purple"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"

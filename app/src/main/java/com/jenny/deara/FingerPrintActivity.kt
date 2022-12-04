@@ -48,7 +48,6 @@ class FingerPrintActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        imageView.setColorFilter(Color.parseColor("#414E7D"), PorterDuff.Mode.SRC_IN);
 
         //        setContentView(R.layout.activity_main)
         binding = ActivityFingerPrintBinding.inflate(layoutInflater)

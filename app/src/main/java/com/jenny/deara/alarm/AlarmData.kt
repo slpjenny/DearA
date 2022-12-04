@@ -9,5 +9,5 @@ data class AlarmData(
     val day: String = "",
     val uid: String = "",
     val alarmId: Int = 0,
-    val OnOff: Boolean = true,
+    val onOff: Boolean = true,
 )

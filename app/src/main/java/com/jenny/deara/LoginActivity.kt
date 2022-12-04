@@ -1,10 +1,12 @@
 package com.jenny.deara
 
 import android.content.ContentValues.TAG
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
@@ -24,11 +26,16 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        binding.root.setOnClickListener{
+            hideKeyboard()
+        }
+
         // Auth 초기화
         auth = Firebase.auth
 
         // '회원가입' textView 클릭시 SignInActivity 페이지로 이동
         binding.signInTxt.setOnClickListener {
+            hideKeyboard()
             val intentSignIn = Intent(this, SignInActivity::class.java)
             startActivity(intentSignIn)
 
@@ -36,12 +43,15 @@ class LoginActivity : AppCompatActivity() {
 
         // '비밀번호 찾기' textView 클릭시, FindPwdActivity로 이동
         binding.findPwdTxt.setOnClickListener {
+            hideKeyboard()
             val intentFindPwd = Intent(this, FindPwdActivity::class.java)
             startActivity(intentFindPwd)
                 }
 
         // ' 로그인' 버튼 누르면 메인으로 이동
         binding.loginBtn.setOnClickListener {
+
+            hideKeyboard()
 
             var email = binding.writeEmail.text.toString()
             var password = binding.writePwd.text.toString()
@@ -82,6 +92,13 @@ class LoginActivity : AppCompatActivity() {
 
             }
 
+        }
+    }
+
+    private fun hideKeyboard() {
+        if(this != null && this.currentFocus != null) {
+            val inputManager: InputMethodManager = this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            inputManager.hideSoftInputFromWindow(this.currentFocus?.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
         }
     }
 }

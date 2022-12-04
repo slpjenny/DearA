@@ -2,10 +2,12 @@ package com.jenny.deara.diary
 
 import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
+import android.content.Context
 import android.graphics.PointF.length
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.google.firebase.database.DataSnapshot
@@ -37,6 +39,11 @@ class DiaryWriteActivity : AppCompatActivity() {
         binding.title1.text = "좋았던 일"
         binding.title2.text = "안 좋았던 일"
         binding.title3.text = "나의 다짐"
+
+
+        binding.root.setOnClickListener {
+            hideKeyboard()
+        }
 
         // 현재 날짜
         binding.date.text = FBAuth.getTimeDiary()
@@ -121,19 +128,27 @@ class DiaryWriteActivity : AppCompatActivity() {
         val r_question = binding.randomQ.text.toString()
         val r_contents = binding.randomA.text.toString()
         val time = FBAuth.getTimeDiary()
-        val month = FBAuth.getMonth()
         val year = FBAuth.getYear()
+        val month = FBAuth.getMonth()
+        val day = FBAuth.getDay()
         val uid = FBAuth.getUid()
 
         val key = FBRef.diaryRef.push().key.toString()
 
         FBRef.diaryRef
             .child(key)
-            .setValue(DiaryData(contents1, contents2, contents3, r_question, r_contents, sort, time, month, year, uid))
+            .setValue(DiaryData(contents1, contents2, contents3, r_question, r_contents, sort, year, month, day, uid))
 
         Toast.makeText(this, "일기가 저장되었습니다.", Toast.LENGTH_LONG).show()
 
         finish()
+    }
+
+    private fun hideKeyboard() {
+        if(this != null && this.currentFocus != null) {
+            val inputManager: InputMethodManager = this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            inputManager.hideSoftInputFromWindow(this.currentFocus?.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
+        }
     }
 
 }

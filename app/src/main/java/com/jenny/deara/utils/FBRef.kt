@@ -7,6 +7,7 @@ class FBRef {
     companion object{
         private val database = Firebase.database
 
+        val reportRef = database.getReference("report")
         val recordRef = database.getReference("record")
         val pillRef = database.getReference("pill")
         val diaryRef = database.getReference("diary")
