@@ -1,6 +1,7 @@
 package com.jenny.deara.board
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -10,6 +11,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ImageView
@@ -53,6 +55,10 @@ class BoardWriteActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_board_write)
+
+        binding.root.setOnClickListener {
+            hideKeyboard()
+        }
 
         //image = ImageView(this@BoardWriteActivity)
         //imageArea = binding.imageArea
@@ -286,6 +292,13 @@ class BoardWriteActivity : AppCompatActivity() {
             Log.e("BiteMap", "Error getting bitmap", e)
         }
         return bm
+    }
+
+    private fun hideKeyboard() {
+        if(this != null && this.currentFocus != null) {
+            val inputManager: InputMethodManager = this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            inputManager.hideSoftInputFromWindow(this.currentFocus?.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
+        }
     }
 
 }

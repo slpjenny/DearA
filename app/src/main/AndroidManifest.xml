@@ -20,92 +20,86 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DearA"
         tools:targetApi="31">
-
         <activity
             android:name=".mypages.AppCoverActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustUnspecified" />
+            android:exported="false" />
         <activity
             android:name=".mypages.CommunityRuleActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustUnspecified" />
+            android:exported="false" />
         <activity
             android:name=".board.report.ReportActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustUnspecified" /> <!-- <activity -->
-
+            android:exported="false" /> <!-- <activity -->
+        <!-- android:name=".preference" -->
+        <!-- android:exported="false" /> -->
+        <!-- <activity -->
+        <!-- android:name=".preference" -->
+        <!-- android:exported="false" /> -->
         <activity
             android:name=".FingerPrintActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustUnspecified" />
-
+            android:exported="false" />
         <activity
             android:name=".record.EditRecordActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustUnspecified" />
+            android:windowSoftInputMode="adjustResize"
+            android:exported="false" />
         <activity
             android:name=".record.AddRecordActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustUnspecified" />
+            android:windowSoftInputMode="adjustResize"
+            android:exported="false" />
         <activity
             android:name=".mypages.ContactUsActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustUnspecified" />
+            android:exported="false" />
         <activity
             android:name=".mypages.SelectLockActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustUnspecified" />
+            android:exported="false" />
         <activity
             android:name=".board.BoardWriteActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustUnspecified" />
+            android:windowSoftInputMode="adjustUnspecified"
+            android:exported="false" />
         <activity
             android:name=".board.BoardInsideActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustUnspecified" />
+            android:windowSoftInputMode="adjustResize"
+
+            android:exported="false" />
         <activity
             android:name=".board.BoardEditActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustUnspecified" />
+            android:windowSoftInputMode="adjustResize"
+            android:exported="false" />
         <activity
             android:name=".board.BoardImageViewActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustUnspecified" />
+            android:exported="false" />
         <activity
             android:name=".alarm.TimePickerActivity"
             android:exported="false" />
         <activity
             android:name=".mypages.ChangePwdActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustUnspecified" />
+            android:windowSoftInputMode="adjustResize"
+            android:exported="false" />
         <activity
             android:name=".mypages.FindPwdActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustUnspecified" />
+            android:windowSoftInputMode="adjustResize"
+            android:exported="false" />
         <activity
             android:name=".mypages.ChangeNickNameActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustUnspecified" />
+            android:windowSoftInputMode="adjustResize"
+            android:exported="false" />
         <activity
             android:name=".diary.DiaryWriteActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustUnspecified" />
+            android:windowSoftInputMode="adjustResize"
+            android:exported="false" />
         <activity
             android:name=".diary.DiaryDetailActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustUnspecified" />
+            android:exported="false" />
         <activity
             android:name=".diary.DiaryEditActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustUnspecified" />
+            android:windowSoftInputMode="adjustResize"
+            android:exported="false" />
         <activity
             android:name=".MyPageActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustUnspecified" />
+            android:exported="false" />
         <activity
             android:name=".SignInActivity"
-            android:exported="true"
-            android:windowSoftInputMode="adjustPan">
+            android:windowSoftInputMode="adjustPan"
+            android:exported="true">
 
             <!-- 딥 링크용 인텐트 필터 -->
             <intent-filter>
@@ -121,28 +115,23 @@
         </activity>
         <activity
             android:name=".SelfDiagnosisActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustUnspecified" />
+            android:exported="false" />
         <activity
             android:name=".LoginActivity"
-            android:exported="true"
-            android:windowSoftInputMode="adjustResize">
+            android:windowSoftInputMode="adjustResize"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                `
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".SplashActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustUnspecified" />
-
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"
-            android:windowSoftInputMode="adjustUnspecified">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -151,12 +140,12 @@
         </activity>
 
         <activity-alias
-            android:name=".MainActivityAlias2"
-            android:enabled="false"
+            android:name=".MainActivityAlias1"
+            android:enabled="true"
             android:exported="true"
-            android:icon="@mipmap/ic_launcher_white"
-            android:label="@string/app_name"
-            android:roundIcon="@mipmap/ic_launcher_white"
+            android:icon="@mipmap/ic_launcher_purple"
+            android:label="DearA"
+            android:roundIcon="@mipmap/ic_launcher_purple"
             android:targetActivity=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -165,12 +154,12 @@
             </intent-filter>
         </activity-alias>
         <activity-alias
-            android:name=".MainActivityAlias1"
-            android:enabled="true"
+            android:name=".MainActivityAlias2"
+            android:enabled="false"
             android:exported="true"
-            android:icon="@mipmap/ic_launcher_purple"
-            android:label="DearA"
-            android:roundIcon="@mipmap/ic_launcher_purple"
+            android:icon="@mipmap/ic_launcher_white"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_white"
             android:targetActivity=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
