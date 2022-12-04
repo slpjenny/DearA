@@ -464,12 +464,6 @@ class BoardInsideActivity : AppCompatActivity() {
                                     startActivity(intent)
                                 }
                             }
-                            5 -> {
-                                FBRef.boardRef.child(key.toString()).removeValue()
-                                //FBRef.reportRef.child(key).removeValue()
-                                Toast.makeText(this@BoardInsideActivity, "삭제 완료", Toast.LENGTH_SHORT)
-                                    .show() // 없앨 코드
-                            }
                         }
                     }
 
