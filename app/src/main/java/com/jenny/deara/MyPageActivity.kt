@@ -71,12 +71,22 @@ class MyPageActivity : AppCompatActivity() {
             startActivity(intent3)
         }
 
-        // 개인정보처리방침 페이지로 이동
+//        // 개인정보처리방침 페이지로 이동
+//
+//        binding.textView18.setOnClickListener {
+//            val intent8  = Intent(this, PrivacyWebViewActivity::class.java)
+//            startActivity(intent8)
+//        }
 
+        // 개인정보처리방침 페이지로 이동
         binding.textView18.setOnClickListener {
-            val intent8  = Intent(this, PrivacyWebViewActivity::class.java)
+            var intent8 = Intent(
+                Intent.ACTION_VIEW,
+                Uri.parse("https://www.notion.so/54e15dcbe37c4f09a5e9392228a56f7d")
+            )
             startActivity(intent8)
         }
+
         // 뒤로가기
         binding.back6.setOnClickListener {
             onBackPressed()
