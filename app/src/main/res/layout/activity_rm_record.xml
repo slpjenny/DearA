@@ -280,8 +280,13 @@
 <!--                    android:id="@+id/record_start"-->
 <!--                    android:layout_width="25dp"-->
 <!--                    android:layout_height="27dp"-->
+
+<!--                    android:layout_marginTop="6dp"-->
+<!--                    android:layout_marginLeft="5dp"-->
+
 <!--                    android:layout_marginLeft="5dp"-->
 <!--                    android:layout_marginTop="6dp"-->
+
 <!--                    android:background="@drawable/microphone"-->
 <!--                    app:layout_constraintStart_toEndOf="@+id/textView24"-->
 <!--                    app:layout_constraintTop_toTopOf="parent" />-->
@@ -299,8 +304,14 @@
 <!--                    android:id="@+id/record_play"-->
 <!--                    android:layout_width="25dp"-->
 <!--                    android:layout_height="25dp"-->
+
+<!--                    android:layout_marginTop="6dp"-->
+<!--                    android:layout_marginLeft="2dp"-->
+
+
 <!--                    android:layout_marginLeft="2dp"-->
 <!--                    android:layout_marginTop="6dp"-->
+
 <!--                    android:background="@drawable/play_button"-->
 <!--                    app:layout_constraintStart_toEndOf="@+id/record_stop"-->
 <!--                    app:layout_constraintTop_toTopOf="parent" />-->
@@ -311,8 +322,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="5dp"
-                    android:text="녹음시에는 의사 선생님의\n동의를 잊지 마세요 !"
-                    android:textColor="#FF0000"
                     android:textSize="9sp"
                     app:layout_constraintStart_toEndOf="@+id/textView24"
                     app:layout_constraintTop_toTopOf="parent" />
