@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.CompoundButton
 import android.widget.Toast
 import com.jenny.deara.R
@@ -29,7 +30,19 @@ class AlarmDialog() : DialogFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = AlarmDialogBinding.inflate(inflater, container, false)
-        val view = binding.root
+        // val view = binding.root
+
+        binding.activityTimePicker.setOnClickListener {
+            hideKeyboard()
+        }
+
+        binding.layout.setOnClickListener {
+            hideKeyboard()
+        }
+
+        binding.root.setOnClickListener {
+            hideKeyboard()
+        }
 
         dialog?.setCanceledOnTouchOutside(true) // dialog 밖 누르면 창 없어지게
         dialog?.setCancelable(true) //dialog 취소 가능하게 하기 위한
@@ -102,7 +115,8 @@ class AlarmDialog() : DialogFragment() {
             }
         }
 
-        return view
+        return binding.root
+
     }
 
     interface ButtonClickListener{
@@ -118,6 +132,13 @@ class AlarmDialog() : DialogFragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun hideKeyboard() {
+        if(activity != null && requireActivity().currentFocus != null) {
+            val inputManager: InputMethodManager = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            inputManager.hideSoftInputFromWindow(requireActivity().currentFocus?.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
+        }
     }
 }
 

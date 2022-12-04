@@ -1,9 +1,11 @@
 package com.jenny.deara
 
 import android.content.ContentValues.TAG
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.ActionCodeSettings
@@ -46,6 +48,10 @@ class SignInActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        binding.root.setOnClickListener {
+            hideKeyboard()
+        }
+
         // 자가진단 페이지로 이동
         binding.gotoSelfDiagnosis.setOnClickListener {
             val intent = Intent(this,SelfDiagnosisActivity::class.java)
@@ -59,6 +65,7 @@ class SignInActivity : AppCompatActivity() {
         // 이메일 유효성 체크
         binding.emailCheck.setOnClickListener {
 
+            hideKeyboard()
             //  ActionCodeSettings 객체를 구성
             val actionCodeSettings = actionCodeSettings {
                 // URL you want to redirect back to. The domain (www.example.com) for this
@@ -90,6 +97,7 @@ class SignInActivity : AppCompatActivity() {
 
         // 닉네임 중복 확인
         binding.checkNick.setOnClickListener {
+            hideKeyboard()
             var nick = binding.writeNickEtxt.text.toString()
 
             database.addValueEventListener(object : ValueEventListener {
@@ -193,6 +201,13 @@ class SignInActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
+    }
+
+    private fun hideKeyboard() {
+        if(this != null && this.currentFocus != null) {
+            val inputManager: InputMethodManager = this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            inputManager.hideSoftInputFromWindow(this.currentFocus?.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
+        }
     }
 
 }

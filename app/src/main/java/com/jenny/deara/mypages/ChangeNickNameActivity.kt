@@ -1,10 +1,12 @@
 package com.jenny.deara.mypages
 
+import android.content.Context
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
 import android.util.Log
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -31,6 +33,10 @@ class ChangeNickNameActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        binding.root.setOnClickListener {
+            hideKeyboard()
+        }
 
         // nickFor : 닉네임 중복확인 시, 중복된 닉네임이 있는지 확인
         var nickFor = 0
@@ -164,6 +170,13 @@ class ChangeNickNameActivity : AppCompatActivity() {
 
     override fun onRestart() {
         super.onRestart()
+    }
+
+    private fun hideKeyboard() {
+        if(this != null && this.currentFocus != null) {
+            val inputManager: InputMethodManager = this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            inputManager.hideSoftInputFromWindow(this.currentFocus?.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
+        }
     }
 
 

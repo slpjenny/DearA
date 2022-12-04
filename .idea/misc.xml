@@ -128,21 +128,22 @@
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/pop_up.xml" value="0.3359375" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/xml/preference.xml" value="0.17" />
         <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/calendar_item.xml" value="0.1578125" />
-
-        <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/fragment_home.xml" value="0.1578125" />
+        <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/fragment_home.xml" value="0.4" />
+        <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/layout/activity_add_record.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/layout/activity_board_edit.xml" value="0.225" />
+        <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/layout/activity_board_write.xml" value="0.225" />
+        <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/layout/activity_diary_write.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/layout/activity_find_pwd.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/layout/activity_report.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/layout/activity_rm_record.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/layout/activity_sign_in.xml" value="0.25364583333333335" />
-        <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/layout/alarm_dialog.xml" value="0.11018518518518519" />
+        <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/layout/alarm_dialog.xml" value="0.264" />
         <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/layout/fragment_alarm.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/mipmap-anydpi-v26/ic_launcher_purple.xml" value="0.222" />
         <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.222" />
         <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/mipmap-anydpi-v26/ic_launcher_white.xml" value="0.222" />
         <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/mipmap-anydpi-v26/ic_launcher_white_round.xml" value="0.222" />
         <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/xml/preference.xml" value="0.25364583333333335" />
-
-        <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/fragment_home.xml" value="0.4" />
-
         <entry key="app/src/main/res/drawable-v24/background_radius_diary.xml" value="0.1" />
         <entry key="app/src/main/res/drawable-v24/background_radius_list.xml" value="0.1395" />
         <entry key="app/src/main/res/drawable-v24/background_radius_white.xml" value="0.157" />

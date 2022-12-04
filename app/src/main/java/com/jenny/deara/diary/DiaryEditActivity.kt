@@ -1,8 +1,10 @@
 package com.jenny.deara.diary
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.google.firebase.database.DataSnapshot
@@ -30,6 +32,10 @@ class DiaryEditActivity : AppCompatActivity() {
 
         val key = intent.getStringExtra("key").toString()
         getDiaryData(key)
+
+        binding.root.setOnClickListener {
+            hideKeyboard()
+        }
 
         binding.closeBtn.setOnClickListener {
             finish()
@@ -130,6 +136,13 @@ class DiaryEditActivity : AppCompatActivity() {
         }
 
         FBRef.diaryRef.child(key).addValueEventListener(postListener)
+    }
+
+    private fun hideKeyboard() {
+        if(this != null && this.currentFocus != null) {
+            val inputManager: InputMethodManager = this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            inputManager.hideSoftInputFromWindow(this.currentFocus?.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
+        }
     }
 
 }

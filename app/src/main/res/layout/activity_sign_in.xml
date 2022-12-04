@@ -225,23 +225,26 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout6"></ImageView>
 
+        <android.widget.Button
+            android:id="@+id/saveBtn"
+            android:layout_width="300dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/purple_btn_bg"
+            android:backgroundTint="@color/purple2"
+            android:elevation="20dp"
+            android:text="완료"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView9"></android.widget.Button>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    <android.widget.Button
-        android:id="@+id/saveBtn"
-        android:layout_width="300dp"
-        android:layout_height="70dp"
-        android:background="@drawable/purple_btn_bg"
-        android:backgroundTint="@color/purple2"
-        android:text="완료"
-        android:textSize="20sp"
-        android:textColor="@color/white"
-        android:layout_marginTop="50dp"
-        android:elevation="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout7"></android.widget.Button>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
