@@ -85,6 +85,7 @@
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/drawable-v24/background_radius_diary.xml" value="0.237" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/drawable-v24/background_radius_list.xml" value="0.1" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/drawable-v24/background_radius_white.xml" value="0.265" />
+        <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/drawable-v24/ic_baseline_fingerprint_24.xml" value="0.236" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/drawable/background_radius_board.xml" value="0.1" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/drawable/background_radius_lock.xml" value="0.1" />
@@ -110,15 +111,18 @@
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_diary_edit_ver1.xml" value="0.19270833333333334" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_diary_edit_ver2.xml" value="0.19270833333333334" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_find_pwd.xml" value="0.19270833333333334" />
+        <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_finger_print.xml" value="0.22552083333333334" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_login.xml" value="0.19322916666666667" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_my_page.xml" value="0.21348314606741572" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_pin_lock.xml" value="0.3359375" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_privacy_policy.xml" value="0.24270833333333333" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_privacy_web_view.xml" value="0.34010416666666665" />
+        <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_screenshot_detect.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_select_lock.xml" value="0.19375" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_sign_in.xml" value="0.3359375" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_splash.xml" value="0.19270833333333334" />
+        <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_terms_conditions.xml" value="0.19479166666666667" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_time_picker.xml" value="0.33" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/fragment_alarm.xml" value="0.33" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/fragment_board_alarm.xml" value="0.19270833333333334" />

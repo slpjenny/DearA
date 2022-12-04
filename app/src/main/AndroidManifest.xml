@@ -32,15 +32,12 @@
             android:name=".board.report.ReportActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustUnspecified" /> <!-- <activity -->
-        <!-- android:name=".preference" -->
-        <!-- android:exported="false" /> -->
-        <!-- <activity -->
-        <!-- android:name=".preference" -->
-        <!-- android:exported="false" /> -->
+
         <activity
             android:name=".FingerPrintActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustUnspecified" />
+
         <activity
             android:name=".record.EditRecordActivity"
             android:exported="false"
@@ -135,10 +132,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".SplashActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustUnspecified" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
