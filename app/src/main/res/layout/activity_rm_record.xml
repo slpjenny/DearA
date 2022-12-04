@@ -276,34 +276,34 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageButton
-                    android:id="@+id/record_start"
-                    android:layout_width="25dp"
-                    android:layout_height="27dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="6dp"
-                    android:background="@drawable/microphone"
-                    app:layout_constraintStart_toEndOf="@+id/textView24"
-                    app:layout_constraintTop_toTopOf="parent" />
+<!--                <ImageButton-->
+<!--                    android:id="@+id/record_start"-->
+<!--                    android:layout_width="25dp"-->
+<!--                    android:layout_height="27dp"-->
+<!--                    android:layout_marginLeft="5dp"-->
+<!--                    android:layout_marginTop="6dp"-->
+<!--                    android:background="@drawable/microphone"-->
+<!--                    app:layout_constraintStart_toEndOf="@+id/textView24"-->
+<!--                    app:layout_constraintTop_toTopOf="parent" />-->
 
-                <ImageButton
-                    android:id="@+id/record_stop"
-                    android:layout_width="25dp"
-                    android:layout_height="32dp"
-                    android:layout_marginTop="3dp"
-                    android:background="@drawable/no_recording"
-                    app:layout_constraintStart_toEndOf="@+id/record_start"
-                    app:layout_constraintTop_toTopOf="parent" />
+<!--                <ImageButton-->
+<!--                    android:id="@+id/record_stop"-->
+<!--                    android:layout_width="25dp"-->
+<!--                    android:layout_height="32dp"-->
+<!--                    android:layout_marginTop="3dp"-->
+<!--                    android:background="@drawable/no_recording"-->
+<!--                    app:layout_constraintStart_toEndOf="@+id/record_start"-->
+<!--                    app:layout_constraintTop_toTopOf="parent" />-->
 
-                <ImageButton
-                    android:id="@+id/record_play"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginTop="6dp"
-                    android:background="@drawable/play_button"
-                    app:layout_constraintStart_toEndOf="@+id/record_stop"
-                    app:layout_constraintTop_toTopOf="parent" />
+<!--                <ImageButton-->
+<!--                    android:id="@+id/record_play"-->
+<!--                    android:layout_width="25dp"-->
+<!--                    android:layout_height="25dp"-->
+<!--                    android:layout_marginLeft="2dp"-->
+<!--                    android:layout_marginTop="6dp"-->
+<!--                    android:background="@drawable/play_button"-->
+<!--                    app:layout_constraintStart_toEndOf="@+id/record_stop"-->
+<!--                    app:layout_constraintTop_toTopOf="parent" />-->
 
                 <TextView
                     android:id="@+id/textView27"
@@ -314,7 +314,7 @@
                     android:text="녹음시에는 의사 선생님의\n동의를 잊지 마세요 !"
                     android:textColor="#FF0000"
                     android:textSize="9sp"
-                    app:layout_constraintStart_toEndOf="@+id/record_play"
+                    app:layout_constraintStart_toEndOf="@+id/textView24"
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
