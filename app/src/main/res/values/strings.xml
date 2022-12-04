@@ -28,21 +28,29 @@
 
     <!--    커뮤니티 규칙-->
     <string name="community_rule1">커뮤니티 이용규칙 안내</string>
-    <string name="community_rule2">디어에이 커뮤니티는 다양한 주제롤 소통할 수 있는 공간입니다.(좋은 문구 생각이 안 나)</string>
+    <string name="community_rule2">디어에이 커뮤니티는 다양한 주제로 사용자들이 소통할 수 있는 공간입니다.</string>
     <string name="community_rule3">아래 규칙에 해당하는 경우 운영자에 의해 게시물이 삭제될 수 있습니다.</string>
     <string name="community_rule4">금지 행위</string>
-    <string name="community_rule5">금지 행위1</string>
-    <string name="community_rule6">금지 행위2</string>
-    <string name="community_rule7">금지 행위3</string>
-    <string name="community_rule8">금지 행위4</string>
-    <string name="community_rule9">금지 행위5</string>
+    <string name="community_rule5">1. 범죄 기타 법령에 위반되는 행위</string>
+    <string name="community_rule6">2. 폭력성∙잔혹성∙혐오성 등이 심각한 행위</string>
+    <string name="community_rule7">3. 타인의 권리를 침해하는 행위</string>
+    <string name="community_rule8">4. 자살예방법에 반하는 자살 및 자해 유발정보 유통 행위</string>
+    <string name="community_rule9">5. 의료법∙약사법∙관세법∙전파법∙외국환거래법 등 법률에 반하는 거래 불가능 품목 거래 행위</string>
+
+
+    //유출 방지 시스템 만들기(캡쳐 제한)
+
+    <string name="community_rule18">유출 방지 시스템</string>
+    <string name="community_rule19">유출 방지 시스템은 게시물 및 자료를 외부로 유출하는 행위를 방지하기 위해 도입되었습니다.</string>
+    <string name="community_rule20">커뮤니티의 게시물을 복사∙스크린샷∙촬영하여 외부 사이트∙대화방에 게시하거나, 타인에게 관련한 내용을 공유할 경우 서비스 이용이 제한되거나, 영구적으로 서비스를 이용하실 수 없습니다.</string>
+    <string name="community_rule21">모든 사용자는 외부 유출 행위로 인해 발생한 모든 피해에 대해 민형사상 책임과 손해를 배상할 책임이 있습니다.</string>
 
     <string name="community_rule10">게시물 작성∙삭제 규칙</string>
     <string name="community_rule11">1. 게시물 작성</string>
-    <string name="community_rule12">• 규칙1: 시간 제한</string>
-    <string name="community_rule13">• 규칙2</string>
+    <string name="community_rule12">• 규칙1: 모든 게시판에서 도배 혹은 악위적 행위를 방지하기 위해 5분에 한 번만 글을 작성 할 수 있습니다. </string>
+    <!--    <string name="community_rule13">• 규칙2</string>-->
     <string name="community_rule14">1. 게시물 삭제</string>
-    <string name="community_rule15">• 규칙1: 신구 누적 시 삭제됨</string>
+    <string name="community_rule15">• 규칙1: 타 이용자의 신고 누적 시 관리자에 의해 삭제될 수 있습니다.</string>
 
     <string name="community_rule16">바르고 유익한 커뮤니티가 될 수 있도록 이용규칙을 준수해주세요!</string>
     <string name="community_rule17">감사합니다:)</string>
