@@ -20,7 +20,6 @@
         <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/drawable/one_line_maingray.xml" value="0.1" />
         <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/drawable/schedule_radius.xml" value="0.1" />
         <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/drawable/todolist_item.xml" value="0.1" />
-        <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/layout/activity_board_inside.xml" value="0.1" />
         <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/layout/activity_date_picker.xml" value="0.1" />
         <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/layout/activity_diary_detail.xml" value="0.16793313069908813" />
         <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/layout/activity_diary_detail_ver1.xml" value="0.33" />
@@ -30,13 +29,8 @@
         <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/layout/activity_my_page.xml" value="0.2346014492753623" />
         <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/layout/activity_time_picker.xml" value="0.13916666666666666" />
-        <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/layout/board_list_item.xml" value="0.3463541666666667" />
         <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/layout/calendar_item.xml" value="0.2151268115942029" />
-        <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/layout/comment_list_item.xml" value="0.3453125" />
-        <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/layout/comment_my_list_item.xml" value="0.33" />
-        <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/layout/comment_reply_list_item.xml" value="0.33" />
         <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/layout/diary_list_item.xml" value="0.33" />
-        <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/layout/fragment_board_main.xml" value="0.3463541666666667" />
         <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/layout/fragment_contact_us.xml" value="0.24320652173913043" />
         <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/layout/fragment_date_picker.xml" value="0.1" />
         <entry key="..\:/Users/glgkw/StudioProjects/DearA/app/src/main/res/layout/fragment_dialog_add_fragment.xml" value="0.1" />
@@ -89,14 +83,28 @@
         <entry key="..\:/Users/glgkw/StudioProjects/DearA3/app/src/main/res/layout/image_list_item.xml" value="0.5" />
         <entry key="..\:/Users/glgkw/StudioProjects/DearA3/app/src/main/res/menu/nav_menu.xml" value="0.23385416666666667" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/drawable-v24/background_radius_diary.xml" value="0.237" />
+        <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/drawable-v24/background_radius_list.xml" value="0.1" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/drawable-v24/background_radius_white.xml" value="0.265" />
+        <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/drawable/background_radius_board.xml" value="0.1" />
+        <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/drawable/background_radius_lock.xml" value="0.1" />
+        <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/drawable/background_radius_record.xml" value="0.1" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/drawable/background_radius_set_alarm.xml" value="0.2045" />
+        <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/drawable/radius_board_pink.xml" value="0.1" />
+        <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/drawable/radius_coer_white.xml" value="0.1" />
+        <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/drawable/radius_cover_purple.xml" value="0.1" />
+        <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/drawable/radius_purple_right.xml" value="0.1" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_alarm_main.xml" value="0.25" />
+        <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_app_cover.xml" value="0.1" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_board_inside.xml" value="0.19270833333333334" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_board_write.xml" value="0.19270833333333334" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_change_nick_name.xml" value="0.2265625" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_change_pwd.xml" value="0.2265625" />
+        <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_community_rule.xml" value="0.25" />
+        <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_contact_us.xml" value="0.13055555555555556" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_date_picker.xml" value="0.19270833333333334" />
+        <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_diary_detail.xml" value="0.13055555555555556" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_diary_detail_ver1.xml" value="0.19270833333333334" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_diary_detail_ver2.xml" value="0.19270833333333334" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_diary_edit_ver1.xml" value="0.19270833333333334" />
@@ -104,7 +112,10 @@
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_find_pwd.xml" value="0.19270833333333334" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_login.xml" value="0.19322916666666667" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_main.xml" value="0.33" />
-        <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_my_page.xml" value="0.19375" />
+        <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_my_page.xml" value="0.21348314606741572" />
+        <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_pin_lock.xml" value="0.3359375" />
+        <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_privacy_policy.xml" value="0.24270833333333333" />
+        <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_privacy_web_view.xml" value="0.34010416666666665" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_select_lock.xml" value="0.19375" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_sign_in.xml" value="0.3359375" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_splash.xml" value="0.19270833333333334" />
@@ -117,19 +128,15 @@
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/fragment_home.xml" value="0.38645833333333335" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/fragment_my_comment.xml" value="0.3359375" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/fragment_pill_plus.xml" value="0.3359375" />
+        <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/fragment_privacy_policy.xml" value="0.1" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/fragment_record_end.xml" value="0.19270833333333334" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/pop_up.xml" value="0.3359375" />
+        <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.214" />
+        <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/xml/network_security_config.xml" value="0.24166666666666667" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/xml/preference.xml" value="0.17" />
-        <entry key="app/src/main/res/drawable-v24/background_radius_diary.xml" value="0.1" />
         <entry key="app/src/main/res/drawable-v24/background_radius_list.xml" value="0.1395" />
         <entry key="app/src/main/res/drawable-v24/background_radius_white.xml" value="0.157" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1265" />
-
-        <entry key="app/src/main/res/drawable/add_button.xml" value="0.13" />
-
-        <entry key="app/src/main/res/drawable/background_radius_lock.xml" value="0.1" />
-        <entry key="app/src/main/res/drawable/background_radius_record.xml" value="0.1" />
-        <entry key="app/src/main/res/drawable/background_radius_report.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/background_radius_set_alarm.xml" value="0.157" />
         <entry key="app/src/main/res/drawable/dialog_confirm.xml" value="0.127" />
         <entry key="app/src/main/res/drawable/dialog_edittext.xml" value="0.127" />
@@ -147,11 +154,7 @@
         <entry key="app/src/main/res/drawable/selfdiagnosis_btn_bg.xml" value="0.1265" />
         <entry key="app/src/main/res/drawable/switch_track_off.xml" value="0.1565" />
         <entry key="app/src/main/res/drawable/switch_track_on.xml" value="0.1565" />
-
-        <entry key="app/src/main/res/layout/activity_add_record.xml" value="0.1" />
-
         <entry key="app/src/main/res/layout/activity_add_record.xml" value="0.25" />
-
         <entry key="app/src/main/res/layout/activity_board_edit.xml" value="0.2713541666666667" />
         <entry key="app/src/main/res/layout/activity_board_inside.xml" value="0.2713541666666667" />
         <entry key="app/src/main/res/layout/activity_board_write.xml" value="0.2713541666666667" />
@@ -169,8 +172,6 @@
         <entry key="app/src/main/res/layout/activity_pattern_lock.xml" value="0.22777777777777777" />
         <entry key="app/src/main/res/layout/activity_pattern_secure_mode.xml" value="0.22777777777777777" />
         <entry key="app/src/main/res/layout/activity_pin_lock.xml" value="0.125" />
-        <entry key="app/src/main/res/layout/activity_reoprt_popup.xml" value="0.2713541666666667" />
-        <entry key="app/src/main/res/layout/activity_report.xml" value="0.25870646766169153" />
         <entry key="app/src/main/res/layout/activity_rm_record.xml" value="0.2328125" />
         <entry key="app/src/main/res/layout/activity_select_lock.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_self_diagnosis.xml" value="0.25" />
@@ -186,16 +187,6 @@
         <entry key="app/src/main/res/layout/diary_edit_ver2.xml" value="0.29739583333333336" />
         <entry key="app/src/main/res/layout/diary_list_item.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_alarm.xml" value="0.190625" />
-
-        <entry key="app/src/main/res/layout/fragment_board_main.xml" value="0.25104166666666666" />
-        <entry key="app/src/main/res/layout/fragment_board_popup.xml" value="0.2713541666666667" />
-        <entry key="app/src/main/res/layout/fragment_contact_us.xml" value="0.2833333333333333" />
-        <entry key="app/src/main/res/layout/fragment_diary.xml" value="0.22864583333333333" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.3595703125" />
-        <entry key="app/src/main/res/layout/fragment_new_record.xml" value="0.2515625" />
-        <entry key="app/src/main/res/layout/fragment_popup.xml" value="0.25625" />
-        <entry key="app/src/main/res/layout/fragment_record.xml" value="0.1" />
-
         <entry key="app/src/main/res/layout/fragment_board_popup.xml" value="0.2713541666666667" />
         <entry key="app/src/main/res/layout/fragment_contact_us.xml" value="0.2833333333333333" />
         <entry key="app/src/main/res/layout/fragment_diary.xml" value="0.22864583333333333" />
@@ -206,30 +197,16 @@
         <entry key="app/src/main/res/layout/fragment_new_record.xml" value="0.2515625" />
         <entry key="app/src/main/res/layout/fragment_popup.xml" value="0.25625" />
         <entry key="app/src/main/res/layout/fragment_record.xml" value="0.375" />
-
         <entry key="app/src/main/res/layout/fragment_record_delete.xml" value="0.2515625" />
         <entry key="app/src/main/res/layout/fragment_record_end.xml" value="0.3202285766601563" />
-        <entry key="app/src/main/res/layout/fragment_report_popup.xml" value="0.25729166666666664" />
-        <entry key="app/src/main/res/layout/fragment_report_popup2.xml" value="0.1109375" />
         <entry key="app/src/main/res/layout/fregment_swipe_delete.xml" value="0.2713541666666667" />
         <entry key="app/src/main/res/layout/image_list_item.xml" value="0.2713541666666667" />
-        <entry key="app/src/main/res/layout/main_today_record_item.xml" value="0.335" />
         <entry key="app/src/main/res/layout/pill_record_item.xml" value="0.335" />
-
-        <entry key="app/src/main/res/layout/pilllist_item.xml" value="0.3581081081081081" />
-
         <entry key="app/src/main/res/layout/pilllist_item.xml" value="0.375" />
-
         <entry key="app/src/main/res/layout/pop_up.xml" value="0.29739583333333336" />
         <entry key="app/src/main/res/layout/recordlist_item.xml" value="0.335" />
         <entry key="app/src/main/res/layout/recordremove_dialog.xml" value="0.25052083333333336" />
-        <entry key="app/src/main/res/layout/screenshot_dialog.xml" value="0.2713541666666667" />
         <entry key="app/src/main/res/layout/splash.xml" value="0.22615966796875" />
-
-        <entry key="app/src/main/res/layout/today_record_item.xml" value="0.1" />
-
-        <entry key="app/src/main/res/layout/today_record_item.xml" value="0.2713541666666667" />
-
         <entry key="app/src/main/res/layout/tododialog_item.xml" value="0.2359375" />
         <entry key="app/src/main/res/layout/todolistview_item.xml" value="0.2359375" />
         <entry key="app/src/main/res/layout/userremove_dialog.xml" value="0.335" />

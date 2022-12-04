@@ -142,6 +142,70 @@
                 android:textColor="@color/black"/>
 
             <TextView
+                android:id="@+id/rule_text2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingMultiplier="1.2"
+                android:text="@string/community_rule18"
+                android:layout_marginTop="15dp"
+                android:paddingLeft="20dp"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/rule_text2_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingMultiplier="1.2"
+                android:text="@string/community_rule19"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:textStyle="normal"
+                android:textSize="14sp"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/rule_text2_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingMultiplier="1.2"
+                android:text="@string/community_rule20"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:textStyle="normal"
+                android:textSize="14sp"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/rule_text2_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingMultiplier="1.2"
+                android:text="@string/community_rule20"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:textStyle="normal"
+                android:textSize="14sp"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/rule_text2_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingMultiplier="1.2"
+                android:text="@string/community_rule21"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:textStyle="normal"
+                android:textSize="14sp"
+                android:textColor="@color/black"/>
+
+            <TextView
                 android:id="@+id/rule_text1_9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -179,18 +243,18 @@
                 android:textSize="12sp"
                 android:textColor="@color/black"/>
 
-            <TextView
-                android:id="@+id/rule_text1_12"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:lineSpacingMultiplier="1.2"
-                android:text="@string/community_rule13"
-                android:layout_marginTop="5dp"
-                android:paddingLeft="35dp"
-                android:paddingRight="20dp"
-                android:textStyle="normal"
-                android:textSize="12sp"
-                android:textColor="@color/black"/>
+<!--            <TextView-->
+<!--                android:id="@+id/rule_text1_12"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:lineSpacingMultiplier="1.2"-->
+<!--                android:text="@string/community_rule13"-->
+<!--                android:layout_marginTop="5dp"-->
+<!--                android:paddingLeft="35dp"-->
+<!--                android:paddingRight="20dp"-->
+<!--                android:textStyle="normal"-->
+<!--                android:textSize="12sp"-->
+<!--                android:textColor="@color/black"/>-->
 
             <TextView
                 android:id="@+id/rule_text1_13"
