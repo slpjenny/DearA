@@ -86,6 +86,14 @@ class MyPageActivity : AppCompatActivity() {
             )
             startActivity(intent8)
         }
+        // 이용약관 페이지로 이동
+        binding.textView19.setOnClickListener {
+            var intent9 = Intent(
+                Intent.ACTION_VIEW,
+                Uri.parse("https://www.notion.so/b07d03ad439443a488375d49ed2acdf7")
+            )
+            startActivity(intent9)
+        }
 
         // 뒤로가기
         binding.back6.setOnClickListener {
