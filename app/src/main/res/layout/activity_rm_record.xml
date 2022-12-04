@@ -400,7 +400,7 @@
                     android:layout_marginRight="20dp"
                     android:background="@android:color/transparent"
                     android:ellipsize="none"
-                    android:hint="- 최근 증상을 작성해주세요\n-\n-\n"
+                    android:hint="최근 증상을 작성해주세요"
                     android:maxLines="4"
                     android:textColor="#000000"
                     android:textSize="16sp"
