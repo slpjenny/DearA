@@ -21,15 +21,12 @@
         tools:targetApi="31">
         <activity
             android:name=".mypages.AppCoverActivity"
-            android:windowSoftInputMode="adjustUnspecified"
             android:exported="false" />
         <activity
             android:name=".mypages.CommunityRuleActivity"
-            android:windowSoftInputMode="adjustUnspecified"
             android:exported="false" />
         <activity
             android:name=".board.report.ReportActivity"
-            android:windowSoftInputMode="adjustUnspecified"
             android:exported="false" /> <!-- <activity -->
         <!-- android:name=".preference" -->
         <!-- android:exported="false" /> -->
@@ -38,23 +35,20 @@
         <!-- android:exported="false" /> -->
         <activity
             android:name=".FingerPrintActivity"
-            android:windowSoftInputMode="adjustUnspecified"
             android:exported="false" />
         <activity
             android:name=".record.EditRecordActivity"
-            android:windowSoftInputMode="adjustUnspecified"
+            android:windowSoftInputMode="adjustResize"
             android:exported="false" />
         <activity
             android:name=".record.AddRecordActivity"
-            android:windowSoftInputMode="adjustUnspecified"
+            android:windowSoftInputMode="adjustResize"
             android:exported="false" />
         <activity
             android:name=".mypages.ContactUsActivity"
-            android:windowSoftInputMode="adjustUnspecified"
             android:exported="false" />
         <activity
             android:name=".mypages.SelectLockActivity"
-            android:windowSoftInputMode="adjustUnspecified"
             android:exported="false" />
         <activity
             android:name=".board.BoardWriteActivity"
@@ -62,46 +56,44 @@
             android:exported="false" />
         <activity
             android:name=".board.BoardInsideActivity"
-            android:windowSoftInputMode="adjustUnspecified"
+            android:windowSoftInputMode="adjustResize"
+
             android:exported="false" />
         <activity
             android:name=".board.BoardEditActivity"
-            android:windowSoftInputMode="adjustUnspecified"
+            android:windowSoftInputMode="adjustResize"
             android:exported="false" />
         <activity
             android:name=".board.BoardImageViewActivity"
-            android:windowSoftInputMode="adjustUnspecified"
             android:exported="false" />
         <activity
             android:name=".alarm.TimePickerActivity"
             android:exported="false" />
         <activity
             android:name=".mypages.ChangePwdActivity"
-            android:windowSoftInputMode="adjustUnspecified"
+            android:windowSoftInputMode="adjustResize"
             android:exported="false" />
         <activity
             android:name=".mypages.FindPwdActivity"
-            android:windowSoftInputMode="adjustUnspecified"
+            android:windowSoftInputMode="adjustResize"
             android:exported="false" />
         <activity
             android:name=".mypages.ChangeNickNameActivity"
-            android:windowSoftInputMode="adjustUnspecified"
+            android:windowSoftInputMode="adjustResize"
             android:exported="false" />
         <activity
             android:name=".diary.DiaryWriteActivity"
-            android:windowSoftInputMode="adjustUnspecified"
+            android:windowSoftInputMode="adjustResize"
             android:exported="false" />
         <activity
             android:name=".diary.DiaryDetailActivity"
-            android:windowSoftInputMode="adjustUnspecified"
             android:exported="false" />
         <activity
             android:name=".diary.DiaryEditActivity"
-            android:windowSoftInputMode="adjustUnspecified"
+            android:windowSoftInputMode="adjustResize"
             android:exported="false" />
         <activity
             android:name=".MyPageActivity"
-            android:windowSoftInputMode="adjustUnspecified"
             android:exported="false" />
         <activity
             android:name=".SignInActivity"
@@ -122,7 +114,6 @@
         </activity>
         <activity
             android:name=".SelfDiagnosisActivity"
-            android:windowSoftInputMode="adjustUnspecified"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
@@ -136,11 +127,9 @@
         </activity>
         <activity
             android:name=".SplashActivity"
-            android:windowSoftInputMode="adjustUnspecified"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:windowSoftInputMode="adjustUnspecified"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
