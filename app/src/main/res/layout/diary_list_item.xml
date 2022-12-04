@@ -22,7 +22,7 @@
         app:layout_constraintEnd_toStartOf="@+id/line">
 
         <TextView
-            android:id="@+id/dateArea"
+            android:id="@+id/dayArea"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="02"

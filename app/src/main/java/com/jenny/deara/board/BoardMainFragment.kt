@@ -11,6 +11,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat.getDrawable
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -58,14 +59,14 @@ class BoardMainFragment : Fragment() {
         binding.searchBtn.setColorFilter(Color.parseColor("#F3F3F3"))
 
         binding.myPageBtn.setOnClickListener {
-//            val intent = Intent(context, MyPageActivity::class.java)
-//            startActivity(intent)
-            val intent = Intent(context, BoardInsideActivity::class.java)
+            val intent = Intent(context, MyPageActivity::class.java)
             startActivity(intent)
+//            val intent = Intent(context, BoardInsideActivity::class.java)
+//            startActivity(intent)
 
         }
 
-        binding.writeBtn.setOnClickListener {
+        binding.writeBtn.setOnSingleClickListener {
             val intent = Intent(context, BoardWriteActivity::class.java)
             startActivity(intent)
         }
@@ -85,15 +86,15 @@ class BoardMainFragment : Fragment() {
             initRecycler()
         }
 
-        binding.boardAlarm.setOnClickListener {
-            setText()
-//            menu = "boardAlarm"
-//            getFBBoardData(menu)
-            binding.boardSearch.visibility = View.GONE
-            binding.menu2.visibility = View.GONE
-            binding.boardAlarm.background = context?.let { getDrawable(it, R.drawable.bottom_edge_bold) }
-            binding.boardAlarm.setTextColor(Color.BLACK)
-        }
+//        binding.boardAlarm.setOnClickListener {
+//            setText()
+////            menu = "boardAlarm"
+////            getFBBoardData(menu)
+//            binding.boardSearch.visibility = View.GONE
+//            binding.menu2.visibility = View.GONE
+//            binding.boardAlarm.background = context?.let { getDrawable(it, R.drawable.bottom_edge_bold) }
+//            binding.boardAlarm.setTextColor(Color.BLACK)
+//        }
 
         binding.myBoard.setOnClickListener {
             setText()
@@ -324,12 +325,12 @@ class BoardMainFragment : Fragment() {
 
     private fun setText(){
         binding.boardList.setTextColor(Color.parseColor("#CFCFCF"))
-        binding.boardAlarm.setTextColor(Color.parseColor("#CFCFCF"))
+        //binding.boardAlarm.setTextColor(Color.parseColor("#CFCFCF"))
         binding.myBoard.setTextColor(Color.parseColor("#CFCFCF"))
         binding.myComment.setTextColor(Color.parseColor("#CFCFCF"))
 
         binding.boardList.setBackgroundColor(Color.parseColor("#00ff0000"))
-        binding.boardAlarm.setBackgroundColor(Color.parseColor("#00ff0000"))
+        //binding.boardAlarm.setBackgroundColor(Color.parseColor("#00ff0000"))
         binding.myBoard.setBackgroundColor(Color.parseColor("#00ff0000"))
         binding.myComment.setBackgroundColor(Color.parseColor("#00ff0000"))
     }

@@ -77,19 +77,19 @@
                 android:textSize="19sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/boardAlarm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:paddingBottom="5dp"
-                android:text="알림"
-                android:textAlignment="center"
-                android:textColor="@color/board_menu_gray"
-                android:textSize="19sp"
-                android:textStyle="bold" />
+<!--            <TextView-->
+<!--                android:id="@+id/boardAlarm"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="10dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:gravity="center"-->
+<!--                android:paddingBottom="5dp"-->
+<!--                android:text="알림"-->
+<!--                android:textAlignment="center"-->
+<!--                android:textColor="@color/board_menu_gray"-->
+<!--                android:textSize="19sp"-->
+<!--                android:textStyle="bold" />-->
 
             <TextView
                 android:id="@+id/myBoard"
@@ -263,100 +263,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/boardSearch" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/pageBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal"
-        android:paddingBottom="80dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rvBoard">
-
-        <ImageView
-            android:id="@+id/before"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:layout_marginEnd="10dp"
-            android:src="@drawable/beforebtn"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/page_1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/page_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:text="1"
-            android:textColor="#747474"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/page_2"
-            app:layout_constraintStart_toEndOf="@+id/before" />
-
-        <TextView
-            android:id="@+id/page_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginEnd="10dp"
-            android:text="2"
-            android:textColor="#747474"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/page_3"
-            app:layout_constraintStart_toEndOf="@+id/page_1" />
-
-        <TextView
-            android:id="@+id/page_3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:text="3"
-            android:textColor="#747474"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/page_4"
-            app:layout_constraintStart_toEndOf="@+id/page_2" />
-
-        <TextView
-            android:id="@+id/page_4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:text="4"
-            android:textColor="#747474"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/page_5"
-            app:layout_constraintStart_toEndOf="@+id/page_3" />
-
-        <TextView
-            android:id="@+id/page_5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:text="5"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/after"
-            app:layout_constraintStart_toEndOf="@+id/page_4" />
-
-        <ImageView
-            android:id="@+id/after"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:src="@drawable/afterbtn"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/page_5"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
         android:id="@+id/writeBtn"

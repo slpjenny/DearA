@@ -16,7 +16,7 @@ class NotificationHelper (base: Context?) : ContextWrapper(base) {
     private val channelNm = "channelnm"
 
     init {
-        // 안드로이드 버전 오레오 이상이면 채널 생생성
+        // 안드로이드 버전 오레오 이상이면 채널 생성
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
             // 채널 생성
@@ -27,6 +27,7 @@ class NotificationHelper (base: Context?) : ContextWrapper(base) {
             channel.enableVibration(true)
             channel.lightColor= Color.GREEN*/
             channel.lockscreenVisibility = Notification.VISIBILITY_PRIVATE
+            channel.enableVibration(true)
 
             getManager().createNotificationChannel(channel)
 
@@ -40,11 +41,11 @@ class NotificationHelper (base: Context?) : ContextWrapper(base) {
     }
 
     // Notification 설정
-    fun getChannelNotification(): NotificationCompat.Builder{
+    fun getChannelNotification(title: String?): NotificationCompat.Builder{
 
         return NotificationCompat.Builder(applicationContext, channelId)
-            .setContentTitle("제목")
-            .setContentText("알람입니다.")
+            .setContentTitle(title)
+            .setContentText("약 드실 시간이에요!")
             .setSmallIcon(R.drawable.logo)
 
 

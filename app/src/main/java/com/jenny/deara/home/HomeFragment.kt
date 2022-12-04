@@ -22,6 +22,7 @@ import com.jenny.deara.R
 import com.jenny.deara.alarm.AlarmData
 import com.jenny.deara.alarm.AlarmListAdapter
 import com.jenny.deara.databinding.FragmentHomeBinding
+import com.jenny.deara.diary.DiaryDetailActivity
 import com.jenny.deara.diary.DiaryListAdapter
 import com.jenny.deara.record.RecordData
 import com.jenny.deara.record.TodayRecordData
@@ -29,6 +30,7 @@ import com.jenny.deara.utils.CalendarUtil
 import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
 import kotlinx.android.synthetic.main.calendar_item.*
+import kotlinx.android.synthetic.main.calendar_item.view.*
 import kotlinx.android.synthetic.main.fragment_diary.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
@@ -41,6 +43,7 @@ class HomeFragment : Fragment() {
 
     private lateinit var binding : FragmentHomeBinding
     lateinit var TodoAdapter: TodoAdapter
+    lateinit var CalendarAdapter : CalendarAdapter
 
     // 투두 Recyclerview 관련 변수
     val items = ArrayList<ToDoData>()
@@ -66,6 +69,8 @@ class HomeFragment : Fragment() {
     var firstday = CalendarUtil.selectedDate.get(Calendar.DAY_OF_MONTH).toString()
 
 
+    var percent = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -79,8 +84,12 @@ class HomeFragment : Fragment() {
         // binding 초기화
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
 
+
         // 화면 설정
-        setMonthView()
+        setMonthView(percent)
+
+        setMonthView(percent)
+
         initRecycler()
 
             // 오늘 진료기록 띄우기
@@ -94,19 +103,22 @@ class HomeFragment : Fragment() {
         getFBTodoData(firstYear,firstMonth, firstday)
         todokeyList.distinct()
 
+        Log.d(TAG, "percent 1 : " + percent)
+
+
 
         // 이전달 버튼 이벤트
         binding.preBtn.setOnClickListener {
             // 현재 월 -1 변수 담기
             CalendarUtil.selectedDate.add(Calendar.MONTH, -1) // 현재 달 -1
-            setMonthView()
+            setMonthView(percent)
         }
 
         // 다음달 버튼 이벤트
         binding.nextBtn.setOnClickListener {
 
             CalendarUtil.selectedDate.add(Calendar.MONTH , 1) // 현재 달 +1
-            setMonthView()
+            setMonthView(percent)
         }
 
         // 투두리스트 추가
@@ -162,13 +174,13 @@ class HomeFragment : Fragment() {
         Log.d(TAG, "keyadd : " + key)
 
         // 할일 목록 추가
-        items.add(ToDoData(todo, check, time, year, month, day, uid, key))
+        items.add(ToDoData(todo, check, time, year, month, day, uid, key, percent))
         Log.d(TAG, "saveTodo : " + items)
 
 
         FBRef.todoRef
             .child(key)
-            .setValue(ToDoData(todo, check, time, year, month, day, uid, key))
+            .setValue(ToDoData(todo, check, time, year, month, day, uid, key, percent))
     }
 
 
@@ -275,24 +287,35 @@ class HomeFragment : Fragment() {
                     val item = dataModel.getValue(ToDoData::class.java)
                     if (FBAuth.getUid() == item!!.uid){
 
-                        if(item!!.year == Year && item!!.month == Month && item!!.date == date ){
+                        if(item!!.year == Year && item!!.month == Month && item!!.date == date ) {
                             items.add(item)
-                            if(todokeyList.none { it == dataModel.key }){
+                            if (todokeyList.none { it == dataModel.key }) {
                                 todokeyList.add(dataModel.key.toString())
                             }
                             Log.d(TAG, "todokeyList : " + todokeyList)
-
+                            Log.d(TAG, "todokeyList : " + todokeyList)
 
                             // 체크 된 할일 목록에 따라 프로그레스바 설정
-                            if(item!!.check == true){
-                                count ++
+                            if (item!!.check == true) {
+                                count++
                             }
 
-                            var percent  = count * 100/items.size
-                            progressBar.progress = percent
+                            percent = count * 100 / items.size
+                            progressBar.progress = item.percent
+
+
+                            setMonthView(percent)
+
+                            FBRef.todoRef
+                                .child(item.key)
+                                .child("percent")
+                                .setValue(percent)
+
+                            Log.d(TAG, "item.key : " + item.key)
 
                         }
                     }
+
                     Log.d (TAG, "todokey distinct : " + todokeyList)
 
                     TodoAdapter.notifyDataSetChanged()
@@ -309,9 +332,12 @@ class HomeFragment : Fragment() {
     }
 
 
+    private fun percent(p : Int){
+        percent = p
+    }
 
     // 날짜 화면에 보여주기
-    private fun setMonthView() {
+    private fun setMonthView(percent : Int) {
         // 년월 테스트뷰 세팅
         binding.dateText.text = monthYearFromData(CalendarUtil.selectedDate)
 
@@ -319,7 +345,7 @@ class HomeFragment : Fragment() {
         val dayList = dayInMonthArray()
 
         // 어댑터 초기화
-        val adapter = CalendarAdapter(requireContext(), dayList, items, todokeyList)
+        val adapter = CalendarAdapter(requireContext(), dayList, items, todokeyList, percent)
 
         // 레이아웃 설정 (열 7개)
         var manager : RecyclerView.LayoutManager = GridLayoutManager(context,7)
@@ -343,6 +369,8 @@ class HomeFragment : Fragment() {
                 firstMonth = month
                 firstday = day2
 
+                binding.dateText2.text = month + "월 " + day2 + "일"
+
                 Log.d(TAG, "itemclick year : " + year)
                 Log.d(TAG, "itemclick month : " + month)
                 Log.d(TAG, "itemclick day : " + day2)
@@ -354,6 +382,8 @@ class HomeFragment : Fragment() {
                 TodoAdapter.notifyDataSetChanged()
 
             }
+
+
         }
 
 
