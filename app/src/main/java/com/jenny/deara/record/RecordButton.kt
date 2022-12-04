@@ -26,12 +26,12 @@ class RecordButton(context: Context,
 
             // 녹음 완료 후
             voiceState.AFTER_RECORDING -> {
-                setImageResource(R.drawable.back_btn)
+                setImageResource(R.drawable.play_button)
             }
 
             // 재생중
             voiceState.ON_PLAYING -> {
-                setImageResource(R.drawable.plus_button)
+                setImageResource(R.drawable.vinyl)
             }
         }
     }
