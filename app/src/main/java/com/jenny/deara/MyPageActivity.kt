@@ -6,9 +6,12 @@ import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.webkit.WebView
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.core.content.ContentProviderCompat.requireContext
 import com.google.firebase.auth.FirebaseAuth
@@ -27,6 +30,8 @@ class MyPageActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var database: DatabaseReference
+    private lateinit var webView: WebView
+    private lateinit var progressBar: ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,6 +71,12 @@ class MyPageActivity : AppCompatActivity() {
             startActivity(intent3)
         }
 
+        // 개인정보처리방침 페이지로 이동
+
+        binding.textView18.setOnClickListener {
+            val intent8  = Intent(this, PrivacyWebViewActivity::class.java)
+            startActivity(intent8)
+        }
         // 뒤로가기
         binding.back6.setOnClickListener {
             onBackPressed()
@@ -98,8 +109,8 @@ class MyPageActivity : AppCompatActivity() {
         // 커뮤니티 이용규칙
         binding.communityRule.setOnClickListener {
 
-            val intent5  = Intent(this, CommunityRuleActivity::class.java)
-            startActivity(intent5)
+            val intent7  = Intent(this, CommunityRuleActivity::class.java)
+            startActivity(intent7)
         }
 
         // 앱 커버 변경
