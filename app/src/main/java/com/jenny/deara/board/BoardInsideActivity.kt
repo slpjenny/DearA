@@ -116,9 +116,9 @@ class BoardInsideActivity : AppCompatActivity() {
 
     }
 
-    @SuppressLint("NotifyDataSetChanged")
+    @SuppressLint("NotifyDataSetChanged", "SuspiciousIndentation")
     private fun initRecycler(boardKey: String) {
-        CommentListAdapter = CommentListAdapter(this, commentKeyList, boardKey)
+        CommentListAdapter = CommentListAdapter(this, commentKeyList)
 
         val rv : RecyclerView = binding.rvComment
         rv.adapter= CommentListAdapter
