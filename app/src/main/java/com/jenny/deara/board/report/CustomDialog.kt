@@ -113,6 +113,12 @@ class CustomDialog(key: String) : DialogFragment() {
                                 FBRef.reportRef
                                     .child(key)
                                     .setValue(ReportModel(++count, user1!!, user2!!, user3!!, user4!!, user5))
+
+                                //누적 5회 신고 됐으니까
+                                FBRef.boardRef.child(key.toString()).removeValue()
+                                //FBRef.reportRef.child(key).removeValue()
+                                Toast.makeText(context, "삭제 완료", Toast.LENGTH_SHORT)
+                                    .show() // 없앨 코드
                             }
                         }
 

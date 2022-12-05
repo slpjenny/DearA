@@ -292,7 +292,10 @@
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_marginLeft="10dp"
+                    android:scaleType="fitCenter"
+
                     android:layout_marginTop="6dp"
+
                     android:background="@drawable/record_start"
                     app:layout_constraintStart_toEndOf="@+id/textView24"
                     app:layout_constraintTop_toTopOf="parent" />
