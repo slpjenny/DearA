@@ -223,10 +223,10 @@ class BoardWriteActivity : AppCompatActivity() {
             Log.d("uploadLog",i.toString() + imageList[i].toString())
             imageTest.isDrawingCacheEnabled = true
             imageTest.buildDrawingCache()
-            if (imageList[i].toString().lowercase().contains("https://")){
-                bitmap = getImageBitmap(imageList[i])
+            bitmap = if (imageList[i].toString().lowercase().contains("https://")){
+                getImageBitmap(imageList[i])
             }else{
-                bitmap = (imageTest.drawable as BitmapDrawable).bitmap
+                (imageTest.drawable as BitmapDrawable).bitmap
             }
             val baos = ByteArrayOutputStream()
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)

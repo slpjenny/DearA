@@ -5,6 +5,7 @@ import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
+import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.ColorDrawable
 import android.opengl.Visibility
 import android.os.Bundle
@@ -248,6 +249,7 @@ class BoardInsideActivity : AppCompatActivity() {
 
                             // 이미지 누르면 크게 보기
                             getImage.setOnClickListener {
+                                //val bitmap = (getImage.drawable as BitmapDrawable).bitmap
                                 val intent = Intent(this, BoardImageViewActivity::class.java)
                                 intent.putExtra("url", task.result)
                                 startActivity(intent)
