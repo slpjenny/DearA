@@ -105,6 +105,7 @@ class HomeFragment : Fragment() {
 
         Log.d(TAG, "percent 1 : " + percent)
 
+        binding.dateText2.text = month + "월 " + day2 + "일"
 
 
         // 이전달 버튼 이벤트
