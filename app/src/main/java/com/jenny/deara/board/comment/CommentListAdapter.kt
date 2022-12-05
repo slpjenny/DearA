@@ -111,6 +111,13 @@ class CommentListAdapter(val context: Context,
             time.text = item.time
             uid.text = FBAuth.getNick(item.uid)
 
+            if(item.uid !== FBAuth.getUid()){
+                delBtn.visibility = View.INVISIBLE
+            }
+            if(item.uid == FBAuth.getUid()){
+                delBtn.visibility = View.VISIBLE
+            }
+
             //댓글 삭제 하기
             delBtn.setOnClickListener {
                 // popup
@@ -163,6 +170,13 @@ class CommentListAdapter(val context: Context,
             time.text = item.time
             //uid.text = "yet"
             uid.text = FBAuth.getNick(item.uid)
+
+            if(item.uid !== FBAuth.getUid()){
+                delBtn.visibility = View.INVISIBLE
+            }
+            if(item.uid == FBAuth.getUid()){
+                delBtn.visibility = View.VISIBLE
+            }
 
             //댓글 삭제 하기
             delBtn.setOnClickListener {
