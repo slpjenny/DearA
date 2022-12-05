@@ -1,34 +1,23 @@
 package com.jenny.deara.board.comment
 
-import android.annotation.SuppressLint
+import android.app.Activity
 import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.text.Layout
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import com.google.firebase.ktx.Firebase
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
 import com.jenny.deara.R
-import com.jenny.deara.board.BoardInsideActivity
-import com.jenny.deara.board.BoardModel
 import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
-import kotlin.properties.Delegates
+
 
 class CommentListAdapter(val context: Context,
-                         var commentKeyList: MutableList<String>,
-                         val boardKey: String)
+                         var commentKeyList: MutableList<String>)
     : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     var datas = mutableListOf<CommentModel>()
@@ -142,6 +131,14 @@ class CommentListAdapter(val context: Context,
                             FBRef.commentRef.child(commentKeyList[i]).removeValue()
                         }
                     }
+
+                    // Activity refresh
+                    val intent = (context as Activity).intent
+                    context.finish() //현재 액티비티 종료 실시
+                    context.overridePendingTransition(0, 0) //효과 없애기
+                    context.startActivity(intent) //현재 액티비티 재실행 실시
+                    context.overridePendingTransition(0, 0) //효과 없애기
+
                     Toast.makeText(context, "삭제완료", Toast.LENGTH_LONG).show()
                     mDialogView.dismiss()
                 }
@@ -196,6 +193,14 @@ class CommentListAdapter(val context: Context,
                 noButton.setOnClickListener {
                     // 삭제버튼 클릭 이벤트
                     FBRef.commentRef.child(commentKeyList[position]).removeValue()
+
+                    // Activity refresh
+                    val intent = (context as Activity).intent
+                    context.finish() //현재 액티비티 종료 실시
+                    context.overridePendingTransition(0, 0) //효과 없애기
+                    context.startActivity(intent) //현재 액티비티 재실행 실시
+                    context.overridePendingTransition(0, 0) //효과 없애기
+
                     Toast.makeText(context, "삭제완료", Toast.LENGTH_LONG).show()
                     mDialogView.dismiss()
                 }
