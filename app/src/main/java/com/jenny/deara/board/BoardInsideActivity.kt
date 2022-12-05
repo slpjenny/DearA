@@ -7,19 +7,13 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.text.Editable
-import android.text.Layout
-import android.text.TextWatcher
 import android.util.Log
 import android.view.*
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
 import androidx.core.view.setMargins
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -36,11 +30,9 @@ import com.jenny.deara.MyPageActivity
 import com.jenny.deara.R
 import com.jenny.deara.board.comment.CommentListAdapter
 import com.jenny.deara.board.comment.CommentModel
-import com.jenny.deara.board.report.CustomDialog
 import com.jenny.deara.board.report.ReportActivity
 import com.jenny.deara.board.report.ReportModel
 import com.jenny.deara.databinding.ActivityBoardInsideBinding
-import com.jenny.deara.diary.DiaryDetailActivity
 import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
 import kotlinx.android.synthetic.main.activity_board_inside.*
@@ -59,6 +51,9 @@ class BoardInsideActivity : AppCompatActivity() {
     var commentReplyOn : Boolean = false
     var dialogFlag : Boolean = false
     lateinit var getCommentKey : String
+
+    var commentTest = mutableListOf<CommentModel>()
+    var commentKeyListTest = mutableListOf<String>()
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -300,6 +295,13 @@ class BoardInsideActivity : AppCompatActivity() {
         }
         commentReplyOn = false
         binding.commentArea.setText("")
+
+        // 화면 refresh
+        finish() //인텐트 종료
+        overridePendingTransition(0, 0) //인텐트 효과 없애기
+        val intent = intent //인텐트
+        startActivity(intent) //액티비티 열기
+        overridePendingTransition(0, 0) //인텐트 효과 없애기
     }
 
     // 댓글 가져오기
@@ -397,7 +399,7 @@ class BoardInsideActivity : AppCompatActivity() {
                 Log.w("getCommentData", "loadPost:onCancelled", databaseError.toException())
             }
         }
-        FBRef.commentRef.addValueEventListener(postListener)
+        FBRef.commentRef.addListenerForSingleValueEvent(postListener)
 
         binding.commentNum.text = CommentListAdapter.itemCount.toString()
     }
