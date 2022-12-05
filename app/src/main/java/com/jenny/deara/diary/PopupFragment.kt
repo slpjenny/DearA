@@ -40,10 +40,7 @@ class PopupFragment(var key: String) : DialogFragment() {
 
         //삭제버튼
         binding.delBtn.setOnClickListener{
-            // 해당 게시글 삭제
             FBRef.diaryRef.child(key).removeValue()
-            // 게시글의 댓글 삭제
-
             Toast.makeText(context, "삭제완료", Toast.LENGTH_LONG).show()
 
             // 다이어리 리스트로 이동
