@@ -46,7 +46,6 @@ class ImageListAdapter(val context: Context)
 
             delBtn.setOnClickListener {
                 datas.removeAt(position)
-                notifyItemRemoved(position)
                 notifyDataSetChanged()
             }
         }
