@@ -124,7 +124,7 @@
                 android:layout_height="50dp"
                 android:layout_marginLeft="40dp"
                 android:background="@null"
-                android:hint="비밀번호"
+                android:hint="비밀번호 (6자 이상)"
                 android:inputType="textPassword"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"

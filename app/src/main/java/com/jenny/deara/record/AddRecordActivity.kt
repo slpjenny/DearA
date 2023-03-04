@@ -55,6 +55,7 @@ class AddRecordActivity : AppCompatActivity() {
     private val requiredPermissions = arrayOf(android.Manifest.permission.RECORD_AUDIO)
     // 초기 녹음 상태 설정
     private var state = voiceState.BEFORE_RECORDING
+
         set(value) {
             field = value
             recordButton.updateIconWithState(value)
@@ -272,22 +273,28 @@ class AddRecordActivity : AppCompatActivity() {
     // 녹음할 수 있는 상태 만들기
     private fun startRecording(){
         recorder = MediaRecorder().apply {
-            setAudioSource(MediaRecorder.AudioSource.MIC)
-            setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP)
-            setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB)
+            //MediaRecorder 설정하기
+            setAudioSource(MediaRecorder.AudioSource.MIC)  // 오디오 입력을 마이크로 받음
+            setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP)  // 출력 포멧 설정 (MPEG4) 로 왜 안했지?
+            setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB) // DEFAULT 로 설정 왜 안했지?
             setOutputFile(recordingFilePath)
             prepare()
         }
+
+        //MediaRecorder 시작시키기
         recorder?.start()
+
+        //state 변환시켜서 아이콘 변경
         state = voiceState.ON_RECORDING
 
         Log.d("record_state","startRecording")
-
     }
 
     private fun stopRecording(){
         recorder?.run{
+            // 녹음 중지를 위한 두 개의 메서드
             stop()
+                // MediaRecorder의 리소스를 해제하는 역할
             release()
         }
         recorder =null
@@ -312,6 +319,7 @@ class AddRecordActivity : AppCompatActivity() {
 
     private fun stopPlaying(){
         // player 는 stop 없이 release()로 바로 멈출 수 있음
+        // 미디어플레이어를 앱 내에서 재사용하려면 기존에 사용하던 리소스를 먼저 해제해야함
         player?.release()
         player =null
         state = voiceState.AFTER_RECORDING

@@ -68,6 +68,8 @@ class ChangePwdActivity : AppCompatActivity() {
                         .addOnCompleteListener { Log.d(TAG, "사용자 재인증 성공") }
                     Log.d("credential",credential.toString())
 
+                    // credential 이 유효하지 않으면 어케되는데?
+
                     // 새로운 비밀번호 입력 일치하면 비밀번호 변경 작업 수행
                     if(newPwd == rePwd){
 
