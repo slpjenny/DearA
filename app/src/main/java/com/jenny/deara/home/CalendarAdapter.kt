@@ -100,8 +100,6 @@ class CalendarAdapter(private val context: Context,
             holder.dayText.setTextColor(Color.BLACK)
             //holder.itemView.setBackgroundResource(R.drawable.background_todolist_green)
 
-
-
             // 날짜 선택할 시 밑줄
             if (itemClick != null) {
                 holder.itemView.setOnClickListener { view ->
@@ -142,14 +140,16 @@ class CalendarAdapter(private val context: Context,
             val position = object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
 
-                    for (dataModel in dataSnapshot.children) {
+                    var myuid = FBAuth.getUid()
+                    val test = dataSnapshot.child(myuid).child(iYear.toString()).child(iMonth.toString()).child(day)
+                    Log.d(TAG, "DAy : "+iDay.toString())
+                    Log.d(TAG, "selectdDAy : " +selectDay.toString())
+
+                    for (dataModel in test.children) {
                         Log.d("todoList", dataModel.toString())
 
                         val item = dataModel.getValue(ToDoData::class.java)
-                        if (FBAuth.getUid() == item!!.uid) {
 
-
-                            if (item!!.year == iYear.toString() && item!!.month == iMonth.toString() && item!!.date == day) {
 
                                 var percent = item!!.percent
 
@@ -169,8 +169,6 @@ class CalendarAdapter(private val context: Context,
                                 Log.d(TAG, "percentpercent : " + percent)
 
 
-                            }
-                        }
                     }
                 }
 

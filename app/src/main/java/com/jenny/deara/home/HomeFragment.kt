@@ -43,7 +43,9 @@ class HomeFragment : Fragment() {
 
     private lateinit var binding : FragmentHomeBinding
     lateinit var TodoAdapter: TodoAdapter
-    lateinit var CalendarAdapter : CalendarAdapter
+
+    // 날짜 생성해서 리스트에 담기
+    val dayList2 = dayInMonthArray()
 
     // 투두 Recyclerview 관련 변수
     val items = ArrayList<ToDoData>()
@@ -142,7 +144,7 @@ class HomeFragment : Fragment() {
     @SuppressLint("NotifyDataSetChanged")
     private fun initRecycler(){
 
-        TodoAdapter = TodoAdapter(requireContext(), items, todokeyList)
+        TodoAdapter = TodoAdapter(requireContext(), items, todokeyList, year, month, day2)
         val rv: RecyclerView = binding.toDoListRV
         rv.adapter = TodoAdapter
 
@@ -174,12 +176,17 @@ class HomeFragment : Fragment() {
         val key = FBRef.todoRef.push().key.toString()
         Log.d(TAG, "keyadd : " + key)
 
+
         // 할일 목록 추가
         items.add(ToDoData(todo, check, time, year, month, day, uid, key, percent))
         Log.d(TAG, "saveTodo : " + items)
 
 
         FBRef.todoRef
+            .child(uid)
+            .child(year)
+            .child(month)
+            .child(day)
             .child(key)
             .setValue(ToDoData(todo, check, time, year, month, day, uid, key, percent))
     }
@@ -196,6 +203,7 @@ class HomeFragment : Fragment() {
         dialog.setOnClickListener(object: TodoDialog.ButtonClickListener {
             override fun onClicked(text: String) {
 
+
                 if (text.length == 0){
                     Toast.makeText(context, "해아할 일을 입력해주세요.", Toast.LENGTH_SHORT).show()
                 }else {
@@ -206,7 +214,7 @@ class HomeFragment : Fragment() {
                     // 파이어베이스에 투두 항목 저장하기
                     saveTodo(year, month, day2, text)
                     val rv: RecyclerView = binding.toDoListRV
-                    val rvRvAdapter = TodoAdapter(requireContext(), items, todokeyList)
+                    val rvRvAdapter = TodoAdapter(requireContext(), items, todokeyList, year, month, day2)
 
                     rv.adapter = rvRvAdapter
                     rv.layoutManager = LinearLayoutManager(context)
@@ -281,14 +289,19 @@ class HomeFragment : Fragment() {
                 items.clear()
 
                 var count = 0
+                var myuid = FBAuth.getUid()
+                if (day2.length == 1){
+                    day2 = "0"+day2
+                }
 
-                for (dataModel in dataSnapshot.children){
+                val test = dataSnapshot.child(myuid).child(year).child(month).child(day2)
+
+                for (dataModel in test.children){
                     Log.d("todoList", dataModel.toString())
 
                     val item = dataModel.getValue(ToDoData::class.java)
-                    if (FBAuth.getUid() == item!!.uid){
+                    Log.d(TAG,"item.uid : " + item!!.uid)
 
-                        if(item!!.year == Year && item!!.month == Month && item!!.date == date ) {
                             items.add(item)
                             if (todokeyList.none { it == dataModel.key }) {
                                 todokeyList.add(dataModel.key.toString())
@@ -304,23 +317,24 @@ class HomeFragment : Fragment() {
                             percent = count * 100 / items.size
                             progressBar.progress = item.percent
 
-
                             setMonthView(percent)
 
                             FBRef.todoRef
+                                .child(item.uid)
+                                .child(item.year)
+                                .child(item.month)
+                                .child(item.date)
                                 .child(item.key)
                                 .child("percent")
                                 .setValue(percent)
 
                             Log.d(TAG, "item.key : " + item.key)
 
-                        }
-                    }
+
 
                     Log.d (TAG, "todokey distinct : " + todokeyList)
 
                     TodoAdapter.notifyDataSetChanged()
-
                 }
 
             }
@@ -332,10 +346,6 @@ class HomeFragment : Fragment() {
         FBRef.todoRef.addValueEventListener(position)
     }
 
-
-    private fun percent(p : Int){
-        percent = p
-    }
 
     // 날짜 화면에 보여주기
     private fun setMonthView(percent : Int) {
@@ -362,6 +372,8 @@ class HomeFragment : Fragment() {
         adapter.itemClick = object : CalendarAdapter.ItemClick {
             override fun onClick(view: View, position: Int) {
 
+                // 날짜 생성해서 리스트에 담기
+                val dayList = dayInMonthArray()
                 year = CalendarUtil.selectedDate.get(Calendar.YEAR).toString()
                 month = (CalendarUtil.selectedDate.get(Calendar.MONTH)+1).toString()
                 day = dayList[position].toString()
