@@ -20,7 +20,7 @@ import kotlin.collections.ArrayList
 
 val TAG = TodoAdapter::class.java.simpleName
 
-class TodoAdapter(val context : Context, val items: ArrayList<ToDoData>,val todokeyList : MutableList<String>,
+class TodoAdapter(val context : Context, val items: ArrayList<ToDoData>,
                   var year : String,
                   var month : String,
                   var day : String) :
@@ -53,19 +53,11 @@ class TodoAdapter(val context : Context, val items: ArrayList<ToDoData>,val todo
             }
             Log.d(TAG, "day : " + day)
 
-            var selectYear = CalendarUtil.selectedDate.get(Calendar.YEAR).toString()
-            var selectMonth = (CalendarUtil.selectedDate.get(Calendar.MONTH)+1).toString()
-            var selectDay = CalendarUtil.selectedDate.get(Calendar.DAY_OF_MONTH).toString()
-
-            if(selectDay.length == 1){
-                selectDay = "0"+selectDay
-            }
 
             var myuid = FBAuth.getUid()
 
             todowrite.text = todo.todo
             clearcheck.isChecked = todo.check
-
 
             // 할 일 목록 삭제
             tododel.setOnClickListener {

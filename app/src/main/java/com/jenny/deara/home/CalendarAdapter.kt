@@ -120,7 +120,6 @@ class CalendarAdapter(private val context: Context,
 
             }
 
-
             if(selectedPosition == selectedPosition){
                 holder.itemView.setBackgroundColor(Color.parseColor("#00ff0000"))
 
@@ -142,14 +141,11 @@ class CalendarAdapter(private val context: Context,
 
                     var myuid = FBAuth.getUid()
                     val test = dataSnapshot.child(myuid).child(iYear.toString()).child(iMonth.toString()).child(day)
-                    Log.d(TAG, "DAy : "+iDay.toString())
-                    Log.d(TAG, "selectdDAy : " +selectDay.toString())
 
                     for (dataModel in test.children) {
                         Log.d("todoList", dataModel.toString())
 
                         val item = dataModel.getValue(ToDoData::class.java)
-
 
                                 var percent = item!!.percent
 
@@ -165,10 +161,6 @@ class CalendarAdapter(private val context: Context,
                                     holder.itemView.setBackgroundResource(R.drawable.background_todolist_green)
                                 }
 
-
-                                Log.d(TAG, "percentpercent : " + percent)
-
-
                     }
                 }
 
@@ -178,13 +170,10 @@ class CalendarAdapter(private val context: Context,
             }
             FBRef.todoRef.addValueEventListener(position)
 
-
-
         } else{ // 다르다면 하얀 색상
             holder.itemView.setBackgroundColor(Color.parseColor("#00ff0000"))
             holder.dayText.setTextColor(Color.parseColor("#00ff0000"))
         }
-
 
     }
 

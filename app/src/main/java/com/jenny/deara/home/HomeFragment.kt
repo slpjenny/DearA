@@ -44,9 +44,6 @@ class HomeFragment : Fragment() {
     private lateinit var binding : FragmentHomeBinding
     lateinit var TodoAdapter: TodoAdapter
 
-    // 날짜 생성해서 리스트에 담기
-    val dayList2 = dayInMonthArray()
-
     // 투두 Recyclerview 관련 변수
     val items = ArrayList<ToDoData>()
     val todokeyList = mutableListOf<String>()
@@ -86,15 +83,12 @@ class HomeFragment : Fragment() {
         // binding 초기화
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
 
-
         // 화면 설정
-        setMonthView(percent)
-
         setMonthView(percent)
 
         initRecycler()
 
-            // 오늘 진료기록 띄우기
+        // 오늘 진료기록 띄우기
         initTodayRecycler()
         getFBTodayRcData()
 
@@ -129,7 +123,6 @@ class HomeFragment : Fragment() {
             todoAdd()
         }
 
-
         // 마이페이지로 이동
         binding.mypageBtn.setOnClickListener {
             val intent = Intent(context, MyPageActivity::class.java)
@@ -137,14 +130,13 @@ class HomeFragment : Fragment() {
 
         }
 
-
         return binding.root
     }
 
     @SuppressLint("NotifyDataSetChanged")
     private fun initRecycler(){
 
-        TodoAdapter = TodoAdapter(requireContext(), items, todokeyList, year, month, day2)
+        TodoAdapter = TodoAdapter(requireContext(), items, year, month, day2)
         val rv: RecyclerView = binding.toDoListRV
         rv.adapter = TodoAdapter
 
@@ -163,7 +155,6 @@ class HomeFragment : Fragment() {
     }
 
 
-
     // 파이어베이스에 데이터 저장
     fun saveTodo(year : String, month: String, day : String, text: String){
 
@@ -174,13 +165,10 @@ class HomeFragment : Fragment() {
         val uid = FBAuth.getUid()
 
         val key = FBRef.todoRef.push().key.toString()
-        Log.d(TAG, "keyadd : " + key)
-
 
         // 할일 목록 추가
         items.add(ToDoData(todo, check, time, year, month, day, uid, key, percent))
         Log.d(TAG, "saveTodo : " + items)
-
 
         FBRef.todoRef
             .child(uid)
@@ -190,7 +178,6 @@ class HomeFragment : Fragment() {
             .child(key)
             .setValue(ToDoData(todo, check, time, year, month, day, uid, key, percent))
     }
-
 
 
     // 투두리스트 다이얼로그로 추가
@@ -214,7 +201,7 @@ class HomeFragment : Fragment() {
                     // 파이어베이스에 투두 항목 저장하기
                     saveTodo(year, month, day2, text)
                     val rv: RecyclerView = binding.toDoListRV
-                    val rvRvAdapter = TodoAdapter(requireContext(), items, todokeyList, year, month, day2)
+                    val rvRvAdapter = TodoAdapter(requireContext(), items, year, month, day2)
 
                     rv.adapter = rvRvAdapter
                     rv.layoutManager = LinearLayoutManager(context)
@@ -328,21 +315,15 @@ class HomeFragment : Fragment() {
                                 .child("percent")
                                 .setValue(percent)
 
-                            Log.d(TAG, "item.key : " + item.key)
-
-
-
-                    Log.d (TAG, "todokey distinct : " + todokeyList)
-
                     TodoAdapter.notifyDataSetChanged()
                 }
-
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
                 Log.w("getTodoFB", "loadPost:onCancelled", databaseError.toException())
             }
         }
+
         FBRef.todoRef.addValueEventListener(position)
     }
 
@@ -367,7 +348,6 @@ class HomeFragment : Fragment() {
         // 어댑터 적용
         binding.calendarRv.adapter = adapter
 
-
         // 날짜 선택할 시
         adapter.itemClick = object : CalendarAdapter.ItemClick {
             override fun onClick(view: View, position: Int) {
@@ -384,10 +364,6 @@ class HomeFragment : Fragment() {
 
                 binding.dateText2.text = month + "월 " + day2 + "일"
 
-                Log.d(TAG, "itemclick year : " + year)
-                Log.d(TAG, "itemclick month : " + month)
-                Log.d(TAG, "itemclick day : " + day2)
-
                 progressBar.progress = 0
 
                 initRecycler()
@@ -395,12 +371,7 @@ class HomeFragment : Fragment() {
                 TodoAdapter.notifyDataSetChanged()
 
             }
-
-
         }
-
-
-
     }
 
     // 날짜 타입 설정
@@ -424,11 +395,8 @@ class HomeFragment : Fragment() {
         // 1일로 세팅
         monthCalendar[Calendar.DAY_OF_MONTH] = 1
 
-        Log.d(TAG, "monthCalendar2 : " + monthCalendar)
-
         // 해당 달의 1일의 요일 [1:일요일, 2:월요일... 7일:토요일]
         val firstDayofMonth = monthCalendar[Calendar.DAY_OF_WEEK]-1
-        Log.d(TAG, "monthCalendar3 : " + (monthCalendar[Calendar.DAY_OF_WEEK]-1))
 
         // 요일 숫자만큼 이전 날짜로 변경
         // 예 : 6월 1일이 수요일이면 3만큼 이전날짜 셋팅
@@ -441,10 +409,6 @@ class HomeFragment : Fragment() {
             // 1일씩 늘린다. 1일 -> 2일 -> 3일
             monthCalendar.add(Calendar.DAY_OF_MONTH,1 )
         }
-
-
-        Log.d(TAG, "데이리스트 : " + dayList.size.toString())
-        Log.d(TAG, "데이리스트 : " + dayList)
 
         return dayList
     }
