@@ -11,13 +11,19 @@ import com.google.firebase.database.ValueEventListener
 import com.jenny.deara.R
 import com.jenny.deara.alarm.AlarmData
 import com.jenny.deara.databinding.TodolistviewItemBinding
+import com.jenny.deara.utils.CalendarUtil
 import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
 import java.lang.reflect.Array.get
+import java.util.*
+import kotlin.collections.ArrayList
 
 val TAG = TodoAdapter::class.java.simpleName
 
-class TodoAdapter(val context : Context, val items: ArrayList<ToDoData>,val todokeyList : MutableList<String>) :
+class TodoAdapter(val context : Context, val items: ArrayList<ToDoData>,
+                  var year : String,
+                  var month : String,
+                  var day : String) :
     RecyclerView.Adapter<TodoAdapter.TodoViewholder>() {
 
 
@@ -42,15 +48,22 @@ class TodoAdapter(val context : Context, val items: ArrayList<ToDoData>,val todo
 
         fun bind(todo : ToDoData) {
 
+            if(day.length==1){
+                day = "0" +day
+            }
+            Log.d(TAG, "day : " + day)
+
+
+            var myuid = FBAuth.getUid()
+
             todowrite.text = todo.todo
             clearcheck.isChecked = todo.check
-
 
             // 할 일 목록 삭제
             tododel.setOnClickListener {
 
                 val key = items[adapterPosition].key
-                FBRef.todoRef.child(key).removeValue()
+                FBRef.todoRef.child(myuid).child(year).child(month).child(day).child(key).removeValue()
                 items.removeAt(adapterPosition)
                 notifyItemRemoved(adapterPosition)
                 notifyDataSetChanged()
@@ -65,6 +78,10 @@ class TodoAdapter(val context : Context, val items: ArrayList<ToDoData>,val todo
 
                     items[adapterPosition].check = true
                     FBRef.todoRef
+                        .child(FBAuth.getUid())
+                        .child(year)
+                        .child(month)
+                        .child(day)
                         .child(items[adapterPosition].key)
                         .child("check")
                         .setValue(items[adapterPosition].check)
@@ -73,6 +90,10 @@ class TodoAdapter(val context : Context, val items: ArrayList<ToDoData>,val todo
                     items[adapterPosition].check = false
 
                     FBRef.todoRef
+                        .child(FBAuth.getUid())
+                        .child(year)
+                        .child(month)
+                        .child(day)
                         .child(items[adapterPosition].key)
                         .child("check")
                         .setValue(items[adapterPosition].check)
