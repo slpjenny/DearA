@@ -273,6 +273,8 @@ class HomeFragment : Fragment() {
 
         val position = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
+                TodoAdapter.notifyDataSetChanged()
+
                 items.clear()
 
                 var count = 0
@@ -281,7 +283,7 @@ class HomeFragment : Fragment() {
                     day2 = "0"+day2
                 }
 
-                val test = dataSnapshot.child(myuid).child(year).child(month).child(day2)
+                val test = dataSnapshot.child(myuid).child(Year).child(Month).child(date)
 
                 for (dataModel in test.children){
                     Log.d("todoList", dataModel.toString())
