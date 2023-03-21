@@ -66,31 +66,31 @@ class SignInActivity : AppCompatActivity() {
         binding.emailCheck.setOnClickListener {
 
             hideKeyboard()
-            //  ActionCodeSettings 객체를 구성
-            val actionCodeSettings = actionCodeSettings {
-                // URL you want to redirect back to. The domain (www.example.com) for this
-                // URL must be whitelisted in the Firebase Console.
-                url = "https://deara.page.link"
-                // This must be true
-                handleCodeInApp = true
-                setIOSBundleId("com.jenny.ios")
-                setAndroidPackageName(
-                    "com.jenny.deara",
-                    true, /* installIfNotAvailable */
-                    "12" /* minimumVersion */)
-            }
-
-            val email = auth.currentUser?.email.toString()
-
-            // 사용자의 이메일로 인증 링크를 전송하고, 사용자가 동일한 기기에서 이메일 로그인을 완료할 경우를 대비하여 사용자의 이메일을 저장합니다.
-            Firebase.auth.sendSignInLinkToEmail(email, actionCodeSettings)
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        Log.d("email", "Email sent.")
-                    }else{
-                        Log.d("email","이메일 안됨")
-                    }
-                }
+//            //  ActionCodeSettings 객체를 구성
+//            val actionCodeSettings = actionCodeSettings {
+//                // URL you want to redirect back to. The domain (www.example.com) for this
+//                // URL must be whitelisted in the Firebase Console.
+//                url = "https://deara.page.link"
+//                // This must be true
+//                handleCodeInApp = true
+//                setIOSBundleId("com.jenny.ios")
+//                setAndroidPackageName(
+//                    "com.jenny.deara",
+//                    true, /* installIfNotAvailable */
+//                    "12" /* minimumVersion */)
+//            }
+//
+//            val email = auth.currentUser?.email.toString()
+//
+//            // 사용자의 이메일로 인증 링크를 전송하고, 사용자가 동일한 기기에서 이메일 로그인을 완료할 경우를 대비하여 사용자의 이메일을 저장합니다.
+//            Firebase.auth.sendSignInLinkToEmail(email, actionCodeSettings)
+//                .addOnCompleteListener { task ->
+//                    if (task.isSuccessful) {
+//                        Log.d("email", "Email sent.")
+//                    }else{
+//                        Log.d("email","이메일 안됨")
+//                    }
+//                }
 
         }
 
