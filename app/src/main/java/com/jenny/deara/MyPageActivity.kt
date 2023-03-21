@@ -23,6 +23,9 @@ import com.jenny.deara.databinding.ActivityMyPageBinding
 import com.jenny.deara.home.TodoDialog
 import com.jenny.deara.mypages.*
 import kotlinx.android.synthetic.main.activity_my_page.*
+import java.io.InputStream
+import java.net.URL
+import java.net.URLConnection
 
 class MyPageActivity : AppCompatActivity() {
 
@@ -71,29 +74,27 @@ class MyPageActivity : AppCompatActivity() {
             startActivity(intent3)
         }
 
-//        // 개인정보처리방침 페이지로 이동
-//
-//        binding.textView18.setOnClickListener {
-//            val intent8  = Intent(this, PrivacyWebViewActivity::class.java)
-//            startActivity(intent8)
-//        }
+//        val url = URL("https://www.notion.so/54e15dcbe37c4f09a5e9392228a56f7d")\
+//        val urlConnection: URLConnection = url.openConnection()
+//        val inputStream: InputStream = urlConnection.getInputStream()
+//        copyInputStreamToOutputStream(inputStream, System.out)
 
         // 개인정보처리방침 페이지로 이동
         binding.textView18.setOnClickListener {
             var intent8 = Intent(
                 Intent.ACTION_VIEW,
-                Uri.parse("https://www.notion.so/54e15dcbe37c4f09a5e9392228a56f7d")
+                Uri.parse("https://tundra-surgeon-0ab.notion.site/dde6b29804df4048ad359568f5822369")
             )
             startActivity(intent8)
         }
         // 이용약관 페이지로 이동
-        binding.textView19.setOnClickListener {
-            var intent9 = Intent(
-                Intent.ACTION_VIEW,
-                Uri.parse("https://www.notion.so/b07d03ad439443a488375d49ed2acdf7")
-            )
-            startActivity(intent9)
-        }
+//        binding.textView19.setOnClickListener {
+//            var intent9 = Intent(
+//                Intent.ACTION_VIEW,
+//                Uri.parse("https://tundra-surgeon-0ab.notion.site/a1d2e855da804a55b3abc3245139e988")
+//            )
+//            startActivity(intent9)
+//        }
 
         // 뒤로가기
         binding.back6.setOnClickListener {
