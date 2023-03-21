@@ -178,15 +178,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <!--                <ImageButton-->
-                <!--                    android:id="@+id/addPillBtn"-->
-                <!--                    android:layout_width="25dp"-->
-                <!--                    android:layout_height="25dp"-->
-                <!--                    android:layout_marginLeft="7dp"-->
-                <!--                    android:layout_marginTop="2dp"-->
-                <!--                    android:background="@drawable/plus_button"-->
-                <!--                    app:layout_constraintStart_toEndOf="@+id/textView25"-->
-                <!--                    app:layout_constraintTop_toTopOf="parent" />-->
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout

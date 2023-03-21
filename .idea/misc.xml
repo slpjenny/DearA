@@ -190,7 +190,7 @@
         <entry key="app/src/main/res/layout/activity_pin_lock.xml" value="0.125" />
         <entry key="app/src/main/res/layout/activity_reoprt_popup.xml" value="0.2713541666666667" />
         <entry key="app/src/main/res/layout/activity_report.xml" value="0.25870646766169153" />
-        <entry key="app/src/main/res/layout/activity_rm_record.xml" value="0.2328125" />
+        <entry key="app/src/main/res/layout/activity_rm_record.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_select_lock.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_self_diagnosis.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_set_pin.xml" value="0.190625" />

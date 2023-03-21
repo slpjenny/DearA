@@ -111,7 +111,12 @@ class MyPageActivity : AppCompatActivity() {
             Firebase.auth.signOut()
 
             val intent5 = Intent(this, LoginActivity::class.java)
+
+            // 기존 스택 모두 지우기
+            // 뒤로가기 버튼 누를시, 기존 정보로 로그인 되는 경우 방지
+            finishAffinity()
             startActivity(intent5)
+
         }
 
 

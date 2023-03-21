@@ -92,7 +92,7 @@ class HomeFragment : Fragment() {
 
         initRecycler()
 
-            // 오늘 진료기록 띄우기
+        // 오늘 진료기록 띄우기
         initTodayRecycler()
         getFBTodayRcData()
 
@@ -163,7 +163,6 @@ class HomeFragment : Fragment() {
 
     // 파이어베이스에 데이터 저장
     fun saveTodo(year : String, month: String, day : String, text: String){
-
 
         var todo : String = text
         var check : Boolean = false

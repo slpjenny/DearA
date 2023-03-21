@@ -9,29 +9,13 @@ import android.media.MediaRecorder
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import android.widget.EditText
-import android.widget.LinearLayout
-import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.ActionBar
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.gms.common.wrappers.Wrappers.packageManager
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
 import com.jenny.deara.R
 import com.jenny.deara.databinding.ActivityAddRecordBinding
-import com.jenny.deara.databinding.ActivitySignInBinding
-import com.jenny.deara.diary.DiaryData
-import com.jenny.deara.diary.DiaryListAdapter
 import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
-import kotlinx.android.synthetic.main.pilllist_item.view.*
 import org.w3c.dom.Text
 import java.util.*
 import java.util.jar.Manifest
@@ -206,6 +190,7 @@ class AddRecordActivity : AppCompatActivity() {
 
         // 복용 약 객체 형태로 저장
         FBRef.pillRef
+                // 진료 일정 각각 별 복용 약임
             .child(key)
             .setValue(pillData(pillNameTxt,dosageTxt,uid))
 
@@ -228,8 +213,6 @@ class AddRecordActivity : AppCompatActivity() {
 //        PillListAdapter.pills = pillList
         PillListAdapter.notifyDataSetChanged()
     }
-
-
 
 
     // 어떤 permission을 요청할 것인가
