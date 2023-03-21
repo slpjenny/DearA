@@ -9,29 +9,13 @@ import android.media.MediaRecorder
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import android.widget.EditText
-import android.widget.LinearLayout
-import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.ActionBar
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.gms.common.wrappers.Wrappers.packageManager
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
 import com.jenny.deara.R
 import com.jenny.deara.databinding.ActivityAddRecordBinding
-import com.jenny.deara.databinding.ActivitySignInBinding
-import com.jenny.deara.diary.DiaryData
-import com.jenny.deara.diary.DiaryListAdapter
 import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
-import kotlinx.android.synthetic.main.pilllist_item.view.*
 import org.w3c.dom.Text
 import java.util.*
 import java.util.jar.Manifest
@@ -55,6 +39,7 @@ class AddRecordActivity : AppCompatActivity() {
     private val requiredPermissions = arrayOf(android.Manifest.permission.RECORD_AUDIO)
     // 초기 녹음 상태 설정
     private var state = voiceState.BEFORE_RECORDING
+
         set(value) {
             field = value
             recordButton.updateIconWithState(value)
@@ -70,6 +55,10 @@ class AddRecordActivity : AppCompatActivity() {
 
     // 녹음 재생 player 선언
     private var player: MediaPlayer? = null
+
+
+    //각 진료기록 항목마다 고유 key
+    var recordKey = FBRef.recordRef.push().key.toString()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -181,13 +170,13 @@ class AddRecordActivity : AppCompatActivity() {
         val symptom = binding.symptom.text.toString()
         val uid = FBAuth.getUid()
 
-        val key = FBRef.recordRef.push().key.toString()
+        // 각 진료기록 항목 별 Key
+//        var recordKey = FBRef.recordRef.push().key.toString()
 
         // 진료 기록 객체 형태로 저장
         FBRef.recordRef
-            .child(key)
+            .child(recordKey)
             .setValue(RecordData(hospitalName, date, time, memo, symptom, uid))
-
 
         Toast.makeText(this, "진료 기록이 저장되었습니다.", Toast.LENGTH_LONG).show()
 
@@ -199,14 +188,17 @@ class AddRecordActivity : AppCompatActivity() {
 
         var pillNameTxt : String = binding.pillName.text.toString()
         var dosageTxt : String = binding.dosage.text.toString()
+        var itsRecordkey : String = recordKey
 
         var key = FBRef.pillRef.push().key.toString()
         val uid = FBAuth.getUid()
 
         // 복용 약 객체 형태로 저장
         FBRef.pillRef
+                // 진료 일정 각각 별 복용 약임
+                // 해당 진료 기록 항목의 고유 key로 저장
             .child(key)
-            .setValue(pillData(pillNameTxt,dosageTxt,uid))
+            .setValue(pillData(pillNameTxt,dosageTxt,uid,itsRecordkey))
 
         // recyclerview 데이터 리스트에 저장
         pillList.add(pillData(pillNameTxt,dosageTxt))
@@ -227,8 +219,6 @@ class AddRecordActivity : AppCompatActivity() {
 //        PillListAdapter.pills = pillList
         PillListAdapter.notifyDataSetChanged()
     }
-
-
 
 
     // 어떤 permission을 요청할 것인가
@@ -272,22 +262,28 @@ class AddRecordActivity : AppCompatActivity() {
     // 녹음할 수 있는 상태 만들기
     private fun startRecording(){
         recorder = MediaRecorder().apply {
-            setAudioSource(MediaRecorder.AudioSource.MIC)
-            setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP)
-            setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB)
+            //MediaRecorder 설정하기
+            setAudioSource(MediaRecorder.AudioSource.MIC)  // 오디오 입력을 마이크로 받음
+            setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP)  // 출력 포멧 설정 (MPEG4) 로 왜 안했지?
+            setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB) // DEFAULT 로 설정 왜 안했지?
             setOutputFile(recordingFilePath)
             prepare()
         }
+
+        //MediaRecorder 시작시키기
         recorder?.start()
+
+        //state 변환시켜서 아이콘 변경
         state = voiceState.ON_RECORDING
 
         Log.d("record_state","startRecording")
-
     }
 
     private fun stopRecording(){
         recorder?.run{
+            // 녹음 중지를 위한 두 개의 메서드
             stop()
+                // MediaRecorder의 리소스를 해제하는 역할
             release()
         }
         recorder =null
@@ -312,6 +308,7 @@ class AddRecordActivity : AppCompatActivity() {
 
     private fun stopPlaying(){
         // player 는 stop 없이 release()로 바로 멈출 수 있음
+        // 미디어플레이어를 앱 내에서 재사용하려면 기존에 사용하던 리소스를 먼저 해제해야함
         player?.release()
         player =null
         state = voiceState.AFTER_RECORDING

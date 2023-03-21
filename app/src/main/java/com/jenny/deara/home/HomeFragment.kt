@@ -158,7 +158,6 @@ class HomeFragment : Fragment() {
     // 파이어베이스에 데이터 저장
     fun saveTodo(year : String, month: String, day : String, text: String){
 
-
         var todo : String = text
         var check : Boolean = false
         val time = FBAuth.getTimeDiary()
@@ -304,7 +303,6 @@ class HomeFragment : Fragment() {
                             }
 
                             percent = count * 100 / items.size
-                            //progressBar.progress = item.percent
                             binding.progressBar.progress = item.percent
 
                             setMonthView(percent)
