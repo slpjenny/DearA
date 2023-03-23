@@ -12,9 +12,7 @@ import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
 import kotlinx.android.synthetic.main.activity_report.*
 
-class ReportActivity() : AppCompatActivity() {
-
-    var count : Int = 0
+class ReportActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
