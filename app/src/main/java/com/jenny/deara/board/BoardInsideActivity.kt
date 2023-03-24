@@ -137,7 +137,9 @@ class BoardInsideActivity : AppCompatActivity() {
         CommentListAdapter.setOnReportClickListener(object :
             CommentListAdapter.OnReportClickListner{
                 override fun onReportClick(v: View, position: Int) {
-                    CommentPopupFragment().show(supportFragmentManager,"dialog")
+                    val commentKey = commentKeyList[position]
+                    Toast.makeText(this@BoardInsideActivity, "commentKey = "+commentKey, Toast.LENGTH_SHORT).show()
+                    CommentPopupFragment(commentKey).show(supportFragmentManager,"dialog")
                 }
             }
         )
@@ -388,11 +390,6 @@ class BoardInsideActivity : AppCompatActivity() {
                     var dataModel = snapshot.getValue(ReportModel::class.java)
                     val uid = FBAuth.getUid()
                     var value = dataModel?.report_count
-                    var user1 = dataModel?.reporter_uid1
-                    var user2 = dataModel?.reporter_uid2
-                    var user3 = dataModel?.reporter_uid3
-                    var user4 = dataModel?.reporter_uid4
-                    var user5 = dataModel?.reporter_uid5
 
                     if (value == null) {
                         val intent = Intent(this@BoardInsideActivity, ReportActivity::class.java)
@@ -400,72 +397,72 @@ class BoardInsideActivity : AppCompatActivity() {
                         startActivity(intent)
                     }
 
-                    if (value != null) {
-                        count = value
-                        when (count) {
-                            1 -> {
-                                user2 = uid
-                                if (user1 == user2)
-                                    Toast.makeText(
-                                        this@BoardInsideActivity,
-                                        "이미 신고한 게시글입니다",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                else {
-                                    val intent =
-                                        Intent(this@BoardInsideActivity, ReportActivity::class.java)
-                                    intent.putExtra("key", key)
-                                    startActivity(intent)
-                                }
-                            }
-
-                            2 -> {
-                                user3 = uid
-                                if (user1 == user3 || user2 == user3)
-                                    Toast.makeText(
-                                        this@BoardInsideActivity,
-                                        "이미 신고한 게시글입니다",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                else {
-                                    val intent =
-                                        Intent(this@BoardInsideActivity, ReportActivity::class.java)
-                                    intent.putExtra("key", key)
-                                    startActivity(intent)
-                                }
-                            }
-                            3 -> {
-                                user4 = uid
-                                if (user1 == user4 || user2 == user4 || user3 == user4)
-                                    Toast.makeText(
-                                        this@BoardInsideActivity,
-                                        "이미 신고한 게시글입니다",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                else {
-                                    val intent =
-                                        Intent(this@BoardInsideActivity, ReportActivity::class.java)
-                                    intent.putExtra("key", key)
-                                    startActivity(intent)
-                                }
-                            }
-                            4 -> {
-                                user5 = uid
-                                if (user1 == user5 || user2 == user5 || user3 == user5 || user4 == user5)
-                                    Toast.makeText(
-                                        this@BoardInsideActivity,
-                                        "이미 신고한 게시글입니다",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                else {
-                                    val intent =
-                                        Intent(this@BoardInsideActivity, ReportActivity::class.java)
-                                    intent.putExtra("key", key)
-                                    startActivity(intent)
-                                }
-                            }
-                        }
-                    }
+//                    if (value != null) {
+//                        count = value
+//                        when (count) {
+//                            1 -> {
+//                                user2 = uid
+//                                if (user1 == user2)
+//                                    Toast.makeText(
+//                                        this@BoardInsideActivity,
+//                                        "이미 신고한 게시글입니다",
+//                                        Toast.LENGTH_SHORT
+//                                    ).show()
+//                                else {
+//                                    val intent =
+//                                        Intent(this@BoardInsideActivity, ReportActivity::class.java)
+//                                    intent.putExtra("key", key)
+//                                    startActivity(intent)
+//                                }
+//                            }
+//
+//                            2 -> {
+//                                user3 = uid
+//                                if (user1 == user3 || user2 == user3)
+//                                    Toast.makeText(
+//                                        this@BoardInsideActivity,
+//                                        "이미 신고한 게시글입니다",
+//                                        Toast.LENGTH_SHORT
+//                                    ).show()
+//                                else {
+//                                    val intent =
+//                                        Intent(this@BoardInsideActivity, ReportActivity::class.java)
+//                                    intent.putExtra("key", key)
+//                                    startActivity(intent)
+//                                }
+//                            }
+//                            3 -> {
+//                                user4 = uid
+//                                if (user1 == user4 || user2 == user4 || user3 == user4)
+//                                    Toast.makeText(
+//                                        this@BoardInsideActivity,
+//                                        "이미 신고한 게시글입니다",
+//                                        Toast.LENGTH_SHORT
+//                                    ).show()
+//                                else {
+//                                    val intent =
+//                                        Intent(this@BoardInsideActivity, ReportActivity::class.java)
+//                                    intent.putExtra("key", key)
+//                                    startActivity(intent)
+//                                }
+//                            }
+//                            4 -> {
+//                                user5 = uid
+//                                if (user1 == user5 || user2 == user5 || user3 == user5 || user4 == user5)
+//                                    Toast.makeText(
+//                                        this@BoardInsideActivity,
+//                                        "이미 신고한 게시글입니다",
+//                                        Toast.LENGTH_SHORT
+//                                    ).show()
+//                                else {
+//                                    val intent =
+//                                        Intent(this@BoardInsideActivity, ReportActivity::class.java)
+//                                    intent.putExtra("key", key)
+//                                    startActivity(intent)
+//                                }
+//                            }
+//                        }
+//                    }
 
 
                 }

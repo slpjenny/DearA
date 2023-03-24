@@ -1,5 +1,6 @@
 package com.jenny.deara.board.comment
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -7,12 +8,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import com.jenny.deara.R
+import com.jenny.deara.board.report.ReportActivity
+import com.jenny.deara.board.report.ReportCommentActivity
 import com.jenny.deara.databinding.FragmentBoardPopupBinding
 import com.jenny.deara.databinding.FragmentCommentPopupBinding
 
-class CommentPopupFragment : DialogFragment() {
+class CommentPopupFragment(val key : String) : DialogFragment() {
 
     private lateinit var binding: FragmentCommentPopupBinding
 
@@ -32,7 +36,9 @@ class CommentPopupFragment : DialogFragment() {
 
         // 댓글 신고
         binding.commentReport.setOnClickListener {
-
+            val intent = Intent(context, ReportCommentActivity::class.java)
+            intent.putExtra("key", key)
+            startActivity(intent)
         }
 
         // 댓글 작성자 신고
