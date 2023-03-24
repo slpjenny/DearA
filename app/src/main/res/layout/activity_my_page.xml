@@ -188,16 +188,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/contactUsTxt"></TextView>
 
-        <TextView
-            android:id="@+id/textView19"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:text="이용약관"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:layout_marginLeft="50dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView18"></TextView>
+<!--        <TextView-->
+<!--            android:id="@+id/textView19"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="30dp"-->
+<!--            android:text="이용약관"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="16sp"-->
+<!--            android:layout_marginLeft="50dp"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/textView18"></TextView>-->
 
 <!--        <TextView-->
 <!--            android:id="@+id/textView20"-->

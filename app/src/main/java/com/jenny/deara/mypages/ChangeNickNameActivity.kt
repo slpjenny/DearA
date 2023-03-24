@@ -70,8 +70,8 @@ class ChangeNickNameActivity : AppCompatActivity() {
                     }
                 }
             }
-
         }
+
 
         // firebase 에서 닉네임 불러오기
 //        if (user != null) {

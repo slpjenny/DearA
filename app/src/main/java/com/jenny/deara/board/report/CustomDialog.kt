@@ -17,14 +17,14 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.jenny.deara.MainActivity
 import com.jenny.deara.R
-import com.jenny.deara.databinding.FragmentReportPopupBinding
+import com.jenny.deara.databinding.FragmentReportConfirmPopupBinding
 import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
 
 
 class CustomDialog(key: String) : DialogFragment() {
 
-    private var _binding: FragmentReportPopupBinding? = null
+    private var _binding: FragmentReportConfirmPopupBinding? = null
 
     private val binding get() = _binding!!
     val database = Firebase.database
@@ -33,7 +33,7 @@ class CustomDialog(key: String) : DialogFragment() {
     var count : Int = 0
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        _binding = FragmentReportPopupBinding.inflate(inflater, container, false)
+        _binding = FragmentReportConfirmPopupBinding.inflate(inflater, container, false)
 
         val view = binding.root
 
@@ -115,8 +115,7 @@ class CustomDialog(key: String) : DialogFragment() {
                                     .setValue(ReportModel(++count, user1!!, user2!!, user3!!, user4!!, user5))
 
                                 //누적 5회 신고 됐으니까
-                                FBRef.boardRef.child(key.toString()).removeValue()
-                                //FBRef.reportRef.child(key).removeValue()
+                                FBRef.boardRef.child(key).removeValue()
                                 Toast.makeText(context, "삭제 완료", Toast.LENGTH_SHORT)
                                     .show() // 없앨 코드
                             }

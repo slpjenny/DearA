@@ -1,7 +1,6 @@
 package com.jenny.deara.record
 
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,9 +10,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.jenny.deara.R
 
-class PillListAdapter (val context: Context, val pillList:MutableList<pillData>):RecyclerView.Adapter<PillListAdapter.ViewHolder>(){
+class PillListAdapter(val context: Context, var pillList: MutableList<pillData>):RecyclerView.Adapter<PillListAdapter.ViewHolder>(){
 
-//    var pills = mutableListOf<pillData>()
+    var pills = mutableListOf<pillData>()
 
     // 뷰 홀더가 처음 생성될 때
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PillListAdapter.ViewHolder {

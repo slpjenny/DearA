@@ -2,6 +2,7 @@ package com.jenny.deara.board
 
 import android.annotation.SuppressLint
 import android.app.Dialog
+import android.app.ProgressDialog.show
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
@@ -36,6 +37,7 @@ import com.jenny.deara.board.comment.CommentModel
 import com.jenny.deara.board.comment.CommentPopupFragment
 import com.jenny.deara.board.report.ReportActivity
 import com.jenny.deara.board.report.ReportModel
+import com.jenny.deara.board.report.ReportPopUpFragment
 import com.jenny.deara.databinding.ActivityBoardInsideBinding
 import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
@@ -97,7 +99,8 @@ class BoardInsideActivity : AppCompatActivity() {
 
         binding.shingoBtn.setOnClickListener {
             if (key != null) {
-                reportTwice(key)
+                ReportPopUpFragment(key).show(supportFragmentManager, "SampleDialog")
+                //reportTwice(key)
             }
         }
 
