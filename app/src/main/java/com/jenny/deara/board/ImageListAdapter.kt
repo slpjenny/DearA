@@ -67,11 +67,6 @@ class ImageListAdapter(val context: Context)
                 .load(item)
                 .into(itemView.image)
             image.clipToOutline = true
-
-//            delBtn.setOnClickListener {
-//                datas.removeAt(position)
-//                notifyDataSetChanged()
-//            }
         }
     }
 }
