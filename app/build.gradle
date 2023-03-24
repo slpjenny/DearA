@@ -105,5 +105,4 @@ dependencies {
     // 스크린샷 탐지
     implementation 'com.akexorcist:screenshot-detection:1.0.2'
 
-    implementation 'gun0912.ted:tedpermission:2.2.1'
 }
