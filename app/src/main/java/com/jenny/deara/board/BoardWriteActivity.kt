@@ -3,6 +3,7 @@ package com.jenny.deara.board
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.database.DataSetObserver
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
@@ -32,10 +33,7 @@ import com.jenny.deara.databinding.ActivityBoardWriteBinding
 import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
 import kotlinx.android.synthetic.main.activity_board_write.*
-import java.io.BufferedInputStream
-import java.io.ByteArrayOutputStream
-import java.io.IOException
-import java.io.InputStream
+import java.io.*
 import java.net.URL
 import java.net.URLConnection
 
@@ -45,23 +43,21 @@ class BoardWriteActivity : AppCompatActivity() {
     private lateinit var binding: ActivityBoardWriteBinding
     private var route: String = "write"
     private lateinit var key: String
-    //private var isImageUpload = false
     private var sort: String = "자유"
 
-    lateinit var ImageListAdapter : ImageListAdapter
-    val imageList = mutableListOf<Uri>()
+    private lateinit var ImageListAdapter : ImageListAdapter
+    private val imageList = mutableListOf<Uri>()
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_board_write)
 
+        initRecycler()
+
         binding.root.setOnClickListener {
             hideKeyboard()
         }
-
-        //image = ImageView(this@BoardWriteActivity)
-        //imageArea = binding.imageArea
 
         val items = resources.getStringArray(R.array.my_array)
         val spinnerAdapter = ArrayAdapter(this, R.layout.item_spinner, R.id.spinnerItemStyle, items)
@@ -71,7 +67,6 @@ class BoardWriteActivity : AppCompatActivity() {
         binding.spinner.adapter = spinnerAdapter
 
         //spinner.setSelection(2) // 2번째 포지션으로 이동합니다.
-
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 //아이템이 클릭 되면 맨 위부터 position 0번부터 순서대로 동작하게 됩니다.
@@ -146,7 +141,7 @@ class BoardWriteActivity : AppCompatActivity() {
             .child(key)
             .setValue(BoardModel(title, content, uid, time, sort))
 
-        if(imageList.size !== 0){
+        if(imageList.size > 0){
             Thread {
                 imageUpload(key)
             }.start()
@@ -226,7 +221,6 @@ class BoardWriteActivity : AppCompatActivity() {
 
         for(i in imageList.indices){
             imageTest.setImageURI(imageList[i])
-            Log.d("uploadLog",i.toString() + imageList[i].toString())
             imageTest.isDrawingCacheEnabled = true
             imageTest.buildDrawingCache()
             bitmap = if (imageList[i].toString().lowercase().contains("https://")){
@@ -254,13 +248,10 @@ class BoardWriteActivity : AppCompatActivity() {
             if (imageList.size >= 10){
                 Toast.makeText(this, "사진은 최대 10개까지 업로드할 수 있습니다.", Toast.LENGTH_LONG).show()
             }else{
-                val getImage = ImageView(this)
-                getImage.setImageURI(data?.data)
                 data?.data?.let { imageList.add(it) }
                 binding.imageCount.text = imageList.size.toString() + "/10"
             }
-            initRecycler()
-
+            ImageListAdapter.notifyDataSetChanged()
         }
     }
 

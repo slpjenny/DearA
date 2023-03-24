@@ -2,14 +2,17 @@ package com.jenny.deara.board.comment
 
 import android.app.Activity
 import android.app.Dialog
+import android.app.ProgressDialog.show
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.jenny.deara.R
 import com.jenny.deara.utils.FBAuth
@@ -27,12 +30,22 @@ class CommentListAdapter(val context: Context,
         fun onItemClick(v: View, position : Int)
     }
 
+    interface OnReportClickListner{
+        fun onReportClick(v: View, position : Int)
+    }
+
     // 리스너 객체 참조를 저장하는 변수
     private lateinit var mOnItemClickListener: OnItemClickListener
+
+    private lateinit var mOnReportClickListner: OnReportClickListner
 
     // OnItemClickListener 리스너 객체 참조를 어댑터에 전달하는 메서드
     fun setOnItemClickListener(onItemClickListener: OnItemClickListener){
         mOnItemClickListener = onItemClickListener
+    }
+
+    fun setOnReportClickListener(onReportClickListner: OnReportClickListner){
+        mOnReportClickListner = onReportClickListner
     }
 
     override fun getItemCount(): Int = datas.size
@@ -85,6 +98,16 @@ class CommentListAdapter(val context: Context,
         private val time: TextView = itemView.findViewById(R.id.commentTime)
         private val uid: TextView = itemView.findViewById(R.id.commentWriter)
         private val delBtn: TextView = itemView.findViewById(R.id.delBtn)
+        private val commentMenu: ImageView = itemView.findViewById(R.id.commentMenu)!!
+
+        init{
+            commentMenu.setOnClickListener {
+                val pos = adapterPosition
+                if(pos != RecyclerView.NO_POSITION && mOnReportClickListner != null){
+                    mOnReportClickListner.onReportClick(view, pos)
+                }
+            }
+        }
 
         init{
             view.setOnClickListener {
@@ -100,11 +123,20 @@ class CommentListAdapter(val context: Context,
             time.text = item.time
             uid.text = FBAuth.getNick(item.uid)
 
+            // 댓글 삭제 버튼
             if(item.uid !== FBAuth.getUid()){
                 delBtn.visibility = View.INVISIBLE
             }
             if(item.uid == FBAuth.getUid()){
                 delBtn.visibility = View.VISIBLE
+            }
+
+            // 댓글 신고 버튼
+            if(item.uid !== FBAuth.getUid()){
+                commentMenu.visibility = View.VISIBLE
+            }
+            if(item.uid == FBAuth.getUid()){
+                commentMenu.visibility = View.INVISIBLE
             }
 
             //댓글 삭제 하기
@@ -143,6 +175,11 @@ class CommentListAdapter(val context: Context,
                     mDialogView.dismiss()
                 }
             }
+
+            // 댓글 신고
+//            commentMenu.setOnClickListener {
+//
+//            }
         }
     }
 
@@ -152,15 +189,8 @@ class CommentListAdapter(val context: Context,
         private val time: TextView = itemView.findViewById(R.id.commentTime)
         private val uid: TextView = itemView.findViewById(R.id.commentWriter)
         private val delBtn: TextView = itemView.findViewById(R.id.delBtn)
+        private val commentMenu: ImageView = itemView.findViewById(R.id.commentMenu)!!
 
-//        init{
-//            view.setOnClickListener {
-//                val pos = adapterPosition
-//                if(pos != RecyclerView.NO_POSITION && mOnItemClickListener != null){
-//                    mOnItemClickListener.onItemClick(view, pos)
-//                }
-//            }
-//        }
 
         fun bind(item: CommentModel, s: String) {
             content.text = item.content
@@ -173,6 +203,14 @@ class CommentListAdapter(val context: Context,
             }
             if(item.uid == FBAuth.getUid()){
                 delBtn.visibility = View.VISIBLE
+            }
+
+            // 댓글 신고 버튼
+            if(item.uid !== FBAuth.getUid()){
+                commentMenu.visibility = View.VISIBLE
+            }
+            if(item.uid == FBAuth.getUid()){
+                commentMenu.visibility = View.INVISIBLE
             }
 
             //댓글 삭제 하기
