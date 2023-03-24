@@ -4,22 +4,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.core.view.isVisible
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.core.Repo
 import com.jenny.deara.R
-import com.jenny.deara.databinding.ActivityReportBinding
-import com.jenny.deara.utils.FBAuth
-import com.jenny.deara.utils.FBRef
 import kotlinx.android.synthetic.main.activity_report.*
 
-class ReportActivity : AppCompatActivity() {
+class ReportCommentActivity : AppCompatActivity() {
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_report)
-
+        setContentView(R.layout.activity_report_comment)
 
         //취소버튼
         report_cancel.setOnClickListener{
@@ -111,10 +104,7 @@ class ReportActivity : AppCompatActivity() {
             //key값 받아오기
             val key = intent.getStringExtra("key")
 
-            Toast.makeText(this, "게시글 = "+key, Toast.LENGTH_SHORT)
-                .show() // 없앨 코드
-
-            val reportPopupFragment = CustomDialog(key.toString())
+            val reportPopupFragment = CommentDialog(key.toString())
             reportPopupFragment.show(supportFragmentManager, "FragmentReportPopup")
 
         }
