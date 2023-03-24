@@ -55,6 +55,19 @@ class BoardWriteActivity : AppCompatActivity() {
 
         initRecycler()
 
+        binding
+        ImageListAdapter.setOnDelClickListener(object :
+            ImageListAdapter.OnDelClickListener{
+            @SuppressLint("NotifyDataSetChanged")
+            override fun onDelClick(v: View, position: Int) {
+                ImageListAdapter.datas.removeAt(position)
+                ImageListAdapter.notifyDataSetChanged()
+
+                binding.imageCount.text = ImageListAdapter.itemCount.toString() + "/10"
+            }
+        }
+        )
+
         binding.root.setOnClickListener {
             hideKeyboard()
         }
@@ -107,6 +120,8 @@ class BoardWriteActivity : AppCompatActivity() {
                 startActivityForResult(gallery, 100)
                 //isImageUpload = true
             }
+
+            binding.imageCount.text = ImageListAdapter.itemCount.toString() + "/10"
         }
 
         binding.saveBtn.setOnClickListener {
@@ -126,7 +141,7 @@ class BoardWriteActivity : AppCompatActivity() {
             }
         }
 
-        //binding.imageCount.text = imageList.size.toString() + "/10"
+        binding.imageCount.text = imageList.size.toString() + "/10"
     }
 
     private fun saveFBBoardData(key: String){
@@ -183,6 +198,7 @@ class BoardWriteActivity : AppCompatActivity() {
     }
 
     // 이전 이미지들 띄우기
+    @SuppressLint("SetTextI18n")
     private fun getImageData(key : String){
         val storage = Firebase.storage
         val listRef = storage.reference.child(key)
@@ -209,6 +225,8 @@ class BoardWriteActivity : AppCompatActivity() {
                 Log.d("getImageLog", "Failure")
             }
         Log.d("getImageLog", "final length : $imageList")
+
+        binding.imageCount.text = ImageListAdapter.itemCount.toString() + "/10"
     }
 
     private fun imageUpload(key : String){
