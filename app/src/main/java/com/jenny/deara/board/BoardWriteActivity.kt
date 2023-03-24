@@ -33,10 +33,7 @@ import com.jenny.deara.databinding.ActivityBoardWriteBinding
 import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
 import kotlinx.android.synthetic.main.activity_board_write.*
-import java.io.BufferedInputStream
-import java.io.ByteArrayOutputStream
-import java.io.IOException
-import java.io.InputStream
+import java.io.*
 import java.net.URL
 import java.net.URLConnection
 
