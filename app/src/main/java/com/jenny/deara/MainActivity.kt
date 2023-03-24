@@ -1,15 +1,18 @@
 package com.jenny.deara
 
-import androidx.appcompat.app.AppCompatActivity
+import android.Manifest
 import android.os.Bundle
 import android.os.Handler
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.jenny.deara.board.BoardMainFragment
 import com.jenny.deara.diary.DiaryFragment
-import com.jenny.deara.record.RecordFragment
 import com.jenny.deara.home.HomeFragment
+import com.jenny.deara.record.RecordFragment
 import java.util.*
+
 
 class MainActivity : AppCompatActivity() {
 
