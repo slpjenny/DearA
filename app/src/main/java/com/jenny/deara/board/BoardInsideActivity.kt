@@ -125,13 +125,6 @@ class BoardInsideActivity : AppCompatActivity() {
     private fun initRecycler(boardKey: String) {
         CommentListAdapter = CommentListAdapter(this, commentKeyList)
 
-//        var view: View = layoutInflater.inflate(R.layout.comment_list_item, null)
-//
-//        // 댓글 신고 팝업
-//        CommentListAdapter.ViewHolder(view){
-//            override fun bind() {}
-//        }
-
         val rv: RecyclerView = binding.rvComment
         rv.adapter = CommentListAdapter
 

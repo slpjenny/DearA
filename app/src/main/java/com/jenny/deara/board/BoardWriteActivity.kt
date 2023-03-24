@@ -147,9 +147,11 @@ class BoardWriteActivity : AppCompatActivity() {
             }.start()
         }
 
-        val intent = Intent(this, BoardInsideActivity::class.java)
-        intent.putExtra("key", key)
-        startActivity(intent)
+        finish()
+
+//        val intent = Intent(this, BoardInsideActivity::class.java)
+//        intent.putExtra("key", key)
+//        startActivity(intent)
     }
 
     // 이전 데이터 띄우기

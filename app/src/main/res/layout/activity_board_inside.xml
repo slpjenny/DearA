@@ -109,53 +109,65 @@
                     android:layout_marginRight="10dp"
                     android:background="#B6B6B6"
                     app:layout_constraintTop_toBottomOf="@+id/titleArea" />
-                <TextView
-                    android:id="@+id/boardTime"
+
+                <LinearLayout
+                    android:id="@+id/info"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:layout_marginRight="10dp"
-                    android:text="time"
-                    android:textColor="#747474"
-                    android:textSize="15sp"
-                    app:layout_constraintEnd_toStartOf="@+id/boardWriter"
-                    app:layout_constraintTop_toBottomOf="@+id/boardLineS" />
-
-                <TextView
-                    android:id="@+id/boardWriter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginRight="13dp"
-                    android:text="writer"
-                    android:textColor="#747474"
-                    android:textSize="15sp"
-                    app:layout_constraintEnd_toStartOf="@+id/popupBtn"
-                    app:layout_constraintTop_toBottomOf="@+id/boardLineS" />
-
-                <ImageView
-                    android:id="@+id/popupBtn"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="15dp"
-                    android:gravity="left"
-                    android:src="@drawable/board_btn"
-                    android:visibility="invisible"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/boardLineS" />
+                    app:layout_constraintTop_toBottomOf="@+id/boardLineS">
 
-                <TextView
-                    android:id="@+id/shingoBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="17dp"
-                    android:layout_marginEnd="13dp"
-                    android:gravity="left"
-                    android:text="신고"
-                    android:visibility="invisible"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/boardLineS" />
+                    <TextView
+                        android:id="@+id/boardTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="15dp"
+                        android:text="time"
+                        android:textColor="#747474"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/boardWriter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="15dp"
+                        android:text="writer"
+                        android:textColor="#747474"
+                        android:textSize="15sp" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/info2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp">
+
+                        <ImageView
+                            android:id="@+id/popupBtn"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:gravity="left"
+                            android:src="@drawable/board_btn"
+                            android:visibility="invisible"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/shingoBtn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="left"
+                            android:text="신고"
+                            android:visibility="invisible"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                </LinearLayout>
 
 
                 <LinearLayout
@@ -170,7 +182,7 @@
                     app:layout_constraintBottom_toTopOf="@+id/boardLineE"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/boardTime">
+                    app:layout_constraintTop_toBottomOf="@+id/info">
 
                     <TextView
                         android:id="@+id/contentTextArea"

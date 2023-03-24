@@ -83,6 +83,7 @@
             android:textColor="#5B5B5B"
             android:maxLines="4"
             android:ellipsize="end"
+            android:paddingStart="0dp"
             android:paddingEnd="20dp"/>
 
         <TextView
