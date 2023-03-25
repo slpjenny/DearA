@@ -18,7 +18,7 @@ import com.jenny.deara.MainActivity
 import com.jenny.deara.databinding.FragmentBoardPopupBinding
 import com.jenny.deara.utils.FBRef
 
-class BoardPopupFragment(var key: String) : DialogFragment() {
+class BoardPopupFragment(var key: String, var commentKeyList: MutableList<String>) : DialogFragment() {
 
     private lateinit var binding: FragmentBoardPopupBinding
 
@@ -43,8 +43,12 @@ class BoardPopupFragment(var key: String) : DialogFragment() {
             startActivity(intent)
         }
         binding.delBtn.setOnClickListener {
+            // 게시글, storage이미지, 댓글 삭제
             FBRef.boardRef.child(key).removeValue()
             delStorage(key)
+            for(i in commentKeyList){
+                FBRef.commentRef.child(i).removeValue()
+            }
             Toast.makeText(context, "삭제완료", Toast.LENGTH_LONG).show()
 
             val intent = Intent(context, MainActivity::class.java)

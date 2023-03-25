@@ -99,20 +99,26 @@
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/drawable-v24/background_radius_white.xml" value="0.265" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/drawable/background_radius_set_alarm.xml" value="0.2045" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_alarm_main.xml" value="0.25" />
+        <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_app_cover.xml" value="0.2046875" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_board_inside.xml" value="0.19270833333333334" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_board_write.xml" value="0.19270833333333334" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_change_nick_name.xml" value="0.2265625" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_change_pwd.xml" value="0.2265625" />
+        <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_community_rule.xml" value="0.2046875" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_date_picker.xml" value="0.19270833333333334" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_diary_detail_ver1.xml" value="0.19270833333333334" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_diary_detail_ver2.xml" value="0.19270833333333334" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_diary_edit_ver1.xml" value="0.19270833333333334" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_diary_edit_ver2.xml" value="0.19270833333333334" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_find_pwd.xml" value="0.19270833333333334" />
+        <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_finger_print.xml" value="0.1" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_login.xml" value="0.19322916666666667" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_my_page.xml" value="0.19375" />
+        <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_pin_lock.xml" value="0.2" />
+        <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_pin_lock_password.xml" value="0.2046875" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_select_lock.xml" value="0.19375" />
+        <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_set_pin.xml" value="0.1" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_sign_in.xml" value="0.3359375" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_splash.xml" value="0.19270833333333334" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/activity_time_picker.xml" value="0.33" />
@@ -170,12 +176,12 @@
         <entry key="app/src/main/res/drawable/selfdiagnosis_btn_bg.xml" value="0.1265" />
         <entry key="app/src/main/res/drawable/switch_track_off.xml" value="0.1565" />
         <entry key="app/src/main/res/drawable/switch_track_on.xml" value="0.1565" />
-        <entry key="app/src/main/res/layout/activity_add_record.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_add_record.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_board_edit.xml" value="0.2713541666666667" />
         <entry key="app/src/main/res/layout/activity_board_inside.xml" value="0.2713541666666667" />
         <entry key="app/src/main/res/layout/activity_board_write.xml" value="0.2713541666666667" />
         <entry key="app/src/main/res/layout/activity_change_nick_name.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_change_pwd.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_change_pwd.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_contact_us.xml" value="0.190625" />
         <entry key="app/src/main/res/layout/activity_diary_detail.xml" value="0.22447916666666667" />
         <entry key="app/src/main/res/layout/activity_diary_edit.xml" value="0.1388888888888889" />
@@ -190,7 +196,7 @@
         <entry key="app/src/main/res/layout/activity_pin_lock.xml" value="0.125" />
         <entry key="app/src/main/res/layout/activity_reoprt_popup.xml" value="0.2713541666666667" />
         <entry key="app/src/main/res/layout/activity_report.xml" value="0.25870646766169153" />
-        <entry key="app/src/main/res/layout/activity_rm_record.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_rm_record.xml" value="0.2328125" />
         <entry key="app/src/main/res/layout/activity_select_lock.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_self_diagnosis.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_set_pin.xml" value="0.190625" />
@@ -215,7 +221,7 @@
         <entry key="app/src/main/res/layout/fragment_my_write.xml" value="0.2713541666666667" />
         <entry key="app/src/main/res/layout/fragment_new_record.xml" value="0.2515625" />
         <entry key="app/src/main/res/layout/fragment_popup.xml" value="0.25625" />
-        <entry key="app/src/main/res/layout/fragment_record.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_record.xml" value="0.375" />
         <entry key="app/src/main/res/layout/fragment_record_delete.xml" value="0.2515625" />
         <entry key="app/src/main/res/layout/fragment_record_end.xml" value="0.3202285766601563" />
         <entry key="app/src/main/res/layout/fragment_report_popup.xml" value="0.25729166666666664" />

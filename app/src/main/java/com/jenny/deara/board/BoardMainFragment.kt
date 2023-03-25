@@ -111,8 +111,8 @@ class BoardMainFragment : Fragment() {
         binding.myComment.setOnClickListener {
             setText()
             menu = "myComment"
-            initCommentRecycler()
             getCommentData()
+            initCommentRecycler()
             binding.boardSearch.visibility = View.GONE
             binding.menu2.visibility = View.GONE
             binding.writeBtn.visibility = View.GONE
@@ -274,8 +274,6 @@ class BoardMainFragment : Fragment() {
                                 boardkeyList.add(dataModel.key.toString())
                             }
                         }
-                    }else{
-                        //내가 쓴 댓글
                     }
                 }
                 boardkeyList.reverse()
@@ -306,8 +304,12 @@ class BoardMainFragment : Fragment() {
                 for (dataModel in dataSnapshot.children) {
 
                     val item = dataModel.getValue(CommentModel::class.java)
-                    commentList.add(item!!)
-                    commentBoardKeyList.add(item.boardKey)
+                    if (item != null) {
+                        if(item.uid == FBAuth.getUid()){
+                            commentList.add(item!!)
+                            commentBoardKeyList.add(item.boardKey)
+                        }
+                    }
                     Log.d("getCommentLog", "{${commentBoardKeyList}}")
 
                     //getCommentReply(dataModel.key.toString()) //대댓글 리스트에 내용을 담는다.

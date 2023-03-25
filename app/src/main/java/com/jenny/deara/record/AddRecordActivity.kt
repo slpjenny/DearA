@@ -57,6 +57,10 @@ class AddRecordActivity : AppCompatActivity() {
     private var player: MediaPlayer? = null
 
 
+    //각 진료기록 항목마다 고유 key
+    var recordKey = FBRef.recordRef.push().key.toString()
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -166,13 +170,13 @@ class AddRecordActivity : AppCompatActivity() {
         val symptom = binding.symptom.text.toString()
         val uid = FBAuth.getUid()
 
-        val key = FBRef.recordRef.push().key.toString()
+        // 각 진료기록 항목 별 Key
+//        var recordKey = FBRef.recordRef.push().key.toString()
 
         // 진료 기록 객체 형태로 저장
         FBRef.recordRef
-            .child(key)
+            .child(recordKey)
             .setValue(RecordData(hospitalName, date, time, memo, symptom, uid))
-
 
         Toast.makeText(this, "진료 기록이 저장되었습니다.", Toast.LENGTH_LONG).show()
 
@@ -184,6 +188,7 @@ class AddRecordActivity : AppCompatActivity() {
 
         var pillNameTxt : String = binding.pillName.text.toString()
         var dosageTxt : String = binding.dosage.text.toString()
+        var itsRecordkey : String = recordKey
 
         var key = FBRef.pillRef.push().key.toString()
         val uid = FBAuth.getUid()
@@ -191,8 +196,9 @@ class AddRecordActivity : AppCompatActivity() {
         // 복용 약 객체 형태로 저장
         FBRef.pillRef
                 // 진료 일정 각각 별 복용 약임
+                // 해당 진료 기록 항목의 고유 key로 저장
             .child(key)
-            .setValue(pillData(pillNameTxt,dosageTxt,uid))
+            .setValue(pillData(pillNameTxt,dosageTxt,uid,itsRecordkey))
 
         // recyclerview 데이터 리스트에 저장
         pillList.add(pillData(pillNameTxt,dosageTxt))
