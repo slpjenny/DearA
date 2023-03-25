@@ -7,8 +7,10 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.jenny.deara.R
+import com.jenny.deara.utils.FBRef
 
 class PillListAdapter(val context: Context, var pillList: MutableList<pillData>):RecyclerView.Adapter<PillListAdapter.ViewHolder>(){
 
@@ -52,12 +54,26 @@ class PillListAdapter(val context: Context, var pillList: MutableList<pillData>)
                 // 한번에 저장된거랑, 아이템 자체 삭제 둘 다 될 수 있음
                 // 근데 FB에 저장할 모델을 못정했음
 
+//                private fun removeRecord(key : String){
+//                    FBRef.recordRef.child(key).removeValue()
+//                    Toast.makeText(baseContext,"삭제가 완료되었습니다.", Toast.LENGTH_LONG).show()
+//
+//                    finish()
+//                }
+
+                // RecyclerView 레이아웃에서만 먼저 삭제
+                pillList.removeAt(adapterPosition)
+                notifyDataSetChanged()
+
+                // 파이어베이스에서도 삭제하기
+//                FBRef.pillRef.child(key).removeValue()
+
+
+
 
 
             }
-
         }
-
 
     }
 
