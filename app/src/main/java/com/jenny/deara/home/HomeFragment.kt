@@ -238,14 +238,18 @@ class HomeFragment : Fragment() {
                         // uid 에 맞는 진료기록들을 불러오기
                         if(FBAuth.getUid() == item.uid){
 
+                            Log.d("itemm", item.date)
+                            Log.d("itemmdate", nowDate)
+
                             // 날짜가 같은게 있다면, 따로 불러와서 todayRcRv 에도!! 추가해야함
                             if(item.date == nowDate){
+
                                 if (todayItem != null) {
+                                    todayItem.hospitalName = item.hospitalName
+                                    todayItem.date = item.date
+
                                     records.add(todayItem)
                                     recordKeyList.add(dataModel.key.toString())
-
-                                    Log.d("today", todayItem.toString())
-                                    Log.d("today11", item.toString())
 
                                 }
                             }
