@@ -73,7 +73,6 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-=======
             android:name=".board.BoardImageViewActivity"
             android:exported="false" />
         <activity
