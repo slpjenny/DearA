@@ -136,12 +136,11 @@ class BoardInsideActivity : AppCompatActivity() {
         // 댓글 신고 팝업
         CommentListAdapter.setOnReportClickListener(object :
             CommentListAdapter.OnReportClickListner{
-                override fun onReportClick(v: View, position: Int) {
-                    val commentKey = commentKeyList[position]
-                    Toast.makeText(this@BoardInsideActivity, "commentKey = "+commentKey, Toast.LENGTH_SHORT).show()
-                    CommentPopupFragment(commentKey).show(supportFragmentManager,"dialog")
-                }
+            override fun onReportClick(v: View, position: Int) {
+                val commentKey = commentKeyList[position]
+                CommentPopupFragment(commentKey).show(supportFragmentManager,"dialog")
             }
+        }
         )
 
         CommentListAdapter.setOnItemClickListener(object :

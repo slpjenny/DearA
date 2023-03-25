@@ -42,7 +42,9 @@ class ReportCommentFragment(key: String) : DialogFragment() {
 
         //게시글 신고
         binding.boardBtn.setOnClickListener {
-            report(key)
+            val intent = Intent(context, ReportCommentActivity::class.java)
+            intent.putExtra("key", key)
+            startActivity(intent)
         }
 
         //작성자 신고
@@ -53,32 +55,5 @@ class ReportCommentFragment(key: String) : DialogFragment() {
         return binding.root
     }
 
-    //신고 한 번 만에 삭제처리
-    private fun report(key : String) {
-
-        val key : String = key
-
-        FBRef.commentRef
-            .child(key)
-            .addListenerForSingleValueEvent(object : ValueEventListener {
-                override fun onCancelled(error: DatabaseError) {
-                    TODO("Not yet implemented")
-                }
-
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    var dataModel = snapshot.getValue(CommentModel::class.java)
-                    val uid = FBAuth.getUid()
-                    //var value = dataModel?.report_count
-
-                    val intent = Intent(context, ReportCommentActivity::class.java)
-                    intent.putExtra("key", key)
-                    startActivity(intent)
-                }
-
-
-
-
-            })
-    }
 
 }

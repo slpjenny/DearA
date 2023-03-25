@@ -7,6 +7,7 @@ import androidx.core.view.isVisible
 import com.jenny.deara.R
 import kotlinx.android.synthetic.main.activity_report.*
 
+//댓글 신고 항목
 class ReportCommentActivity : AppCompatActivity() {
 
 
