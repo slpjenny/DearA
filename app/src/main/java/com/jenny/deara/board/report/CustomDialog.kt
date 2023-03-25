@@ -47,7 +47,10 @@ class CustomDialog(key: String) : DialogFragment() {
         binding.confirm.setOnClickListener {
 
             // firebase에서 읽기
-            getFBReportData()
+            //신고 됐으니까
+            FBRef.boardRef.child(key).removeValue()
+            Toast.makeText(context, "신고 접수가 정상적으로 처리되었습니다.", Toast.LENGTH_SHORT)
+                .show() // 없앨 코드
 
             // 커뮤니티 목록으로
             changeFragment()

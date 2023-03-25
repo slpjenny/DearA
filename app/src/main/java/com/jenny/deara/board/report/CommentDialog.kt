@@ -45,8 +45,9 @@ class CommentDialog(key: String) : DialogFragment() {
 
             // 댓글 삭제
             FBRef.commentRef.child(key).removeValue()
-            Toast.makeText(context, "댓글 삭제 완료", Toast.LENGTH_SHORT)
+            Toast.makeText(context, "신고 접수가 정상적으로 처리되었습니다.", Toast.LENGTH_SHORT)
                 .show() // 없앨 코드
+            dialog?.dismiss()
 
             // 커뮤니티 목록으로
             changeFragment()
