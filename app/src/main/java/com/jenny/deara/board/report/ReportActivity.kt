@@ -1,25 +1,42 @@
 package com.jenny.deara.board.report
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.core.view.isVisible
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.core.Repo
 import com.jenny.deara.R
+import com.jenny.deara.board.comment.CommentListAdapter
+import com.jenny.deara.board.comment.CommentModel
+import com.jenny.deara.databinding.ActivityBoardInsideBinding
 import com.jenny.deara.databinding.ActivityReportBinding
-import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
 import kotlinx.android.synthetic.main.activity_report.*
+import java.util.*
 
 class ReportActivity : AppCompatActivity() {
 
+    private var CommentListAdapter: CommentListAdapter? = null
+
+    var commentList = mutableListOf<CommentModel>()
+    var commentKeyList = mutableListOf<String>()
+
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_report)
 
+        //key값 받아오기
+        val key = intent.getStringExtra("key")
+
+        if(key!=null)
+        {
+            getCommentData(key)
+        }
 
         //취소버튼
         report_cancel.setOnClickListener{
@@ -108,17 +125,60 @@ class ReportActivity : AppCompatActivity() {
 
         //확인버튼
         report_submit.setOnClickListener{
-            //key값 받아오기
-            val key = intent.getStringExtra("key")
-
-            Toast.makeText(this, "게시글 = "+key, Toast.LENGTH_SHORT)
-                .show() // 없앨 코드
-
-            val reportPopupFragment = CustomDialog(key.toString())
-            reportPopupFragment.show(supportFragmentManager, "FragmentReportPopup")
+            CustomDialog(key.toString(), commentKeyList).show(supportFragmentManager, "FragmentReportPopup")
 
         }
 
     }
+
+    // 댓글 가져오기
+    @SuppressLint("SetTextI18n")
+    fun getCommentData(key: String) {
+
+        val commentCountList = mutableListOf<String>()
+
+        val postListener = object : ValueEventListener {
+            @SuppressLint("NotifyDataSetChanged")
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+
+                commentList.clear()
+                commentKeyList.clear()
+
+                for (dataModel in dataSnapshot.children) {
+
+                    val item = dataModel.getValue(CommentModel::class.java)
+                    if (item != null) {
+                        if (item.boardKey == key)
+                            if (item.parent == "null") {
+                                commentList.add(item!!)
+                                commentKeyList.add(dataModel.key.toString())
+                            } else { // 대댓글인 경우 리스트의 중간에 삽입하기
+                                val arrayItem = item.parent
+                                val index = commentKeyList.indexOf(arrayItem)
+
+                                val count = Collections.frequency(commentCountList, arrayItem) + 1
+
+                                commentList.add(index + count, item)
+                                commentKeyList.add(index + count, dataModel.key.toString())
+
+                                commentCountList.add(arrayItem)
+                            }
+                    }
+                    Log.d("getCommentLog", "{${commentKeyList}}")
+
+                    //getCommentReply(dataModel.key.toString()) //대댓글 리스트에 내용을 담는다.
+                }
+                CommentListAdapter?.notifyDataSetChanged()
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Getting Post failed, log a message
+                Log.w("getCommentData", "loadPost:onCancelled", databaseError.toException())
+            }
+        }
+        FBRef.commentRef.addListenerForSingleValueEvent(postListener)
+
+    }
+
 
 }

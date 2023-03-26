@@ -1,5 +1,6 @@
 package com.jenny.deara.board.report
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -17,20 +18,22 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.jenny.deara.MainActivity
 import com.jenny.deara.R
+import com.jenny.deara.board.comment.CommentListAdapter
+import com.jenny.deara.board.comment.CommentModel
+import com.jenny.deara.databinding.ActivityReportBinding
 import com.jenny.deara.databinding.FragmentReportConfirmPopupBinding
 import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
+import java.util.*
 
 //게시글 삭제
-class CustomDialog(key: String) : DialogFragment() {
-
+class CustomDialog(var key: String, var commentKeyList: MutableList<String>) : DialogFragment() {
 
     private var _binding: FragmentReportConfirmPopupBinding? = null
 
     private val binding get() = _binding!!
     val database = Firebase.database
 
-    val key : String = key
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentReportConfirmPopupBinding.inflate(inflater, container, false)
@@ -46,9 +49,14 @@ class CustomDialog(key: String) : DialogFragment() {
         // 확인버튼 (신고 완료)
         binding.confirm.setOnClickListener {
 
-            // firebase에서 읽기
             //신고 됐으니까
+
             FBRef.boardRef.child(key).removeValue()
+            for(i in commentKeyList)
+            {
+                FBRef.commentRef.child(i).removeValue()
+            }
+
             Toast.makeText(context, "신고 접수가 정상적으로 처리되었습니다.", Toast.LENGTH_SHORT)
                 .show() // 없앨 코드
 
@@ -61,76 +69,7 @@ class CustomDialog(key: String) : DialogFragment() {
     }
 
 
-    // 파이어베이스에서 읽기
-    private fun getFBReportData() {
-        //게시글 신고
-        FBRef.reportRef
-            .child(key)
-            .addListenerForSingleValueEvent(object : ValueEventListener {
-                override fun onCancelled(error: DatabaseError) {
-                    TODO("Not yet implemented")
-                }
 
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    var dataModel = snapshot.getValue(ReportModel::class.java)
-                    val uid = FBAuth.getUid()
-                    var value = dataModel?.report_count
-
-
-                    if(value==null)
-                    {
-                        //신고 됐으니까
-                        FBRef.boardRef.child(key).removeValue()
-                        Toast.makeText(context, "삭제 완료", Toast.LENGTH_SHORT)
-                            .show() // 없앨 코드
-//                        user1=uid
-//                        FBRef.reportRef
-//                            .child(key)
-//                            .setValue(ReportModel(++count, user1))
-                    }
-
-
-                    //중복 신고 막기
-//                    else {
-//                        count = value!!
-//                        when(count) {
-//                            1 -> {
-//                                user2 = uid
-//                                FBRef.reportRef
-//                                    .child(key)
-//                                    .setValue(ReportModel(++count, user1!!, user2))
-//                            }
-//                            2-> {
-//                                user3=uid
-//                                FBRef.reportRef
-//                                    .child(key)
-//                                    .setValue(ReportModel(++count, user1!!, user2!!, user3))
-//                            }
-//                            3-> {
-//                                user4=uid
-//                                FBRef.reportRef
-//                                    .child(key)
-//                                    .setValue(ReportModel(++count, user1!!, user2!!, user3!!, user4))
-//                            }
-//                            4-> {
-//                                user5=uid
-//                                FBRef.reportRef
-//                                    .child(key)
-//                                    .setValue(ReportModel(++count, user1!!, user2!!, user3!!, user4!!, user5))
-//
-//                                //누적 5회 신고 됐으니까
-//                                FBRef.boardRef.child(key).removeValue()
-//                                Toast.makeText(context, "삭제 완료", Toast.LENGTH_SHORT)
-//                                    .show() // 없앨 코드
-//                            }
-//                        }
-//
-//                    }
-                }
-
-            })
-
-    }
 
     private fun changeFragment()
     {
