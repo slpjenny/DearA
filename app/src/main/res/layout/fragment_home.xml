@@ -57,7 +57,9 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp">
 
                         <TextView
                             android:id="@+id/achiveText"
@@ -354,10 +356,11 @@
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical"
                                 android:layout_marginTop="10dp"
+                                android:layout_marginLeft="18dp"
+                                android:layout_marginRight="18dp"
                                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                                 tools:itemCount="1"
-                                tools:listitem="@layout/today_record_item"
-                                />
+                                tools:listitem="@layout/main_today_record_item"/>
                         </LinearLayout>
 
                     </LinearLayout>
