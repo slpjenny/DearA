@@ -2,19 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.jenny.deara">
-
     <uses-permission android:name="android.permission.INTERNET" /> <!-- 지문 인식 권한 -->
-
     <uses-permission android:name="android.permission.USE_BIOMETRIC" />
-=======
+    =======
     //<uses-permission android:name="android.permission.USE_BIOMETRIC" />
-
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
-
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -28,7 +24,8 @@
         tools:targetApi="31">
         <activity
             android:name=".board.report.ReportCommentActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".mypages.AppCoverActivity"
             android:exported="false"
@@ -52,20 +49,14 @@
             android:screenOrientation="portrait"/>
         <activity
             android:name=".record.EditRecordActivity"
-            android:windowSoftInputMode="adjustResize"
             android:exported="false"
+            android:windowSoftInputMode="adjustResize"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".record.AddRecordActivity"
+            android:exported="false"
             android:windowSoftInputMode="adjustResize"
-            android:exported="false"
             android:screenOrientation="portrait"/>
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".record.AddRecordActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".mypages.ContactUsActivity"
             android:exported="false"
@@ -76,30 +67,18 @@
             android:screenOrientation="portrait"/>
         <activity
             android:name=".board.BoardWriteActivity"
+            android:exported="false"
             android:windowSoftInputMode="adjustUnspecified"
-            android:exported="false"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".board.BoardInsideActivity"
+            android:exported="false"
             android:windowSoftInputMode="adjustResize"
-
-            android:exported="false"
             android:screenOrientation="portrait"/>
-        <activity
-            android:name=".board.BoardEditActivity"
-            android:windowSoftInputMode="adjustResize"
-            android:exported="false"
-            android:screenOrientation="portrait"/>
-            android:exported="false"
-            android:windowSoftInputMode="adjustUnspecified" />
-        <activity
-            android:name=".board.BoardInsideActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
-<!--        <activity-->
-<!--            android:name=".board.BoardEditActivity"-->
-<!--            android:exported="false"-->
-<!--            android:windowSoftInputMode="adjustResize" />-->
+        <!--        <activity-->
+        <!--            android:name=".board.BoardEditActivity"-->
+        <!--            android:exported="false"-->
+        <!--            android:windowSoftInputMode="adjustResize" />-->
         <activity
             android:name=".board.BoardImageViewActivity"
             android:exported="false"
@@ -110,68 +89,47 @@
             android:screenOrientation="portrait"/>
         <activity
             android:name=".mypages.ChangePwdActivity"
-            android:windowSoftInputMode="adjustResize"
             android:exported="false"
+            android:windowSoftInputMode="adjustResize"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".mypages.FindPwdActivity"
-            android:windowSoftInputMode="adjustResize"
             android:exported="false"
+            android:windowSoftInputMode="adjustResize"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".mypages.ChangeNickNameActivity"
-            android:windowSoftInputMode="adjustResize"
             android:exported="false"
+            android:windowSoftInputMode="adjustResize"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".diary.DiaryWriteActivity"
+            android:exported="false"
             android:windowSoftInputMode="adjustResize"
-            android:exported="false"
             android:screenOrientation="portrait"/>
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".mypages.FindPwdActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".mypages.ChangeNickNameActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".diary.DiaryWriteActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".diary.DiaryDetailActivity"
             android:exported="false"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".diary.DiaryEditActivity"
+            android:exported="false"
             android:windowSoftInputMode="adjustResize"
-            android:exported="false"
             android:screenOrientation="portrait"/>
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".MyPageActivity"
             android:exported="false"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".SignInActivity"
+            android:exported="true"
             android:windowSoftInputMode="adjustPan"
-            android:exported="true"
             android:screenOrientation="portrait">
-            android:exported="true"
-            android:windowSoftInputMode="adjustPan">
-
             <!-- 딥 링크용 인텐트 필터 -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
-
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-
                 <data
                     android:host="host"
                     android:scheme="deeplink" />
@@ -183,14 +141,11 @@
             android:screenOrientation="portrait"/>
         <activity
             android:name=".LoginActivity"
+            android:exported="true"
             android:windowSoftInputMode="adjustResize"
-            android:exported="true"
             android:screenOrientation="portrait">
-            android:exported="true"
-            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -204,27 +159,20 @@
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity-alias
             android:name=".MainActivityAlias2"
             android:enabled="false"
             android:exported="true"
-            android:icon="@mipmap/ic_launcher_purple"
-            android:label="DearA"
-            android:roundIcon="@mipmap/ic_launcher_purple"
-            android:targetActivity=".MainActivity"
-            android:screenOrientation="portrait">
             android:icon="@mipmap/ic_launcher_white"
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_white"
-            android:targetActivity=".MainActivity">
+            android:targetActivity=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
@@ -232,26 +180,19 @@
             android:name=".MainActivityAlias1"
             android:enabled="true"
             android:exported="true"
-            android:icon="@mipmap/ic_launcher_white"
-            android:label="@string/app_name"
-            android:roundIcon="@mipmap/ic_launcher_white"
-            android:targetActivity=".MainActivity"
-            android:screenOrientation="portrait">
             android:icon="@mipmap/ic_launcher_purple"
             android:label="DearA"
             android:roundIcon="@mipmap/ic_launcher_purple"
-            android:targetActivity=".MainActivity">
+            android:targetActivity=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
-
         <receiver
             android:name=".alarm.AlertReceiver"
             android:enabled="true"
             android:exported="true" />
     </application>
-
 </manifest>
