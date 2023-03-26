@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
-    <domain-config cleartextTrafficPermitted="false">
-        <domain includeSubdomains="true">secure.example.com</domain>
+    <domain-config cleartextTrafficPermitted="true">
 
+        <domain includeSubdomains="true">https://www.notion.so/54e15dcbe37c4f09a5e9392228a56f7d</domain>
+        <domain includeSubdomains="true">https://www.notion.so/b07d03ad439443a488375d49ed2acdf7</domain>
 
     </domain-config>
+    <base-config clearTrafficPermitted="true"/>
 </network-security-config>

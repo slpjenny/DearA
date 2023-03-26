@@ -1,11 +1,9 @@
 package com.jenny.deara.board.report
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,23 +15,19 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.jenny.deara.MainActivity
-import com.jenny.deara.R
-import com.jenny.deara.board.comment.CommentListAdapter
 import com.jenny.deara.board.comment.CommentModel
-import com.jenny.deara.databinding.ActivityReportBinding
 import com.jenny.deara.databinding.FragmentReportConfirmPopupBinding
 import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
-import java.util.*
 
-//게시글 삭제
-class CustomDialog(var key: String, var commentKeyList: MutableList<String>) : DialogFragment() {
+class CommentDialog(key: String) : DialogFragment() {
 
     private var _binding: FragmentReportConfirmPopupBinding? = null
 
     private val binding get() = _binding!!
     val database = Firebase.database
 
+    val key : String = key
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentReportConfirmPopupBinding.inflate(inflater, container, false)
@@ -49,16 +43,11 @@ class CustomDialog(var key: String, var commentKeyList: MutableList<String>) : D
         // 확인버튼 (신고 완료)
         binding.confirm.setOnClickListener {
 
-            //신고 됐으니까
-
-            FBRef.boardRef.child(key).removeValue()
-            for(i in commentKeyList)
-            {
-                FBRef.commentRef.child(i).removeValue()
-            }
-
+            // 댓글 삭제
+            FBRef.commentRef.child(key).removeValue()
             Toast.makeText(context, "신고 접수가 정상적으로 처리되었습니다.", Toast.LENGTH_SHORT)
                 .show() // 없앨 코드
+            dialog?.dismiss()
 
             // 커뮤니티 목록으로
             changeFragment()
@@ -67,9 +56,6 @@ class CustomDialog(var key: String, var commentKeyList: MutableList<String>) : D
 
         return view
     }
-
-
-
 
     private fun changeFragment()
     {

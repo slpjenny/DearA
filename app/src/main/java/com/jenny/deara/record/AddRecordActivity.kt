@@ -124,7 +124,22 @@ class AddRecordActivity : AppCompatActivity() {
 
         val cal = Calendar.getInstance()    //캘린더뷰 만들기
         val dateSetListener = DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
-            dateString = "${year}년 ${month + 1}월 ${dayOfMonth}일"
+
+            var firstMonth : Int = month
+
+            // 월의 길이가 1인 경우 앞에 0 붙여주고 따로 출력
+            if (firstMonth < 9){
+                var thisMonth : String
+                firstMonth = firstMonth+1
+                thisMonth = "0" + firstMonth.toString()
+
+                dateString = "${year}년 ${thisMonth}월 ${dayOfMonth}일"
+
+            }
+            // 월이 10,11,12 월 일때는 원래대로 출력
+            else{
+                dateString = "${year}년 ${month + 1}월 ${dayOfMonth}일"
+            }
             binding.date.text = dateString
         }
         DatePickerDialog(
