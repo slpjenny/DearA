@@ -27,6 +27,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.core.Repo
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.component1
 import com.google.firebase.storage.ktx.storage
@@ -100,7 +101,6 @@ class BoardInsideActivity : AppCompatActivity() {
         binding.shingoBtn.setOnClickListener {
             if (key != null) {
                 ReportPopUpFragment(key).show(supportFragmentManager, "SampleDialog")
-                //reportTwice(key)
             }
         }
 

@@ -9,14 +9,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
 import com.jenny.deara.board.BoardInsideActivity
+import com.jenny.deara.board.comment.CommentPopupFragment
 import com.jenny.deara.databinding.FragmentPopupBinding
 import com.jenny.deara.databinding.FragmentReportPopupBinding
 import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
+import java.util.ArrayList
 
 class ReportPopUpFragment(val key: String) : DialogFragment() {
 
