@@ -142,9 +142,17 @@
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/fragment_record_end.xml" value="0.19270833333333334" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/layout/pop_up.xml" value="0.3359375" />
         <entry key="..\:/Users/hyo24/AndroidStudioProjects/DearA2/app/src/main/res/xml/preference.xml" value="0.17" />
+        <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/activity_add_record.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/activity_board_inside.xml" value="0.24947916666666667" />
-        <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/calendar_item.xml" value="0.1578125" />
-        <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/fragment_home.xml" value="0.4" />
+        <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/calendar_item.xml" value="0.264" />
+        <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/fragment_diary.xml" value="0.24947916666666667" />
+        <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/fragment_home.xml" value="0.2" />
+        <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/fragment_my_write.xml" value="0.24947916666666667" />
+        <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/main_today_record_item.xml" value="0.24947916666666667" />
+        <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/pilllist_item.xml" value="0.24947916666666667" />
+        <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/today_record_item.xml" value="0.24947916666666667" />
+        <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/tododialog_item.xml" value="0.24947916666666667" />
+        <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/todolistview_item.xml" value="0.2" />
         <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/layout/activity_add_record.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/layout/activity_board_edit.xml" value="0.225" />
         <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/layout/activity_board_write.xml" value="0.225" />
