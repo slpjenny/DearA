@@ -83,18 +83,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="35dp"
+            android:layout_marginEnd="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-
-<!--            <TextView-->
-<!--                android:id="@+id/editBtn"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginEnd="5dp"-->
-<!--                android:text="수정"-->
-<!--                android:textColor="@color/board_menu_gray"-->
-<!--                android:textSize="10sp" />-->
 
             <TextView
                 android:id="@+id/delBtn"
@@ -103,6 +94,13 @@
                 android:text="삭제"
                 android:textColor="@color/board_menu_gray"
                 android:textSize="10sp" />
+
+            <ImageView
+                android:id="@+id/commentMenu"
+                android:layout_width="13dp"
+                android:layout_height="13dp"
+                android:src="@drawable/board_btn"
+                android:layout_marginStart="11dp"/>
 
         </LinearLayout>
 

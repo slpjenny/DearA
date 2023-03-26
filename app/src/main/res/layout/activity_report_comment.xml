@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".board.report.ReportActivity">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        //게시글 신고
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:background="@color/contactus_gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <Button
+                android:id="@+id/back"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/back"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"></Button>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="게시글 신고"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/back"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        //신고하기
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout12"
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="신고하기"
+                    android:textColor="@color/black"
+                    android:textSize="24dp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#B6B6B6"
+                    app:layout_constraintBottom_toBottomOf="@+id/constraintLayout12" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            //신고사유 선택
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout12">
+
+                <TextView
+                    android:id="@+id/textView13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:text="신고사유 선택"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <RadioGroup
+                    android:id="@+id/radio_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="17dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="17dp"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView13">
+
+                    <RadioButton
+                        android:id="@+id/radio1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=" 욕설, 비방, 차별, 혐오"
+                        android:buttonTint="@color/purple2"
+                        android:textSize="18sp"/>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout6"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#DEE2E6"
+                        android:orientation="horizontal"
+
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/radio1"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/radio1_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone">
+
+                        <LinearLayout
+                            android:id="@+id/linearLayout8"
+                            android:layout_width="2dp"
+                            android:layout_height="50dp"
+                            android:background="#DEE2E6"
+                            android:orientation="horizontal"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView15"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/textView15"
+                            tools:ignore="MissingConstraints" />
+
+                        <TextView
+                            android:id="@+id/textView15"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:text="욕설을 사용하여 타인을 비방하거나 모욕하는 행위\n지역, 장애, 성별 등을 차별하거나 혐오감을 조장하는 행위\n타인의 감정을 상하게 하거나 불쾌감을 유발하는 행위"
+                            android:textSize="13sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <RadioButton
+                        android:id="@+id/radio2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=" 홍보, 영리목적"
+                        android:buttonTint="@color/purple2"
+                        android:textSize="18sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="#DEE2E6" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/radio2_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone">
+
+                        <LinearLayout
+                            android:id="@+id/linearLayout9"
+                            android:layout_width="2dp"
+                            android:layout_height="50dp"
+                            android:background="#DEE2E6"
+                            android:orientation="horizontal"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView16"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/textView16"
+                            tools:ignore="MissingConstraints" />
+
+                        <TextView
+                            android:id="@+id/textView16"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:text="상업적∙홍보∙영리 목적으로 서비스를 이용하는 행위\n상업적∙홍보∙영리 목적으로 계정을 생성∙이용하는 행위"
+                            android:textSize="13sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <RadioButton
+                        android:id="@+id/radio3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=" 불법 정보"
+                        android:buttonTint="@color/purple2"
+                        android:textSize="18sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="#DEE2E6" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/radio3_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone">
+
+                        <LinearLayout
+                            android:id="@+id/linearLayout10"
+                            android:layout_width="2dp"
+                            android:layout_height="50dp"
+                            android:background="#DEE2E6"
+                            android:orientation="horizontal"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView17"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/textView17"
+                            tools:ignore="MissingConstraints" />
+
+                        <TextView
+                            android:id="@+id/textView17"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:text="불법적인 사행성∙도박 사이트를 홍보하는 행위\n불법 제품을 판매하거나 홍보하는 행위\n범법 행위에 대한 정보를 제공하는 행위"
+                            android:textSize="13sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <RadioButton
+                        android:id="@+id/radio4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=" 음란, 청소년 유해"
+                        android:buttonTint="@color/purple2"
+                        android:textSize="18sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="#DEE2E6" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/radio4_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone">
+
+                        <LinearLayout
+                            android:id="@+id/linearLayout11"
+                            android:layout_width="2dp"
+                            android:layout_height="50dp"
+                            android:background="#DEE2E6"
+                            android:orientation="horizontal"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView18"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/textView18"
+                            tools:ignore="MissingConstraints" />
+
+                        <TextView
+                            android:id="@+id/textView18"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:text="과도한 신체 노출이나 음란한 행위를 묘사하는 행위\n성적 수치심이나 불쾌감을 유발할 수 있는 내용을 게시하는 행위\n성매매 관련 정보를 공유하는 행위"
+                            android:textSize="13sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <RadioButton
+                        android:id="@+id/radio5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=" 개인 정보 노출, 유포, 거래"
+                        android:buttonTint="@color/purple2"
+                        android:textSize="18sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="#DEE2E6" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/radio5_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone">
+
+                        <LinearLayout
+                            android:id="@+id/linearLayout12"
+                            android:layout_width="2dp"
+                            android:layout_height="50dp"
+                            android:background="#DEE2E6"
+                            android:orientation="horizontal"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView19"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/textView19"
+                            tools:ignore="MissingConstraints" />
+
+                        <TextView
+                            android:id="@+id/textView19"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:text="타인의 개인정보를 탈취∙유포∙거래하려는 행위\n계정을 타인에게 판매∙양도∙대여하는 행위\n타인의 개인정보를 다수에게 공개된 게시판 등에 노출하는 행위"
+                            android:textSize="13sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <RadioButton
+                        android:id="@+id/radio6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=" 도배, 스팸"
+                        android:buttonTint="@color/purple2"
+                        android:textSize="18sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="#DEE2E6" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/radio6_6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone">
+
+                        <LinearLayout
+                            android:id="@+id/linearLayout13"
+                            android:layout_width="2dp"
+                            android:layout_height="50dp"
+                            android:background="#DEE2E6"
+                            android:orientation="horizontal"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView20"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/textView20"
+                            tools:ignore="MissingConstraints" />
+
+                        <TextView
+                            android:id="@+id/textView20"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:text="동일한 내용을 반복적으로 등록하는 행위\n시스템의 취약점을 이용하여 유해한 내용을 게시하는 행위"
+                            android:textSize="13sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <RadioButton
+                        android:id="@+id/radio7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=" 기타"
+                        android:buttonTint="@color/purple2"
+                        android:textSize="18sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="#DEE2E6" />
+
+                    <EditText
+                        android:id="@+id/edittext"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:hint="신고 사유 직접 입력 ( 최대 500자 )"
+                        android:maxEms="500"
+                        android:layout_height="50dp"/>
+
+                </RadioGroup>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout14"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout13">
+
+                <Button
+                    android:id="@+id/report_cancel"
+                    android:layout_width="165dp"
+                    android:layout_height="65dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/background_radius_report"
+                    android:text="취소"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/report_submit"
+                    android:layout_width="165dp"
+                    android:layout_height="65dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/background_radius_report"
+                    android:backgroundTint="@color/dark_purple"
+                    android:text="확인"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp"
+                android:text="※ 허위사실일 경우, 신고자의 서비스 활동이 제한될 수 있으니\n유의하시어 신중하게 신고해 주세요"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout14"
+                tools:layout_editor_absoluteX="3dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+</ScrollView>

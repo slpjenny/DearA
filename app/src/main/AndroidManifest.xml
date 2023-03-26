@@ -4,23 +4,31 @@
     package="com.jenny.deara">
 
     <uses-permission android:name="android.permission.INTERNET" /> <!-- 지문 인식 권한 -->
+
     <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+=======
+    //<uses-permission android:name="android.permission.USE_BIOMETRIC" />
+
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
 
     <application
-        android:networkSecurityConfig="@xml/network_security_config"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher_purple"
         android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DearA"
         tools:targetApi="31">
+        <activity
+            android:name=".board.report.ReportCommentActivity"
+            android:exported="false" />
         <activity
             android:name=".mypages.AppCoverActivity"
             android:exported="false"
@@ -52,6 +60,12 @@
             android:windowSoftInputMode="adjustResize"
             android:exported="false"
             android:screenOrientation="portrait"/>
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".record.AddRecordActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".mypages.ContactUsActivity"
             android:exported="false"
@@ -76,6 +90,16 @@
             android:windowSoftInputMode="adjustResize"
             android:exported="false"
             android:screenOrientation="portrait"/>
+            android:exported="false"
+            android:windowSoftInputMode="adjustUnspecified" />
+        <activity
+            android:name=".board.BoardInsideActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+<!--        <activity-->
+<!--            android:name=".board.BoardEditActivity"-->
+<!--            android:exported="false"-->
+<!--            android:windowSoftInputMode="adjustResize" />-->
         <activity
             android:name=".board.BoardImageViewActivity"
             android:exported="false"
@@ -104,6 +128,20 @@
             android:windowSoftInputMode="adjustResize"
             android:exported="false"
             android:screenOrientation="portrait"/>
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".mypages.FindPwdActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".mypages.ChangeNickNameActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".diary.DiaryWriteActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".diary.DiaryDetailActivity"
             android:exported="false"
@@ -113,6 +151,8 @@
             android:windowSoftInputMode="adjustResize"
             android:exported="false"
             android:screenOrientation="portrait"/>
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".MyPageActivity"
             android:exported="false"
@@ -122,6 +162,8 @@
             android:windowSoftInputMode="adjustPan"
             android:exported="true"
             android:screenOrientation="portrait">
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan">
 
             <!-- 딥 링크용 인텐트 필터 -->
             <intent-filter>
@@ -144,6 +186,8 @@
             android:windowSoftInputMode="adjustResize"
             android:exported="true"
             android:screenOrientation="portrait">
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -166,14 +210,18 @@
         </activity>
 
         <activity-alias
-            android:name=".MainActivityAlias1"
-            android:enabled="true"
+            android:name=".MainActivityAlias2"
+            android:enabled="false"
             android:exported="true"
             android:icon="@mipmap/ic_launcher_purple"
             android:label="DearA"
             android:roundIcon="@mipmap/ic_launcher_purple"
             android:targetActivity=".MainActivity"
             android:screenOrientation="portrait">
+            android:icon="@mipmap/ic_launcher_white"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_white"
+            android:targetActivity=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -181,14 +229,18 @@
             </intent-filter>
         </activity-alias>
         <activity-alias
-            android:name=".MainActivityAlias2"
-            android:enabled="false"
+            android:name=".MainActivityAlias1"
+            android:enabled="true"
             android:exported="true"
             android:icon="@mipmap/ic_launcher_white"
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_white"
             android:targetActivity=".MainActivity"
             android:screenOrientation="portrait">
+            android:icon="@mipmap/ic_launcher_purple"
+            android:label="DearA"
+            android:roundIcon="@mipmap/ic_launcher_purple"
+            android:targetActivity=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
