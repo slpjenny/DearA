@@ -270,7 +270,6 @@ class CommentListAdapter(val context: Context,
                 commentWriterReport.setOnClickListener {
                     val intent = Intent(context, ReportC_AccountActivity::class.java)
                     intent.putExtra("key", commentKeyList[position])
-                    Toast.makeText(context, "listAdapter = "+commentKeyList[position], Toast.LENGTH_SHORT).show()
                     context.startActivity(intent)
                     cDialogView.dismiss()
                 }
