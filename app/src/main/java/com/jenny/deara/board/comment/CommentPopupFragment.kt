@@ -42,7 +42,7 @@ class CommentPopupFragment(val key : String) : DialogFragment() {
             startActivity(intent)
         }
 
-        // 댓글 작성자 신고
+        //  댓글 작성자 신고
         binding.commentWriterReport.setOnClickListener {
             val intent = Intent(context, ReportC_AccountActivity::class.java)
             intent.putExtra("key", key)
