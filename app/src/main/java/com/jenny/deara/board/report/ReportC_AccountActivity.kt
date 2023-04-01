@@ -38,6 +38,7 @@ class ReportC_AccountActivity : AppCompatActivity() {
 
         //댓글 key값 받아오기
         val key = intent.getStringExtra("key")
+        Toast.makeText(this@ReportC_AccountActivity, "key = "+key, Toast.LENGTH_SHORT).show()
 
         if(key!=null)
         {
@@ -123,6 +124,7 @@ class ReportC_AccountActivity : AppCompatActivity() {
 
                 if (dataModel != null) {
                     //신고당한 댓글주 uid 넘기기
+                    Toast.makeText(this@ReportC_AccountActivity, "uid = "+dataModel.uid, Toast.LENGTH_SHORT).show()
                     getFBBoardData(dataModel.uid)
                     getCommentListData(dataModel.uid)
                 }

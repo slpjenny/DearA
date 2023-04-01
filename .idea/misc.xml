@@ -266,6 +266,8 @@
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.165" />
         <entry key="app/src/main/res/layout/alarm_dialog.xml" value="0.375" />
         <entry key="app/src/main/res/layout/alarm_list_item.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/comment_my_list_item.xml" value="0.5571645100911459" />
+        <entry key="app/src/main/res/layout/comment_reply_list_item.xml" value="0.48593037923177085" />
         <entry key="app/src/main/res/layout/diary_detail_ver1.xml" value="0.29739583333333336" />
         <entry key="app/src/main/res/layout/diary_detail_ver2.xml" value="0.29739583333333336" />
         <entry key="app/src/main/res/layout/diary_edit_ver2.xml" value="0.29739583333333336" />
