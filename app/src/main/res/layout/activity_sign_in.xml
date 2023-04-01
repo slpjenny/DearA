@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,243 +9,238 @@
     android:background="@color/purple1"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <android.widget.Button
-        android:id="@+id/back1"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="17dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/back"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></android.widget.Button>
+        <android.widget.Button
+            android:id="@+id/back1"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="17dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/back"/>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout2"
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="170dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:orientation="vertical"
+        android:gravity="center">
 
         <TextView
             android:id="@+id/textView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
             android:text="회원가입"
             android:textColor="@color/white"
-            android:textSize="28sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"></TextView>
+            android:textSize="30dp"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/gotoSelfDiagnosis"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="자가진단 먼저 해보기"
+            android:layout_marginBottom="20dp"
+            android:text="&lt;자가진단 먼저 해보기&gt;"
             android:textColor="#161616"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView6"></TextView>
+            android:textSize="16dp"
+            android:background="@drawable/edge_bottom_black"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout7"
+
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+        android:layout_marginTop="50dp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout3"
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:orientation="horizontal"
-            app:layout_constraintTop_toTopOf="parent">
+            android:gravity="center"
+            android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/write_email_etxt"
-                android:layout_width="220dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="40dp"
-                android:background="@null"
-                android:hint="이메일"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:textSize="13sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"></EditText>
-
-            <android.widget.Button
-                android:id="@+id/emailCheck"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="이메일 확인"
-                android:layout_marginRight="10dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/write_email_etxt"
-                app:layout_constraintTop_toTopOf="parent"></android.widget.Button>
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/write_email_etxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="이메일"
+                    android:padding="15dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textSize="15dp" />
+
+                <android.widget.Button
+                    android:id="@+id/emailCheck"
+                    android:layout_width="80dp"
+                    android:layout_height="35dp"
+                    android:layout_marginRight="40dp"
+                    android:text="이메일 확인"
+                    android:textSize="13dp"
+                    android:textColor="@color/black"
+                    android:background="@drawable/background_radius_sign_in_duplication"/>
+
+            </LinearLayout>
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/one_line_maingray" />
 
-        <ImageView
-            android:id="@+id/imageView6"
-            android:layout_width="330dp"
-            android:layout_height="2dp"
-            android:background="@drawable/one_line_maingray"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout3"></ImageView>
+        </LinearLayout>
 
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout4"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView6">
+            android:orientation="vertical">
 
             <EditText
                 android:id="@+id/write_pwd_etxt"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginLeft="40dp"
+                android:padding="15dp"
                 android:background="@null"
                 android:hint="비밀번호 (6자 이상)"
                 android:inputType="textPassword"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
-                android:textSize="13sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-            </EditText>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <ImageView
-            android:id="@+id/imageView7"
-            android:layout_width="330dp"
-            android:layout_height="2dp"
-            android:background="@drawable/one_line_maingray"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout4"></ImageView>
+                android:textSize="15dp"/>
 
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout5"
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/one_line_maingray"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView7">
+            android:orientation="vertical">
 
             <EditText
                 android:id="@+id/rewrite_pwd_etxt"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginLeft="40dp"
+                android:padding="15dp"
                 android:background="@null"
                 android:hint="비밀번호 재입력"
                 android:inputType="textPassword"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
-                android:textSize="13sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:textSize="15dp">
 
             </EditText>
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <ImageView
-            android:id="@+id/imageView8"
-            android:layout_width="330dp"
-            android:layout_height="2dp"
-            android:background="@drawable/one_line_maingray"
-            app:layout_constraintBottom_toBottomOf="@+id/constraintLayout5"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"></ImageView>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/one_line_maingray"/>
+        </LinearLayout>
 
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout6"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout5">
-
-            <EditText
-                android:id="@+id/write_nick_etxt"
-                android:layout_width="210dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="40dp"
-                android:background="@null"
-                android:hint="닉네임"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:textSize="13sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"></EditText>
+            android:orientation="vertical"
+            android:gravity="center">
 
 
-            <android.widget.Button
-                android:id="@+id/checkNick"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="중복 확인"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/write_nick_etxt"
-                app:layout_constraintTop_toTopOf="parent"></android.widget.Button>
+                android:orientation="horizontal">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <EditText
+                    android:id="@+id/write_nick_etxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="40dp"
+                    android:background="@null"
+                    android:hint="닉네임"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textSize="15dp"/>
 
-        <ImageView
-            android:id="@+id/imageView9"
-            android:layout_width="330dp"
-            android:layout_height="2dp"
-            android:background="@drawable/one_line_maingray"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout6"></ImageView>
+
+                <android.widget.Button
+                    android:id="@+id/checkNick"
+                    android:layout_width="80dp"
+                    android:layout_height="35dp"
+                    android:text="중복 확인"
+                    android:layout_marginRight="40dp"
+                    android:textSize="13dp"
+                    android:textColor="@color/black"
+                    android:background="@drawable/background_radius_sign_in_duplication"/>
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/one_line_maingray"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="10dp">
 
         <android.widget.Button
             android:id="@+id/saveBtn"
-            android:layout_width="300dp"
-            android:layout_height="70dp"
-            android:layout_marginTop="32dp"
-            android:background="@drawable/purple_btn_bg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/login_signin_bg"
             android:backgroundTint="@color/purple2"
             android:elevation="20dp"
+            android:padding="20dp"
             android:text="완료"
             android:textColor="@color/white"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView9"></android.widget.Button>
+            android:textSize="20dp" />
+
+    </LinearLayout>
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

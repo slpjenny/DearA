@@ -9,542 +9,442 @@
         tools:context=".home.HomeFragment">
 
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout1"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="horizontal"
+               android:background="#f9f9f9">
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginLeft="15dp"
+                   android:layout_marginTop="8dp"
+                   android:layout_marginBottom="8dp"
+                   android:layout_weight="4"
+                   android:text="디어에이"
+                   android:textColor="#000000"
+                   android:textSize="24dp"
+                   android:textStyle="bold"
+                   />
+
+               <ImageView
+                   android:id="@+id/mypageBtn"
+                   android:layout_width="35dp"
+                   android:layout_height="35dp"
+                   android:src="@drawable/mypage"
+                   android:layout_marginTop="8dp"
+                   android:layout_marginBottom="8dp"
+                   android:layout_weight="1"/>
+
+           </LinearLayout>
+
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="64dp"
-                android:background="#f9f9f9"
-                tools:ignore="MissingConstraints">
+                android:layout_height="match_parent">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:text="디어에이"
-                    android:textColor="#000000"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageView
-                    android:id="@+id/mypageBtn"
-                    android:src="@drawable/mypage"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginRight="20dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.core.widget.NestedScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="64dp">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_marginTop="10dp">
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/constraintLayout2"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
-
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp">
 
                         <TextView
                             android:id="@+id/achiveText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="30dp"
-                            android:layout_marginTop="20dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_weight="1"
                             android:text="오늘의 달성률"
                             android:textColor="@color/black"
-                            android:textSize="13sp"
-                            app:layout_constraintEnd_toStartOf="@+id/progressBar"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            android:textSize="13dp"/>
 
-                        <ProgressBar
-                            android:id="@+id/progressBar"
-                            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                            android:layout_width="255dp"
-                            android:layout_height="19dp"
-                            android:layout_marginStart="4dp"
-                            android:layout_marginTop="20dp"
-                            android:layout_marginEnd="30dp"
-                            android:max="100"
-                            android:progress="0"
-                            android:progressDrawable="@drawable/progressbar_radius"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/achiveText"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <TextView
+                        <LinearLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="100dp"
-                            android:text="0"
-                            android:textColor="#CFCFCF"
-                            android:textSize="10dp"
-                            app:layout_constraintEnd_toStartOf="@+id/percent50"
-                            app:layout_constraintStart_toEndOf="@+id/achiveText"
-                            app:layout_constraintTop_toBottomOf="@+id/progressBar" />
-
-                        <TextView
-                            android:id="@+id/percent50"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="30dp"
-                            android:text="50"
-                            android:textColor="#CFCFCF"
-                            android:textSize="10dp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/achiveText"
-                            app:layout_constraintTop_toBottomOf="@+id/progressBar" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="75dp"
-                            android:text="100"
-                            android:textColor="#CFCFCF"
-                            android:textSize="10dp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/percent50"
-                            app:layout_constraintTop_toTopOf="@+id/percent50" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/constraintLayout3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
-
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:id="@+id/constraintLayout9"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent">
-
-                            <androidx.constraintlayout.widget.ConstraintLayout
-                                android:id="@+id/constraintLayout8"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent">
-
-                                <TextView
-                                    android:id="@+id/dateText"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="25dp"
-                                    android:layout_marginTop="10dp"
-                                    android:text="2022년 9월"
-                                    android:textColor="@color/black"
-                                    android:textSize="20sp"
-                                    android:textStyle="bold"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toTopOf="parent" />
-
-                                <ImageButton
-                                    android:id="@+id/preBtn"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="7dp"
-                                    android:layout_marginEnd="8dp"
-                                    android:background="@android:color/transparent"
-                                    android:src="@drawable/ic_pre_button"
-                                    app:layout_constraintEnd_toStartOf="@+id/nextBtn"
-                                    app:layout_constraintTop_toTopOf="parent" />
-
-                                <ImageButton
-                                    android:id="@+id/nextBtn"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="7dp"
-                                    android:layout_marginEnd="24dp"
-                                    android:background="@android:color/transparent"
-                                    android:src="@drawable/ic_next_button"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    app:layout_constraintTop_toTopOf="parent" />
-
-                            </androidx.constraintlayout.widget.ConstraintLayout>
-
-                            <androidx.constraintlayout.widget.ConstraintLayout
-                                android:id="@+id/constraintLayout10"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/constraintLayout8">
-
-                                <TextView
-                                    android:id="@+id/sunday"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="50dp"
-                                    android:text="일"
-                                    android:textSize="15sp"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintEnd_toStartOf="@+id/monday"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toTopOf="parent" />
-
-                                <TextView
-                                    android:id="@+id/monday"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="40dp"
-                                    android:layout_marginEnd="40dp"
-                                    android:text="월"
-                                    android:textSize="15sp"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintEnd_toStartOf="@+id/tuesday"
-                                    app:layout_constraintStart_toEndOf="@+id/sunday"
-                                    app:layout_constraintTop_toTopOf="parent" />
-
-                                <TextView
-                                    android:id="@+id/tuesday"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="45dp"
-                                    android:layout_marginEnd="40dp"
-                                    android:text="화"
-                                    android:textSize="15sp"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintEnd_toStartOf="@+id/wednsday"
-                                    app:layout_constraintStart_toEndOf="@+id/monday"
-                                    app:layout_constraintTop_toTopOf="parent" />
-
-                                <TextView
-                                    android:id="@+id/wednsday"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="45dp"
-                                    android:layout_marginEnd="40dp"
-                                    android:text="수"
-                                    android:textSize="15sp"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintEnd_toStartOf="@+id/thursday"
-                                    app:layout_constraintStart_toEndOf="@+id/tuesday"
-                                    app:layout_constraintTop_toTopOf="parent" />
-
-                                <TextView
-                                    android:id="@+id/thursday"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="45dp"
-                                    android:layout_marginEnd="40dp"
-                                    android:text="목"
-                                    android:textSize="15sp"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintEnd_toStartOf="@+id/friday"
-                                    app:layout_constraintStart_toEndOf="@+id/wednsday"
-                                    app:layout_constraintTop_toTopOf="parent" />
-
-                                <TextView
-                                    android:id="@+id/friday"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="45dp"
-                                    android:layout_marginEnd="40dp"
-                                    android:text="금"
-                                    android:textSize="15sp"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintEnd_toStartOf="@+id/saturday"
-                                    app:layout_constraintStart_toEndOf="@+id/thursday"
-                                    app:layout_constraintTop_toTopOf="parent" />
-
-                                <TextView
-                                    android:id="@+id/saturday"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginEnd="50dp"
-                                    android:text="토"
-                                    android:textSize="15sp"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    app:layout_constraintStart_toEndOf="@+id/friday"
-                                    app:layout_constraintTop_toTopOf="parent" />
-                            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-                            <androidx.constraintlayout.widget.ConstraintLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/constraintLayout10">
-
-                                <androidx.recyclerview.widget.RecyclerView
-                                    android:id="@+id/calendarRv"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="285dp"
-                                    android:layout_marginStart="20dp"
-                                    android:layout_marginEnd="20dp"
-                                    android:nestedScrollingEnabled="false"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toTopOf="parent"
-                                    tools:itemCount="5"
-                                    tools:listitem="@layout/calendar_item">
-
-                                </androidx.recyclerview.widget.RecyclerView>
-                            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/constraintLayout9">
-
-                            <ImageView
-                                android:id="@+id/pinkRadius"
-                                android:layout_width="9dp"
-                                android:layout_height="9dp"
-                                android:layout_marginLeft="40dp"
-                                android:layout_marginTop="3dp"
-                                android:src="@drawable/pink_radius"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-
-                            <TextView
-                                android:id="@+id/pinkPercent"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="3dp"
-                                android:text="25-50%"
-                                android:textSize="10dp"
-                                app:layout_constraintStart_toEndOf="@+id/pinkRadius"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                            <ImageView
-                                android:id="@+id/yellowRadius"
-                                android:layout_width="9dp"
-                                android:layout_height="9dp"
-                                android:layout_marginStart="85dp"
-                                android:layout_marginTop="3dp"
-                                android:src="@drawable/yellow_radius"
-                                app:layout_constraintStart_toEndOf="@+id/pinkPercent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                            <TextView
-                                android:id="@+id/yellowPercent"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="3dp"
-                                android:text="50-75%"
-                                android:textSize="10dp"
-                                app:layout_constraintStart_toEndOf="@+id/yellowRadius"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                            <ImageView
-                                android:id="@+id/greenRadius"
-                                android:layout_width="9dp"
-                                android:layout_height="9dp"
-                                android:layout_marginLeft="85dp"
-                                android:layout_marginTop="3dp"
-                                android:src="@drawable/green_radius"
-                                app:layout_constraintStart_toEndOf="@+id/yellowPercent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                            <TextView
-                                android:id="@+id/greenPercent"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="75-100%"
-                                android:textSize="10dp"
-                                app:layout_constraintStart_toEndOf="@+id/greenRadius"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/constraintLayout4"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:visibility="visible"
-                        android:orientation="vertical"
-                        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3">
-
-                        <TextView
-                            android:id="@+id/scheduleText"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="50dp"
-                            android:layout_marginTop="20dp"
-                            android:text="오늘 진료일정"
-                            android:textColor="@color/black"
-                            android:textSize="25sp"
-                            android:textStyle="bold"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/todayRcRvMain"
-                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
-                            android:layout_marginTop="10dp"
-                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                            app:layout_constrainedHeight="true"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/scheduleText">
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="30">
 
-                        </androidx.recyclerview.widget.RecyclerView>
+                            <ProgressBar
+                                android:id="@+id/progressBar"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="10dp"
+                                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                                android:progressDrawable="@drawable/progressbar_radius"
+                                android:max="100"
+                                android:progress="0"/>
 
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
 
-<!--                        <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--                            android:layout_width="350dp"-->
-<!--                            android:layout_height="75dp"-->
-<!--                            android:layout_marginTop="10dp"-->
-<!--                            android:layout_marginBottom="10dp"-->
-<!--                            android:background="@drawable/schedule_radius"-->
-<!--                            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                            app:layout_constraintEnd_toEndOf="parent"-->
-<!--                            app:layout_constraintStart_toStartOf="parent"-->
-<!--                            app:layout_constraintTop_toBottomOf="@+id/scheduleText"-->
-<!--                            android:elevation="5dp">-->
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="0"
+                                    android:textSize="10dp"
+                                    android:textColor="#CFCFCF"/>
 
-<!--                            <TextView-->
-<!--                                android:id="@+id/hospitalName"-->
-<!--                                android:layout_width="wrap_content"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:layout_marginLeft="30dp"-->
-<!--                                android:layout_marginTop="8dp"-->
-<!--                                android:text="세브란스 병원"-->
-<!--                                android:textColor="@color/black"-->
-<!--                                android:textSize="20dp"-->
-<!--                                app:layout_constraintStart_toStartOf="parent"-->
-<!--                                app:layout_constraintTop_toTopOf="parent" />-->
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="50"
+                                    android:textSize="10dp"
+                                    android:gravity="center"
+                                    android:textColor="#CFCFCF"/>
 
-<!--                            <TextView-->
-<!--                                android:id="@+id/hospitalTime"-->
-<!--                                android:layout_width="wrap_content"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:layout_marginLeft="0dp"-->
-<!--                                android:layout_marginRight="150dp"-->
-<!--                                android:layout_marginTop="2dp"-->
-<!--                                android:text="15:00"-->
-<!--                                android:textColor="@color/black"-->
-<!--                                android:textSize="20dp"-->
-<!--                                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                                app:layout_constraintEnd_toStartOf="@+id/imageView3"-->
-<!--                                app:layout_constraintStart_toStartOf="parent"-->
-<!--                                app:layout_constraintTop_toBottomOf="@+id/hospitalName" />-->
-
-<!--                            <ImageView-->
-<!--                                android:id="@+id/imageView3"-->
-<!--                                android:layout_width="45dp"-->
-<!--                                android:layout_height="45dp"-->
-<!--                                android:layout_marginRight="30dp"-->
-<!--                                android:src="@drawable/clock"-->
-<!--                                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                                app:layout_constraintTop_toTopOf="parent" />-->
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="100"
+                                    android:textSize="10dp"
+                                    android:gravity="end"
+                                    android:textColor="#CFCFCF"/>
+                            </LinearLayout>
 
 
-<!--                        </androidx.constraintlayout.widget.ConstraintLayout>-->
+                        </LinearLayout>
 
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    </LinearLayout>
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        android:layout_marginBottom="15dp"
-                        app:layout_constraintTop_toBottomOf="@+id/constraintLayout4">
+                        android:orientation="horizontal"
+                        android:layout_marginTop="20dp">
 
                         <TextView
-                            android:id="@+id/toDoText"
+                            android:id="@+id/dateText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="50dp"
-                            android:layout_marginTop="25dp"
-                            android:text="To Do List"
+                            android:layout_weight="1"
+                            android:layout_marginLeft="25dp"
+                            android:layout_marginTop="10dp"
+                            android:text="2022년 9월"
                             android:textColor="@color/black"
-                            android:textSize="25sp"
-                            android:textStyle="bold"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            android:textSize="20dp"
+                            android:textStyle="bold"/>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            android:layout_marginRight="25dp">
+
+                            <ImageButton
+                                android:id="@+id/preBtn"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="@android:color/transparent"
+                                android:src="@drawable/ic_pre_button" />
+
+                            <ImageButton
+                                android:id="@+id/nextBtn"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="@android:color/transparent"
+                                android:src="@drawable/ic_next_button" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginLeft="13dp"
+                        android:layout_marginRight="13dp"
+                        android:layout_marginTop="10dp">
 
                         <TextView
-                            android:id="@+id/dateText2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="8dp"
-                            android:layout_marginTop="35dp"
-                            android:text="12월 4일"
-                            android:textAllCaps="false"
-                            android:textColor="#55525A"
-                            android:textStyle="bold"
-                            app:layout_constraintStart_toEndOf="@+id/toDoText"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="일"
+                            android:textSize="15dp" />
 
-                        <androidx.appcompat.widget.AppCompatButton
-                            android:id="@+id/todoplus"
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:layout_marginLeft="110dp"
-                            android:layout_marginTop="20dp"
-                            android:layout_marginBottom="3dp"
-                            android:background="@drawable/plusbtn"
-                            android:elevation="50dp"
-                            android:textColor="@color/black"
-                            android:textSize="25sp"
-                            app:layout_constraintBottom_toTopOf="@+id/toDoListRV"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/toDoText"
-                            app:layout_constraintTop_toTopOf="parent" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="월"
+                            android:textSize="15dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="화"
+                            android:textSize="15dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="수"
+                            android:textSize="15dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="목"
+                            android:textSize="15dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="금"
+                            android:textSize="15dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="토"
+                            android:textSize="15dp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp">
 
                         <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/toDoListRV"
-                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            android:id="@+id/calendarRv"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="18dp"
-                            android:layout_marginTop="10dp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/toDoText"
+                            android:nestedScrollingEnabled="false"
                             tools:itemCount="5"
-                            tools:listitem="@layout/todolistview_item" />
+                            tools:listitem="@layout/calendar_item"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="5dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:layout_width="9dp"
+                                android:layout_height="9dp"
+                                android:src="@drawable/pink_radius"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:text="25-50%"
+                                android:textSize="10dp"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:layout_width="9dp"
+                                android:layout_height="9dp"
+                                android:src="@drawable/yellow_radius"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:text="50-75%"
+                                android:textSize="10dp"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:layout_width="9dp"
+                                android:layout_height="9dp"
+                                android:src="@drawable/green_radius"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:text="75-100%"
+                                android:textSize="10dp"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
 
 
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="오늘 진료일정"
+                                android:textColor="@color/black"
+                                android:textSize="25dp"
+                                android:textStyle="bold"
+                                android:layout_marginLeft="40dp"
+                                android:layout_marginTop="20dp"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/todayRcRvMain"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginLeft="18dp"
+                                android:layout_marginRight="18dp"
+                                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                tools:itemCount="1"
+                                tools:listitem="@layout/main_today_record_item"/>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="50dp"
+                                    android:layout_marginTop="25dp"
+                                    android:text="To Do List"
+                                    android:textColor="@color/black"
+                                    android:textSize="25dp"
+                                    android:textStyle="bold"/>
+
+                                <TextView
+                                    android:id="@+id/dateText2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="25dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:text="12월 4일"
+                                    android:textAllCaps="false"
+                                    android:textColor="#55525A"
+                                    android:textSize="15dp"
+                                    textStyle="bold"/>
+
+                            </LinearLayout>
 
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </androidx.core.widget.NestedScrollView>
+                            <androidx.appcompat.widget.AppCompatButton
+                                android:id="@+id/todoplus"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginRight="30dp"
+                                android:layout_marginTop="22dp"
+                                android:background="@drawable/plusbtn"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="20dp"
+                            android:layout_marginLeft="18dp"
+                            android:layout_marginRight="18dp"
+                            android:gravity="center">
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/toDoListRV"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                tools:itemCount="5"
+                                tools:listitem="@layout/todolistview_item"/>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </ScrollView>
+
+
+        </LinearLayout>
+
 
     </FrameLayout>
 
