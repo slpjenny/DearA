@@ -249,9 +249,13 @@
         <entry key="app/src/main/res/layout/activity_pattern_secure_mode.xml" value="0.22777777777777777" />
         <entry key="app/src/main/res/layout/activity_pin_lock.xml" value="0.125" />
         <entry key="app/src/main/res/layout/activity_reoprt_popup.xml" value="0.2713541666666667" />
+
         <entry key="app/src/main/res/layout/activity_report.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_report_account.xml" value="0.115234375" />
         <entry key="app/src/main/res/layout/activity_report_comment.xml" value="0.10925925925925926" />
+
+        <entry key="app/src/main/res/layout/activity_report.xml" value="0.25870646766169153" />
+
         <entry key="app/src/main/res/layout/activity_rm_record.xml" value="0.2328125" />
         <entry key="app/src/main/res/layout/activity_select_lock.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_self_diagnosis.xml" value="0.25" />
@@ -269,7 +273,9 @@
         <entry key="app/src/main/res/layout/fragment_alarm.xml" value="0.190625" />
         <entry key="app/src/main/res/layout/fragment_board_main.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/layout/fragment_board_popup.xml" value="0.2713541666666667" />
+
         <entry key="app/src/main/res/layout/fragment_comment_popup.xml" value="0.10925925925925926" />
+
         <entry key="app/src/main/res/layout/fragment_contact_us.xml" value="0.2833333333333333" />
         <entry key="app/src/main/res/layout/fragment_diary.xml" value="0.22864583333333333" />
         <entry key="app/src/main/res/layout/fragment_diary_write_ver1.xml" value="0.2713541666666667" />

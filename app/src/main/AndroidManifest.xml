@@ -26,12 +26,9 @@
             android:name=".board.report.ReportCommentActivity"
             android:exported="false"
             android:screenOrientation="portrait"/>
+
         <activity
             android:name=".board.report.ReportAccountActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name=".board.report.ReportC_AccountActivity"
             android:exported="false"
             android:screenOrientation="portrait"/>
         <activity
@@ -204,3 +201,4 @@
             android:exported="true" />
     </application>
 </manifest>
+
