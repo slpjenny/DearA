@@ -49,7 +49,9 @@ class ReportCommentFragment(key: String) : DialogFragment() {
 
         //작성자 신고
         binding.writerBtn.setOnClickListener{
-            Toast.makeText(context, "기능 구현 조금만 기다려주세요.", Toast.LENGTH_SHORT).show()
+            val intent = Intent(context, ReportAccountActivity::class.java)
+            intent.putExtra("key", key)
+            startActivity(intent)
         }
 
         return binding.root
