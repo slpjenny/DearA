@@ -17,6 +17,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.jenny.deara.R
 import com.jenny.deara.board.report.ReportAccountActivity
+import com.jenny.deara.board.report.ReportC_AccountActivity
 import com.jenny.deara.board.report.ReportCommentActivity
 import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
@@ -267,8 +268,9 @@ class CommentListAdapter(val context: Context,
 
                 val commentWriterReport = cDialogView.findViewById<View>(R.id.commentWriterReport)
                 commentWriterReport.setOnClickListener {
-                    val intent = Intent(context, ReportAccountActivity::class.java)
+                    val intent = Intent(context, ReportC_AccountActivity::class.java)
                     intent.putExtra("key", commentKeyList[position])
+                    Toast.makeText(context, "listAdapter = "+commentKeyList[position], Toast.LENGTH_SHORT).show()
                     context.startActivity(intent)
                     cDialogView.dismiss()
                 }
