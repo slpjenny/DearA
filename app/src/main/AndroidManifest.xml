@@ -83,10 +83,6 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize"
             android:screenOrientation="portrait"/>
-        <!--        <activity-->
-        <!--            android:name=".board.BoardEditActivity"-->
-        <!--            android:exported="false"-->
-        <!--            android:windowSoftInputMode="adjustResize" />-->
         <activity
             android:name=".board.BoardImageViewActivity"
             android:exported="false"
