@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import com.jenny.deara.R
 import com.jenny.deara.board.report.ReportActivity
+import com.jenny.deara.board.report.ReportC_AccountActivity
 import com.jenny.deara.board.report.ReportCommentActivity
 import com.jenny.deara.databinding.FragmentBoardPopupBinding
 import com.jenny.deara.databinding.FragmentCommentPopupBinding
@@ -41,9 +42,11 @@ class CommentPopupFragment(val key : String) : DialogFragment() {
             startActivity(intent)
         }
 
-        // 댓글 작성자 신고
+        //  댓글 작성자 신고
         binding.commentWriterReport.setOnClickListener {
-
+            val intent = Intent(context, ReportC_AccountActivity::class.java)
+            intent.putExtra("key", key)
+            startActivity(intent)
         }
 
         return binding.root

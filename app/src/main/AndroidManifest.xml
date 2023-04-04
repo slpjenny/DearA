@@ -4,8 +4,8 @@
     package="com.jenny.deara">
     <uses-permission android:name="android.permission.INTERNET" /> <!-- 지문 인식 권한 -->
     <uses-permission android:name="android.permission.USE_BIOMETRIC" />
-    =======
-    //<uses-permission android:name="android.permission.USE_BIOMETRIC" />
+
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
@@ -24,6 +24,14 @@
         tools:targetApi="31">
         <activity
             android:name=".board.report.ReportCommentActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".board.report.ReportC_AccountActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".board.report.ReportAccountActivity"
             android:exported="false"
             android:screenOrientation="portrait"/>
         <activity
@@ -192,3 +200,4 @@
             android:exported="true" />
     </application>
 </manifest>
+

@@ -2,6 +2,7 @@ package com.jenny.deara.board.comment
 
 import android.app.Dialog
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
@@ -9,8 +10,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.jenny.deara.R
+import com.jenny.deara.board.report.ReportAccountActivity
+import com.jenny.deara.board.report.ReportC_AccountActivity
+import com.jenny.deara.board.report.ReportCommentActivity
 import com.jenny.deara.databinding.CommentReplyListItemBinding
 import com.jenny.deara.utils.FBRef
 
@@ -56,6 +61,31 @@ class CommentReplyListAdapter (val context: Context,
                     FBRef.commentRef.child(commentReplyKeyList[position]).removeValue()
                     Toast.makeText(context, "삭제완료", Toast.LENGTH_LONG).show()
                     mDialogView.dismiss()
+                }
+            }
+
+            binding.commentMenu.setOnClickListener {
+                // popup
+                val cDialogView = Dialog(context)
+                cDialogView.setContentView(R.layout.fragment_comment_popup)
+                cDialogView.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+                cDialogView.show()
+
+                val commentReport = cDialogView.findViewById<View>(R.id.commentReport)
+                commentReport.setOnClickListener {
+                    val intent = Intent(context, ReportCommentActivity::class.java)
+                    intent.putExtra("key", commentReplyKeyList[position])
+                    context.startActivity(intent)
+                    cDialogView.dismiss()
+                }
+
+                val commentWriterReport = cDialogView.findViewById<View>(R.id.commentWriterReport)
+                commentWriterReport.setOnClickListener {
+                    val intent = Intent(context, ReportC_AccountActivity::class.java)
+                    intent.putExtra("key", commentReplyKeyList[position])
+                    context.startActivity(intent)
+                    cDialogView.dismiss()
                 }
             }
         }
