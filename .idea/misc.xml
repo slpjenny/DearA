@@ -148,11 +148,16 @@
         <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/drawable/schedule_radius.xml" value="0.112" />
         <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/activity_add_record.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/activity_app_cover.xml" value="0.264" />
+        <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/activity_board_image_view.xml" value="0.2175925925925926" />
         <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/activity_board_inside.xml" value="0.24947916666666667" />
+        <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/activity_board_write.xml" value="0.2175925925925926" />
         <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/activity_change_nick_name.xml" value="0.176" />
         <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/activity_change_pwd.xml" value="0.2" />
         <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/activity_community_rule.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/activity_contact_us.xml" value="0.2" />
+        <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/activity_diary_detail.xml" value="0.264" />
+        <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/activity_diary_edit.xml" value="0.264" />
+        <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/activity_diary_write.xml" value="0.264" />
         <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/activity_find_pwd.xml" value="0.264" />
         <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/activity_finger_print.xml" value="0.1" />
         <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/activity_login.xml" value="0.1962962962962963" />
@@ -160,32 +165,46 @@
         <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/activity_my_page.xml" value="0.2" />
         <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/activity_pin_lock.xml" value="0.1" />
         <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/activity_report.xml" value="0.1" />
+        <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/activity_rm_record.xml" value="0.2484375" />
         <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/activity_select_lock.xml" value="0.24153846153846154" />
         <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/activity_self_diagnosis.xml" value="0.2" />
         <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/activity_set_pin.xml" value="0.1" />
         <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/activity_sign_in.xml" value="0.264" />
         <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/activity_splash.xml" value="0.1" />
+        <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/activity_time_picker.xml" value="0.2484375" />
         <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/alarm_dialog.xml" value="0.2" />
         <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/alarm_list_item.xml" value="0.176" />
+        <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/board_list_item.xml" value="0.264" />
         <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/calendar_item.xml" value="0.264" />
+        <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/comment_popup_del.xml" value="0.2484375" />
+        <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/dialog_report.xml" value="0.2484375" />
+        <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/diary_list_item.xml" value="0.2484375" />
         <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/fragment_alarm.xml" value="0.2" />
         <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/fragment_board_alarm.xml" value="0.1" />
-        <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/fragment_diary.xml" value="0.24947916666666667" />
-        <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/fragment_home.xml" value="0.2" />
+        <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/fragment_board_main.xml" value="0.2" />
+        <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/fragment_comment_popup.xml" value="0.2175925925925926" />
+        <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/fragment_date_picker.xml" value="0.264" />
+        <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/fragment_diary.xml" value="0.2" />
+        <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/fragment_diary_write_ver1.xml" value="0.2" />
+        <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/fragment_home.xml" value="0.4" />
         <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/fragment_my_comment.xml" value="0.1962962962962963" />
         <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/fragment_my_write.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/fragment_popup.xml" value="0.1962962962962963" />
-        <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/fragment_record.xml" value="0.1" />
+        <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/fragment_record.xml" value="0.264" />
         <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/fragment_report_comment.xml" value="0.1" />
         <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/fragment_report_confirm_popup.xml" value="0.11574074074074074" />
+        <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/fragment_report_popup.xml" value="0.2175925925925926" />
+        <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/fragment_screenshot_popup.xml" value="0.2175925925925926" />
+        <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/fregment_swipe_delete.xml" value="0.2175925925925926" />
+        <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/image_list_item.xml" value="0.2175925925925926" />
         <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/item_spinner.xml" value="0.1962962962962963" />
         <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/main_today_record_item.xml" value="0.176" />
-        <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/pill_record_item.xml" value="0.1" />
+        <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/pill_record_item.xml" value="0.2" />
         <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/pilllist_item.xml" value="0.24947916666666667" />
-        <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/recordlist_item.xml" value="0.1" />
+        <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/recordlist_item.xml" value="0.2" />
         <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/recordremove_dialog.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/screenshot_dialog.xml" value="0.20092592592592592" />
-        <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/today_record_item.xml" value="0.20074349442379183" />
+        <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/today_record_item.xml" value="0.4" />
         <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/tododialog_item.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/tododialog_item2.xml" value="0.1" />
         <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/todolistview_item.xml" value="0.2" />

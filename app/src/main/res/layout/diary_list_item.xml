@@ -1,112 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="@drawable/background_radius_list"
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp">
+    android:background="@drawable/background_radius_list">
 
     <LinearLayout
-        android:id="@+id/linearLayout3"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="25dp"
-        android:gravity="center"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="@+id/linearLayout2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/linearLayout2"
-        app:layout_constraintEnd_toStartOf="@+id/line">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/dayArea"
+        <LinearLayout
+            android:id="@+id/linearLayout3"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="02"
-            android:textColor="@color/black"
-            android:textSize="36sp"
-            android:textStyle="bold" />
+            android:layout_height="match_parent"
+            android:layout_marginLeft="25dp"
+            android:gravity="center"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/weekArea"
+            <TextView
+                android:id="@+id/dayArea"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="02"
+                android:textColor="@color/black"
+                android:textSize="36dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/weekArea"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="월요일"
+                android:textColor="@color/black"
+                android:textSize="14dp" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/line"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="월요일"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:layout_height="84dp"
+            android:layout_margin="25dp"
+            android:src="@drawable/line" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center|left"
+            android:orientation="vertical"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp">
+
+            <TextView
+                android:id="@+id/title1Area"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="좋았던 일"
+                android:textSize="14dp"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/content1Area"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:includeFontPadding="false"
+                android:text="영락과 이 맺어, 열락의 끓는다. 굳세게 맺어, 있는 곧 뜨고, 작고 앞이 청춘을 것이다. 일월과 소담스러운 위하여 심장은 내려온 튼튼하며, 무엇을 꽃이 때문이다. 하였으며, 보배를 관현악이며, 노래하며 작고 청춘 얼마나 있다. 스며있는 대중을 열락의 것이다.보라, 피에 피다모래뿐일 구하지 꽃이 이것을 사랑의 그들의 같지 이것이다. 살 위하여, 그러므로 운다. 가슴에 풍부하게 무엇을 갑 것="
+                android:textSize="10dp"
+                android:textColor="#5B5B5B"
+                android:maxLines="4"
+                android:ellipsize="end"
+                android:paddingStart="0dp"
+                android:paddingEnd="20dp"/>
+
+            <TextView
+                android:id="@+id/title2Area"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="안 좋았던 일"
+                android:textSize="14dp"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/content2Area"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:includeFontPadding="false"
+                android:text="영락과 이 맺어, 열락의 끓는다. 굳세게 맺어, 있는 곧 뜨고, 작고 앞이 청춘을 것이다. 일월과 소담스러운 위하여 심장은 내려온 튼튼하며, 무엇을 꽃이 때문이다. 하였으며, 보배를 관현악이며, 노래하며 작고 청춘 얼마나 있다. 스며있는 대중을 열락의 것이다.보라, 피에 피다모래뿐일 구하지 꽃이 이것을 사랑의 그들의 같지 이것이다. 살 위하여, 그러므로 운다. 가슴에 풍부하게 무엇을 갑 것="
+                android:textSize="10dp"
+                android:textColor="#5B5B5B"
+                android:maxLines="4"
+                android:ellipsize="end"
+                android:paddingEnd="20dp"/>
+
+        </LinearLayout>
+
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/line"
-        android:layout_width="wrap_content"
-        android:layout_height="84dp"
-        android:layout_margin="25dp"
-        android:src="@drawable/line"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/linearLayout2"
-        app:layout_constraintStart_toEndOf="@+id/linearLayout3"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="260dp"
-        android:layout_height="match_parent"
-        android:gravity="center|left"
-        android:orientation="vertical"
-        android:paddingTop="20dp"
-        android:paddingBottom="20dp"
-        android:layout_marginRight="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/line"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="20dp">
-
-        <TextView
-            android:id="@+id/title1Area"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="좋았던 일"
-            android:textSize="14sp"
-            android:textColor="@color/black"/>
-
-        <TextView
-            android:id="@+id/content1Area"
-            android:layout_marginTop="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:includeFontPadding="false"
-            android:text="영락과 이 맺어, 열락의 끓는다. 굳세게 맺어, 있는 곧 뜨고, 작고 앞이 청춘을 것이다. 일월과 소담스러운 위하여 심장은 내려온 튼튼하며, 무엇을 꽃이 때문이다. 하였으며, 보배를 관현악이며, 노래하며 작고 청춘 얼마나 있다. 스며있는 대중을 열락의 것이다.보라, 피에 피다모래뿐일 구하지 꽃이 이것을 사랑의 그들의 같지 이것이다. 살 위하여, 그러므로 운다. 가슴에 풍부하게 무엇을 갑 것="
-            android:textSize="10sp"
-            android:textColor="#5B5B5B"
-            android:maxLines="4"
-            android:ellipsize="end"
-            android:paddingStart="0dp"
-            android:paddingEnd="20dp"/>
-
-        <TextView
-            android:id="@+id/title2Area"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="안 좋았던 일"
-            android:textSize="14sp"
-            android:textColor="@color/black"/>
-
-        <TextView
-            android:id="@+id/content2Area"
-            android:layout_marginTop="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:includeFontPadding="false"
-            android:text="영락과 이 맺어, 열락의 끓는다. 굳세게 맺어, 있는 곧 뜨고, 작고 앞이 청춘을 것이다. 일월과 소담스러운 위하여 심장은 내려온 튼튼하며, 무엇을 꽃이 때문이다. 하였으며, 보배를 관현악이며, 노래하며 작고 청춘 얼마나 있다. 스며있는 대중을 열락의 것이다.보라, 피에 피다모래뿐일 구하지 꽃이 이것을 사랑의 그들의 같지 이것이다. 살 위하여, 그러므로 운다. 가슴에 풍부하게 무엇을 갑 것="
-            android:textSize="10sp"
-            android:textColor="#5B5B5B"
-            android:maxLines="4"
-            android:ellipsize="end"
-            android:paddingEnd="20dp"/>
-
-    </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
