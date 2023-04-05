@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -30,15 +31,25 @@ class EditRecordActivity : AppCompatActivity() {
     val pillList = mutableListOf<pillData>()
     val pillkeyList = mutableListOf<String>()
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
         // 이미 저장된 진료기록 파이어베이스에서 불러오기
+        // 1. RecordList Adapter에서 보내온 intent
+        // 2. MainTodayRC Adapter에서 보내온 intent
         val recordKey = intent.getStringExtra("key").toString()
-        getRecordData(recordKey)
+        val todayKey = intent.getStringExtra("todayKey").toString()
+
+        var key : String
+
+        if (recordKey.equals("null")){
+            key = todayKey
+        }else{
+            key = recordKey
+        }
+
+        getRecordData(key)
 
         initRecycler()
         getPillData()
@@ -51,7 +62,6 @@ class EditRecordActivity : AppCompatActivity() {
             hideKeyboard()
         }
 
-        //
 
         // 날짜 선택
         binding.reDateBtn.setOnClickListener {
@@ -69,12 +79,12 @@ class EditRecordActivity : AppCompatActivity() {
 
         // 변경된 내용으로 수정
         binding.saveBtn.setOnClickListener {
-            editRecord(recordKey)
+            editRecord(key)
         }
 
         // 아이템 삭제
         binding.removeBtn.setOnClickListener {
-            removeRecord(recordKey)
+            removeRecord(key)
         }
 
 
@@ -87,7 +97,7 @@ class EditRecordActivity : AppCompatActivity() {
             }else{
                 // 파이어베이스에 복용약 내용 따로 저장
                 saveFBPillData()
-                pillListAdapter.notifyDataSetChanged()
+//                pillListAdapter.notifyDataSetChanged()
             }
         }
 
@@ -195,6 +205,12 @@ class EditRecordActivity : AppCompatActivity() {
     }
 
     private fun removeRecord(key : String){
+        Log.d("recordkey",key)
+        //: -NRMX_1s0crE9ZpBh__c
+
+        // pill 데이터 구조에 itsRecordKey 가 위와 같은것을 찾아서 삭제해야함
+
+        //진료 기록 삭제 가능
         FBRef.recordRef.child(key).removeValue()
         Toast.makeText(baseContext,"삭제가 완료되었습니다.",Toast.LENGTH_LONG).show()
 
@@ -216,7 +232,7 @@ class EditRecordActivity : AppCompatActivity() {
     // 복용 약 RecyclerView 띄우기
     private fun initRecycler(){
 
-        pillListAdapter = PillListAdapter(baseContext,pillList)
+        pillListAdapter = PillListAdapter(baseContext,pillkeyList)
 
         val rv : RecyclerView = binding.pillLayout
         rv.adapter = pillListAdapter
@@ -231,17 +247,36 @@ class EditRecordActivity : AppCompatActivity() {
         var dosageTxt : String = binding.dosage.text.toString()
 
         var key = FBRef.pillRef.push().key.toString()
+
+//        val recordKey = intent.getStringExtra("key").toString()
+
         val recordKey = intent.getStringExtra("key").toString()
+        val todayKey = intent.getStringExtra("todayKey").toString()
+
+
+        var intentKey : String
+
+        if (recordKey.equals("null")){
+            intentKey = todayKey
+        }else{
+            intentKey = recordKey
+        }
+
 
         val uid = FBAuth.getUid()
 
         // 복용 약 객체 형태로 저장
         FBRef.pillRef
             .child(key)
-            .setValue(pillData(pillNameTxt,dosageTxt,uid,recordKey))
+            .setValue(pillData(pillNameTxt,dosageTxt,uid,intentKey))
 
         // recyclerview 데이터 리스트에 저장
+        // 여기서도 오류
+        // 근데 이건 오류 안날때도 있음..
         pillList.add(pillData(pillNameTxt,dosageTxt))
+
+//        pillListAdapter.addItem(pillData(pillNameTxt,dosageTxt))
+//        pillListAdapter.notifyDataSetChanged()
 
         // 저장 후에 editTextView 빈칸으로 비우기
         binding.pillName.setText("")
@@ -255,34 +290,39 @@ class EditRecordActivity : AppCompatActivity() {
             @SuppressLint("NotifyDataSetChanged")
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
+//                val recordKey = intent.getStringExtra("key").toString()
+
                 val recordKey = intent.getStringExtra("key").toString()
+                val todayKey = intent.getStringExtra("todayKey").toString()
+
+                var intentKey : String
+
+                if (recordKey.equals("null")){
+                    intentKey = todayKey
+                }else{
+                    intentKey = recordKey
+                }
 
                 pillList.clear()
 
-//                var key2 = FBRef.pillRef.key.toString()
-
                 for (dataModel in dataSnapshot.children){
                     // 리싸이클러뷰 데이터에 항목 세개만 넣어서 추가하기
-                    //? 이게 왜 갑자기 형식에 안맞아서 못불러온단거임 ?
                     val item = dataModel.getValue(pillData::class.java)
-
-                    Log.d("hiim",item.toString())
 
                     if (item != null) {
                         // uid 에 맞는 진료기록들을 불러오기
-                        // uid 안에서 해당 진료일정 항목 key와도 일치해야함 -> 이게 안되고있다!
                         if (FBAuth.getUid() == item.uid) {
-                            if(recordKey == item.itsRecordkey){
+                            if(intentKey == item.itsRecordkey){
 
                                 pillList.add(item)
+                                pillkeyList.add(dataModel.key.toString())
                             }
-
-//                            recordkeyList.add(dataModel.key.toString())
 
                         }
 
                     }
                 }
+                pillkeyList.reverse()
                 pillList.reverse()
                 pillListAdapter.notifyDataSetChanged()
             }
