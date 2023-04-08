@@ -56,7 +56,6 @@ class TodayRecordAdapter(val context: Context, val todayRecordList:MutableList<S
 
                 itemView.context.startActivity(intent)
             }
-
         }
 
 

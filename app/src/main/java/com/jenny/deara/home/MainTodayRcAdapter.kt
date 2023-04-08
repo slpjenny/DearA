@@ -2,6 +2,7 @@ package com.jenny.deara.home
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -48,7 +49,9 @@ class MainTodayRcAdapter(val context: Context, val mainRecordList : MutableList<
             // 아이템 클릭시, 진료기록 fragment로 이동
             itemView.setOnClickListener {
 
-                val intent = Intent(context, AddRecordActivity::class.java)
+                val intent = Intent(context, EditRecordActivity::class.java)
+                intent.putExtra("todayKey", mainRecordList[position])
+
                 itemView.context.startActivity(intent)
             }
         }

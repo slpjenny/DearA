@@ -1,18 +1,17 @@
 package com.jenny.deara.record
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.jenny.deara.R
 import com.jenny.deara.utils.FBRef
 
-class PillListAdapter(val context: Context, var pillList: MutableList<pillData>):RecyclerView.Adapter<PillListAdapter.ViewHolder>(){
+class PillListAdapter(val context: Context, val pillList: MutableList<String>):RecyclerView.Adapter<PillListAdapter.ViewHolder>(){
 
     var pills = mutableListOf<pillData>()
 
@@ -23,15 +22,31 @@ class PillListAdapter(val context: Context, var pillList: MutableList<pillData>)
     }
 
     override fun getItemCount(): Int {
-        return pillList.size
+
+        // 원래 pills!!!!
+        // 이거 pillList 로 바꾸면 addRecordActivity 에서 notify그거 하면 뷰만 안그러지고 오류는 안남
+        // pills 면 notify 했을 때 오류나고 다운됨
+        return pills.size
+    }
+
+    fun updateReceiptsList(newList: MutableList<pillData>) {
+        pills.clear()
+        pills.addAll(newList)
+        this.notifyDataSetChanged()
+    }
+
+    // 추가한 부분
+    public fun addItem(data: pillData){
+        pills.add(data)
+        notifyItemInserted(pills.size-1)
     }
 
     // 재활용 하는 곳
     // 각각의 자리에 알맞은 값을 넣어준다.
     override fun onBindViewHolder(holder: PillListAdapter.ViewHolder, position: Int) {
-        holder.bind(pillList[position])
-    }
+        holder.bind(pills[position], pillList[position])
 
+    }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
@@ -40,7 +55,7 @@ class PillListAdapter(val context: Context, var pillList: MutableList<pillData>)
 
 
         // RecordData 객체에서 이것만 리싸이클러뷰 데이터로 만들거임
-        fun bind(item: pillData) {
+        fun bind(item: pillData, s: String) {
             pillName.text = item.pillName
             dosage.text = item.dosage
 
@@ -49,27 +64,22 @@ class PillListAdapter(val context: Context, var pillList: MutableList<pillData>)
 
             removeImv.setOnClickListener {
 
-                // 리싸이클러뷰에서 아이템 삭제로 할 수 있긴한데,
-                // 파이어베이스에서 내용 자체를 삭제하고 notifyDataChanged() 하면
-                // 한번에 저장된거랑, 아이템 자체 삭제 둘 다 될 수 있음
-                // 근데 FB에 저장할 모델을 못정했음
+                val pillKey = pillList[position]
 
-//                private fun removeRecord(key : String){
-//                    FBRef.recordRef.child(key).removeValue()
-//                    Toast.makeText(baseContext,"삭제가 완료되었습니다.", Toast.LENGTH_LONG).show()
-//
-//                    finish()
-//                }
+                Log.d ("key", pillKey)
+                // pillData(pillName=11, dosage=11, uid=OFPEYLKeieN02lJHgxPzX3XRWvc2, itsRecordkey=-NRMbrHycMfg66bNokn5)
+
 
                 // RecyclerView 레이아웃에서만 먼저 삭제
-                pillList.removeAt(adapterPosition)
-                notifyDataSetChanged()
+//                pillList.removeAt(adapterPosition)
+//                notifyDataSetChanged()
 
-                // 파이어베이스에서도 삭제하기
-//                FBRef.pillRef.child(key).removeValue()
+                // 파이어베이스에서도 약의 고유 key로 삭제하기
+                // 고유 key를 어떻게 불러오지..
 
 
-
+                FBRef.pillRef.child(pillKey).removeValue()
+                notifyItemRemoved(adapterPosition)
 
 
             }
