@@ -276,6 +276,8 @@ class HomeFragment : Fragment() {
 
         val position = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
+                TodoAdapter.notifyDataSetChanged()
+
                 items.clear()
 
                 var count = 0
@@ -284,7 +286,7 @@ class HomeFragment : Fragment() {
                     day2 = "0"+day2
                 }
 
-                val test = dataSnapshot.child(myuid).child(year).child(month).child(day2)
+                val test = dataSnapshot.child(myuid).child(Year).child(Month).child(date)
 
                 for (dataModel in test.children){
                     Log.d("todoList", dataModel.toString())
@@ -305,7 +307,7 @@ class HomeFragment : Fragment() {
                             }
 
                             percent = count * 100 / items.size
-                            progressBar.progress = item.percent
+                            binding.progressBar.progress = item.percent
 
                             setMonthView(percent)
 
@@ -340,7 +342,7 @@ class HomeFragment : Fragment() {
         val dayList = dayInMonthArray()
 
         // 어댑터 초기화
-        val adapter = CalendarAdapter(requireContext(), dayList, items, todokeyList, percent)
+        val adapter = context?.let { CalendarAdapter(it, dayList, items, todokeyList, percent) }
 
         // 레이아웃 설정 (열 7개)
         var manager : RecyclerView.LayoutManager = GridLayoutManager(context,7)
@@ -352,7 +354,7 @@ class HomeFragment : Fragment() {
         binding.calendarRv.adapter = adapter
 
         // 날짜 선택할 시
-        adapter.itemClick = object : CalendarAdapter.ItemClick {
+        adapter?.itemClick = object : CalendarAdapter.ItemClick {
             override fun onClick(view: View, position: Int) {
 
                 // 날짜 생성해서 리스트에 담기
