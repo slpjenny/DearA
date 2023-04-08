@@ -74,7 +74,6 @@ class AddRecordActivity : AppCompatActivity() {
         // 1. RecordList Adapter에서 보내온 intent
         // 2. MainTodayRC Adapter에서 보내온 intent
 
-
         requestAudioPermission()
         initViews()
         bindViews()
@@ -233,25 +232,29 @@ class AddRecordActivity : AppCompatActivity() {
 //        hhhList.add(pillData(pillNameTxt,dosageTxt))
 //        pillkeyList.add()
         pillList.add(pillData(pillNameTxt,dosageTxt))
+        pillkeyList.add(key)
+
 //        PillListAdapter.notifyDataSetChanged()
 
-
-        Log.d("index", "약 리스트 $hhhList")
 
         // 정확히는 여기서 다시 뷰를 그리면서 사이즈 오류가 남
 //        PillListAdapter.notifyDataSetChanged()
-//        PillListAdapter.updateReceiptsList(pillList)
 
         // 여기서는 1
         Log.d("index", "약 리스트 "+PillListAdapter.itemCount.toString() )
 //        PillListAdapter.updateReceiptsList(PillListAdapter.pills)
+
+        // 이거 하면  원소 개수 0으로 변경되지만 오류는 안남
 //        PillListAdapter.updateReceiptsList(pillList)
 
-        // 여기서 0이 되는 이유를 찾어라..
+        // 이거 하면 index 오류 발생 -> 원소 개수가 0으로 변경됨
+        PillListAdapter.notifyDataSetChanged()
+
+        // 여기서 0이 되는 이유를 찾기...
         Log.d("index", "약 리스트 업데이트후 "+PillListAdapter.itemCount.toString() )
 
 
-        Toast.makeText(baseContext,"내용이 저장되었습니다.",Toast.LENGTH_SHORT).show()
+//        Toast.makeText(baseContext,"내용이 저장되었습니다.",Toast.LENGTH_SHORT).show()
 
         // 저장 후에 editTextView 빈칸으로 비우기
         binding.pillName.setText("")

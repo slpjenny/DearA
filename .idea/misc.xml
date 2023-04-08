@@ -176,7 +176,7 @@
         <entry key="app/src/main/res/drawable/selfdiagnosis_btn_bg.xml" value="0.1265" />
         <entry key="app/src/main/res/drawable/switch_track_off.xml" value="0.1565" />
         <entry key="app/src/main/res/drawable/switch_track_on.xml" value="0.1565" />
-        <entry key="app/src/main/res/layout/activity_add_record.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_add_record.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_board_edit.xml" value="0.2713541666666667" />
         <entry key="app/src/main/res/layout/activity_board_inside.xml" value="0.2713541666666667" />
         <entry key="app/src/main/res/layout/activity_board_write.xml" value="0.2713541666666667" />

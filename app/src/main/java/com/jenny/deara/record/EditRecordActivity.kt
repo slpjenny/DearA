@@ -276,6 +276,8 @@ class EditRecordActivity : AppCompatActivity() {
         pillList.add(pillData(pillNameTxt,dosageTxt))
 
 //        pillListAdapter.addItem(pillData(pillNameTxt,dosageTxt))
+
+        // 여기서는 왜 또 notify 안해도 그냥 뷰가 그려질까?
 //        pillListAdapter.notifyDataSetChanged()
 
         // 저장 후에 editTextView 빈칸으로 비우기

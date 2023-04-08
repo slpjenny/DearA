@@ -32,7 +32,7 @@ class PillListAdapter(val context: Context, val pillList: MutableList<String>):R
     fun updateReceiptsList(newList: MutableList<pillData>) {
         pills.clear()
         pills.addAll(newList)
-//        this.notifyDataSetChanged()
+        this.notifyDataSetChanged()
     }
 
     // 추가한 부분
