@@ -22,10 +22,6 @@ class PillListAdapter(val context: Context, val pillList: MutableList<String>):R
     }
 
     override fun getItemCount(): Int {
-
-        // 원래 pills!!!!
-        // 이거 pillList 로 바꾸면 addRecordActivity 에서 notify그거 하면 뷰만 안그러지고 오류는 안남
-        // pills 면 notify 했을 때 오류나고 다운됨
         return pills.size
     }
 

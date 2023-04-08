@@ -225,36 +225,15 @@ class AddRecordActivity : AppCompatActivity() {
             .child(key)
             .setValue(pillData(pillNameTxt,dosageTxt,uid,itsRecordkey))
 
-        // recyclerview 데이터 리스트에 저장
-        // 원래 pillList.add 자리임
-
-//        PillListAdapter.addItem(pillData(pillNameTxt,dosageTxt))
-//        hhhList.add(pillData(pillNameTxt,dosageTxt))
-//        pillkeyList.add()
         pillList.add(pillData(pillNameTxt,dosageTxt))
         pillkeyList.add(key)
 
-//        PillListAdapter.notifyDataSetChanged()
-
-
-        // 정확히는 여기서 다시 뷰를 그리면서 사이즈 오류가 남
-//        PillListAdapter.notifyDataSetChanged()
-
-        // 여기서는 1
         Log.d("index", "약 리스트 "+PillListAdapter.itemCount.toString() )
-//        PillListAdapter.updateReceiptsList(PillListAdapter.pills)
 
-        // 이거 하면  원소 개수 0으로 변경되지만 오류는 안남
-//        PillListAdapter.updateReceiptsList(pillList)
-
-        // 이거 하면 index 오류 발생 -> 원소 개수가 0으로 변경됨
         PillListAdapter.notifyDataSetChanged()
 
         // 여기서 0이 되는 이유를 찾기...
         Log.d("index", "약 리스트 업데이트후 "+PillListAdapter.itemCount.toString() )
-
-
-//        Toast.makeText(baseContext,"내용이 저장되었습니다.",Toast.LENGTH_SHORT).show()
 
         // 저장 후에 editTextView 빈칸으로 비우기
         binding.pillName.setText("")
