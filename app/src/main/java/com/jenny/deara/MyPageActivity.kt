@@ -102,10 +102,10 @@ class MyPageActivity : AppCompatActivity() {
         }
 
         //잠금 설정
-        binding.textView16.setOnClickListener {
-            val intent4  = Intent(this, SelectLockActivity::class.java)
-            startActivity(intent4)
-        }
+       // binding.textView16.setOnClickListener {
+         //   val intent4  = Intent(this, SelectLockActivity::class.java)
+           // startActivity(intent4)
+        //}
 
         // 로그아웃
         binding.logoutBtn.setOnClickListener {
