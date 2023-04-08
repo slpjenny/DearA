@@ -54,7 +54,7 @@
                 android:paddingEnd="80dp"
                 android:text="title"
                 android:textColor="@color/black"
-                android:textSize="19sp"
+                android:textSize="19dp"
                 android:textStyle="bold"
                 android:maxLines="1"
                 android:ellipsize="end"
@@ -90,14 +90,14 @@
                 android:text="boardTime"
                 android:layout_marginRight="10dp"
                 android:textColor="#747474"
-                android:textSize="10sp" />
+                android:textSize="10dp" />
             <TextView
                 android:id="@+id/boardWriter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="boardWriter"
                 android:textColor="#747474"
-                android:textSize="10sp" />
+                android:textSize="10dp" />
 
         </LinearLayout>
 

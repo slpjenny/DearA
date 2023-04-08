@@ -1,122 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".mypages.ChangePwdActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="64dp"
-        android:background="#EFEEEE"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:background="#EFEEEE">
 
         <ImageView
             android:id="@+id/backBtn"
             android:layout_width="34dp"
             android:layout_height="34dp"
-            android:layout_marginLeft="7dp"
-            android:src="@drawable/back"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/back" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="7dp"
+            android:layout_marginTop="15dp"
             android:text="비밀번호 변경"
             android:textColor="#000000"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/backBtn"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textSize="24dp"
+            android:textStyle="bold" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:id="@+id/constraintLayout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+        android:orientation="vertical"
+        android:layout_marginTop="180dp"
+        android:gravity="center">
 
         <TextView
             android:id="@+id/pwdTxt"
-            android:layout_width="290dp"
-            android:layout_height="30dp"
-            android:background="@null"
-            android:hint="가입된 이메일로 비밀번호 재설정 메일을 보내드립니다."
-            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="가입된 이메일로 비밀번호 재설정 메일을 보내드립니다."
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textColorHint="#949494"
-            android:textSize="13sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"></TextView>
+            android:textSize="15dp"/>
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/one_line_maingray"/>
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="360dp"
-        android:layout_height="3dp"
-        android:background="@drawable/one_line_maingray"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3"></ImageView>
+    <!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--        android:id="@+id/constraintLayout4"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:orientation="horizontal"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/imageView6">-->
 
-<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--        android:id="@+id/constraintLayout4"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="horizontal"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/imageView6">-->
-
-<!--        <EditText-->
-<!--            android:id="@+id/newPwdTxt"-->
-<!--            android:layout_width="290dp"-->
-<!--            android:layout_height="50dp"-->
-<!--            android:layout_marginLeft="20dp"-->
-<!--            android:background="@null"-->
-<!--            android:hint="변경할 비밀번호를 입력하세요 (6자 이상)"-->
-<!--            android:inputType="textPassword"-->
-<!--            android:textColor="@color/black"-->
-<!--            android:textColorHint="#949494"-->
-<!--            android:textSize="13sp"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent"></EditText>-->
+    <!--        <EditText-->
+    <!--            android:id="@+id/newPwdTxt"-->
+    <!--            android:layout_width="290dp"-->
+    <!--            android:layout_height="50dp"-->
+    <!--            android:layout_marginLeft="20dp"-->
+    <!--            android:background="@null"-->
+    <!--            android:hint="변경할 비밀번호를 입력하세요 (6자 이상)"-->
+    <!--            android:inputType="textPassword"-->
+    <!--            android:textColor="@color/black"-->
+    <!--            android:textColorHint="#949494"-->
+    <!--            android:textSize="13sp"-->
+    <!--            app:layout_constraintStart_toStartOf="parent"-->
+    <!--            app:layout_constraintTop_toTopOf="parent"></EditText>-->
 
 
-<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+    <!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
 
 
     <android.widget.Button
         android:id="@+id/saveBtn"
-        android:layout_width="190dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="100dp"
-        android:background="@drawable/purple_btn_bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:layout_marginRight="70dp"
+        android:layout_marginLeft="70dp"
+        android:background="@drawable/login_signin_bg"
         android:backgroundTint="@color/purple2"
         android:text="메일 보내기"
         android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6"></android.widget.Button>
+        android:textSize="20dp"/>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

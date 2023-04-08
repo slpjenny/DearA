@@ -1,121 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".LoginActivity"
     android:background="@color/purple1">
 
-
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="60dp"
-        android:src="@drawable/logo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></ImageView>
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/app_name_korean"
-        android:textColor="@color/white"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo"></TextView>
+        android:orientation="vertical"
+        android:gravity="center">
 
-    <FrameLayout
-        android:layout_width="409dp"
-        android:layout_height="480dp"
-        android:background="@drawable/login_layout_bg"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="40dp"
+            android:src="@drawable/logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+        </ImageView>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name_korean"
+            android:textColor="@color/white"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:layout_marginBottom="20dp">
+
+        </TextView>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:background="@drawable/login_layout_bg">
 
-
-            <EditText
-                android:id="@+id/writeEmail"
-                android:hint="E-mail"
-                android:textColorHint="@color/purple1"
-                android:layout_width="300dp"
-                android:layout_height="55dp"
-                android:layout_marginTop="100dp"
-                android:background="@drawable/login_write_bg_gray"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-
-            <EditText
-                android:id="@+id/writePwd"
-                android:hint="Password"
-                android:textColorHint="@color/purple1"
-                android:layout_width="300dp"
-                android:layout_height="55dp"
-                android:layout_marginTop="20dp"
-                android:inputType="textPassword"
-                android:background="@drawable/login_write_bg_gray"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/writeEmail"/>
-
-
-            <android.widget.Button
-                android:id="@+id/loginBtn"
-                android:layout_width="300dp"
-                android:layout_height="60dp"
-                android:layout_marginTop="60dp"
-                android:background="@drawable/login_signin_bg"
-                android:backgroundTint="@color/purple2"
-                android:text="로그인"
-                android:textSize="20sp"
-                android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/writePwd" />
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:orientation="horizontal">
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center">
 
-                <TextView
-                    android:id="@+id/findPwdTxt"
-                    android:layout_width="wrap_content"
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="80dp"
-                    android:text="비밀번호 찾기"
-                    android:textSize="20sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:orientation="vertical"
+                    android:gravity="center">
 
-                <TextView
-                    android:id="@+id/signInTxt"
-                    android:layout_width="wrap_content"
+                    <EditText
+                        android:id="@+id/writeEmail"
+                        android:hint="E-mail"
+                        android:textColorHint="@color/purple1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="20dp"
+                        android:layout_marginLeft="45dp"
+                        android:layout_marginRight="45dp"
+                        android:padding="15dp"
+                        android:background="@drawable/login_write_bg_gray"/>
+
+
+                    <EditText
+                        android:id="@+id/writePwd"
+                        android:hint="Password"
+                        android:textColorHint="@color/purple1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginLeft="45dp"
+                        android:layout_marginRight="45dp"
+                        android:padding="15dp"
+                        android:textSize="20dp"
+                        android:inputType="textPassword"
+                        android:background="@drawable/login_write_bg_gray"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/writeEmail"/>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="100dp"
-                    android:clickable="true"
-                    android:text="회원가입"
-                    android:textSize="20sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:gravity="center">
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    <android.widget.Button
+                        android:id="@+id/loginBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="60dp"
+                        android:layout_marginBottom="40dp"
+                        android:layout_marginRight="45dp"
+                        android:layout_marginLeft="45dp"
+                        android:padding="15dp"
+                        android:background="@drawable/login_signin_bg"
+                        android:backgroundTint="@color/purple2"
+                        android:text="로그인"
+                        android:textSize="20dp"
+                        android:textColor="@color/white"/>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
 
-    </FrameLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/findPwdTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:text="비밀번호 찾기"
+                        android:textSize="18dp"
+                        android:textColor="#5B5B5B"
+                        android:gravity="left"
+                        android:background="@drawable/bottom_edge"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="|"
+                        android:textSize="20dp"
+                        android:gravity="center"/>
+                    <TextView
+                        android:id="@+id/signInTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:clickable="true"
+                        android:text="회원가입"
+                        android:textSize="18dp"
+                        android:background="@drawable/bottom_edge"
+                        android:textColor="#5B5B5B"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
