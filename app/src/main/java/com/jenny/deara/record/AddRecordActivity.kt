@@ -1,24 +1,27 @@
 package com.jenny.deara.record
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Context
 import android.content.pm.PackageManager
 import android.media.MediaPlayer
 import android.media.MediaRecorder
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
 import com.jenny.deara.R
 import com.jenny.deara.databinding.ActivityAddRecordBinding
 import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
-import org.w3c.dom.Text
 import java.util.*
-import java.util.jar.Manifest
 
 
 class AddRecordActivity : AppCompatActivity() {
@@ -32,6 +35,8 @@ class AddRecordActivity : AppCompatActivity() {
     lateinit var  PillListAdapter : PillListAdapter
     val pillList = mutableListOf<pillData>()
     val pillkeyList = mutableListOf<String>()
+
+    val hhhList = mutableListOf<pillData>()
 
     private val recordButton: RecordButton by lazy { findViewById(R.id.record_play)}
 
@@ -65,12 +70,15 @@ class AddRecordActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        // 이미 저장된 진료기록 파이어베이스에서 불러오기
+        // 1. RecordList Adapter에서 보내온 intent
+        // 2. MainTodayRC Adapter에서 보내온 intent
+
         requestAudioPermission()
         initViews()
         bindViews()
         initVariables()
         initRecycler()
-
 
         binding.root.setOnClickListener {
             hideKeyboard()
@@ -102,12 +110,13 @@ class AddRecordActivity : AppCompatActivity() {
 
             // 내용 존재할때만 추가 가능
             if(binding.pillName.text.toString().trim().isEmpty() || binding.dosage.text.toString().trim().isEmpty()){
-
+                Toast.makeText(baseContext,"내용을 입력해주세요",Toast.LENGTH_SHORT)
             }else{
                 // 파이어베이스에 복용약 내용 따로 저장
                 saveFBPillData()
-                PillListAdapter.notifyDataSetChanged()
             }
+
+            Log.d("약 리스트", pillList.size.toString())
         }
 
 
@@ -179,8 +188,6 @@ class AddRecordActivity : AppCompatActivity() {
         val hospitalName = binding.hospitalName.text.toString()
         val date = binding.date.text.toString()
         val time = binding.time.text.toString()
-//        val pillName = binding.pillName.text.toString()
-//        val dosage = binding.dosage.text.toString()
         val memo = binding.memo.text.toString()
         val symptom = binding.symptom.text.toString()
         val uid = FBAuth.getUid()
@@ -208,6 +215,9 @@ class AddRecordActivity : AppCompatActivity() {
         var key = FBRef.pillRef.push().key.toString()
         val uid = FBAuth.getUid()
 
+        // 추가한 부분
+//        pillList.clear()
+
         // 복용 약 객체 형태로 저장
         FBRef.pillRef
                 // 진료 일정 각각 별 복용 약임
@@ -215,8 +225,15 @@ class AddRecordActivity : AppCompatActivity() {
             .child(key)
             .setValue(pillData(pillNameTxt,dosageTxt,uid,itsRecordkey))
 
-        // recyclerview 데이터 리스트에 저장
         pillList.add(pillData(pillNameTxt,dosageTxt))
+        pillkeyList.add(key)
+
+        Log.d("index", "약 리스트 "+PillListAdapter.itemCount.toString() )
+
+        PillListAdapter.notifyDataSetChanged()
+
+        // 여기서 0이 되는 이유를 찾기...
+        Log.d("index", "약 리스트 업데이트후 "+PillListAdapter.itemCount.toString() )
 
         // 저장 후에 editTextView 빈칸으로 비우기
         binding.pillName.setText("")
@@ -226,12 +243,12 @@ class AddRecordActivity : AppCompatActivity() {
 
     // 복용 약 RecyclerView 띄우기
     private fun initRecycler(){
-        PillListAdapter = PillListAdapter(this,pillList)
-
+        PillListAdapter = PillListAdapter(this,pillkeyList)
         val rv : RecyclerView = binding.pillLayout
         rv.adapter= PillListAdapter
 
-//        PillListAdapter.pills = pillList
+        // 여기서 pillList 에 넣은게 아무것도 없어서 그런가?
+        PillListAdapter.pills = pillList
         PillListAdapter.notifyDataSetChanged()
     }
 
@@ -367,6 +384,8 @@ class AddRecordActivity : AppCompatActivity() {
             inputManager.hideSoftInputFromWindow(this.currentFocus?.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
         }
     }
+
+
 
 
 }

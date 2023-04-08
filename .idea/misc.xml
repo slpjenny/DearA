@@ -250,7 +250,7 @@
         <entry key="app/src/main/res/drawable/selfdiagnosis_btn_bg.xml" value="0.1265" />
         <entry key="app/src/main/res/drawable/switch_track_off.xml" value="0.1565" />
         <entry key="app/src/main/res/drawable/switch_track_on.xml" value="0.1565" />
-        <entry key="app/src/main/res/layout/activity_add_record.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_add_record.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_board_edit.xml" value="0.2713541666666667" />
         <entry key="app/src/main/res/layout/activity_board_inside.xml" value="0.2713541666666667" />
         <entry key="app/src/main/res/layout/activity_board_write.xml" value="0.2713541666666667" />
@@ -269,7 +269,13 @@
         <entry key="app/src/main/res/layout/activity_pattern_secure_mode.xml" value="0.22777777777777777" />
         <entry key="app/src/main/res/layout/activity_pin_lock.xml" value="0.125" />
         <entry key="app/src/main/res/layout/activity_reoprt_popup.xml" value="0.2713541666666667" />
+
+        <entry key="app/src/main/res/layout/activity_report.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_report_account.xml" value="0.115234375" />
+        <entry key="app/src/main/res/layout/activity_report_comment.xml" value="0.10925925925925926" />
+
         <entry key="app/src/main/res/layout/activity_report.xml" value="0.25870646766169153" />
+
         <entry key="app/src/main/res/layout/activity_rm_record.xml" value="0.2328125" />
         <entry key="app/src/main/res/layout/activity_select_lock.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_self_diagnosis.xml" value="0.25" />
@@ -280,6 +286,8 @@
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.165" />
         <entry key="app/src/main/res/layout/alarm_dialog.xml" value="0.375" />
         <entry key="app/src/main/res/layout/alarm_list_item.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/comment_my_list_item.xml" value="0.5571645100911459" />
+        <entry key="app/src/main/res/layout/comment_reply_list_item.xml" value="0.48593037923177085" />
         <entry key="app/src/main/res/layout/diary_detail_ver1.xml" value="0.29739583333333336" />
         <entry key="app/src/main/res/layout/diary_detail_ver2.xml" value="0.29739583333333336" />
         <entry key="app/src/main/res/layout/diary_edit_ver2.xml" value="0.29739583333333336" />
@@ -287,6 +295,9 @@
         <entry key="app/src/main/res/layout/fragment_alarm.xml" value="0.190625" />
         <entry key="app/src/main/res/layout/fragment_board_main.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/layout/fragment_board_popup.xml" value="0.2713541666666667" />
+
+        <entry key="app/src/main/res/layout/fragment_comment_popup.xml" value="0.10925925925925926" />
+
         <entry key="app/src/main/res/layout/fragment_contact_us.xml" value="0.2833333333333333" />
         <entry key="app/src/main/res/layout/fragment_diary.xml" value="0.22864583333333333" />
         <entry key="app/src/main/res/layout/fragment_diary_write_ver1.xml" value="0.2713541666666667" />

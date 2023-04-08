@@ -2,6 +2,7 @@ package com.jenny.deara.record
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -53,7 +54,17 @@ class RecordListAdapter(val context: Context, val recordList : MutableList<Strin
                 // 해당 Key로 몇번째 아이템인지 구별
                 intent.putExtra("key", recordList[position])
 
+//                Log.d("itsthekey",recordList[position])
+                // -NRMoW5-QaoZI0ph6gRe   ..? 왜..?
+
                 itemView.context.startActivity(intent)
+            }
+
+            itemView.setOnClickListener {
+                val detailIntent = Intent(context, EditRecordActivity::class.java)
+                detailIntent.putExtra("key", recordList[position])
+
+                itemView.context.startActivity(detailIntent)
             }
 
         }
