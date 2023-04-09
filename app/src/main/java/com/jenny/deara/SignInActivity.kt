@@ -63,36 +63,10 @@ class SignInActivity : AppCompatActivity() {
         }
 
         // 이메일 유효성 체크
-        binding.emailCheck.setOnClickListener {
-
-            hideKeyboard()
-//            //  ActionCodeSettings 객체를 구성
-//            val actionCodeSettings = actionCodeSettings {
-//                // URL you want to redirect back to. The domain (www.example.com) for this
-//                // URL must be whitelisted in the Firebase Console.
-//                url = "https://deara.page.link"
-//                // This must be true
-//                handleCodeInApp = true
-//                setIOSBundleId("com.jenny.ios")
-//                setAndroidPackageName(
-//                    "com.jenny.deara",
-//                    true, /* installIfNotAvailable */
-//                    "12" /* minimumVersion */)
-//            }
+//        binding.emailCheck.setOnClickListener {
 //
-//            val email = auth.currentUser?.email.toString()
-//
-//            // 사용자의 이메일로 인증 링크를 전송하고, 사용자가 동일한 기기에서 이메일 로그인을 완료할 경우를 대비하여 사용자의 이메일을 저장합니다.
-//            Firebase.auth.sendSignInLinkToEmail(email, actionCodeSettings)
-//                .addOnCompleteListener { task ->
-//                    if (task.isSuccessful) {
-//                        Log.d("email", "Email sent.")
-//                    }else{
-//                        Log.d("email","이메일 안됨")
-//                    }
-//                }
-
-        }
+//            hideKeyboard()
+//        }
 
 
         // 닉네임 중복 확인
@@ -100,30 +74,36 @@ class SignInActivity : AppCompatActivity() {
             hideKeyboard()
             var nick = binding.writeNickEtxt.text.toString()
 
-            database.addValueEventListener(object : ValueEventListener {
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
+            // 닉네임 입력창 Null 체크
+            if(nick.isNullOrEmpty()){
+                Toast.makeText(baseContext,"닉네임을 입력해주세요", Toast.LENGTH_SHORT).show()
+            }else{
+                // 닉네임 중복 여부 체크
+                database.addValueEventListener(object : ValueEventListener {
+                    override fun onDataChange(dataSnapshot: DataSnapshot) {
 
-                    // child 내에 있는 데이터만큼 반복합니다.
-                    for (data in dataSnapshot.children) {
-                        if (nick == data.value.toString()){
-                            nickFor = 1
-                            Toast.makeText(baseContext,"다른 닉네임을 사용해주세요",Toast.LENGTH_SHORT).show()
-                            break
+                        // child 내에 있는 데이터만큼 반복합니다.
+                        for (data in dataSnapshot.children) {
+                            if (nick == data.value.toString()){
+                                nickFor = 1
+                                Toast.makeText(baseContext,"다른 닉네임을 사용해주세요",Toast.LENGTH_SHORT).show()
+                                break
+                            }
                         }
+
+                        // 닉네임 중복 안되었을 때
+                        if (nickFor == 0){
+                            Toast.makeText(baseContext,"사용하실 수 있는 닉네임입니다.",Toast.LENGTH_SHORT).show()
+
+                            // 닉네임 중복 확인 통과
+                            checkNickBtn = 1
+
+                        }
+
                     }
-
-                    // 닉네임 중복 안되었을 때
-                    if (nickFor == 0){
-                        Toast.makeText(baseContext,"사용하실 수 있는 닉네임입니다.",Toast.LENGTH_SHORT).show()
-
-                        // 닉네임 중복 확인 통과
-                        checkNickBtn = 1
-
-                    }
-
-                }
-                override fun onCancelled(databaseError: DatabaseError) {}
-            })
+                    override fun onCancelled(databaseError: DatabaseError) {}
+                })
+            }
         }
 
 
