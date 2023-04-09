@@ -197,9 +197,6 @@ class AddRecordActivity : AppCompatActivity() {
         val symptom = binding.symptom.text.toString()
         val uid = FBAuth.getUid()
 
-        // 각 진료기록 항목 별 Key
-//        var recordKey = FBRef.recordRef.push().key.toString()
-
         // 진료 기록 객체 형태로 저장
         FBRef.recordRef
             .child(recordKey)
@@ -240,16 +237,6 @@ class AddRecordActivity : AppCompatActivity() {
                 // 해당 진료 기록 항목의 고유 key로 저장
             .child(key)
             .setValue(pillData(pillNameTxt,dosageTxt,uid,itsRecordkey))
-
-//        pillList.add(pillData(pillNameTxt,dosageTxt))
-//        pillkeyList.add(key)
-//
-//        PillListAdapter.notifyDataSetChanged()
-//
-//        // 저장 후에 editTextView 빈칸으로 비우기
-//        binding.pillName.setText("")
-//        binding.dosage.setText("")
-
     }
 
     // 복용 약 RecyclerView 띄우기
