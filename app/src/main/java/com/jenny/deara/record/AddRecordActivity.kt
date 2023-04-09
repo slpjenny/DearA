@@ -228,12 +228,7 @@ class AddRecordActivity : AppCompatActivity() {
         pillList.add(pillData(pillNameTxt,dosageTxt))
         pillkeyList.add(key)
 
-        Log.d("index", "약 리스트 "+PillListAdapter.itemCount.toString() )
-
         PillListAdapter.notifyDataSetChanged()
-
-        // 여기서 0이 되는 이유를 찾기...
-        Log.d("index", "약 리스트 업데이트후 "+PillListAdapter.itemCount.toString() )
 
         // 저장 후에 editTextView 빈칸으로 비우기
         binding.pillName.setText("")
