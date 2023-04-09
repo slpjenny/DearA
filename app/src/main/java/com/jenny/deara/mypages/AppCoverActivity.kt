@@ -22,8 +22,7 @@ class AppCoverActivity : AppCompatActivity() {
         setContentView(R.layout.activity_app_cover)
 
         back.setOnClickListener {
-            val intent = Intent(this, MyPageActivity::class.java)
-            startActivity(intent)
+            onBackPressed()
         }
 
         button1.setOnClickListener{
@@ -52,4 +51,11 @@ class AppCoverActivity : AppCompatActivity() {
             Toast.makeText(this@AppCoverActivity, "선택한 색상으로 변경됨", Toast.LENGTH_SHORT).show()
         }
     }
+
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
+    }
+
 }

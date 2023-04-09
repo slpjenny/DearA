@@ -80,6 +80,7 @@ class EditRecordActivity : AppCompatActivity() {
         // 변경된 내용으로 수정
         binding.saveBtn.setOnClickListener {
             editRecord(key)
+
         }
 
         // 아이템 삭제
@@ -97,7 +98,6 @@ class EditRecordActivity : AppCompatActivity() {
             }else{
                 // 파이어베이스에 복용약 내용 따로 저장
                 saveFBPillData()
-//                pillListAdapter.notifyDataSetChanged()
             }
         }
 
@@ -270,19 +270,19 @@ class EditRecordActivity : AppCompatActivity() {
             .child(key)
             .setValue(pillData(pillNameTxt,dosageTxt,uid,intentKey))
 
-        // recyclerview 데이터 리스트에 저장
-        // 여기서도 오류
-        // 근데 이건 오류 안날때도 있음..
         pillList.add(pillData(pillNameTxt,dosageTxt))
 
-//        pillListAdapter.addItem(pillData(pillNameTxt,dosageTxt))
-
-        // 여기서는 왜 또 notify 안해도 그냥 뷰가 그려질까?
 //        pillListAdapter.notifyDataSetChanged()
 
         // 저장 후에 editTextView 빈칸으로 비우기
         binding.pillName.setText("")
         binding.dosage.setText("")
+    }
+
+
+    private fun saveRCPillData(){
+
+
     }
 
     private fun getPillData(){

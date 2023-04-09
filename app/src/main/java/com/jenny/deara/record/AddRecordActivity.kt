@@ -35,6 +35,7 @@ class AddRecordActivity : AppCompatActivity() {
     lateinit var  PillListAdapter : PillListAdapter
     val pillList = mutableListOf<pillData>()
     val pillkeyList = mutableListOf<String>()
+    var key = FBRef.pillRef.push().key.toString()
 
     val hhhList = mutableListOf<pillData>()
 
@@ -102,6 +103,7 @@ class AddRecordActivity : AppCompatActivity() {
         // 진료기록 저장
         binding.saveBtn.setOnClickListener {
             saveFBRecordData()
+            saveFBPillData()
         }
 
 
@@ -112,8 +114,9 @@ class AddRecordActivity : AppCompatActivity() {
             if(binding.pillName.text.toString().trim().isEmpty() || binding.dosage.text.toString().trim().isEmpty()){
                 Toast.makeText(baseContext,"내용을 입력해주세요",Toast.LENGTH_SHORT)
             }else{
-                // 파이어베이스에 복용약 내용 따로 저장
-                saveFBPillData()
+                // 파이어베이스에는 [저장] 버튼으로 저장
+                // RecyclerView 그리기
+                saveRCPillData()
             }
 
             Log.d("약 리스트", pillList.size.toString())
@@ -123,6 +126,8 @@ class AddRecordActivity : AppCompatActivity() {
         // 뒤로가기 버튼
         binding.backBtn.setOnClickListener {
             onBackPressed()
+
+            // 복용 약 모두 삭제
         }
 
     }
@@ -192,9 +197,6 @@ class AddRecordActivity : AppCompatActivity() {
         val symptom = binding.symptom.text.toString()
         val uid = FBAuth.getUid()
 
-        // 각 진료기록 항목 별 Key
-//        var recordKey = FBRef.recordRef.push().key.toString()
-
         // 진료 기록 객체 형태로 저장
         FBRef.recordRef
             .child(recordKey)
@@ -205,25 +207,10 @@ class AddRecordActivity : AppCompatActivity() {
         finish()
     }
 
-
-    private fun saveFBPillData(){
-
+    // 복용 약 recyclerView 띄우기
+    private fun saveRCPillData(){
         var pillNameTxt : String = binding.pillName.text.toString()
         var dosageTxt : String = binding.dosage.text.toString()
-        var itsRecordkey : String = recordKey
-
-        var key = FBRef.pillRef.push().key.toString()
-        val uid = FBAuth.getUid()
-
-        // 추가한 부분
-//        pillList.clear()
-
-        // 복용 약 객체 형태로 저장
-        FBRef.pillRef
-                // 진료 일정 각각 별 복용 약임
-                // 해당 진료 기록 항목의 고유 key로 저장
-            .child(key)
-            .setValue(pillData(pillNameTxt,dosageTxt,uid,itsRecordkey))
 
         pillList.add(pillData(pillNameTxt,dosageTxt))
         pillkeyList.add(key)
@@ -233,7 +220,23 @@ class AddRecordActivity : AppCompatActivity() {
         // 저장 후에 editTextView 빈칸으로 비우기
         binding.pillName.setText("")
         binding.dosage.setText("")
+    }
 
+
+    // Firebase에 복용 약 저장
+    private fun saveFBPillData(){
+
+        var pillNameTxt : String = binding.pillName.text.toString()
+        var dosageTxt : String = binding.dosage.text.toString()
+        var itsRecordkey : String = recordKey
+        val uid = FBAuth.getUid()
+
+        // 복용 약 객체 형태로 저장
+        FBRef.pillRef
+                // 진료 일정 각각 별 복용 약임
+                // 해당 진료 기록 항목의 고유 key로 저장
+            .child(key)
+            .setValue(pillData(pillNameTxt,dosageTxt,uid,itsRecordkey))
     }
 
     // 복용 약 RecyclerView 띄우기

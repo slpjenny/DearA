@@ -85,15 +85,16 @@
                     android:textColorHint="@color/white"
                     android:textSize="15dp" />
 
-                <android.widget.Button
-                    android:id="@+id/emailCheck"
-                    android:layout_width="80dp"
-                    android:layout_height="35dp"
-                    android:layout_marginRight="40dp"
-                    android:text="이메일 확인"
-                    android:textSize="13dp"
-                    android:textColor="@color/black"
-                    android:background="@drawable/background_radius_sign_in_duplication"/>
+                <!-- 아직 기능 구현 못찾음 -->
+<!--                <android.widget.Button-->
+<!--                    android:id="@+id/emailCheck"-->
+<!--                    android:layout_width="80dp"-->
+<!--                    android:layout_height="35dp"-->
+<!--                    android:layout_marginRight="40dp"-->
+<!--                    android:text="이메일 확인"-->
+<!--                    android:textSize="13dp"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:background="@drawable/background_radius_sign_in_duplication"/>-->
 
             </LinearLayout>
 
