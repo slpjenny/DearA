@@ -129,9 +129,7 @@ class AddRecordActivity : AppCompatActivity() {
         binding.backBtn.setOnClickListener {
             onBackPressed()
 
-            // 복용 약 모두 삭제
-//            getPillData()
-
+            // 복용 약 FB에서 다시 삭제
             for(k in pillKeyListRm) {
                 FBRef.pillRef.child(k).removeValue()
             }
