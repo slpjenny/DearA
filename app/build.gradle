@@ -13,7 +13,7 @@ android {
 
     defaultConfig {
         applicationId "com.jenny.deara"
-        minSdk 24
+        minSdk 26
         targetSdk 32
         versionCode 1
         versionName "1.0"
@@ -105,6 +105,5 @@ dependencies {
     implementation 'androidx.preference:preference:1.1.0-alpha01'
     // 스크린샷 탐지
     implementation 'com.akexorcist:screenshot-detection:1.0.2'
-
 
 }

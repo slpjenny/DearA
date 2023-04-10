@@ -2,34 +2,52 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.jenny.deara">
-
     <uses-permission android:name="android.permission.INTERNET" /> <!-- 지문 인식 권한 -->
     <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-
+    
     <application
-        android:networkSecurityConfig="@xml/network_security_config"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher_purple"
         android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DearA"
         tools:targetApi="31">
         <activity
+            android:name=".board.report.ReportCommentActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".board.report.ReportC_AccountActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".board.report.ReportAccountActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
             android:name=".mypages.AppCoverActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".mypages.CommunityRuleActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".board.report.ReportActivity"
-            android:exported="false" /> <!-- <activity -->
+            android:exported="false"
+            android:screenOrientation="portrait"/> <!-- <activity -->
         <!-- android:name=".preference" -->
         <!-- android:exported="false" /> -->
         <!-- <activity -->
@@ -37,78 +55,87 @@
         <!-- android:exported="false" /> -->
         <activity
             android:name=".FingerPrintActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".record.EditRecordActivity"
+            android:exported="false"
             android:windowSoftInputMode="adjustResize"
-            android:exported="false" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".record.AddRecordActivity"
+            android:exported="false"
             android:windowSoftInputMode="adjustResize"
-            android:exported="false" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".mypages.ContactUsActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".mypages.SelectLockActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".board.BoardWriteActivity"
+            android:exported="false"
             android:windowSoftInputMode="adjustUnspecified"
-            android:exported="false" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".board.BoardInsideActivity"
+            android:exported="false"
             android:windowSoftInputMode="adjustResize"
-
-            android:exported="false" />
-        <activity
-            android:name=".board.BoardEditActivity"
-            android:windowSoftInputMode="adjustResize"
-            android:exported="false" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".board.BoardImageViewActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".alarm.TimePickerActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".mypages.ChangePwdActivity"
+            android:exported="false"
             android:windowSoftInputMode="adjustResize"
-            android:exported="false" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".mypages.FindPwdActivity"
+            android:exported="false"
             android:windowSoftInputMode="adjustResize"
-            android:exported="false" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".mypages.ChangeNickNameActivity"
+            android:exported="false"
             android:windowSoftInputMode="adjustResize"
-            android:exported="false" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".diary.DiaryWriteActivity"
+            android:exported="false"
             android:windowSoftInputMode="adjustResize"
-            android:exported="false" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".diary.DiaryDetailActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".diary.DiaryEditActivity"
+            android:exported="false"
             android:windowSoftInputMode="adjustResize"
-            android:exported="false" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".MyPageActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".SignInActivity"
+            android:exported="true"
             android:windowSoftInputMode="adjustPan"
-            android:exported="true">
-
+            android:screenOrientation="portrait">
             <!-- 딥 링크용 인텐트 필터 -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
-
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-
                 <data
                     android:host="host"
                     android:scheme="deeplink" />
@@ -116,44 +143,31 @@
         </activity>
         <activity
             android:name=".SelfDiagnosisActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".LoginActivity"
+            android:exported="true"
             android:windowSoftInputMode="adjustResize"
-            android:exported="true">
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".SplashActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity-alias
-            android:name=".MainActivityAlias1"
-            android:enabled="true"
-            android:exported="true"
-            android:icon="@mipmap/ic_launcher_purple"
-            android:label="DearA"
-            android:roundIcon="@mipmap/ic_launcher_purple"
-            android:targetActivity=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity-alias>
         <activity-alias
             android:name=".MainActivityAlias2"
             android:enabled="false"
@@ -161,14 +175,27 @@
             android:icon="@mipmap/ic_launcher_white"
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_white"
-            android:targetActivity=".MainActivity">
+            android:targetActivity=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
-
+        <activity-alias
+            android:name=".MainActivityAlias1"
+            android:enabled="true"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_purple"
+            android:label="DearA"
+            android:roundIcon="@mipmap/ic_launcher_purple"
+            android:targetActivity=".MainActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
         <receiver
             android:name=".alarm.AlertReceiver"
             android:enabled="true"
@@ -180,5 +207,5 @@
             </intent-filter>
         </receiver>
     </application>
-
 </manifest>
+

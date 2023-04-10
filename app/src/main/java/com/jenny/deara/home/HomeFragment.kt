@@ -158,7 +158,6 @@ class HomeFragment : Fragment() {
     // 파이어베이스에 데이터 저장
     fun saveTodo(year : String, month: String, day : String, text: String){
 
-
         var todo : String = text
         var check : Boolean = false
         val time = FBAuth.getTimeDiary()
@@ -239,14 +238,18 @@ class HomeFragment : Fragment() {
                         // uid 에 맞는 진료기록들을 불러오기
                         if(FBAuth.getUid() == item.uid){
 
+                            Log.d("itemm", item.date)
+                            Log.d("itemmdate", nowDate)
+
                             // 날짜가 같은게 있다면, 따로 불러와서 todayRcRv 에도!! 추가해야함
                             if(item.date == nowDate){
+
                                 if (todayItem != null) {
+                                    todayItem.hospitalName = item.hospitalName
+                                    todayItem.date = item.date
+
                                     records.add(todayItem)
                                     recordKeyList.add(dataModel.key.toString())
-
-                                    Log.d("today", todayItem.toString())
-                                    Log.d("today11", item.toString())
 
                                 }
                             }
@@ -273,6 +276,8 @@ class HomeFragment : Fragment() {
 
         val position = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
+                TodoAdapter.notifyDataSetChanged()
+
                 items.clear()
 
                 var count = 0
@@ -281,7 +286,7 @@ class HomeFragment : Fragment() {
                     day2 = "0"+day2
                 }
 
-                val test = dataSnapshot.child(myuid).child(year).child(month).child(day2)
+                val test = dataSnapshot.child(myuid).child(Year).child(Month).child(date)
 
                 for (dataModel in test.children){
                     Log.d("todoList", dataModel.toString())
@@ -302,7 +307,7 @@ class HomeFragment : Fragment() {
                             }
 
                             percent = count * 100 / items.size
-                            progressBar.progress = item.percent
+                            binding.progressBar.progress = item.percent
 
                             setMonthView(percent)
 
@@ -337,7 +342,7 @@ class HomeFragment : Fragment() {
         val dayList = dayInMonthArray()
 
         // 어댑터 초기화
-        val adapter = CalendarAdapter(requireContext(), dayList, items, todokeyList, percent)
+        val adapter = context?.let { CalendarAdapter(it, dayList, items, todokeyList, percent) }
 
         // 레이아웃 설정 (열 7개)
         var manager : RecyclerView.LayoutManager = GridLayoutManager(context,7)
@@ -349,7 +354,7 @@ class HomeFragment : Fragment() {
         binding.calendarRv.adapter = adapter
 
         // 날짜 선택할 시
-        adapter.itemClick = object : CalendarAdapter.ItemClick {
+        adapter?.itemClick = object : CalendarAdapter.ItemClick {
             override fun onClick(view: View, position: Int) {
 
                 // 날짜 생성해서 리스트에 담기

@@ -1,40 +1,27 @@
 package com.jenny.deara.record
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Context
 import android.content.pm.PackageManager
 import android.media.MediaPlayer
 import android.media.MediaRecorder
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import android.widget.EditText
-import android.widget.LinearLayout
-import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.ActionBar
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.core.view.ViewCompat
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.gms.common.wrappers.Wrappers.packageManager
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.jenny.deara.R
 import com.jenny.deara.databinding.ActivityAddRecordBinding
-import com.jenny.deara.databinding.ActivitySignInBinding
-import com.jenny.deara.diary.DiaryData
-import com.jenny.deara.diary.DiaryListAdapter
 import com.jenny.deara.utils.FBAuth
 import com.jenny.deara.utils.FBRef
-import kotlinx.android.synthetic.main.pilllist_item.view.*
-import org.w3c.dom.Text
 import java.util.*
-import java.util.jar.Manifest
 
 
 class AddRecordActivity : AppCompatActivity() {
@@ -48,6 +35,9 @@ class AddRecordActivity : AppCompatActivity() {
     lateinit var  PillListAdapter : PillListAdapter
     val pillList = mutableListOf<pillData>()
     val pillkeyList = mutableListOf<String>()
+    var key = FBRef.pillRef.push().key.toString()
+
+    val hhhList = mutableListOf<pillData>()
 
     private val recordButton: RecordButton by lazy { findViewById(R.id.record_play)}
 
@@ -55,6 +45,7 @@ class AddRecordActivity : AppCompatActivity() {
     private val requiredPermissions = arrayOf(android.Manifest.permission.RECORD_AUDIO)
     // 초기 녹음 상태 설정
     private var state = voiceState.BEFORE_RECORDING
+
         set(value) {
             field = value
             recordButton.updateIconWithState(value)
@@ -72,16 +63,23 @@ class AddRecordActivity : AppCompatActivity() {
     private var player: MediaPlayer? = null
 
 
+    //각 진료기록 항목마다 고유 key
+    var recordKey = FBRef.recordRef.push().key.toString()
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        // 이미 저장된 진료기록 파이어베이스에서 불러오기
+        // 1. RecordList Adapter에서 보내온 intent
+        // 2. MainTodayRC Adapter에서 보내온 intent
 
         requestAudioPermission()
         initViews()
         bindViews()
         initVariables()
         initRecycler()
-
 
         binding.root.setOnClickListener {
             hideKeyboard()
@@ -105,6 +103,7 @@ class AddRecordActivity : AppCompatActivity() {
         // 진료기록 저장
         binding.saveBtn.setOnClickListener {
             saveFBRecordData()
+            saveFBPillData()
         }
 
 
@@ -113,18 +112,22 @@ class AddRecordActivity : AppCompatActivity() {
 
             // 내용 존재할때만 추가 가능
             if(binding.pillName.text.toString().trim().isEmpty() || binding.dosage.text.toString().trim().isEmpty()){
-
+                Toast.makeText(baseContext,"내용을 입력해주세요",Toast.LENGTH_SHORT)
             }else{
-                // 파이어베이스에 복용약 내용 따로 저장
-                saveFBPillData()
-                PillListAdapter.notifyDataSetChanged()
+                // 파이어베이스에는 [저장] 버튼으로 저장
+                // RecyclerView 그리기
+                saveRCPillData()
             }
+
+            Log.d("약 리스트", pillList.size.toString())
         }
 
 
         // 뒤로가기 버튼
         binding.backBtn.setOnClickListener {
             onBackPressed()
+
+            // 복용 약 모두 삭제
         }
 
     }
@@ -135,7 +138,22 @@ class AddRecordActivity : AppCompatActivity() {
 
         val cal = Calendar.getInstance()    //캘린더뷰 만들기
         val dateSetListener = DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
-            dateString = "${year}년 ${month + 1}월 ${dayOfMonth}일"
+
+            var firstMonth : Int = month
+
+            // 월의 길이가 1인 경우 앞에 0 붙여주고 따로 출력
+            if (firstMonth < 9){
+                var thisMonth : String
+                firstMonth = firstMonth+1
+                thisMonth = "0" + firstMonth.toString()
+
+                dateString = "${year}년 ${thisMonth}월 ${dayOfMonth}일"
+
+            }
+            // 월이 10,11,12 월 일때는 원래대로 출력
+            else{
+                dateString = "${year}년 ${month + 1}월 ${dayOfMonth}일"
+            }
             binding.date.text = dateString
         }
         DatePickerDialog(
@@ -175,60 +193,62 @@ class AddRecordActivity : AppCompatActivity() {
         val hospitalName = binding.hospitalName.text.toString()
         val date = binding.date.text.toString()
         val time = binding.time.text.toString()
-//        val pillName = binding.pillName.text.toString()
-//        val dosage = binding.dosage.text.toString()
         val memo = binding.memo.text.toString()
         val symptom = binding.symptom.text.toString()
         val uid = FBAuth.getUid()
 
-        val key = FBRef.recordRef.push().key.toString()
-
         // 진료 기록 객체 형태로 저장
         FBRef.recordRef
-            .child(key)
+            .child(recordKey)
             .setValue(RecordData(hospitalName, date, time, memo, symptom, uid))
-
 
         Toast.makeText(this, "진료 기록이 저장되었습니다.", Toast.LENGTH_LONG).show()
 
         finish()
     }
 
-
-    private fun saveFBPillData(){
-
+    // 복용 약 recyclerView 띄우기
+    private fun saveRCPillData(){
         var pillNameTxt : String = binding.pillName.text.toString()
         var dosageTxt : String = binding.dosage.text.toString()
 
-        var key = FBRef.pillRef.push().key.toString()
-        val uid = FBAuth.getUid()
-
-        // 복용 약 객체 형태로 저장
-        FBRef.pillRef
-            .child(key)
-            .setValue(pillData(pillNameTxt,dosageTxt,uid))
-
-        // recyclerview 데이터 리스트에 저장
         pillList.add(pillData(pillNameTxt,dosageTxt))
+        pillkeyList.add(key)
+
+        PillListAdapter.notifyDataSetChanged()
 
         // 저장 후에 editTextView 빈칸으로 비우기
         binding.pillName.setText("")
         binding.dosage.setText("")
+    }
 
+
+    // Firebase에 복용 약 저장
+    private fun saveFBPillData(){
+
+        var pillNameTxt : String = binding.pillName.text.toString()
+        var dosageTxt : String = binding.dosage.text.toString()
+        var itsRecordkey : String = recordKey
+        val uid = FBAuth.getUid()
+
+        // 복용 약 객체 형태로 저장
+        FBRef.pillRef
+                // 진료 일정 각각 별 복용 약임
+                // 해당 진료 기록 항목의 고유 key로 저장
+            .child(key)
+            .setValue(pillData(pillNameTxt,dosageTxt,uid,itsRecordkey))
     }
 
     // 복용 약 RecyclerView 띄우기
     private fun initRecycler(){
-        PillListAdapter = PillListAdapter(this,pillList)
-
+        PillListAdapter = PillListAdapter(this,pillkeyList)
         val rv : RecyclerView = binding.pillLayout
         rv.adapter= PillListAdapter
 
-//        PillListAdapter.pills = pillList
+        // 여기서 pillList 에 넣은게 아무것도 없어서 그런가?
+        PillListAdapter.pills = pillList
         PillListAdapter.notifyDataSetChanged()
     }
-
-
 
 
     // 어떤 permission을 요청할 것인가
@@ -272,22 +292,28 @@ class AddRecordActivity : AppCompatActivity() {
     // 녹음할 수 있는 상태 만들기
     private fun startRecording(){
         recorder = MediaRecorder().apply {
-            setAudioSource(MediaRecorder.AudioSource.MIC)
-            setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP)
-            setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB)
+            //MediaRecorder 설정하기
+            setAudioSource(MediaRecorder.AudioSource.MIC)  // 오디오 입력을 마이크로 받음
+            setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP)  // 출력 포멧 설정 (MPEG4) 로 왜 안했지?
+            setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB) // DEFAULT 로 설정 왜 안했지?
             setOutputFile(recordingFilePath)
             prepare()
         }
+
+        //MediaRecorder 시작시키기
         recorder?.start()
+
+        //state 변환시켜서 아이콘 변경
         state = voiceState.ON_RECORDING
 
         Log.d("record_state","startRecording")
-
     }
 
     private fun stopRecording(){
         recorder?.run{
+            // 녹음 중지를 위한 두 개의 메서드
             stop()
+                // MediaRecorder의 리소스를 해제하는 역할
             release()
         }
         recorder =null
@@ -312,6 +338,7 @@ class AddRecordActivity : AppCompatActivity() {
 
     private fun stopPlaying(){
         // player 는 stop 없이 release()로 바로 멈출 수 있음
+        // 미디어플레이어를 앱 내에서 재사용하려면 기존에 사용하던 리소스를 먼저 해제해야함
         player?.release()
         player =null
         state = voiceState.AFTER_RECORDING
@@ -355,6 +382,8 @@ class AddRecordActivity : AppCompatActivity() {
             inputManager.hideSoftInputFromWindow(this.currentFocus?.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
         }
     }
+
+
 
 
 }

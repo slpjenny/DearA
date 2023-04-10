@@ -1,131 +1,153 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".mypages.ChangeNickNameActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="64dp"
-        android:background="#EFEEEE"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:background="#EFEEEE">
 
         <ImageView
-            android:id="@+id/imageView5"
+            android:id="@+id/backBtn"
             android:layout_width="34dp"
             android:layout_height="34dp"
-            android:layout_marginLeft="7dp"
-            android:src="@drawable/back"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/back" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="7dp"
+            android:layout_marginTop="15dp"
             android:text="닉네임 변경"
             android:textColor="#000000"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView5"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textSize="24dp"
+            android:textStyle="bold"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
-
-    <ImageView
-        android:id="@+id/imageView12"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:src="@drawable/logo"
-        android:layout_marginTop="70dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
-
-
-    <TextView
-        android:id="@+id/myNick"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:text=" "
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView12" />
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout3"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="50dp"
-        app:layout_constraintTop_toBottomOf="@+id/myNick">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <EditText
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            android:id="@+id/editNickTxt"
-            android:layout_width="210dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="40dp"
-            android:background="@null"
-            android:hint="변경할 닉네임을 입력하세요"
-            android:inputType="textNoSuggestions|textVisiblePassword"
-            android:textColor="@color/black"
-            android:textColorHint="#CFCFCF"
-            android:textSize="13sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"></EditText>
+            <ImageView
+                android:id="@+id/imageView12"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/logo"
+                android:layout_marginTop="70dp"
+                android:layout_marginBottom="10dp"
+                android:layout_gravity="center"/>
 
+
+            <TextView
+                android:id="@+id/myNick"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_gravity="center"
+                android:text="PBL 화이팅"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <EditText
+                        android:id="@+id/editNickTxt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:padding="15dp"
+                        android:background="@null"
+                        android:hint="변경할 닉네임을 입력하세요"
+                        android:inputType="textNoSuggestions|textVisiblePassword"
+                        android:textColor="@color/black"
+                        android:textColorHint="#CFCFCF"
+                        android:textSize="13dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2">
+
+                    <android.widget.Button
+                        android:id="@+id/nickCheckBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="5dp"
+                        android:background="@drawable/background_radius_purple_white_btn"
+                        android:text="중복 확인"
+                        android:textSize="13dp" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp"
+                android:background="@drawable/one_line_maingray"/>
+
+        </LinearLayout>
 
         <android.widget.Button
-            android:id="@+id/nickCheckBtn"
-            android:layout_width="wrap_content"
+            android:id="@+id/saveBtn"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="중복 확인"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/editNickTxt"
-            app:layout_constraintTop_toTopOf="parent"></android.widget.Button>
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="330dp"
-        android:layout_height="3dp"
-        android:background="@drawable/one_line_maingray"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3"></ImageView>
-
-
-    <android.widget.Button
-        android:id="@+id/saveBtn"
-        android:layout_width="185dp"
-        android:layout_height="60dp"
-        android:background="@drawable/purple_btn_bg"
-        android:backgroundTint="@color/purple2"
-        android:elevation="20dp"
-        android:text="저장"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:layout_marginTop="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6"></android.widget.Button>
+            android:layout_marginLeft="80dp"
+            android:layout_marginRight="80dp"
+            android:padding="10dp"
+            android:background="@drawable/login_signin_bg"
+            android:backgroundTint="@color/purple2"
+            android:elevation="20dp"
+            android:text="저장"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:layout_marginTop="50dp" />
 
 
 
+    </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

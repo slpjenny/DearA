@@ -53,7 +53,7 @@ class ChangeNickNameActivity : AppCompatActivity() {
         // 현재 로그인 되어있는 정보 불러오기
         val user = auth.currentUser
 
-        thread(start = true){
+        thread(start = true) {
 
             if (user != null) {
                 database.child("users").child(user.uid).get().addOnSuccessListener {
@@ -70,8 +70,8 @@ class ChangeNickNameActivity : AppCompatActivity() {
                     }
                 }
             }
-
         }
+
 
         // firebase 에서 닉네임 불러오기
 //        if (user != null) {
@@ -103,21 +103,20 @@ class ChangeNickNameActivity : AppCompatActivity() {
                 database.addValueEventListener(object : ValueEventListener {
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
 
-                        var data = mapOf<String,String>()
+                        var data = mapOf<String, String>()
 
-                        // 이렇게 하면 users 밑의 uid와 닉네임들만 출력은 가능하다.
-//                        Log.d("nicklog",dataSnapshot.child("users").value.toString())
-
-                        data  = dataSnapshot.child("users").value as Map<String, String>
+                        data = dataSnapshot.child("users").value as Map<String, String>
 
                         // 와 이제 이렇게 하면 닉네임들만 뜬다.
                         Log.d("nicklog", data.values.toString())
 
-                        if (nick in data.values){
-                            Toast.makeText(baseContext, "다른 닉네임을 사용해주세요.", Toast.LENGTH_SHORT).show()
+                        if (nick in data.values) {
+                            Toast.makeText(baseContext, "다른 닉네임을 사용해주세요.", Toast.LENGTH_SHORT)
+                                .show()
 
-                        } else{
-                            Toast.makeText(baseContext, "사용하실 수 있는 닉네임입니다.", Toast.LENGTH_SHORT).show()
+                        } else {
+                            Toast.makeText(baseContext, "사용하실 수 있는 닉네임입니다.", Toast.LENGTH_SHORT)
+                                .show()
 
                             // 닉네임 중복 확인 통과 체크
                             checkNickBtn = 1
@@ -165,11 +164,22 @@ class ChangeNickNameActivity : AppCompatActivity() {
             }
         }
 
+        // 뒤로가기
+        binding.backBtn.setOnClickListener {
+            onBackPressed()
         }
+
+    }
+
+
 
 
     override fun onRestart() {
         super.onRestart()
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
     }
 
     private fun hideKeyboard() {

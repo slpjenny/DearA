@@ -56,6 +56,7 @@ class BoardMainFragment : Fragment() {
 
         initRecycler()
         getFBBoardData()
+        getCommentData()
         binding.searchBtn.setColorFilter(Color.parseColor("#F3F3F3"))
 
         binding.myPageBtn.setOnClickListener {
@@ -195,11 +196,6 @@ class BoardMainFragment : Fragment() {
         val rv : RecyclerView = binding.rvBoard
         rv.adapter= BoardListAdapter
 
-//        boardList.add(BoardModel("bb","bb","아이디","시간","자유"))
-//        boardList.add(BoardModel("aaa","bb","아이디","시간","자유"))
-//        boardkeyList.add("sdf")
-//        boardkeyList.add("sdfs")
-
         BoardListAdapter.datas = boardList
         BoardListAdapter.myComments = commentList
         BoardListAdapter.notifyDataSetChanged()
@@ -211,11 +207,6 @@ class BoardMainFragment : Fragment() {
 
         val rv : RecyclerView = binding.rvBoard
         rv.adapter= myCommentListAdapter
-
-//        commentList.add(CommentModel("댓글 내용입니다.","작성자","시간","부모키"))
-//        commentList.add(CommentModel("댓글 내용입니다22.","작성자22","시간22","부모키22"))
-//        boardkeyList.add("sdf")
-//        boardkeyList.add("sdfs")
 
         myCommentListAdapter.datas = commentList
         myCommentListAdapter.commentBoardKeyList = commentBoardKeyList
