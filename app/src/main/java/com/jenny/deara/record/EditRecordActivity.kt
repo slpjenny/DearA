@@ -31,6 +31,10 @@ class EditRecordActivity : AppCompatActivity() {
     val pillList = mutableListOf<pillData>()
     val pillkeyList = mutableListOf<String>()
 
+    // 약 데이터 삭제를 위한 list
+    var pillKeyListRm = mutableListOf<String>()
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -74,6 +78,12 @@ class EditRecordActivity : AppCompatActivity() {
 
         // 뒤로가기
         binding.backBtn.setOnClickListener {
+
+            // 복용 약 FB에서 다시 삭제
+            for(k in pillKeyListRm){
+                FBRef.pillRef.child(k).removeValue()
+            }
+
             finish()
         }
 
@@ -272,6 +282,10 @@ class EditRecordActivity : AppCompatActivity() {
 
         pillList.add(pillData(pillNameTxt,dosageTxt))
 
+        // 약 삭제를 위해 생성했던 Key들 모아놓기
+        pillKeyListRm.add(key)
+
+
 //        pillListAdapter.notifyDataSetChanged()
 
         // 저장 후에 editTextView 빈칸으로 비우기
@@ -280,10 +294,6 @@ class EditRecordActivity : AppCompatActivity() {
     }
 
 
-    private fun saveRCPillData(){
-
-
-    }
 
     private fun getPillData(){
 
