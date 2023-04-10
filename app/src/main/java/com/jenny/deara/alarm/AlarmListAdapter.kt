@@ -1,6 +1,7 @@
 package com.jenny.deara.alarm
 
 import android.content.Context
+import android.util.SparseBooleanArray
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,7 @@ import com.jenny.deara.R
 class AlarmListAdapter(val context: Context, val alarmkeyList: MutableList<String>, val OnClickInterface: OnClickInterface): RecyclerView.Adapter<AlarmListAdapter.ViewHolder>() {
 
     var datas = mutableListOf<AlarmData>()
+    // private val switchBtnStatus = SparseBooleanArray()
 
     interface SwitchClickListener{
         fun onClicked(position: Int, OnOff: Boolean)
@@ -49,12 +51,16 @@ class AlarmListAdapter(val context: Context, val alarmkeyList: MutableList<Strin
 
         val OnOffBtn: Switch = holder.itemView.findViewById(R.id.OnOffBtn)
 
-        OnOffBtn.setOnCheckedChangeListener { compoundButton, isChecked ->
-            if(isChecked) {
+
+        OnOffBtn.setOnCheckedChangeListener { _, isChecked ->
+            onClickedListener.onClicked(position, isChecked)
+        /*if(isChecked) {
+                switchBtnStatus.put(position, true)
                 onClickedListener.onClicked(position,true)
             } else {
+                switchBtnStatus.put(position, false)
                 onClickedListener.onClicked(position,false)
-            }
+            }*/
         }
 
 
@@ -74,5 +80,5 @@ class AlarmListAdapter(val context: Context, val alarmkeyList: MutableList<Strin
             }
 
     }
-
 }
+
