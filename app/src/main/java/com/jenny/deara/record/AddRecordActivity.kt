@@ -35,8 +35,6 @@ class AddRecordActivity : AppCompatActivity() {
     lateinit var  PillListAdapter : PillListAdapter
     val pillList = mutableListOf<pillData>()
     val pillkeyList = mutableListOf<String>()
-//    // 약 데이터를 FB에 저장할 때마다 생기는 고유 키
-//    var key = FBRef.pillRef.push().key.toString()
 
     // 약 데이터 삭제를 위한 list
     var pillKeyListRm = mutableListOf<String>()
@@ -213,14 +211,6 @@ class AddRecordActivity : AppCompatActivity() {
 
         finish()
     }
-
-    // 복용 약 recyclerView 띄우기
-//    private fun saveRCPillData(){
-//        var pillNameTxt : String = binding.pillName.text.toString()
-//        var dosageTxt : String = binding.dosage.text.toString()
-//
-//
-//    }
 
 
     // Firebase에 복용 약 저장
