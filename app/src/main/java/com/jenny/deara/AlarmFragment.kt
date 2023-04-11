@@ -30,7 +30,7 @@ import kotlinx.android.synthetic.main.alarm_dialog.*
 import java.security.SecureRandom
 import java.util.*
 
-class AlarmFragment : Fragment(), OnClickInterface {
+class AlarmFragment : Fragment() {
 
     private lateinit var binding: FragmentAlarmBinding
     private lateinit var _binding: AlarmDialogBinding
@@ -429,20 +429,25 @@ class AlarmFragment : Fragment(), OnClickInterface {
 
     private fun removeAlarm(alarmId: Int) {
         var alarmManager: AlarmManager = requireActivity().getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        var intent = Intent(requireActivity(), AlertReceiver::class.java)
+        var pendingIntent = PendingIntent.getBroadcast(requireActivity(), alarmId, intent,
+            FLAG_MUTABLE or FLAG_UPDATE_CURRENT)
 
-        requireActivity().runOnUiThread {
+        alarmManager.cancel(pendingIntent)
+        
+        /*requireActivity().runOnUiThread {
             var intent = Intent(requireActivity(), AlertReceiver::class.java)
             var pendingIntent = PendingIntent.getBroadcast(requireActivity(), alarmId, intent,
                 FLAG_MUTABLE or FLAG_UPDATE_CURRENT)
 
             alarmManager.cancel(pendingIntent)
-        }
+        }*/
         Log.d("editAlarm", "remove")
     }
 
     @SuppressLint("NotifyDataSetChanged")
     private fun initRecycler() {
-        AlarmListAdapter = AlarmListAdapter(requireContext(), alarmkeyList, this, )
+        AlarmListAdapter = AlarmListAdapter(requireContext(), alarmkeyList)
 
         val rv : RecyclerView = binding.rvAlarm
         rv.adapter= AlarmListAdapter
