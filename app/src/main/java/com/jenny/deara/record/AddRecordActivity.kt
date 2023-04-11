@@ -126,12 +126,6 @@ class AddRecordActivity : AppCompatActivity() {
         // 뒤로가기 버튼
         binding.backBtn.setOnClickListener {
             onBackPressed()
-
-            // 복용 약 FB에서 다시 삭제
-            for(k in pillKeyListRm) {
-                FBRef.pillRef.child(k).removeValue()
-            }
-
         }
 
     }
@@ -381,6 +375,13 @@ class AddRecordActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
+
+        // 복용 약 FB에서 다시 삭제
+        for(k in pillKeyListRm) {
+            FBRef.pillRef.child(k).removeValue()
+        }
+
+        Log.d("back", "뒤로가기 버튼 감지됨")
     }
 
     private fun hideKeyboard() {

@@ -238,6 +238,12 @@ class EditRecordActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
+
+        // 복용 약 FB에서 다시 삭제
+        for(k in pillKeyListRm){
+            FBRef.pillRef.child(k).removeValue()
+        }
+
     }
 
     private fun hideKeyboard() {
