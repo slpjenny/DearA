@@ -113,15 +113,18 @@ class BoardWriteActivity : AppCompatActivity() {
         }
 
         binding.imageBtn.setOnClickListener {
-            if (imageList.size >= 10){
-                Toast.makeText(this, "사진은 최대 10개까지 업로드할 수 있습니다.", Toast.LENGTH_LONG).show()
+
+            if (imageList.size >= 1){
+                // 이미지 최대 1장으로 임시 수정
+                Toast.makeText(this, "사진은 최대 1개까지 업로드할 수 있습니다.", Toast.LENGTH_LONG).show()
             }else{
                 val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
                 startActivityForResult(gallery, 100)
                 //isImageUpload = true
             }
 
-            binding.imageCount.text = ImageListAdapter.itemCount.toString() + "/10"
+            // 이미지 최대 1장으로 임시 수정
+            binding.imageCount.text = ImageListAdapter.itemCount.toString() + "/1"
         }
 
         binding.saveBtn.setOnClickListener {
@@ -141,7 +144,8 @@ class BoardWriteActivity : AppCompatActivity() {
             }
         }
 
-        binding.imageCount.text = imageList.size.toString() + "/10"
+        // 이미지 최대 1장으로 임시 수정
+        binding.imageCount.text = imageList.size.toString() + "/1"
     }
 
     private fun saveFBBoardData(key: String){
@@ -226,7 +230,8 @@ class BoardWriteActivity : AppCompatActivity() {
             }
         Log.d("getImageLog", "final length : $imageList")
 
-        binding.imageCount.text = ImageListAdapter.itemCount.toString() + "/10"
+        // 이미지 최대 1장으로 임시 수정
+        binding.imageCount.text = ImageListAdapter.itemCount.toString() + "/1"
     }
 
     private fun imageUpload(key : String){
@@ -265,11 +270,11 @@ class BoardWriteActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if(resultCode == RESULT_OK && requestCode == 100) {
-            if (imageList.size >= 10){
-                Toast.makeText(this, "사진은 최대 10개까지 업로드할 수 있습니다.", Toast.LENGTH_LONG).show()
+            if (imageList.size >= 1){ // 이미지 최대 1장으로 임시 수정
+                Toast.makeText(this, "사진은 최대 1개까지 업로드할 수 있습니다.", Toast.LENGTH_LONG).show()
             }else{
                 data?.data?.let { imageList.add(it) }
-                binding.imageCount.text = imageList.size.toString() + "/10"
+                binding.imageCount.text = imageList.size.toString() + "/1"
             }
             ImageListAdapter.notifyDataSetChanged()
         }
