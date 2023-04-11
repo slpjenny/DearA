@@ -31,9 +31,11 @@ class EditRecordActivity : AppCompatActivity() {
     val pillList = mutableListOf<pillData>()
     val pillkeyList = mutableListOf<String>()
 
-    // 약 데이터 삭제를 위한 list
+    // 뒤로가기시, 약 데이터 삭제를 위한 list
     var pillKeyListRm = mutableListOf<String>()
 
+    // 진료기록 삭제 시, 모든 약 데이터 삭제를 위한 list
+    var allPillKeyList = mutableListOf<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -222,6 +224,12 @@ class EditRecordActivity : AppCompatActivity() {
 
         //진료 기록 삭제 가능
         FBRef.recordRef.child(key).removeValue()
+
+        //약 삭제
+        for(k in allPillKeyList){
+            FBRef.pillRef.child(k).removeValue()
+        }
+
         Toast.makeText(baseContext,"삭제가 완료되었습니다.",Toast.LENGTH_LONG).show()
 
         finish()
@@ -285,6 +293,8 @@ class EditRecordActivity : AppCompatActivity() {
         // 약 삭제를 위해 생성했던 Key들 모아놓기
         pillKeyListRm.add(key)
 
+        allPillKeyList.add(key)
+
 
 //        pillListAdapter.notifyDataSetChanged()
 
@@ -328,6 +338,8 @@ class EditRecordActivity : AppCompatActivity() {
 
                                 pillList.add(item)
                                 pillkeyList.add(dataModel.key.toString())
+
+                                allPillKeyList.add(dataModel.key.toString())
                             }
 
                         }
