@@ -10,7 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.jenny.deara.R
 
-class AlarmListAdapter(val context: Context, val alarmkeyList: MutableList<String>, val OnClickInterface: OnClickInterface): RecyclerView.Adapter<AlarmListAdapter.ViewHolder>() {
+class AlarmListAdapter(val context: Context, val alarmkeyList: MutableList<String>): RecyclerView.Adapter<AlarmListAdapter.ViewHolder>() {
 
     var datas = mutableListOf<AlarmData>()
     // private val switchBtnStatus = SparseBooleanArray()
@@ -49,19 +49,12 @@ class AlarmListAdapter(val context: Context, val alarmkeyList: MutableList<Strin
             dataClickListener.onClick(it, position)
         }
 
-        val OnOffBtn: Switch = holder.itemView.findViewById(R.id.OnOffBtn)
+        // val OnOffBtn: Switch = holder.itemView.findViewById(R.id.OnOffBtn)
 
 
-        OnOffBtn.setOnCheckedChangeListener { _, isChecked ->
+        /*OnOffBtn.setOnCheckedChangeListener { _, isChecked ->
             onClickedListener.onClicked(position, isChecked)
-        /*if(isChecked) {
-                switchBtnStatus.put(position, true)
-                onClickedListener.onClicked(position,true)
-            } else {
-                switchBtnStatus.put(position, false)
-                onClickedListener.onClicked(position,false)
-            }*/
-        }
+        }*/
 
 
     }
@@ -70,13 +63,13 @@ class AlarmListAdapter(val context: Context, val alarmkeyList: MutableList<Strin
         private val time: TextView = itemView.findViewById(R.id.tv_time)
         private val title: TextView = itemView.findViewById(R.id.tv_title)
         private val day: TextView = itemView.findViewById(R.id.tv_day)
-        private val OnOffBtn: Switch = itemView.findViewById(R.id.OnOffBtn)
+        // private val OnOffBtn: Switch = itemView.findViewById(R.id.OnOffBtn)
 
         fun bind(item: AlarmData, key: String) {
             time.text = item.time
             title.text = item.title
             day.text = item.day
-            OnOffBtn.isChecked = item.onOff
+            // OnOffBtn.isChecked = item.onOff
             }
 
     }
