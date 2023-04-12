@@ -4,6 +4,8 @@ import android.content.ContentValues.TAG
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
@@ -38,7 +40,7 @@ class ChangePwdActivity : AppCompatActivity() {
             onBackPressed()
         }
 
-        binding.saveBtn.setOnClickListener {
+        binding.sendBtn.setOnClickListener {
 
             // 비밀번호 재설정하는 메일 보내기
             val user = Firebase.auth.currentUser
@@ -51,9 +53,23 @@ class ChangePwdActivity : AppCompatActivity() {
                         Firebase.auth.sendPasswordResetEmail(email)
                             .addOnCompleteListener { task ->
                                 if (task.isSuccessful) {
-                                    Toast.makeText(baseContext,"비밀번호 재설정 이메일을 보냈습니다.",Toast.LENGTH_SHORT)
+//                                    Toast.makeText(baseContext,"비밀번호 재설정 이메일을 보냈습니다.",Toast.LENGTH_SHORT).show()
+
+                                    Handler(Looper.getMainLooper()).post(Runnable {
+                                        Toast.makeText(
+                                            this,
+                                            "비밀번호 재설정 이메일을 보냈습니다.", Toast.LENGTH_SHORT
+                                        ).show()
+                                    })
+
                                 }else{
-                                    Toast.makeText(baseContext,"메일 전송을 실패했습니다.",Toast.LENGTH_SHORT)
+                                    Handler(Looper.getMainLooper()).post(Runnable {
+                                        Toast.makeText(
+                                            this,
+                                            "메일 전송을 실패했습니다.", Toast.LENGTH_SHORT
+                                        ).show()
+                                    })
+//                                    Toast.makeText(baseContext,"메일 전송을 실패했습니다.",Toast.LENGTH_SHORT).show()
                                 }
                             }
                 }
@@ -74,10 +90,6 @@ class ChangePwdActivity : AppCompatActivity() {
         }
     }
 
-    // 사용자 이메일 가져오기
-//    private fun getEmail() : String? {
-//
-//    }
 
 }
 
