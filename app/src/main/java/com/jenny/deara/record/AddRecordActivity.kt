@@ -126,12 +126,6 @@ class AddRecordActivity : AppCompatActivity() {
         // 뒤로가기 버튼
         binding.backBtn.setOnClickListener {
             onBackPressed()
-
-            // 복용 약 FB에서 다시 삭제
-            for(k in pillKeyListRm) {
-                FBRef.pillRef.child(k).removeValue()
-            }
-
         }
 
     }
@@ -207,7 +201,7 @@ class AddRecordActivity : AppCompatActivity() {
             .child(recordKey)
             .setValue(RecordData(hospitalName, date, time, memo, symptom, uid))
 
-        Toast.makeText(this, "진료 기록이 저장되었습니다.", Toast.LENGTH_LONG).show()
+        Toast.makeText(this, "진료 기록이 저장되었습니다.", Toast.LENGTH_SHORT).show()
 
         finish()
     }
@@ -252,7 +246,6 @@ class AddRecordActivity : AppCompatActivity() {
         val rv : RecyclerView = binding.pillLayout
         rv.adapter= PillListAdapter
 
-        // 여기서 pillList 에 넣은게 아무것도 없어서 그런가?
         PillListAdapter.pills = pillList
         PillListAdapter.notifyDataSetChanged()
     }
@@ -381,6 +374,13 @@ class AddRecordActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
+
+        // 복용 약 FB에서 다시 삭제
+        for(k in pillKeyListRm) {
+            FBRef.pillRef.child(k).removeValue()
+        }
+
+        Log.d("back", "뒤로가기 버튼 감지됨")
     }
 
     private fun hideKeyboard() {
