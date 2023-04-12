@@ -24,5 +24,14 @@ class ContactUsActivity : AppCompatActivity() {
 
         }
 
+        binding.backBtn.setOnClickListener {
+
+            onBackPressed()
+        }
+
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
     }
 }

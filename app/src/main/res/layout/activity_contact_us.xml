@@ -13,7 +13,7 @@
         android:backgroundTint="#D9D9D9">
 
         <ImageView
-            android:id="@+id/imageView5"
+            android:id="@+id/backBtn"
             android:layout_width="34dp"
             android:layout_height="34dp"
             android:layout_marginLeft="15dp"
