@@ -201,7 +201,7 @@ class AddRecordActivity : AppCompatActivity() {
             .child(recordKey)
             .setValue(RecordData(hospitalName, date, time, memo, symptom, uid))
 
-        Toast.makeText(this, "진료 기록이 저장되었습니다.", Toast.LENGTH_LONG).show()
+        Toast.makeText(this, "진료 기록이 저장되었습니다.", Toast.LENGTH_SHORT).show()
 
         finish()
     }
@@ -246,7 +246,6 @@ class AddRecordActivity : AppCompatActivity() {
         val rv : RecyclerView = binding.pillLayout
         rv.adapter= PillListAdapter
 
-        // 여기서 pillList 에 넣은게 아무것도 없어서 그런가?
         PillListAdapter.pills = pillList
         PillListAdapter.notifyDataSetChanged()
     }

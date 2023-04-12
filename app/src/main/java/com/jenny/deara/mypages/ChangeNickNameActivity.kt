@@ -1,26 +1,20 @@
 package com.jenny.deara.mypages
 
 import android.content.Context
-import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-
 import android.util.Log
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
-
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import com.jenny.deara.LoginActivity
-import com.jenny.deara.R
 import com.jenny.deara.databinding.ActivityChangeNickNameBinding
-import com.jenny.deara.databinding.ActivityMyPageBinding
 import kotlin.concurrent.thread
 
 class ChangeNickNameActivity : AppCompatActivity() {
@@ -29,6 +23,8 @@ class ChangeNickNameActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var database: DatabaseReference
+
+    private var mtoast: Toast? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -96,7 +92,10 @@ class ChangeNickNameActivity : AppCompatActivity() {
 
             // 닉네임 입력창 null 체크
             if (nick.isNullOrEmpty()) {
-                Toast.makeText(baseContext, "닉네임을 먼저 입력해주세요", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(baseContext, "닉네임을 먼저 입력해주세요", Toast.LENGTH_SHORT).show()
+
+                toastShow("닉네임을 먼저 입력하세요")
+
             } else {
 
                 // 닉네임이 작성되어야 중복 확인 기능 작동
@@ -111,16 +110,27 @@ class ChangeNickNameActivity : AppCompatActivity() {
                         Log.d("nicklog", data.values.toString())
 
                         if (nick in data.values) {
-                            Toast.makeText(baseContext, "다른 닉네임을 사용해주세요.", Toast.LENGTH_SHORT)
-                                .show()
+//                            Toast.makeText(baseContext, "다른 닉네임을 사용해주세요.", Toast.LENGTH_SHORT)
+//                                .show()임
+
+                            // 왜 얘만 중복 생성되지
+                            toastShow("다른 닉네임을 사용해주세요")
+                            Log.d("toastShow", "다른닉네임사용 토스트 띄워짐")
+
 
                         } else {
-                            Toast.makeText(baseContext, "사용하실 수 있는 닉네임입니다.", Toast.LENGTH_SHORT)
-                                .show()
+//                            Toast.makeText(baseContext, "사용하실 수 있는 닉네임입니다.", Toast.LENGTH_SHORT)
+//                                .show()
+
+                            toastShow("사용하실 수 있는 닉네임입니다")
 
                             // 닉네임 중복 확인 통과 체크
                             checkNickBtn = 1
+
                         }
+
+
+                        database.removeEventListener(this)
 
                     }
 
@@ -137,18 +147,25 @@ class ChangeNickNameActivity : AppCompatActivity() {
 
             // 닉네임 입력창 null 체크
             if (nick.isNullOrEmpty()) {
-                Toast.makeText(baseContext, "닉네임을 먼저 입력해주세요", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(baseContext, "닉네임을 먼저 입력해주세요", Toast.LENGTH_SHORT).show()
+                toastShow("닉네임을 먼저 입력하세요")
+
             } else {
                 // 닉네임 중복 확인 여부 체크하기
                 if (checkNickBtn == 0) {
-                    Toast.makeText(baseContext, "닉네임 중복 확인을 해주세요", Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(baseContext, c, Toast.LENGTH_SHORT).show()
+
+                    toastShow("닉네임 중복 확인을 해주세요")
+
                 } else {
 
                     // 사용자의 uid 에 따라 닉네임을 저장
                     if (user != null) {
                         database.child("users").child(user.uid).setValue(nick)
 
-                        Toast.makeText(baseContext, "닉네임 변경이 완료되었습니다", Toast.LENGTH_SHORT).show()
+//                        Toast.makeText(baseContext, "닉네임 변경이 완료되었습니다", Toast.LENGTH_SHORT).show()
+
+                        toastShow("닉네임 변경 완료")
 
                         // 다시 중복체크 변수 초기화
                         checkNickBtn = 0
@@ -157,9 +174,12 @@ class ChangeNickNameActivity : AppCompatActivity() {
                         finish()
                         startActivity(getIntent())
 
+
                     } else {
                         Toast.makeText(baseContext, "닉네임 정보 불러오기 오류", Toast.LENGTH_SHORT).show()
+
                     }
+
                 }
             }
         }
@@ -170,8 +190,6 @@ class ChangeNickNameActivity : AppCompatActivity() {
         }
 
     }
-
-
 
 
     override fun onRestart() {
@@ -189,5 +207,19 @@ class ChangeNickNameActivity : AppCompatActivity() {
         }
     }
 
+    private fun toastShow(message: String){
+        if (mtoast == null) {
+
+            mtoast = Toast.makeText(this, message, Toast.LENGTH_SHORT);
+
+        } else {
+//            mtoast!!.cancel()
+            mtoast!!.setText(message);
+//            mtoast = Toast.makeText(this, message, Toast.LENGTH_SHORT);
+
+        }
+        mtoast!!.show();
+
+    }
 
     }

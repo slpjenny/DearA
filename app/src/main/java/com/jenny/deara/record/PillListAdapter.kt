@@ -65,14 +65,9 @@ class PillListAdapter(val context: Context, val pillList: MutableList<String>):R
                 Log.d ("key", pillKey)
                 // pillData(pillName=11, dosage=11, uid=OFPEYLKeieN02lJHgxPzX3XRWvc2, itsRecordkey=-NRMbrHycMfg66bNokn5)
 
-
                 // RecyclerView 레이아웃에서만 먼저 삭제
 //                pillList.removeAt(adapterPosition)
 //                notifyDataSetChanged()
-
-                // 파이어베이스에서도 약의 고유 key로 삭제하기
-                // 고유 key를 어떻게 불러오지..
-
 
                 FBRef.pillRef.child(pillKey).removeValue()
                 notifyItemRemoved(adapterPosition)
