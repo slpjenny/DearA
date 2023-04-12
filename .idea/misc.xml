@@ -187,9 +187,6 @@
         <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/fragment_diary.xml" value="0.2" />
         <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/fragment_diary_write_ver1.xml" value="0.2" />
         <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/fragment_home.xml" value="0.4" />
-
-        <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/drawable/login_write_bg_gray.xml" value="0.346" />
-
         <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/fragment_my_comment.xml" value="0.1962962962962963" />
         <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/fragment_my_write.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/fragment_popup.xml" value="0.1962962962962963" />
@@ -212,7 +209,7 @@
         <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/tododialog_item2.xml" value="0.1" />
         <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/todolistview_item.xml" value="0.2" />
         <entry key="..\:/Users/wsa/AndroidStudioProjects/DearA/app/src/main/res/layout/userremove_dialog.xml" value="0.2484375" />
-
+        <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/drawable/login_write_bg_gray.xml" value="0.346" />
         <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/layout/activity_add_record.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/layout/activity_board_edit.xml" value="0.225" />
         <entry key="..\:/Users/yein/AndroidStudioProjects/DearA/app/src/main/res/layout/activity_board_write.xml" value="0.225" />
@@ -263,7 +260,7 @@
         <entry key="app/src/main/res/layout/activity_board_inside.xml" value="0.2713541666666667" />
         <entry key="app/src/main/res/layout/activity_board_write.xml" value="0.2713541666666667" />
         <entry key="app/src/main/res/layout/activity_change_nick_name.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_change_pwd.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_change_pwd.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_contact_us.xml" value="0.190625" />
         <entry key="app/src/main/res/layout/activity_diary_detail.xml" value="0.22447916666666667" />
         <entry key="app/src/main/res/layout/activity_diary_edit.xml" value="0.1388888888888889" />
