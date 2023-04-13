@@ -41,6 +41,9 @@ class PillListAdapter(val context: Context, val pillList: MutableList<String>):R
     // 각각의 자리에 알맞은 값을 넣어준다.
     override fun onBindViewHolder(holder: PillListAdapter.ViewHolder, position: Int) {
         holder.bind(pills[position], pillList[position])
+    }
+
+    override fun onViewRecycled(viewholder : ViewHolder){
 
     }
 
@@ -60,18 +63,23 @@ class PillListAdapter(val context: Context, val pillList: MutableList<String>):R
 
             removeImv.setOnClickListener {
 
-                val pillKey = pillList[position]
+//                val pillKey = pillList[position]
+                val pillPosition = adapterPosition
+                val pillKey = pillList[pillPosition]
 
-                Log.d ("key", pillKey)
+//                Log.d ("key", pillKey)
                 // pillData(pillName=11, dosage=11, uid=OFPEYLKeieN02lJHgxPzX3XRWvc2, itsRecordkey=-NRMbrHycMfg66bNokn5)
 
-                // RecyclerView 레이아웃에서만 먼저 삭제
-//                pillList.removeAt(adapterPosition)
-//                notifyDataSetChanged()
+                pills.removeAt(pillPosition)
+                pillList.removeAt(pillPosition)
 
                 FBRef.pillRef.child(pillKey).removeValue()
-                notifyItemRemoved(adapterPosition)
 
+                notifyItemRemoved(pillPosition)
+
+                Log.d("약 데이터 삭제-> 리스트 사이즈: ",pillList.size.toString())
+
+//                Log.d("약 리스트 내용: ",pillList.toString()) // 왜 여기에 계속 쌓이는거지?
 
             }
         }

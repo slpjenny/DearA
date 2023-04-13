@@ -36,7 +36,7 @@ class AddRecordActivity : AppCompatActivity() {
     val pillList = mutableListOf<pillData>()
     val pillkeyList = mutableListOf<String>()
 
-    // 약 데이터 삭제를 위한 list
+    // 뒤로가기시, 약 데이터 삭제를 위한 list
     var pillKeyListRm = mutableListOf<String>()
 
     private val recordButton: RecordButton by lazy { findViewById(R.id.record_play)}
@@ -118,8 +118,6 @@ class AddRecordActivity : AppCompatActivity() {
                 // Firebase에 저장
                 saveFBPillData()
             }
-
-            Log.d("약 리스트", pillList.size.toString())
         }
 
 
@@ -234,9 +232,12 @@ class AddRecordActivity : AppCompatActivity() {
 
         PillListAdapter.notifyDataSetChanged()
 
+        Log.d("진료기록 추가-> 약 데이터 추가-> 리스트 사이즈: ",pillList.size.toString())
+
         // 저장 후에 editTextView 빈칸으로 비우기
         binding.pillName.setText("")
         binding.dosage.setText("")
+
 
     }
 
