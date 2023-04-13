@@ -31,7 +31,7 @@ class EditRecordActivity : AppCompatActivity() {
     val pillList = mutableListOf<pillData>()
     val pillkeyList = mutableListOf<String>()
 
-    // 뒤로가기시, 약 데이터 삭제를 위한 list
+    // 뒤로가기시, 새로 추가된 약 데이터 삭제를 위한 list
     var pillKeyListRm = mutableListOf<String>()
 
     // 진료기록 삭제 시, 모든 약 데이터 삭제를 위한 list
@@ -59,6 +59,9 @@ class EditRecordActivity : AppCompatActivity() {
 
         initRecycler()
         getPillData()
+
+        Log.d("기록 수정페이지 생성 > 약 데이터 사이즈 : ", pillList.size.toString())
+
 
         binding.root.setOnClickListener {
             hideKeyboard()
@@ -286,23 +289,31 @@ class EditRecordActivity : AppCompatActivity() {
             intentKey = recordKey
         }
 
-
         val uid = FBAuth.getUid()
+
+//        val newItem = pillData(pillNameTxt,dosageTxt)
+//        pillList.add(newItem)
+//        pillListAdapter.notifyItemInserted(pillList.indexOf(newItem))
 
         // 복용 약 객체 형태로 저장
         FBRef.pillRef
             .child(key)
             .setValue(pillData(pillNameTxt,dosageTxt,uid,intentKey))
 
+        // 살려
         pillList.add(pillData(pillNameTxt,dosageTxt))
+//        pillListAdapter.notifyDataSetChanged()
+
+
+        // *** 추가된 부분
+//        pillkeyList.add(key)
+
+        Log.d("진료기록 수정!-> 약 데이터 추가-> 리스트 사이즈: ",pillList.size.toString())
+
 
         // 약 삭제를 위해 생성했던 Key들 모아놓기
         pillKeyListRm.add(key)
-
         allPillKeyList.add(key)
-
-
-//        pillListAdapter.notifyDataSetChanged()
 
         // 저장 후에 editTextView 빈칸으로 비우기
         binding.pillName.setText("")

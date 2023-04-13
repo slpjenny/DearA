@@ -68,24 +68,6 @@ class ChangeNickNameActivity : AppCompatActivity() {
             }
         }
 
-
-        // firebase 에서 닉네임 불러오기
-//        if (user != null) {
-//            database.child("users").child(user.uid).get().addOnSuccessListener {
-//                binding.myNick.setText(it.value.toString())
-//
-//                // 동기 방식으로 흐름 바꾸기!
-//
-//                // 닉네임 처음에 -> pbl 화이팅 하얗게 해서 안보이게했다가
-//                // 내 닉네임 불러와지면 text 색상도 바뀌게 하기
-//                binding.myNick.setTextColor(Color.BLACK)
-//
-//            }.addOnFailureListener {
-//                binding.myNick.setText("닉네임 정보 없음")
-//            }
-//        }
-
-
         // [중복 확인] 버튼-> 닉네임 중복 확인
         binding.nickCheckBtn.setOnClickListener {
             var nick = binding.editNickTxt.text.toString()
@@ -110,18 +92,10 @@ class ChangeNickNameActivity : AppCompatActivity() {
                         Log.d("nicklog", data.values.toString())
 
                         if (nick in data.values) {
-//                            Toast.makeText(baseContext, "다른 닉네임을 사용해주세요.", Toast.LENGTH_SHORT)
-//                                .show()임
-
-                            // 왜 얘만 중복 생성되지
                             toastShow("다른 닉네임을 사용해주세요")
-                            Log.d("toastShow", "다른닉네임사용 토스트 띄워짐")
 
 
                         } else {
-//                            Toast.makeText(baseContext, "사용하실 수 있는 닉네임입니다.", Toast.LENGTH_SHORT)
-//                                .show()
-
                             toastShow("사용하실 수 있는 닉네임입니다")
 
                             // 닉네임 중복 확인 통과 체크
@@ -213,10 +187,7 @@ class ChangeNickNameActivity : AppCompatActivity() {
             mtoast = Toast.makeText(this, message, Toast.LENGTH_SHORT);
 
         } else {
-//            mtoast!!.cancel()
             mtoast!!.setText(message);
-//            mtoast = Toast.makeText(this, message, Toast.LENGTH_SHORT);
-
         }
         mtoast!!.show();
 
