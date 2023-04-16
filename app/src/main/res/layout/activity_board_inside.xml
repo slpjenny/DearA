@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <androidx.constraintlayout.widget.ConstraintLayout
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".board.BoardInsideActivity"
@@ -11,65 +12,73 @@
         android:id="@+id/layout">
 
         <!--상단바-->
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:id="@+id/boardTopBar"
             android:layout_width="match_parent"
-            android:layout_height="64dp"
-            android:background="@color/contactus_gray"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="wrap_content"
+            android:background="@color/contactus_gray">
 
-            <ImageView
-                android:id="@+id/backBtn"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:gravity="left"
-                android:src="@drawable/back"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
 
-            <TextView
-                android:layout_width="wrap_content"
+                <ImageView
+                    android:id="@+id/backBtn"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    android:gravity="left"
+                    android:src="@drawable/back"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="10dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="커뮤니티"
+                    android:textColor="@color/black"
+                    android:textSize="24dp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="커뮤니티"
-                android:textColor="@color/black"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/backBtn"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_weight="1"
+                android:gravity="end">
 
-            <ImageView
-                android:id="@+id/myPageBtn"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_marginRight="20dp"
-                android:src="@drawable/mypage"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                <ImageView
+                    android:id="@+id/myPageBtn"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:src="@drawable/mypage" />
+            </LinearLayout>
 
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
 
         <!--본문 + 댓글 스크롤뷰-->
         <androidx.core.widget.NestedScrollView
             android:id="@+id/main"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="match_parent"
             android:scrollbars="none"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/boardTopBar">
+            android:layout_weight="1">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
                 android:id="@+id/boardList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/sortArea"
@@ -82,10 +91,8 @@
                     android:paddingRight="6dp"
                     android:paddingBottom="3dp"
                     android:text="sort"
-                    android:textSize="11sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:textSize="11dp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/titleArea"
@@ -95,12 +102,10 @@
                     android:layout_marginTop="10dp"
                     android:text="title"
                     android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/sortArea" />
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <LinearLayout
                     android:id="@+id/boardLineS"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -108,15 +113,14 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginRight="10dp"
                     android:background="#B6B6B6"
-                    app:layout_constraintTop_toBottomOf="@+id/titleArea" />
+                    android:orientation="horizontal" />
 
                 <LinearLayout
                     android:id="@+id/info"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/boardLineS">
+                    android:layout_gravity="end">
 
                     <TextView
                         android:id="@+id/boardTime"
@@ -125,7 +129,7 @@
                         android:layout_marginEnd="15dp"
                         android:text="time"
                         android:textColor="#747474"
-                        android:textSize="15sp" />
+                        android:textSize="15dp" />
 
                     <TextView
                         android:id="@+id/boardWriter"
@@ -134,9 +138,9 @@
                         android:layout_marginEnd="15dp"
                         android:text="writer"
                         android:textColor="#747474"
-                        android:textSize="15sp" />
+                        android:textSize="15dp" />
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
+                    <LinearLayout
                         android:id="@+id/info2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -146,25 +150,20 @@
                             android:id="@+id/popupBtn"
                             android:layout_width="15dp"
                             android:layout_height="15dp"
-                            android:gravity="left"
                             android:src="@drawable/board_btn"
-                            android:visibility="invisible"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            android:visibility="invisible" />
 
                         <TextView
                             android:id="@+id/shingoBtn"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:gravity="left"
+                            android:layout_marginRight="8dp"
                             android:text="신고"
-                            android:visibility="invisible"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent" />
+                            android:textSize="15dp"
+                            android:visibility="invisible"/>
 
 
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    </LinearLayout>
 
 
                 </LinearLayout>
@@ -178,11 +177,7 @@
                     android:layout_marginTop="32dp"
                     android:layout_marginRight="20dp"
                     android:orientation="vertical"
-                    android:text="content"
-                    app:layout_constraintBottom_toTopOf="@+id/boardLineE"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/info">
+                    android:text="content">
 
                     <TextView
                         android:id="@+id/contentTextArea"
@@ -208,7 +203,7 @@
 
                 </LinearLayout>
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <LinearLayout
                     android:id="@+id/boardLineE"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -216,9 +211,7 @@
                     android:layout_marginTop="30dp"
                     android:layout_marginRight="10dp"
                     android:background="#B6B6B6"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/contentArea" />
+                    android:orientation="horizontal"/>
 
                 <LinearLayout
                     android:id="@+id/linearLayout4"
@@ -226,8 +219,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:layout_marginEnd="30dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/boardLineE">
+                    android:layout_gravity="end">
 
                     <ImageView
                         android:layout_width="20dp"
@@ -249,72 +241,64 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:descendantFocusability="blocksDescendants"
-                    android:paddingBottom="100dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+                    android:paddingBottom="100dp">
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rvComment"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:nestedScrollingEnabled="false"
                         android:overScrollMode="never"
                         android:paddingTop="10dp"
-                        android:paddingBottom="10dp"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:itemCount="3"
+                        tools:listitem="@layout/board_list_item" />
                 </RelativeLayout>
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>
 
         <!--댓글 입력-->
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:id="@+id/commentWindow"
             android:paddingBottom="10dp"
             android:paddingTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:background="#FCFCFC"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
-
+            android:background="#FCFCFC">
 
             <EditText
                 android:id="@+id/commentArea"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
                 android:background="@drawable/radius_gray"
                 android:hint="댓글을 입력해주세요"
                 android:paddingStart="15dp"
                 android:paddingEnd="15dp"
-                android:textSize="15sp"
+                android:padding="5dp"
+                android:textSize="15dp"
                 android:imeOptions="actionSearch"
-                android:layout_marginEnd="70dp"
                 android:layout_marginStart="10dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toStartOf="parent"/>
+                android:layout_marginBottom="5dp"
+                android:layout_weight="10"/>
 
             <Button
                 android:id="@+id/commentBtn"
                 android:layout_width="50dp"
                 android:layout_height="30dp"
                 android:layout_marginStart="8dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/radius_gray"
                 android:text=" 작성 "
+                android:textSize="15dp"
                 android:backgroundTint="@color/purple1"
                 android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginEnd="10dp"
-                style="?android:attr/borderlessButtonStyle"/>
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_weight="1"/>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </LinearLayout>
 </layout>
